@@ -562,6 +562,11 @@ function responsive_theme_options_do_page() {
                                     
                 </div><!-- end of .rwd-block -->
             </div><!-- end of .rwd-container -->
+			
+			<?php
+			// Call action to add pro theme options.
+			do_action( 'responsive_pro_options' );
+			?>
 
             </div><!-- end of .grid col-940 -->
         </form>
