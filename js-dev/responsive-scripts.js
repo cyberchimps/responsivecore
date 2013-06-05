@@ -540,7 +540,7 @@ jQuery(document).ready(function ($) {
 /* Mobile Menu
 */
 (function($) {
-	var current = $('.main-nav li.current_page_item a').html();
+	var current = $('.main-nav li.current-menu-item a').html();
 	if( typeof current == 'undefined' ) {
 		if( $('body').hasClass('home') ) {
 			if( $('#logo span').hasClass('site-name') ) {
