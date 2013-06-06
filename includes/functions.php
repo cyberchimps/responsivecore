@@ -525,7 +525,7 @@ function responsive_breadcrumb_lists() {
 		} elseif ( is_category() ) {
 			$thisCat = get_category(get_query_var('cat'), false);
 			if ($thisCat->parent != 0) {
-				$cats = get_category_parents($thisCat->parent, TRUE, $delimiter);
+				$cats = get_category_parents($thisCat->parent, true, $delimiter);
 				$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
 				$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
 				echo $cats;
@@ -555,7 +555,7 @@ function responsive_breadcrumb_lists() {
 				if ($showCurrent == 1) echo $delimiter . $before . get_the_title() . $after;
 			} else {
 				$cat = get_the_category(); $cat = $cat[0];
-				$cats = get_category_parents($cat, TRUE, $delimiter);
+				$cats = get_category_parents($cat, true, $delimiter);
 				if ($showCurrent == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
 				$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
 				$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
@@ -570,7 +570,7 @@ function responsive_breadcrumb_lists() {
 		} elseif ( is_attachment() ) {
 			$parent = get_post($post->post_parent);
 			$cat = get_the_category($parent->ID); $cat = $cat[0];
-			$cats = get_category_parents($cat, TRUE, $delimiter);
+			$cats = get_category_parents($cat, true, $delimiter);
 			$cats = str_replace('<a', $linkBefore . '<a' . $linkAttr, $cats);
 			$cats = str_replace('</a>', '</a>' . $linkAfter, $cats);
 			echo $cats;
@@ -663,29 +663,49 @@ endif;
     add_action( 'wp_enqueue_scripts', 'responsive_enqueue_comment_reply' );
 
     /**
+     * Theme options upgrade bar
+     */
+    function responsive_upgrade_bar() {
+        ?>
+
+        <div class="upgrade-callout">
+            <p><img src="<?php echo get_template_directory_uri(); ?>/core/includes/images/chimp.png" alt="CyberChimps"/>
+                <?php printf( __( 'Welcome to %1$s! Learn more about our other', 'responsive' ) . ' <a href="%2$s" target="_blank" title="%3$s">%3$s</a> ' . __( 'today.', 'responsive' ),
+                              apply_filters( 'cyberchimps_current_theme_name', 'Responsive' ),
+                              apply_filters( 'cyberchimps_upgrade_link', 'http://cyberchimps.com' ),
+                              apply_filters( 'cyberchimps_upgrade_pro_title', 'Responsive Themes' )
+                ); ?>
+            </p>
+
+            <div class="social-container">
+                <div class="social">
+                    <a href="https://twitter.com/cyberchimps" class="twitter-follow-button" data-show-count="false" data-size="small">Follow @cyberchimps</a>
+                    <script>!function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (!d.getElementById(id)) {
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//platform.twitter.com/widgets.js";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }
+                        }(document, "script", "twitter-wjs");</script>
+                </div>
+                <div class="social">
+                    <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcyberchimps.com%2F&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0"
+                            style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
+                </div>
+            </div>
+        </div>
+
+    <?php
+    }
+    add_action( 'responsive_theme_options','responsive_upgrade_bar', 1 );
+
+    /**
      * Theme Options Support and Information
      */	
     function responsive_theme_support () {
     ?>
-	
-	<div class="upgrade-callout">
-		<p><img src="<?php echo get_template_directory_uri() ;?>/core/includes/images/chimp.png" alt="CyberChimps" />
-			<?php printf( __( 'Welcome to %1$s! Learn more about our other', 'responsive' ) . ' <a href="%2$s" target="_blank" title="%3$s">%3$s</a> ' . __( 'today.', 'responsive' ),
-			apply_filters( 'cyberchimps_current_theme_name', 'Responsive' ),
-			apply_filters( 'cyberchimps_upgrade_link', 'http://cyberchimps.com' ),
-			apply_filters( 'cyberchimps_upgrade_pro_title', 'Responsive Themes' )
-			); ?>	
-		</p>
-		<div class="social-container">
-			<div class="social">
-				<a href="https://twitter.com/cyberchimps" class="twitter-follow-button" data-show-count="false" data-size="small">Follow @cyberchimps</a>
-				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
-			<div class="social">
-				<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcyberchimps.com%2F&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
-			</div>
-		</div>
-	</div>
 	
 	<div id="info-box-wrapper" class="grid col-940">
 		<div class="info-box notice">
@@ -710,8 +730,7 @@ endif;
 
     <?php }
  
-    add_action('responsive_theme_options','responsive_theme_support');
-
+    add_action( 'responsive_theme_options','responsive_theme_support', 2 );
 	 
     /**
      * WordPress Widgets start right here.
