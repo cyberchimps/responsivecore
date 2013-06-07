@@ -629,6 +629,7 @@ endif;
 
 		function responsive_css() {
 		wp_enqueue_style('responsive-style', get_stylesheet_uri(), false, '1.9.3.2');
+		wp_enqueue_style('responsive-media-queries', get_template_directory_uri(), false, '1.9.3.2');
 		}
 
 	}
