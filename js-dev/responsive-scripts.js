@@ -541,7 +541,10 @@ jQuery(document).ready(function ($) {
 */
 (function($) {
 	var current = $('.main-nav li.current-menu-item a').html();
-	if( typeof current == 'undefined' || current === null ) {
+	if( $('span').hasClass('custom-mobile-menu-title') ) {
+		current = $('span.custom-mobile-menu-title').html();
+	}
+	else if( typeof current == 'undefined' || current === null ) {
 		if( $('body').hasClass('home') ) {
 			if( $('#logo span').hasClass('site-name') ) {
 				current = $('#logo .site-name a').html();
