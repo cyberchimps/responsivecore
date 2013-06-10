@@ -50,12 +50,12 @@ function responsive_get_option_defaults() {
     'breadcrumb' => false,
     'cta_button' => false,
     'front_page' => 1,
-    'home_headline' => false,
-    'home_subheadline' => false,
-    'home_content_area' => false,
-    'cta_text' => false,
-    'cta_url' => false,
-    'featured_content' => false,
+    'home_headline' => null,
+    'home_subheadline' => null,
+    'home_content_area' => null,
+    'cta_text' => null,
+    'cta_url' => null,
+    'featured_content' => null,
     'google_site_verification' => '',
     'bing_site_verification' => '',
     'yahoo_site_verification' => '',
@@ -629,7 +629,7 @@ endif;
 
 		function responsive_css() {
 		wp_enqueue_style('responsive-style', get_stylesheet_uri(), false, '1.9.3.2');
-		wp_enqueue_style('responsive-media-queries', get_template_directory_uri(), false, '1.9.3.2');
+		wp_enqueue_style('responsive-media-queries', get_template_directory_uri() . '/core/css/style.css', false, '1.9.3.2');
 		}
 
 	}

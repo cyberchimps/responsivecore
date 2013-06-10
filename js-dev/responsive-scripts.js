@@ -563,6 +563,12 @@ jQuery(document).ready(function ($) {
 			else if( $('body').hasClass('search-results') ) {
 				current = $('h6.title-search-results').html();
 			}
+            else if( $('body').hasClass('page-template-blog-excerpt-php') ) {
+                current = $('.current_page_item').text();
+            }
+            else if( $('body').hasClass('page-template-blog-php') ) {
+                current = $('.current_page_item').text();
+            }
 			else {
 				current = $('h1.post-title').html();
 			}
