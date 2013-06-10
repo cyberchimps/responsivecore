@@ -99,7 +99,9 @@ function responsive_inline_js_head() {
     global $responsive_options;
     if (!empty($responsive_options['responsive_inline_js_head'])) {
 		echo '<!-- Custom Scripts -->' . "\n";
+		echo '<script type="text/javascript">';
         echo $responsive_options['responsive_inline_js_head'];
+		echo '</script>';
 		echo "\n";
 	}
 }
@@ -110,7 +112,9 @@ function responsive_inline_js_footer() {
     global $responsive_options;
     if (!empty($responsive_options['responsive_inline_js_footer'])) {
 		echo '<!-- Custom Scripts -->' . "\n";
+		echo '<script type="text/javascript">';
         echo $responsive_options['responsive_inline_js_footer'];
+		echo '</script>';
 		echo "\n";
 	}
 }
