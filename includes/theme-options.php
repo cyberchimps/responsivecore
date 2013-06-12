@@ -22,8 +22,10 @@ if ( !defined('ABSPATH')) exit;
  * A safe way of adding JavaScripts to a WordPress generated page.
  */
 function responsive_admin_enqueue_scripts( $hook_suffix ) {
-	wp_enqueue_style('responsive-theme-options', get_template_directory_uri() . '/core/includes/theme-options.css', false, '1.0');
-	wp_enqueue_script('responsive-theme-options', get_template_directory_uri() . '/core/includes/theme-options.js', array('jquery'), '1.0');
+	$template_directory_uri = get_template_directory_uri();
+	
+	wp_enqueue_style('responsive-theme-options', $template_directory_uri . '/core/includes/theme-options.css', false, '1.0');
+	wp_enqueue_script('responsive-theme-options', $template_directory_uri . '/core/includes/theme-options.js', array('jquery'), '1.0');
 }
 add_action('admin_print_styles-appearance_page_theme_options', 'responsive_admin_enqueue_scripts');
 

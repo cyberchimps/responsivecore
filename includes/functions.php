@@ -47,37 +47,37 @@ function responsive_get_options() {
  */
 function responsive_get_option_defaults() {
   $defaults = array(
-    'breadcrumb' => false,
-    'cta_button' => false,
-    'front_page' => 1,
-    'home_headline' => null,
-    'home_subheadline' => null,
-    'home_content_area' => null,
-    'cta_text' => null,
-    'cta_url' => null,
-    'featured_content' => null,
-    'google_site_verification' => '',
-    'bing_site_verification' => '',
-    'yahoo_site_verification' => '',
-    'site_statistics_tracker' => '',
-    'twitter_uid' => '',
-    'facebook_uid' => '',
-    'linkedin_uid' => '',
-    'youtube_uid' => '',
-    'stumble_uid' => '',
-    'rss_uid' => '',
-    'google_plus_uid' => '',
-    'instagram_uid' => '',
-    'pinterest_uid' => '',
-    'yelp_uid' => '',
-    'vimeo_uid' => '',
-    'foursquare_uid' => '',
-    'responsive_inline_css' => '',
-    'responsive_inline_js_head' => '',
-    'responsive_inline_css_js_footer' => '',
-    'static_page_layout_default' => 'content-sidebar-page',
-    'single_post_layout_default' => 'content-sidebar-page',
-    'blog_posts_index_layout_default' => 'content-sidebar-page',
+    'breadcrumb'						=> false,
+    'cta_button'						=> false,
+    'front_page'						=> 1,
+    'home_headline'						=> null,
+    'home_subheadline'					=> null,
+    'home_content_area'					=> null,
+    'cta_text'							=> null,
+    'cta_url'							=> null,
+    'featured_content'					=> null,
+    'google_site_verification'			=> '',
+    'bing_site_verification'			=> '',
+    'yahoo_site_verification'			=> '',
+    'site_statistics_tracker'			=> '',
+    'twitter_uid'						=> '',
+    'facebook_uid'						=> '',
+    'linkedin_uid'						=> '',
+    'youtube_uid'						=> '',
+    'stumble_uid'						=> '',
+    'rss_uid'							=> '',
+    'google_plus_uid'					=> '',
+    'instagram_uid'						=> '',
+    'pinterest_uid'						=> '',
+    'yelp_uid'							=> '',
+    'vimeo_uid'							=> '',
+    'foursquare_uid'					=> '',
+    'responsive_inline_css'				=> '',
+    'responsive_inline_js_head'			=> '',
+    'responsive_inline_css_js_footer'	=> '',
+    'static_page_layout_default'		=> 'content-sidebar-page',
+    'single_post_layout_default'		=> 'content-sidebar-page',
+    'blog_posts_index_layout_default'	=> 'content-sidebar-page',
   );
   return apply_filters( 'responsive_option_defaults', $defaults );
 }
@@ -93,6 +93,8 @@ if (!function_exists('responsive_setup')):
 
         global $content_width;
 
+		$template_directory = get_template_directory();
+		
         /**
          * Global content width.
          */
@@ -104,10 +106,10 @@ if (!function_exists('responsive_setup')):
          * Add your files into /languages/ directory.
 		 * @see http://codex.wordpress.org/Function_Reference/load_theme_textdomain
          */
-	    load_theme_textdomain('responsive', get_template_directory().'/core/languages');
+	    load_theme_textdomain('responsive', $template_directory . '/core/languages');
 
             $locale = get_locale();
-            $locale_file = get_template_directory().'/core/languages/$locale.php';
+            $locale_file = $template_directory . '/core/languages/$locale.php';
             if (is_readable( $locale_file))
 	            require_once( $locale_file);
 						
@@ -643,10 +645,12 @@ endif;
     if (!function_exists('responsive_js')) {
 
         function responsive_js() {
+			$template_directory_uri = get_template_directory_uri();
+			
 			// JS at the bottom for fast page loading. 
 			// except for Modernizr which enables HTML5 elements & feature detects.
-			wp_enqueue_script('modernizr', get_template_directory_uri() . '/core/js/responsive-modernizr.js', array('jquery'), '2.6.1', false);
-            wp_enqueue_script('responsive-scripts', get_template_directory_uri() . '/core/js/responsive-scripts.js', array('jquery'), '1.2.4', true);
+			wp_enqueue_script('modernizr', $template_directory_uri . '/core/js/responsive-modernizr.js', array('jquery'), '2.6.1', false);
+            wp_enqueue_script('responsive-scripts', $template_directory_uri . '/core/js/responsive-scripts.js', array('jquery'), '1.2.4', true);
         }
 
     }
