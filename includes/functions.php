@@ -106,10 +106,10 @@ if (!function_exists('responsive_setup')):
          * Add your files into /languages/ directory.
 		 * @see http://codex.wordpress.org/Function_Reference/load_theme_textdomain
          */
-	    load_theme_textdomain('responsive', $template_directory . '/core/languages');
+	    load_theme_textdomain('responsive', $template_directory . '/languages');
 
             $locale = get_locale();
-            $locale_file = $template_directory . '/core/languages/$locale.php';
+            $locale_file = $template_directory . '/languages/$locale.php';
             if (is_readable( $locale_file))
 	            require_once( $locale_file);
 						
