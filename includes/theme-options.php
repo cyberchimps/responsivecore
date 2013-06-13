@@ -181,6 +181,7 @@ function responsive_theme_options_do_page() {
                         <p class="submit">
 						<?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
 						<?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false ); ?>
+						<a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
                         </p>
                     </div><!-- end of .grid col-620 -->
                                     
@@ -289,7 +290,8 @@ function responsive_theme_options_do_page() {
                         <p class="submit">
 						<?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
 						<?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false ); ?>
-                        </p>
+                        <a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
+						</p>
                     </div><!-- end of .grid col-620 -->
                     
                 </div><!-- end of .rwd-block -->
@@ -357,7 +359,8 @@ function responsive_theme_options_do_page() {
                         <p class="submit">
 						<?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
 						<?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false ); ?>
-                        </p>
+                        <a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
+						</p>
 				</div><!-- end of .grid col-620 -->
                                     
                 </div><!-- end of .rwd-block -->
@@ -416,7 +419,8 @@ function responsive_theme_options_do_page() {
                         <p class="submit">
 						<?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
 						<?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false ); ?>
-                        </p>
+                        <a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
+						</p>
                     </div><!-- end of .grid col-620 -->
                 
                 </div><!-- end of .rwd-block -->
@@ -504,7 +508,8 @@ function responsive_theme_options_do_page() {
                         <p class="submit">
 						<?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
 						<?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false ); ?>
-                        </p>
+                        <a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
+						</p>
                     </div><!-- end of .grid col-620 -->
 
                 </div><!-- end of .rwd-block -->
@@ -531,7 +536,8 @@ function responsive_theme_options_do_page() {
                         <p class="submit">
 						<?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
 						<?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false ); ?>
-                        </p>
+                        <a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
+						</p>
                     </div><!-- end of .grid col-620 -->
                                     
                 </div><!-- end of .rwd-block -->
@@ -563,7 +569,8 @@ function responsive_theme_options_do_page() {
                         <p class="submit">
 						<?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
 						<?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false ); ?>
-                        </p>
+                        <a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
+						</p>
                     </div><!-- end of .grid col-620 -->
                                     
                 </div><!-- end of .rwd-block -->
