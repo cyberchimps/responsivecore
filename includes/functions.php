@@ -714,19 +714,19 @@ endif;
 	<div id="info-box-wrapper" class="grid col-940">
 		<div class="info-box notice">
 
-			<a class="button" href="<?php echo esc_url(__('http://themeid.com/docs/','responsive')); ?>" title="<?php esc_attr_e('Instructions', 'responsive'); ?>" target="_blank">
+			<a class="button" href="<?php echo esc_url('http://themeid.com/docs/','responsive'); ?>" title="<?php esc_attr_e('Instructions', 'responsive'); ?>" target="_blank">
 			<?php _e('Instructions','responsive'); ?></a>
 
-			<a class="button button-primary" href="<?php echo esc_url(__('http://themeid.com/support/','responsive')); ?>" title="<?php esc_attr_e('Help', 'responsive'); ?>" target="_blank">
+			<a class="button button-primary" href="<?php echo esc_url('http://themeid.com/support/','responsive'); ?>" title="<?php esc_attr_e('Help', 'responsive'); ?>" target="_blank">
 			<?php _e('Help','responsive'); ?></a>
 
-			<a class="button" href="<?php echo esc_url(__('https://webtranslateit.com/en/projects/3598-Responsive-Theme','responsive')); ?>" title="<?php esc_attr_e('Translate', 'responsive'); ?>" target="_blank">
+			<a class="button" href="<?php echo esc_url('https://webtranslateit.com/en/projects/3598-Responsive-Theme','responsive'); ?>" title="<?php esc_attr_e('Translate', 'responsive'); ?>" target="_blank">
 			<?php _e('Translate','responsive'); ?></a>
 
-			<a class="button" href="<?php echo esc_url(__('http://themeid.com/showcase/','responsive')); ?>" title="<?php esc_attr_e('Showcase', 'responsive'); ?>" target="_blank">
+			<a class="button" href="<?php echo esc_url('http://themeid.com/showcase/','responsive'); ?>" title="<?php esc_attr_e('Showcase', 'responsive'); ?>" target="_blank">
 			<?php _e('Showcase','responsive'); ?></a>
 
-			<a class="button" href="<?php echo esc_url(__('http://themeid.com/themes/','responsive')); ?>" title="<?php esc_attr_e('More Themes', 'responsive'); ?>" target="_blank">
+			<a class="button" href="<?php echo esc_url('http://themeid.com/themes/','responsive'); ?>" title="<?php esc_attr_e('More Themes', 'responsive'); ?>" target="_blank">
 			<?php _e('More Themes','responsive'); ?></a>
 
 		</div>

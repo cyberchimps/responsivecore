@@ -554,7 +554,7 @@ function responsive_theme_options_do_page() {
                 ?>
                 <div class="grid col-300">
 				    <?php _e('Custom Scripts for Header and Footer', 'responsive'); ?>
-                    <a class="help-links" href="<?php echo esc_url(__('http://codex.wordpress.org/Using_Javascript','responsive')); ?>" title="<?php esc_attr_e('Quick Tutorial', 'responsive'); ?>" target="_blank">
+                    <a class="help-links" href="<?php echo esc_url('http://codex.wordpress.org/Using_Javascript','responsive'); ?>" title="<?php esc_attr_e('Quick Tutorial', 'responsive'); ?>" target="_blank">
                     <?php printf(__('Quick Tutorial','responsive')); ?></a>
                 </div><!-- end of .grid col-300 -->
                 
