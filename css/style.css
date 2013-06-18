@@ -202,12 +202,12 @@
 		height: 30px;
 		width: 23px;
 		margin-left: -30px;
-		background: url('core/images/select-icons.png') 0 5px no-repeat;
+		background: url('../images/select-icons.png') 0 5px no-repeat;
 		cursor: pointer;
 	}
 	
 	.js .main-nav a#responsive_menu_button.responsive-toggle-open {
-		background: url('core/images/select-icons.png') 0 -46px no-repeat;
+		background: url('../images/select-icons.png') 0 -46px no-repeat;
 	}
 		
 	
