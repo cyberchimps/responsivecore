@@ -674,10 +674,9 @@ endif;
 
         <div class="upgrade-callout">
             <p><img src="<?php echo get_template_directory_uri(); ?>/core/includes/images/chimp.png" alt="CyberChimps"/>
-                <?php printf( __( 'Welcome to %1$s! Learn more about our other', 'responsive' ) . ' <a href="%2$s" target="_blank" title="%3$s">%3$s</a> ' . __( 'today.', 'responsive' ),
-                              apply_filters( 'cyberchimps_current_theme_name', 'Responsive' ),
-                              apply_filters( 'cyberchimps_upgrade_link', 'http://cyberchimps.com' ),
-                              apply_filters( 'cyberchimps_upgrade_pro_title', 'Responsive Themes' )
+                <?php printf( __( 'Welcome to %1$s! Upgrade to %2$s today.', 'responsive' ),
+                              'Responsive',
+                              ' <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> '
                 ); ?>
             </p>
 
