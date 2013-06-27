@@ -630,8 +630,8 @@ endif;
 	if (!function_exists('responsive_css')) {
 
 		function responsive_css() {
-		wp_enqueue_style('responsive-style', get_stylesheet_uri(), false, '1.9.3.2');
-		wp_enqueue_style('responsive-media-queries', get_template_directory_uri() . '/core/css/style.css', false, '1.9.3.2');
+		wp_enqueue_style('responsive-media-queries', get_template_directory_uri() . '/core/css/style.css', false, '1.9.3.4');
+		wp_enqueue_style('responsive-style', get_stylesheet_uri(), false, '1.9.3.4');
 		}
 
 	}
