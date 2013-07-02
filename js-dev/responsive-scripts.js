@@ -325,18 +325,6 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 })(this);
 
 /**
- * jQuery Friendly IE6 Upgrade Notice Plugin 1.0.0
- *
- * http://code.google.com/p/friendly-ie6-upgrade-notice/
- *
- * Copyright (c) 2013 Emil Uzelac - ThemeID
- *
- * http://www.gnu.org/licenses/gpl.html
- */
-if (jQuery.browser.msie && jQuery.browser.version <= 6)
-    jQuery('<div class="msie-box">' + '<a href="http://browsehappy.com/" title="Click here to update" target="_blank">  Your browser is no longer supported. Click here to update...</a> </div>').appendTo('#container');
-
-/**
  * jQuery Scroll Top Plugin 1.0.0
  */
 jQuery(document).ready(function ($) {
