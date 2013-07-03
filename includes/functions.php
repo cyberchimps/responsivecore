@@ -572,7 +572,10 @@ function responsive_breadcrumb_lists() {
 		} elseif ( is_attachment() ) {
 			$parent = get_post($post->post_parent);
 			$cat = get_the_category($parent->ID);
-			$cat = $cat[0];
+			
+			if ( isset( $cat[0] ) ) {
+				$cat = $cat[0];
+			}
 			
 			if( $cat ) {
 				$cats = get_category_parents($cat, true, $delimiter);
