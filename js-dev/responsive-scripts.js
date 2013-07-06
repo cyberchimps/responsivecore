@@ -547,7 +547,7 @@ jQuery(document).ready(function ($) {
         "iframe[src*='player.vimeo.com']",
         "iframe[src*='www.youtube.com']",
         "iframe[src*='www.youtube-nocookie.com']",
-		"iframe[src*='fast.wistia.com']",
+        "iframe[src*='fast.wistia.com']",
         "embed"
       ];
 
@@ -576,8 +576,8 @@ jQuery(document).ready(function ($) {
 
 
 /*!
-/* Mobile Menu
-*/
+ * Mobile Menu
+ */
 (function($) {
 	var current = $('.main-nav li.current-menu-item a').html();
 	if( $('span').hasClass('custom-mobile-menu-title') ) {
@@ -592,7 +592,7 @@ jQuery(document).ready(function ($) {
 				current = $('#logo img').attr('alt');
 			}
 		}
-		else{
+		else {
 			if( $('body').hasClass('woocommerce') ) {
 				current = $('h1.page-title').html();
 			}
@@ -611,8 +611,11 @@ jQuery(document).ready(function ($) {
 			else if( $('body').hasClass('page-template-blog-php') ) {
 				current = $('.current_page_item').text();
 			}
-			else {
+			else if( $('h1').hasClass('post-title') ) {
 				current = $('h1.post-title').html();
+			}
+			else {
+				current = '&nbsp;';
 			}
 		}
 	};
@@ -635,6 +638,7 @@ jQuery(document).ready(function ($) {
 jQuery(function(){
     jQuery('input[placeholder], textarea[placeholder]').placeholder();
 });
+
 // FitVids
 jQuery(document).ready(function(){
 // Target your #container, #wrapper etc.
