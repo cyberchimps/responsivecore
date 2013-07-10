@@ -629,6 +629,25 @@ jQuery(document).ready(function ($) {
 });
 })(jQuery);
 
+// Close the mobile menu when clicked outside of it.
+(function($) {
+	$('html').click(function() {
+	
+		// Check if the menu is open, close in that case.
+		if( $('a#responsive_menu_button').hasClass('responsive-toggle-open') ){
+			$('.js .main-nav .menu').slideToggle( function() {
+				$('a#responsive_menu_button').removeClass('responsive-toggle-open');
+				$('.js .main-nav .menu').removeAttr('style'); 
+			});
+		}
+	})
+})(jQuery);
+
+// Stop propagation on click on menu.
+jQuery('.main-nav').click(function(event){
+	event.stopPropagation();
+});
+
 // Placeholder
 jQuery(function(){
     jQuery('input[placeholder], textarea[placeholder]').placeholder();
