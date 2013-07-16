@@ -95,7 +95,7 @@ function responsive_inline_css() {
 	}
 }
 
-add_action('wp_head', 'responsive_inline_css');
+add_action('wp_head', 'responsive_inline_css', 110 );
 
 function responsive_inline_js_head() {
     global $responsive_options;
