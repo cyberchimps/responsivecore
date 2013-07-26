@@ -86,7 +86,7 @@ function responsive_theme_options_do_page() {
 		$_REQUEST['settings-updated'] = false;
 	
 	// Set confirmaton text for restore default option as attributes of submit_button().
-	$attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore? \nAll theme settings will be lost! \nClick OK to Restore.', 'responsive' ) .  '")'; 
+	$attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore? \nAll theme settings will be lost! \nClick OK to Restore.', 'responsive' ) .  '")';
 	?>
     
     <div class="wrap">
@@ -322,6 +322,8 @@ function responsive_theme_options_do_page() {
                                     
                 </div><!-- end of .rwd-block -->
             </div><!-- end of .rwd-container -->
+
+            <?php do_action( 'responsive_webmaster_tools' ); ?>
 
             <h3 class="rwd-toggle"><a href="#"><?php _e('Social Icons', 'responsive'); ?></a></h3>
             <div class="rwd-container">
