@@ -642,6 +642,9 @@ endif;
 		function responsive_css() {
 			wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/style.css', false, '1.9.3.4' );
 			wp_enqueue_style( 'responsive-media-queries', get_template_directory_uri() . '/core/css/style.css', false, '1.9.3.4' );
+			if ( is_rtl() ) {
+				wp_enqueue_style( 'responsive-rtl-style', get_template_directory_uri() . '/rtl.css', false, '1.9.3.4' ); 
+			}
 			if ( is_child_theme() ) {
 				wp_enqueue_style( 'responsive-child-style', get_stylesheet_uri(), false, '1.9.3.4' );
 			}
