@@ -43,6 +43,48 @@ function responsive_theme_options_add_page() {
     add_theme_page(__('Theme Options', 'responsive'), __('Theme Options', 'responsive'), 'edit_theme_options', 'theme_options', 'responsive_theme_options_do_page');
 }
 
+/**
+ * Site Verification and Webmaster Tools
+ * If user sets the code we're going to display meta verification
+ * And if left blank let's not display anything at all in case there is a plugin that does this
+ */
+
+function responsive_google_verification() {
+    global $responsive_options;
+    if (!empty($responsive_options['google_site_verification'])) {
+        echo '<meta name="google-site-verification" content="' . $responsive_options['google_site_verification'] . '" />' . "\n";
+    }
+}
+
+add_action('wp_head', 'responsive_google_verification');
+
+function responsive_bing_verification() {
+    global $responsive_options;
+    if (!empty($responsive_options['bing_site_verification'])) {
+        echo '<meta name="msvalidate.01" content="' . $responsive_options['bing_site_verification'] . '" />' . "\n";
+    }
+}
+
+add_action('wp_head', 'responsive_bing_verification');
+
+function responsive_yahoo_verification() {
+    global $responsive_options;
+    if (!empty($responsive_options['yahoo_site_verification'])) {
+        echo '<meta name="y_key" content="' . $responsive_options['yahoo_site_verification'] . '" />' . "\n";
+    }
+}
+
+add_action('wp_head', 'responsive_yahoo_verification');
+
+function responsive_site_statistics_tracker() {
+    global $responsive_options;
+    if (!empty($responsive_options['site_statistics_tracker'])) {
+        echo $responsive_options['site_statistics_tracker'];
+    }
+}
+
+add_action('wp_head', 'responsive_site_statistics_tracker');
+
 function responsive_inline_css() {
     global $responsive_options;
     if (!empty($responsive_options['responsive_inline_css'])) {
@@ -323,7 +365,65 @@ function responsive_theme_options_do_page() {
                 </div><!-- end of .rwd-block -->
             </div><!-- end of .rwd-container -->
 
-            <?php do_action( 'responsive_webmaster_tools' ); ?>
+            <h3 class="rwd-toggle"><a href="#"><?php _e('Webmaster Tools', 'responsive'); ?></a></h3>
+            <div class="rwd-container">
+                <div class="rwd-block">
+
+                    <?php
+                    /**
+                     * Google Site Verification
+                     */
+                    ?>
+                    <div class="grid col-300"><?php _e('Google Site Verification', 'responsive'); ?></div><!-- end of .grid col-300 -->
+                    <div class="grid col-620 fit">
+                        <input id="responsive_theme_options[google_site_verification]" class="regular-text" type="text" name="responsive_theme_options[google_site_verification]" value="<?php if (!empty($responsive_options['google_site_verification'])) echo esc_attr($responsive_options['google_site_verification']); ?>" />
+                        <label class="description" for="responsive_theme_options[google_site_verification]"><?php _e('Enter your Google ID number only', 'responsive'); ?></label>
+                    </div><!-- end of .grid col-620 -->
+
+                    <?php
+                    /**
+                     * Bing Site Verification
+                     */
+                    ?>
+                    <div class="grid col-300"><?php _e('Bing Site Verification', 'responsive'); ?></div><!-- end of .grid col-300 -->
+                    <div class="grid col-620 fit">
+                        <input id="responsive_theme_options[bing_site_verification]" class="regular-text" type="text" name="responsive_theme_options[bing_site_verification]" value="<?php if (!empty($responsive_options['bing_site_verification'])) echo esc_attr($responsive_options['bing_site_verification']); ?>" />
+                        <label class="description" for="responsive_theme_options[bing_site_verification]"><?php _e('Enter your Bing ID number only', 'responsive'); ?></label>
+                    </div><!-- end of .grid col-620 -->
+
+                    <?php
+                    /**
+                     * Yahoo Site Verification
+                     */
+                    ?>
+                    <div class="grid col-300"><?php _e('Yahoo Site Verification', 'responsive'); ?></div><!-- end of .grid col-300 -->
+                    <div class="grid col-620 fit">
+                        <input id="responsive_theme_options[yahoo_site_verification]" class="regular-text" type="text" name="responsive_theme_options[yahoo_site_verification]" value="<?php if (!empty($responsive_options['yahoo_site_verification'])) echo esc_attr($responsive_options['yahoo_site_verification']); ?>" />
+                        <label class="description" for="responsive_theme_options[yahoo_site_verification]"><?php _e('Enter your Yahoo ID number only', 'responsive'); ?></label>
+                    </div><!-- end of .grid col-620 -->
+
+                    <?php
+                    /**
+                     * Site Statistics Tracker
+                     */
+                    ?>
+                    <div class="grid col-300">
+                        <?php _e('Site Statistics Tracker', 'responsive'); ?>
+                        <span class="info-box information help-links"><?php _e('Leave blank if plugin handles your webmaster tools', 'responsive'); ?></span>
+                    </div><!-- end of .grid col-300 -->
+
+                    <div class="grid col-620 fit">
+                        <textarea id="responsive_theme_options[site_statistics_tracker]" class="large-text" cols="50" rows="10" name="responsive_theme_options[site_statistics_tracker]"><?php if (!empty($responsive_options['site_statistics_tracker'])) echo esc_textarea($responsive_options['site_statistics_tracker']); ?></textarea>
+                        <label class="description" for="responsive_theme_options[site_statistics_tracker]"><?php _e('Google Analytics, StatCounter, any other or all of them.', 'responsive'); ?></label>
+                        <p class="submit">
+                            <?php submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ); ?>
+                            <?php submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false, $attributes ); ?>
+                            <a href="http://cyberchimps.com/store/responsivepro/" class="button">Upgrade</a>
+                        </p>
+                    </div><!-- end of .grid col-620 -->
+
+                </div><!-- end of .rwd-block -->
+            </div><!-- end of .rwd-container -->
 
             <h3 class="rwd-toggle"><a href="#"><?php _e('Social Icons', 'responsive'); ?></a></h3>
             <div class="rwd-container">
