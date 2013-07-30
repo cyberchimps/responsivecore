@@ -492,36 +492,14 @@ function responsive_theme_options_do_page() {
             'title' => __( 'Home Page', 'responsive' ),
             'id'    => 'home_page'
         )
-    );
+        ,
+        3=> array(
+            'title' => __( 'Default Layouts', 'responsive' ),
+            'id'    => 'layouts'
+        )
 
-//    $sub_sections = array(
-//        'theme_elements' => array(
-//                0 => array(
-//                'title' => __( 'Disable breadcrumb list?', 'responsive' ),
-//                'id'    => 'disable_breadcrumbs_list',
-//                'description' => __( 'Disable breadcrumb list?', 'responsive' )
-//                ),
-//                1 => array(
-//                'title' => __('Disable Call to Action Button?', 'responsive' ),
-//                'id'    =>  'disable_call_to_action',
-//                'description' => __('Disable Call to Action Button?', 'responsive' )
-//                )
-//        ),
-//        'logo_upload' => array(
-//                0 => array(
-//                    'title' => __( 'Custom Header', 'responsive' ),
-//                    'id'    => 'custom_header',
-//                    'description' => __( 'Custom Header', 'responsive' )
-//                )
-//            ),
-//        'home_page' => array(
-//            0 => array(
-//                'title' => __( 'Enable Custom Front Page', 'responsive' ),
-//                'id'    => 'enable_front_page',
-//                'description' => __( 'Enable Custom Front Page', 'responsive' )
-//            )
-//        )
-//    );
+
+    );
 
     $options = array(
         'theme_elements' => array(
@@ -531,7 +509,8 @@ function responsive_theme_options_do_page() {
                 'heading'   => '',
                 'type'      => 'checkbox',
                 'id'        => 'responsive_theme_options[breadcrumb]',
-                'description'   => __( 'check to disable', 'responsive' )
+                'description'   => __( 'check to disable', 'responsive' ),
+                'placeholder' => ''
             ),
             1 => array(
                 'title'     => __('Disable Call to Action Button?', 'responsive' ),
@@ -539,7 +518,8 @@ function responsive_theme_options_do_page() {
                 'heading'   => '',
                 'type'      => 'checkbox',
                 'id'        => 'responsive_theme_options[cta_button]',
-                'description'   => __( 'check to disable', 'responsive' )
+                'description'   => __( 'check to disable', 'responsive' ),
+                'placeholder' => ''
             )
         ),
         'logo_upload' => array(
@@ -550,7 +530,8 @@ function responsive_theme_options_do_page() {
                 'type'      => 'description',
                 'id'        => '',
                 'description' => __('Need to replace or remove default logo?','responsive') . sprintf(__(' <a href="%s">Click here</a>.', 'responsive'),
-                                                                                                   admin_url('themes.php?page=custom-header'))
+                                                                                                   admin_url('themes.php?page=custom-header')),
+                'placeholder' => ''
             )
         ),
         'home_page' => array(
@@ -560,7 +541,8 @@ function responsive_theme_options_do_page() {
                 'heading' => '',
                 'type' => 'checkbox',
                 'id'    => 'responsive_theme_options[front_page]',
-                'description' => sprintf( __('Overrides the WordPress %1sfront page option%2s', 'responsive'), '<a href="options-reading.php">', '</a>')
+                'description' => sprintf( __('Overrides the WordPress %1sfront page option%2s', 'responsive'), '<a href="options-reading.php">', '</a>'),
+                'placeholder' => ''
             ),
             1 => array(
                 'title' => __( 'Headline', 'responsive' ),
@@ -617,9 +599,21 @@ function responsive_theme_options_do_page() {
                 'id'    => 'responsive_theme_options[cta_text]',
                 'description' => __('Enter your call to action text', 'responsive'),
                 'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
-            ),
+            )
 
-        )
+        ),
+        'layouts' => array(
+            0 => array(
+                'title' => __( 'Custom Header', 'responsive' ),
+                'subtitle' => '',
+                'heading'   => '',
+                'type'      => 'description',
+                'id'        => '',
+                'description' => __('Need to replace or remove default logo?','responsive') . sprintf(__(' <a href="%s">Click here</a>.', 'responsive'),
+                                                                                                      admin_url('themes.php?page=custom-header')),
+                'placeholder' => ''
+            )
+        ),
 
 
     );
