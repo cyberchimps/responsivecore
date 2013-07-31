@@ -155,6 +155,12 @@ h3.active {
 
 div.updated {}
 
+/* =Buttons
+-------------------------------------------------------------- */
+input[type='submit'].button-primary {
+  margin-right: 4px;
+}
+
 /* =Inline CSS
 -------------------------------------------------------------- */
 .inline-css {
