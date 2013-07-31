@@ -479,27 +479,31 @@ function responsive_theme_options_do_page() {
     <?php
 
     $sections = array(
-      0 => array(
+      array(
           'title' => __('Theme Elements', 'responsive'),
           'id'    => 'theme_elements'
       ),
 
-      1 => array(
+      array(
         'title' => __( 'Logo Upload', 'responsive' ),
         'id'    => 'logo_upload'
     ),
-        2=> array(
+        array(
             'title' => __( 'Home Page', 'responsive' ),
             'id'    => 'home_page'
         )
         ,
-        3=> array(
+        array(
             'title' => __( 'Default Layouts', 'responsive' ),
             'id'    => 'layouts'
         ),
-        4=> array(
+        array(
             'title' => __( 'Social Icons', 'responsive' ),
             'id'    => 'social'
+        ),
+        array(
+            'title' => __( 'Custom CSS Styles', 'responsive' ),
+            'id'    => 'css'
         )
 
 
@@ -507,7 +511,7 @@ function responsive_theme_options_do_page() {
 
     $options = array(
         'theme_elements' => array(
-            0 => array(
+            array(
                 'title'     => __( 'Disable breadcrumb list?', 'responsive' ),
                 'subtitle' => '',
                 'heading'   => '',
@@ -516,7 +520,7 @@ function responsive_theme_options_do_page() {
                 'description'   => __( 'check to disable', 'responsive' ),
                 'placeholder' => ''
             ),
-            1 => array(
+            array(
                 'title'     => __('Disable Call to Action Button?', 'responsive' ),
                 'subtitle'  => '',
                 'heading'   => '',
@@ -527,7 +531,7 @@ function responsive_theme_options_do_page() {
             )
         ),
         'logo_upload' => array(
-            0 => array(
+            array(
                 'title' => __( 'Custom Header', 'responsive' ),
                 'subtitle' => '',
                 'heading'   => '',
@@ -539,7 +543,7 @@ function responsive_theme_options_do_page() {
             )
         ),
         'home_page' => array(
-            0 => array(
+            array(
                 'title' => __( 'Enable Custom Front Page', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
@@ -548,7 +552,7 @@ function responsive_theme_options_do_page() {
                 'description' => sprintf( __('Overrides the WordPress %1sfront page option%2s', 'responsive'), '<a href="options-reading.php">', '</a>'),
                 'placeholder' => ''
             ),
-            1 => array(
+            array(
                 'title' => __( 'Headline', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
@@ -557,7 +561,7 @@ function responsive_theme_options_do_page() {
                 'description' => __('Enter your headline', 'responsive' ),
                 'placeholder' => __('Hello, World!', 'responsive')
             ),
-            2=> array(
+            array(
                 'title' => __('Subheadline', 'responsive'),
                 'subtitle' => '',
                 'heading' => '',
@@ -566,7 +570,7 @@ function responsive_theme_options_do_page() {
                 'description' => __('Enter your subheadline', 'responsive'),
                 'placeholder' => __('Your H2 subheadline here', 'responsive')
             ),
-            3=> array(
+            array(
                 'title' => __('Content Area', 'responsive'),
                 'subtitle' => '',
                 'heading' => '',
@@ -575,7 +579,7 @@ function responsive_theme_options_do_page() {
                 'description' => __('Enter your content', 'responsive'),
                 'placeholder' => __('Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like.', 'responsive')
             ),
-            4=> array(
+            array(
                 'title' => __('Call to Action (URL)', 'responsive'),
                 'subtitle' => '',
                 'heading' => '',
@@ -584,7 +588,7 @@ function responsive_theme_options_do_page() {
                 'description' => __('Enter your call to action URL', 'responsive'),
                 'placeholder' => '#nogo'
             ),
-            5=> array(
+            array(
                 'title' => __('Call to Action (Text)', 'responsive'),
                 'subtitle' => '',
                 'heading' => '',
@@ -593,7 +597,7 @@ function responsive_theme_options_do_page() {
                 'description' => __('Enter your call to action text', 'responsive'),
                 'placeholder' => __( 'Call to Action', 'responsive' )
             ),
-            6=> array(
+            array(
                 'title' => __('Featured Content', 'responsive'),
                 'subtitle' => '<a class="help-links" href="' . esc_url('http://cyberchimps.com/guide/responsive/') . '" title="' . esc_attr__('See Docs',
                                                                                                                                                              'responsive') . '" target="_blank">' .
@@ -607,7 +611,7 @@ function responsive_theme_options_do_page() {
 
         ),
         'layouts' => array(
-            0 => array(
+            array(
                 'title' => __( 'Default Static Page Layout', 'responsive' ),
                 'subtitle' => '',
                 'heading'   => '',
@@ -617,7 +621,7 @@ function responsive_theme_options_do_page() {
                 'placeholder' => '',
                 'options'   => Responsive_Options::valid_layouts()
             ),
-             1 => array(
+             array(
                 'title' => __( 'Default Single Blog Post Layout', 'responsive' ),
                 'subtitle' => '',
                 'heading'   => '',
@@ -627,7 +631,7 @@ function responsive_theme_options_do_page() {
                 'placeholder' => '',
                 'options'   => Responsive_Options::valid_layouts()
             ),
-             2 => array(
+             array(
                 'title' => __( 'Default Blog Posts Index Layout', 'responsive' ),
                 'subtitle' => '',
                 'heading'   => '',
@@ -640,7 +644,7 @@ function responsive_theme_options_do_page() {
 
         ),
         'social' => array(
-            0 => array(
+            array(
                 'title' => __( 'Twitter', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
@@ -649,106 +653,111 @@ function responsive_theme_options_do_page() {
                 'description' => __('Enter your Twitter URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+            array(
+                'title' => __( 'Facebook', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'facebook_uid',
+                'description' => __('Enter your Facebook URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+            array(
+                'title' => __( 'LinkedIn', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'linkedin_uid',
+                'description' => __('Enter your LinkedIn URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'YouTube', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'youtube_uid',
+                'description' => __('Enter your YouTube URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'StumbleUpon', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'stumbleupon_uid',
+                'description' => __('Enter your StumbleUpon URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'RSS Feed', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'rss_uid',
+                'description' => __('Enter your RSS Feed URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'Google+', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'google_plus_uid',
+                'description' => __('Enter your Google+ URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'Instagram', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'instagram_uid',
+                'description' => __('Enter your Instagram URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'Pinterest', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'pinterest_uid',
+                'description' => __('Enter your Pinterest URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'Yelp!', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'yelp_uid',
+                'description' => __('Enter your Yelp! URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'Vimeo', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'vimeo_uid',
+                'description' => __('Enter your Vimeo URL', 'responsive' ),
                 'placeholder' => ''
             ),
-             0 => array(
-                'title' => __( 'Twitter', 'responsive' ),
+             array(
+                'title' => __( 'foursquare', 'responsive' ),
                 'subtitle' => '',
                 'heading' => '',
                 'type'  => 'text',
-                'id'    => 'twitter_uid',
-                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'id'    => 'foursquare_uid',
+                'description' => __('Enter your foursquare URL', 'responsive' ),
                 'placeholder' => ''
             )
 
+        ),
+        'css'   => array(
+            array(
+
+            )
         )
 
 
@@ -925,9 +934,10 @@ Class Responsive_Options {
         $value = (!empty($this->responsive_options['responsive_inline_js_head'])) ? $this->responsive_options['responsive_inline_js_head'] : '';
 
         $html = '<p>' . esc_html( $heading ) . '</p>
-                <textarea id="' . esc_attr( $id ) . '" class="large-text" cols="50" rows="30" name="' . esc_attr( $id ) . '" placeholder="' . $placeholder . '">' . esc_html( $value ) .
+                <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="large-text" cols="50" rows="30" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" placeholder="' . $placeholder . '">' .
+            esc_html( $value ) .
                 '</textarea>
-                <label class="description" for="' . esc_attr( $id ) . '">' . esc_html( $description ) . '</label>';
+                <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
 
         return $html;
     }
@@ -936,9 +946,9 @@ Class Responsive_Options {
 
         extract( $args );
 
-        $html = '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '">';
+        $html = '<select id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
         foreach ( $options as $key => $value ) {
-            $html .= '<option' . selected( $key == $this->responsive_options[$id], '', false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
+            $html .= '<option' . selected( $this->responsive_options[$id], $key, false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
         }
         $html .= '</select>';
 
@@ -950,8 +960,8 @@ Class Responsive_Options {
 
         extract( $args );
 
-        $html = '<input id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '" type="checkbox" value="1" ' . checked( '1', esc_attr( $this->responsive_options['front_page'] ), true ) . ' />
-                <label class="description" for="' . esc_attr( $id ) . '">' . wp_kses_post( $description ) . '</label>';
+        $html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" type="checkbox" value="1" ' . checked( '1', esc_attr( $this->responsive_options['front_page'] ), true ) . ' />
+                <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . wp_kses_post( $description ) . '</label>';
 
         return $html;
     }
