@@ -496,6 +496,10 @@ function responsive_theme_options_do_page() {
         3=> array(
             'title' => __( 'Default Layouts', 'responsive' ),
             'id'    => 'layouts'
+        ),
+        4=> array(
+            'title' => __( 'Social Icons', 'responsive' ),
+            'id'    => 'social'
         )
 
 
@@ -558,7 +562,7 @@ function responsive_theme_options_do_page() {
                 'subtitle' => '',
                 'heading' => '',
                 'type' => 'text',
-                'id'    => 'responsive_theme_options[home_subheadline]',
+                'id'    => 'home_subheadline',
                 'description' => __('Enter your subheadline', 'responsive'),
                 'placeholder' => __('Your H2 subheadline here', 'responsive')
             ),
@@ -567,7 +571,7 @@ function responsive_theme_options_do_page() {
                 'subtitle' => '',
                 'heading' => '',
                 'type' => 'textarea',
-                'id'    => 'responsive_theme_options[home_content_area]',
+                'id'    => 'home_content_area',
                 'description' => __('Enter your content', 'responsive'),
                 'placeholder' => __('Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like.', 'responsive')
             ),
@@ -576,7 +580,7 @@ function responsive_theme_options_do_page() {
                 'subtitle' => '',
                 'heading' => '',
                 'type' => 'text',
-                'id'    => 'responsive_theme_options[cta_url]',
+                'id'    => 'cta_url',
                 'description' => __('Enter your call to action URL', 'responsive'),
                 'placeholder' => '#nogo'
             ),
@@ -585,7 +589,7 @@ function responsive_theme_options_do_page() {
                 'subtitle' => '',
                 'heading' => '',
                 'type' => 'text',
-                'id'    => 'responsive_theme_options[cta_text]',
+                'id'    => 'cta_text',
                 'description' => __('Enter your call to action text', 'responsive'),
                 'placeholder' => __( 'Call to Action', 'responsive' )
             ),
@@ -596,7 +600,7 @@ function responsive_theme_options_do_page() {
                 __('See Docs','responsive') . '</a>',
                 'heading' => '',
                 'type' => 'textarea',
-                'id'    => 'responsive_theme_options[cta_text]',
+                'id'    => 'cta_text',
                 'description' => __('Enter your call to action text', 'responsive'),
                 'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
             )
@@ -604,16 +608,148 @@ function responsive_theme_options_do_page() {
         ),
         'layouts' => array(
             0 => array(
-                'title' => __( 'Custom Header', 'responsive' ),
+                'title' => __( 'Default Static Page Layout', 'responsive' ),
                 'subtitle' => '',
                 'heading'   => '',
-                'type'      => 'description',
-                'id'        => '',
-                'description' => __('Need to replace or remove default logo?','responsive') . sprintf(__(' <a href="%s">Click here</a>.', 'responsive'),
-                                                                                                      admin_url('themes.php?page=custom-header')),
+                'type'      => 'select',
+                'id'        => 'static_page_layout_default',
+                'description' => '',
+                'placeholder' => '',
+                'options'   => Responsive_Options::valid_layouts()
+            ),
+             1 => array(
+                'title' => __( 'Default Single Blog Post Layout', 'responsive' ),
+                'subtitle' => '',
+                'heading'   => '',
+                'type'      => 'select',
+                'id'        => 'single_post_layout_default',
+                'description' => '',
+                'placeholder' => '',
+                'options'   => Responsive_Options::valid_layouts()
+            ),
+             2 => array(
+                'title' => __( 'Default Blog Posts Index Layout', 'responsive' ),
+                'subtitle' => '',
+                'heading'   => '',
+                'type'      => 'select',
+                'id'        => 'blog_posts_index_layout_default',
+                'description' => '',
+                'placeholder' => '',
+                'options'   => Responsive_Options::valid_layouts()
+            )
+
+        ),
+        'social' => array(
+            0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
+                'placeholder' => ''
+            ),
+             0 => array(
+                'title' => __( 'Twitter', 'responsive' ),
+                'subtitle' => '',
+                'heading' => '',
+                'type'  => 'text',
+                'id'    => 'twitter_uid',
+                'description' => __('Enter your Twitter URL', 'responsive' ),
                 'placeholder' => ''
             )
-        ),
+
+        )
 
 
     );
@@ -760,14 +896,16 @@ Class Responsive_Options {
 
         $html .= '<div class="grid col-620 fit">';
 
-        $html .= self::$options['type']( $options['id'], $options['heading'], $options['description'], $options['placeholder'] );
+        $html .= self::$options['type']( $options );
 
         $html .= '</div>';
         
         return $html;
     }
 
-    public function text( $id, $heading, $description, $placeholder ){
+    public function text( $args ){
+
+        extract( $args );
 
         $value = (!empty( $this->responsive_options[$id] ) ) ? ($this->responsive_options[$id]) : '';
 
@@ -780,7 +918,9 @@ Class Responsive_Options {
         return $html;
     }
 
-    public function textarea( $id, $heading, $description, $placeholder ) {
+    public function textarea( $args ) {
+
+        extract( $args );
 
         $value = (!empty($this->responsive_options['responsive_inline_js_head'])) ? $this->responsive_options['responsive_inline_js_head'] : '';
 
@@ -792,11 +932,13 @@ Class Responsive_Options {
         return $html;
     }
 
-    public function select( $id, $heading, $description, $placeholder, $options ) {
+    public function select( $args ) {
+
+        extract( $args );
 
         $html = '<select id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '">';
         foreach ( $options as $key => $value ) {
-            $html .= '<option' . selected( $key == $this->responsive_options['static_page_layout_default'] ) . '> value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
+            $html .= '<option' . selected( $key == $this->responsive_options[$id], '', false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
         }
         $html .= '</select>';
 
@@ -804,14 +946,20 @@ Class Responsive_Options {
 
     }
 
-    public function checkbox( $id, $heading, $description ) {
+    public function checkbox( $args ) {
+
+        extract( $args );
+
         $html = '<input id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '" type="checkbox" value="1" ' . checked( '1', esc_attr( $this->responsive_options['front_page'] ), true ) . ' />
                 <label class="description" for="' . esc_attr( $id ) . '">' . wp_kses_post( $description ) . '</label>';
 
         return $html;
     }
 
-    public function description( $id, $heading, $description ) {
+    public function description( $args ) {
+
+        extract( $args );
+
         $html = '<p>' . wp_kses_post( $description ) . '</p>';
 
         return $html;
@@ -829,7 +977,7 @@ Class Responsive_Options {
         return $html;
     }
 
-    public function valid_layouts() {
+    public static function valid_layouts() {
         $layouts = array(
             'content-sidebar-page' => __( 'Content/Sidebar', 'responsive' ),
             'sidebar-content-page' => __( 'Sidebar/Content', 'responsive' ),
