@@ -157,7 +157,7 @@ Class Responsive_Options {
 
         extract( $args );
 
-        $value = ( !empty( $this->responsive_options['responsive_inline_js_head'] ) ) ? $this->responsive_options['responsive_inline_js_head'] : '';
+        $value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
 
         $html = '<p>' . esc_html( $heading ) . '</p>
                 <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="large-text" cols="50" rows="30" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" placeholder="' . $placeholder . '">' .
