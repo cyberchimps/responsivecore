@@ -645,7 +645,8 @@ jQuery(document).ready(function ($) {
 
 // Stop propagation on click on menu.
 jQuery('.main-nav').click(function(event){
-	if( jQuery('#responsive_current_menu_item').is(':visible') ){
+    var pathname = window.location.pathname;
+	if( pathname != '/wp-admin/customize.php' ){
 		event.stopPropagation();
 	}
 });
