@@ -645,7 +645,9 @@ jQuery(document).ready(function ($) {
 
 // Stop propagation on click on menu.
 jQuery('.main-nav').click(function(event){
-	event.stopPropagation();
+	if( jQuery('#responsive_current_menu_item').is(':visible') ){
+		event.stopPropagation();
+	}
 });
 
 // Placeholder
