@@ -11,10 +11,10 @@ if( !defined( 'ABSPATH' ) ) {
  *
  * @file           theme-options.php
  * @package        Responsive
- * @author         Emil Uzelac
+ * @author         CyberChimps
  * @copyright      2003 - 2013 ThemeID
  * @license        license.txt
- * @version        Release: 1.8.0
+ * @version        Release: 1.9.6
  * @filesource     wp-content/themes/responsive/includes/theme-options.php
  * @link           http://themeshaper.com/2010/06/03/sample-theme-options/
  * @since          available since Release 1.0
@@ -147,13 +147,13 @@ function responsive_theme_options_do_page() {
                                                                           'id'    => 'social'
                                                                       ),
                                                                       array(
-                                                                          'title' => __( 'Custom CSS Styles', 'responsive' ),
+                                                                          'title' => __( 'CSS Styles', 'responsive' ),
                                                                           'id'    => 'css'
                                                                       ),
                                                                       array(
-                                                                          'title' => __( 'Custom Scripts', 'responsive' ),
+                                                                          'title' => __( 'Scripts', 'responsive' ),
                                                                           'id'    => 'scripts'
-                                                                      ),
+                                                                      )
 
                                                                   )
 
@@ -452,8 +452,13 @@ function responsive_theme_options_do_page() {
                                                          )
 
     );
+    if( class_exists('Responsive_Pro_Options')) {
+        $display = new Responsive_Pro_Options( $sections, $options );
+    }
+    else {
+        $display = new Responsive_Options( $sections, $options );
+    }
 
-    $display = new Responsive_Options( $sections, $options );
     ?>
     <form method="post" action="options.php">
         <?php settings_fields( 'responsive_options' ); ?>
@@ -532,6 +537,7 @@ function responsive_theme_options_validate( $input ) {
         $input['responsive_inline_js_head']   = wp_kses_stripslashes( $input['responsive_inline_js_head'] );
         $input['responsive_inline_js_footer'] = wp_kses_stripslashes( $input['responsive_inline_js_footer'] );
 
+        $input = apply_filters( 'responsive_options_validate', $input );
     }
 
     return $input;

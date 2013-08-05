@@ -943,8 +943,8 @@ function responsive_install_plugins() {
         'is_automatic'      => true,            // Automatically activate plugins after installation or not
         'message'           => '',               // Message to output right before the plugins table
         'strings'           => array(
-            'page_title'                                => __( 'Install Required Plugins', $theme_text_domain ),
-            'menu_title'                                => __( 'Install Plugins', $theme_text_domain ),
+            'page_title'                                => __( 'Responsive Add Features', $theme_text_domain ),
+            'menu_title'                                => __( 'Theme Add Features', $theme_text_domain ),
             'installing'                                => __( 'Installing Plugin: %s', $theme_text_domain ), // %1$s = plugin name
             'oops'                                      => __( 'Something went wrong with the plugin API.', $theme_text_domain ),
             'notice_can_install_required'               => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ), // %1$s = plugin name(s)

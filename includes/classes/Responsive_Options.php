@@ -71,7 +71,7 @@ Class Responsive_Options {
                 <div class="rwd-container">
                 <div class="rwd-block">';
         foreach( $sub as $opt ) {
-            $html .= $this->sub_heading( $opt['title'], $opt['subtitle'] );
+            $html .= $this->sub_heading( $opt );
             $html .= $this->section( $opt );
         }
         $html .= $this->save();
@@ -89,17 +89,20 @@ Class Responsive_Options {
      *
      * @return string
      */
-    protected function sub_heading( $title, $subtitle ) {
+    protected function sub_heading( $args ) {
 
-        $html = '<div class="grid col-300">';
+        // If width is not set or it's not set to full then go ahead and create default layout
+        if( !isset( $args['width'] ) || $args['width'] != 'full' ) {
+            $html = '<div class="grid col-300">';
 
-        $html .= $title;
+            $html .= $args['title'];
 
-        $html .= $subtitle;
+            $html .= $args['subtitle'];
 
-        $html .= '</div><!-- end of .grid col-300 -->';
+            $html .= '</div><!-- end of .grid col-300 -->';
 
-        return $html;
+            return $html;
+        }
     }
 
     /**
@@ -113,9 +116,10 @@ Class Responsive_Options {
      */
     protected function section( $options ) {
 
-        $html = $options['heading'];
+        $html = ( isset( $options['heading'] ) ) ? $options['heading'] : '';
 
-        $html .= '<div class="grid col-620 fit">';
+        // If the width is not set to full then create normal grid size, otherwise create full width
+        $html .= ( $width != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
 
         $html .= self::$options['type']( $options );
 
@@ -202,8 +206,10 @@ Class Responsive_Options {
 
         extract( $args );
 
-        $html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" type="checkbox" value="1" ' . checked(
-                '1', esc_attr( $this->responsive_options[$id] ), false ) . ' />
+        $checked = ( isset( $this->responsive_options[$id] ) ) ? checked( '1', esc_attr( $this->responsive_options[$id] ), false ) : checked( 0, 1 );
+
+        $html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" type="checkbox" value="1" ' . $checked . '
+         />
                 <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . wp_kses_post( $description ) . '</label>';
 
         return $html;
