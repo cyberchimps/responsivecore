@@ -735,10 +735,10 @@ endif;
 	<div id="info-box-wrapper" class="grid col-940">
 		<div class="info-box notice">
 
-			<a class="button" href="<?php echo esc_url( 'http://cyberchimps.com/guides/' ); ?>" title="<?php esc_attr_e('Instructions', 'responsive'); ?>" target="_blank">
+			<a class="button" href="<?php echo esc_url( 'http://cyberchimps.com/guides/r-free/' ); ?>" title="<?php esc_attr_e('Instructions', 'responsive'); ?>" target="_blank">
 			<?php _e('Instructions','responsive'); ?></a>
 
-			<a class="button button-primary" href="<?php echo esc_url('http://cyberchimps.com/support/' ); ?>" title="<?php esc_attr_e('Help', 'responsive'); ?>" target="_blank">
+			<a class="button button-primary" href="<?php echo esc_url('http://cyberchimps.com/forum/free/responsive/' ); ?>" title="<?php esc_attr_e('Help', 'responsive'); ?>" target="_blank">
 			<?php _e('Help','responsive'); ?></a>
 
 			<a class="button" href="<?php echo esc_url( 'https://webtranslateit.com/en/projects/3598-Responsive-Theme' ); ?>" title="<?php esc_attr_e('Translate',
