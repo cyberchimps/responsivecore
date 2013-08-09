@@ -934,6 +934,7 @@ function responsive_install_plugins() {
      * Some of the strings are added into a sprintf, so see the comments at the
      * end of each line for what each argument will be.
      */
+
     $config = array(
         'domain'            => $theme_text_domain,           // Text domain - likely want to be the same as your theme.
         'default_path'      => 'http://cyberchimps.com/plugins/',                           // Default absolute path to pre-packaged plugins

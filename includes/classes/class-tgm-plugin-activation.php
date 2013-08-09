@@ -508,8 +508,9 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
                 /** All plugins are active, so we display the complete string and hide the plugin menu */
                 if ( empty( $complete ) ) {
-                    echo '<p>' .  sprintf( $this->strings['complete'], '<a href="' . admin_url() . '" title="' . esc_attr( $this->strings['domain'] ) . '">' . $this->strings['domain'] . '</a>' ) . '</p>';
-                    echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
+//                    TODO $this->string['domain'] does not exist, waiting to hear back from class developer
+//                    echo '<p>' .  sprintf( $this->strings['complete'], '<a href="' . admin_url() . '" title="' . esc_attr( $this->strings['domain'] ) . '">' . $this->strings['domain'] . '</a>' ) . '</p>';
+//                    echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
                 }
 
                 return true;
