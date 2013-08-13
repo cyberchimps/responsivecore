@@ -913,14 +913,9 @@ function responsive_install_plugins() {
 
         // This is an example of how to include a plugin pre-packaged with a theme
         array(
-            'name'                  => 'Responsive Addons', // The plugin name
-            'slug'                  => 'responsive-addons', // The plugin slug (typically the folder name)
-            'source'                => 'http://cyberchimps.com/plugins/responsive-addons.zip', // The plugin source
-            'required'              => false, // If false, the plugin is only 'recommended' instead of required
-            'version'               => '1.0.0.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url'          => 'http://cyberchimps.com', // If set, overrides default API URL and points to an external URL
+            'name'                  => 'Responsive Add Ons', // The plugin name
+            'slug'                  => 'responsive-add-ons', // The plugin slug (typically the folder name)
+            'required'              => false
         )
     );
 
@@ -937,7 +932,7 @@ function responsive_install_plugins() {
 
     $config = array(
         'domain'            => $theme_text_domain,           // Text domain - likely want to be the same as your theme.
-        'default_path'      => 'http://cyberchimps.com/plugins/',                           // Default absolute path to pre-packaged plugins
+        'default_path'      => '',                           // Default absolute path to pre-packaged plugins
         'parent_menu_slug'  => 'themes.php',         // Default parent menu slug
         'parent_url_slug'   => 'themes.php',         // Default parent URL slug
         'menu'              => 'install-responsive-addons',   // Menu slug
