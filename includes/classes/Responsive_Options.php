@@ -71,8 +71,8 @@ Class Responsive_Options {
                 <div class="rwd-container">
                 <div class="rwd-block">';
         foreach( $sub as $opt ) {
-            $html .= $this->sub_heading( $opt );
-            $html .= $this->section( $opt );
+            $html .= $this->sub_heading( $this->parse_args( $opt ) );
+            $html .= $this->section( $this->parse_args( $opt ) );
         }
         $html .= $this->save();
         $html .= '</div><!-- rwd-block --></div><!-- rwd-container -->';
@@ -161,10 +161,17 @@ Class Responsive_Options {
 
         extract( $args );
 
+        $class[] = 'large-text';
+        $classes = implode( ' ', $class );
+
         $value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
 
         $html = '<p>' . esc_html( $heading ) . '</p>
-                <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="large-text" cols="50" rows="30" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" placeholder="' . $placeholder . '">' .
+                <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="' . esc_attr( $classes )  . '" cols="50" rows="30" name="' . esc_attr(
+                'responsive_theme_options[' . $id .
+                                                                                                                                                                                ']'
+                ) . '"
+                 placeholder="' . $placeholder . '">' .
             esc_html( $value ) .
             '</textarea>
             <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
@@ -259,5 +266,30 @@ Class Responsive_Options {
         );
 
         return apply_filters( 'responsive_valid_layouts', $layouts );
+    }
+
+    /**
+     * Makes sure that every option has all the required args
+     *
+     * @param $args array
+     *
+     * @return array
+     */
+    protected function parse_args( $args ) {
+        $default_args = array(
+            'title'       => '',
+            'subtitle'    => '',
+            'heading'     => '',
+            'type'        => 'text',
+            'id'          => '',
+            'class'     => array(),
+            'description' => '',
+            'placeholder' => '',
+            'options'       => array()
+        );
+
+        $result = array_merge( $default_args, $args );
+
+        return $result;
     }
 }

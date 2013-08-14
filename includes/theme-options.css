@@ -315,3 +315,9 @@ input[type='submit'].button-primary {
 .upgrade-callout div.social:last-child {
 	margin-left: 10px;
 }
+
+/*************** Extra Option Classes *****************/
+
+.site-tracker {
+  height: 150px;
+}
