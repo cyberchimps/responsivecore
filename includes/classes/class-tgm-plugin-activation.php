@@ -326,12 +326,11 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
             foreach ( $this->plugins as $plugin ) {
                 if ( ! is_plugin_active( $plugin['file_path'] ) ) {
-                    add_submenu_page(
-                        $this->parent_menu_slug,				// Parent menu slug
-                        $this->strings['page_title'],           // Page title
-                        $this->strings['menu_title'],           // Menu title
-                        'edit_theme_options',                   // Capability
-                        $this->menu,                            // Menu slug
+                    add_theme_page(
+                        $this->strings['page_title'], // Page title
+                        $this->strings['menu_title'], // Menu title
+                        'edit_theme_options', // Capability
+                        $this->menu, // Menu slug
                         array( &$this, 'install_plugins_page' ) // Callback
                     );
                     break;
@@ -508,9 +507,8 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
                 /** All plugins are active, so we display the complete string and hide the plugin menu */
                 if ( empty( $complete ) ) {
-//                    TODO $this->string['domain'] does not exist, waiting to hear back from class developer
-//                    echo '<p>' .  sprintf( $this->strings['complete'], '<a href="' . admin_url() . '" title="' . esc_attr( $this->strings['domain'] ) . '">' . $this->strings['domain'] . '</a>' ) . '</p>';
-//                    echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
+                    echo '<p>' .  sprintf( $this->strings['complete'], '<a href="' . admin_url() . '" title="' . esc_attr( $this->strings['domain'] ) . '">' . $this->strings['domain'] . '</a>' ) . '</p>';
+                    echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
                 }
 
                 return true;
@@ -1585,7 +1583,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
  *
  * @since 2.2.0
  */
-if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] ) && TGM_Plugin_Activation::$instance->menu = $_GET[sanitize_key( 'page' )] ) ) {
+if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] ) && TGM_Plugin_Activation::$instance->menu === $_GET[sanitize_key( 'page' )] ) ) {
     require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 
     if ( ! class_exists( 'TGM_Bulk_Installer' ) ) {
@@ -1969,7 +1967,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
              *
              * @since 2.2.0
              */
-            public function before($title='') {
+            public function before( $title='' ) {
 
                 /** We are currently in the plugin installation loop, so set to true */
                 $this->in_loop = true;
@@ -1991,7 +1989,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
              *
              * @since 2.2.0
              */
-            public function after($title='') {
+            public function after( $title='' ) {
 
                 /** Close install strings */
                 echo '</p></div>';
@@ -2035,7 +2033,7 @@ if ( ! class_exists( 'WP_Upgrader' ) && ( isset( $_GET[sanitize_key( 'page' )] )
                 $complete = array();
                 foreach ( TGM_Plugin_Activation::$instance->plugins as $plugin ) {
                     if ( ! is_plugin_active( $plugin['file_path'] ) ) {
-                        echo '<p><a href="' . add_query_arg( 'page', TGM_Plugin_Activation::$instance->menu, admin_url( TGM_Plugin_Activation::$instance->parent_url_slug ) ) . '" title="' . esc_attr( TGM_Plugin_Activation::$instance->strings['return'] ) . '" target="_parent">' . __( TGM_Plugin_Activation::$instance->strings['return'], 'tgmpa' ) . '</a></p>';
+                        echo '<p><a href="' . add_query_arg( 'page', TGM_Plugin_Activation::$instance->menu, admin_url( TGM_Plugin_Activation::$instance->parent_url_slug ) ) . '" title="' . esc_attr( TGM_Plugin_Activation::$instance->strings['return'] ) . '" target="_parent">' . TGM_Plugin_Activation::$instance->strings['return'] . '</a></p>';
                         $complete[] = $plugin;
                         break;
                     }
