@@ -88,6 +88,32 @@ function responsive_get_option_defaults() {
 }
 
 /**
+ * Helps file locations in child themes. If the file is not being overwritten by the child theme then
+ * return the parent theme location of the file. Great for images.
+ *
+ * @param $dir string directory
+ *
+ * @return string complete uri
+ */
+function responsive_child_uri( $dir ) {
+    if( is_child_theme() ) {
+        $directory = get_stylesheet_directory() . $dir;
+        $test = is_file( $directory );
+        if( is_file( $directory ) ) {
+            $file = get_stylesheet_directory_uri() . $dir;
+        }
+        else {
+            $file = get_template_directory_uri() . $dir;
+        }
+    }
+    else {
+        $file = get_template_directory_uri() . $dir;
+    }
+
+    return $file;
+}
+
+/**
  * Fire up the engines boys and girls let's start theme setup.
  */
 add_action('after_setup_theme', 'responsive_setup');
