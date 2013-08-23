@@ -192,7 +192,24 @@ function responsive_theme_options_do_page() {
                                                                      'id'          => 'cta_button',
                                                                      'description' => __( 'check to disable', 'responsive' ),
                                                                      'placeholder' => ''
-                                                                 )
+                                                                 ),
+																array(
+																	'title'       => __( 'Blog Title Toggle', 'responsive' ),
+																	'subtitle'    => '',
+																	'heading'     => '',
+																	'type'        => 'checkbox',
+																	'id'          => 'blog_post_title_toggle',
+																	'description' => ''
+																),
+																array(
+																	'title'       => __( 'Title Text', 'responsive' ),
+																	'subtitle'    => '',
+																	'heading'     => '',
+																	'type'        => 'text',
+																	'id'          => 'blog_post_title_text',
+																	'description' => '',
+																	'placeholder' => __( 'Blog', 'responsive' )
+																)
                                                              ),
                                                              'logo_upload'    => array(
                                                                  array(
