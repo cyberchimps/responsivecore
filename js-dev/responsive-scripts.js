@@ -597,6 +597,9 @@ jQuery(document).ready(function ($) {
 			if( $('body').hasClass('woocommerce') ) {
 				current = $('h1.page-title').html();
 			}
+			else if( $('body').hasClass('woocommerce') ) {
+				current = $('h1.entry-title').html();
+			}
 			else if( $('body').hasClass('archive') ) {
 				current = $('h6.title-archive').html();
 			}
@@ -609,8 +612,11 @@ jQuery(document).ready(function ($) {
 			else if( $('body').hasClass('page-template-blog-php') ) {
 				current = $('.current_page_item').text();
 			}
-			else {
+			else if( $('h1').hasClass('post-title') ) {
 				current = $('h1.post-title').html();
+			}
+			else {
+				current = '&nbsp;';
 			}
 		}
 	};
