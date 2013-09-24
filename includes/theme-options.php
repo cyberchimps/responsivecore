@@ -255,7 +255,7 @@ function responsive_theme_options_do_page() {
                                                                      'title'       => __( 'Content Area', 'responsive' ),
                                                                      'subtitle'    => '',
                                                                      'heading'     => '',
-                                                                     'type'        => 'textarea',
+                                                                     'type'        => 'editor',
                                                                      'id'          => 'home_content_area',
                                                                      'description' => __( 'Enter your content', 'responsive' ),
                                                                      'placeholder' => __( 'Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like.', 'responsive' )
@@ -483,7 +483,7 @@ function responsive_theme_options_do_page() {
 
         <div id="rwd" class="grid col-940">
             <?php
-            echo $display->render_display();
+            $display->render_display();
             ?>
         </div>
         <!-- end of .grid col-940 -->

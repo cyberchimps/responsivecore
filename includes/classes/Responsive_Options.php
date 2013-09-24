@@ -49,10 +49,8 @@ Class Responsive_Options {
         $html = '';
         foreach( $this->sections as $section ) {
             $sub = $this->options[$section['id']];
-            $html .= $this->container( $section['title'], $sub );
+            $this->container( $section['title'], $sub );
         }
-
-        return $html;
     }
 
     /**
@@ -67,17 +65,17 @@ Class Responsive_Options {
      */
     protected function container( $title, $sub ) {
 
-        $html = '<h3 class="rwd-toggle"><a href="#">' . esc_html( $title ) . '</a></h3>
+        echo '<h3 class="rwd-toggle"><a href="#">' . esc_html( $title ) . '</a></h3>
                 <div class="rwd-container">
                 <div class="rwd-block">';
         foreach( $sub as $opt ) {
-            $html .= $this->sub_heading( $this->parse_args( $opt ) );
-            $html .= $this->section( $this->parse_args( $opt ) );
+            echo $this->sub_heading( $this->parse_args( $opt ) );
+            echo $this->section( $this->parse_args( $opt ) );
         }
-        $html .= $this->save();
-        $html .= '</div><!-- rwd-block --></div><!-- rwd-container -->';
+		
+        echo $this->save();
+        echo '</div><!-- rwd-block --></div><!-- rwd-container -->';
 
-        return $html;
 
     }
 
@@ -90,18 +88,17 @@ Class Responsive_Options {
      * @return string
      */
     protected function sub_heading( $args ) {
-
+	
         // If width is not set or it's not set to full then go ahead and create default layout
         if( !isset( $args['width'] ) || $args['width'] != 'full' ) {
-            $html = '<div class="grid col-300">';
+            echo '<div class="grid col-300">';
 
-            $html .= $args['title'];
+            echo $args['title'];
 
-            $html .= $args['subtitle'];
+            echo $args['subtitle'];
 
-            $html .= '</div><!-- end of .grid col-300 -->';
+            echo '</div><!-- end of .grid col-300 -->';
 
-            return $html;
         }
     }
 
@@ -116,16 +113,15 @@ Class Responsive_Options {
      */
     protected function section( $options ) {
 
-        $html = ( isset( $options['heading'] ) ) ? $options['heading'] : '';
+        echo ( isset( $options['heading'] ) ) ? $options['heading'] : '';
 
         // If the width is not set to full then create normal grid size, otherwise create full width
-        $html .= ( !isset( $options['width'] ) || $options['width'] != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
+        echo ( !isset( $options['width'] ) || $options['width'] != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
 
-        $html .= self::$options['type']( $options );
+        echo self::$options['type']( $options );
 
-        $html .= '</div>';
+        echo '</div>';
 
-        return $html;
     }
 
     /**
@@ -240,7 +236,7 @@ Class Responsive_Options {
      * @return string
      */
     protected function save() {
-        $html = '<div class="grid col-940">
+        echo '<div class="grid col-940">
                 <p class="submit">
 				' . get_submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ) .
             get_submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false, $this->attributes ) . '
@@ -248,7 +244,6 @@ Class Responsive_Options {
                 </p>
                 </div>';
 
-        return $html;
     }
 
     /**
