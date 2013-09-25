@@ -284,7 +284,7 @@ function responsive_theme_options_do_page() {
                                                                                                                                                                                                          'responsive' ) . '" target="_blank">' .
                                                                      __( 'See Docs', 'responsive' ) . '</a>',
                                                                      'heading'     => '',
-                                                                     'type'        => 'textarea',
+                                                                     'type'        => 'editor',
                                                                      'id'          => 'featured_content',
                                                                      'description' => __( 'Enter your call to action text', 'responsive' ),
                                                                      'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
