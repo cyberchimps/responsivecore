@@ -287,4 +287,35 @@ Class Responsive_Options {
 
         return $result;
     }
+	
+	/**
+     * Creates editor input
+     *
+     * @param $args array
+     *
+     * @return string
+     */
+    protected function editor( $args ) {
+
+        extract( $args );
+	
+        $class[] = 'large-text';
+        $classes = implode( ' ', $class );
+
+        $value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
+	
+		$editor_settings = array(
+                'textarea_name' => 'responsive_theme_options[' . $id . ']',
+                'media_buttons' => true,
+                'tinymce'       => array( 'plugins' => 'wordpress' ),
+				'editor_class'	=> esc_attr( $classes )
+            );
+		
+		echo '<div class="grid col-620 fit tinymce-editor">';
+        echo '<p>' . esc_html( $heading ) . '</p>';
+		
+		wp_editor( $value , 'responsive_theme_options[' . $id . ']', $editor_settings );
+		echo '<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
+		echo '</div>';
+    }
 }
