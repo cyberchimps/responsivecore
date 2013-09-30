@@ -5,11 +5,12 @@
 /************************************************************************************************************/
 
 body {
-  background-color: transparent;
+	background-color: transparent;
 }
+
 ul, ol {
-  padding: 0;
-  margin: 0;
+	padding: 0;
+	margin: 0;
 }
 
 /************************************************************************************************************/
@@ -17,35 +18,35 @@ ul, ol {
 /************************************************************************************************************/
 
 #upsell_container a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 #upsell_header {
-  text-align: center;
-  margin-bottom: 30px;
+	text-align: center;
+	margin-bottom: 30px;
 }
 
 .theme-container:before, .theme-container:after {
-  display: table;
-  line-height: 0;
-  content: '';
+	display: table;
+	line-height: 0;
+	content: '';
 }
 
 .theme-container:after {
-  clear: both;
+	clear: both;
 }
 
 .theme-container {
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px dashed #cccccc;
+	margin-bottom: 40px;
+	padding-bottom: 40px;
+	border-bottom: 1px dashed #cccccc;
 }
 
 .theme-container .theme-image img {
-  padding: 3px;
-  border: 5px solid #aaaaaa;
+	padding: 3px;
+	border: 5px solid #aaaaaa;
 }
 
 .theme-description {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
