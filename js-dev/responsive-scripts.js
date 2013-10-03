@@ -410,9 +410,6 @@ jQuery(document).ready(function ($) {
         return this;
     };
 
-    $('textarea[placeholder]').simplePlaceholder();
-    $('input:text[placeholder]').simplePlaceholder();
-
 })(jQuery);
 
 /*global jQuery */
@@ -584,7 +581,7 @@ jQuery('.main-nav').click(function (event) {
 
 // Placeholder
 jQuery(function () {
-	jQuery('input[placeholder], textarea[placeholder]').placeholder();
+	jQuery('input[placeholder], textarea[placeholder]').simplePlaceholder();
 });
 
 // FitVids
