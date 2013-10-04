@@ -2,7 +2,7 @@
 
 /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
 /*! NOTE: If you're already including a window.matchMedia polyfill via Modernizr or otherwise, you don't need this part */
-window.matchMedia = window.matchMedia || (function(doc, undefined){
+window.matchMedia = window.matchMedia || (function (doc, undefined) {
 
 	var bool,
 		docElem = doc.documentElement,
@@ -347,68 +347,68 @@ jQuery(document).ready(function ($) {
  * Report bugs or contribute on Gihub: https://github.com/marcgg/Simple-Placeholder
  */
 
-(function($) {
-    $.simplePlaceholder = {
-        placeholderClass: null,
+(function ($) {
+	$.simplePlaceholder = {
+		placeholderClass: null,
 
-        hidePlaceholder: function(){
-            var $this = $(this);
-            if($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)){
-                $this
-                    .val("")
-                    .removeClass($.simplePlaceholder.placeholderClass)
-                    .data($.simplePlaceholder.placeholderData, false);
-            }
-        },
+		hidePlaceholder: function () {
+			var $this = $(this);
+			if ($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)) {
+				$this
+					.val("")
+					.removeClass($.simplePlaceholder.placeholderClass)
+					.data($.simplePlaceholder.placeholderData, false);
+			}
+		},
 
-        showPlaceholder: function(){
-            var $this = $(this);
-            if($this.val() == ""){
-                $this
-                    .val($this.attr('placeholder'))
-                    .addClass($.simplePlaceholder.placeholderClass)
-                    .data($.simplePlaceholder.placeholderData, true);
-            }
-        },
+		showPlaceholder: function () {
+			var $this = $(this);
+			if ($this.val() == "") {
+				$this
+					.val($this.attr('placeholder'))
+					.addClass($.simplePlaceholder.placeholderClass)
+					.data($.simplePlaceholder.placeholderData, true);
+			}
+		},
 
-        preventPlaceholderSubmit: function(){
-            $(this).find(".simple-placeholder").each(function(e){
-                var $this = $(this);
-                if($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)){
-                    $this.val('');
-                }
-            });
-            return true;
-        }
-    };
+		preventPlaceholderSubmit: function () {
+			$(this).find(".simple-placeholder").each(function (e) {
+				var $this = $(this);
+				if ($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)) {
+					$this.val('');
+				}
+			});
+			return true;
+		}
+	};
 
-    $.fn.simplePlaceholder = function(options) {
-        if(document.createElement('input').placeholder == undefined){
-            var config = {
-                placeholderClass : 'placeholding',
-                placeholderData : 'simplePlaceholder.placeholding'
-            };
+	$.fn.simplePlaceholder = function (options) {
+		if (document.createElement('input').placeholder == undefined) {
+			var config = {
+				placeholderClass: 'placeholding',
+				placeholderData: 'simplePlaceholder.placeholding'
+			};
 
-            if(options) $.extend(config, options);
-            $.extend($.simplePlaceholder, config);
+			if (options) $.extend(config, options);
+			$.extend($.simplePlaceholder, config);
 
-            this.each(function() {
-                var $this = $(this);
-                $this.focus($.simplePlaceholder.hidePlaceholder);
-                $this.blur($.simplePlaceholder.showPlaceholder);
-                $this.data($.simplePlaceholder.placeholderData, false);
-                if($this.val() == '') {
-                    $this.val($this.attr("placeholder"));
-                    $this.addClass($.simplePlaceholder.placeholderClass);
-                    $this.data($.simplePlaceholder.placeholderData, true);
-                }
-                $this.addClass("simple-placeholder");
-                $(this.form).submit($.simplePlaceholder.preventPlaceholderSubmit);
-            });
-        }
+			this.each(function () {
+				var $this = $(this);
+				$this.focus($.simplePlaceholder.hidePlaceholder);
+				$this.blur($.simplePlaceholder.showPlaceholder);
+				$this.data($.simplePlaceholder.placeholderData, false);
+				if ($this.val() == '') {
+					$this.val($this.attr("placeholder"));
+					$this.addClass($.simplePlaceholder.placeholderClass);
+					$this.data($.simplePlaceholder.placeholderData, true);
+				}
+				$this.addClass("simple-placeholder");
+				$(this.form).submit($.simplePlaceholder.preventPlaceholderSubmit);
+			});
+		}
 
-        return this;
-    };
+		return this;
+	};
 
 })(jQuery);
 

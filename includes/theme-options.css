@@ -236,7 +236,7 @@ input[type='submit'].button-primary {
 	color: #d5243f;
 }
 
-.tinymce-editor iframe{
+.tinymce-editor iframe {
 	min-height: 200px;
 }
 

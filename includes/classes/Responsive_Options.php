@@ -243,78 +243,78 @@ Class Responsive_Options {
                 </p>
                 </div>';
 
-    }
+	}
 
-    /**
-     * Default layouts static function
-     *
-     * @return array
-     */
-    public static function valid_layouts() {
-        $layouts = array(
-            'content-sidebar-page'      => __( 'Content/Sidebar', 'responsive' ),
-            'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
-            'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
-            'sidebar-content-half-page' => __( 'Sidebar/Content Half Page', 'responsive' ),
-            'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' )
-        );
-
-        return apply_filters( 'responsive_valid_layouts', $layouts );
-    }
-
-    /**
-     * Makes sure that every option has all the required args
-     *
-     * @param $args array
-     *
-     * @return array
-     */
-    protected function parse_args( $args ) {
-        $default_args = array(
-            'title'       => '',
-            'subtitle'    => '',
-            'heading'     => '',
-            'type'        => 'text',
-            'id'          => '',
-            'class'     => array(),
-            'description' => '',
-            'placeholder' => '',
-            'options'       => array()
-        );
-
-        $result = array_merge( $default_args, $args );
-
-        return $result;
-    }
-	
 	/**
-     * Creates editor input
-     *
-     * @param $args array
-     *
-     * @return string
-     */
-    protected function editor( $args ) {
+	 * Default layouts static function
+	 *
+	 * @return array
+	 */
+	public static function valid_layouts() {
+		$layouts = array(
+			'content-sidebar-page'      => __( 'Content/Sidebar', 'responsive' ),
+			'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
+			'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
+			'sidebar-content-half-page' => __( 'Sidebar/Content Half Page', 'responsive' ),
+			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' )
+		);
 
-        extract( $args );
-	
-        $class[] = 'large-text';
-        $classes = implode( ' ', $class );
+		return apply_filters( 'responsive_valid_layouts', $layouts );
+	}
 
-        $value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
-	
+	/**
+	 * Makes sure that every option has all the required args
+	 *
+	 * @param $args array
+	 *
+	 * @return array
+	 */
+	protected function parse_args( $args ) {
+		$default_args = array(
+			'title'       => '',
+			'subtitle'    => '',
+			'heading'     => '',
+			'type'        => 'text',
+			'id'          => '',
+			'class'       => array(),
+			'description' => '',
+			'placeholder' => '',
+			'options'     => array()
+		);
+
+		$result = array_merge( $default_args, $args );
+
+		return $result;
+	}
+
+	/**
+	 * Creates editor input
+	 *
+	 * @param $args array
+	 *
+	 * @return string
+	 */
+	protected function editor( $args ) {
+
+		extract( $args );
+
+		$class[] = 'large-text';
+		$classes = implode( ' ', $class );
+
+		$value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
+
 		$editor_settings = array(
-                'textarea_name' => 'responsive_theme_options[' . $id . ']',
-                'media_buttons' => true,
-                'tinymce'       => array( 'plugins' => 'wordpress' ),
-				'editor_class'	=> esc_attr( $classes )
-            );
-		
+			'textarea_name' => 'responsive_theme_options[' . $id . ']',
+			'media_buttons' => true,
+			'tinymce'       => array( 'plugins' => 'wordpress' ),
+			'editor_class'  => esc_attr( $classes )
+		);
+
 		echo '<div class="grid col-620 fit tinymce-editor">';
-        echo '<p>' . esc_html( $heading ) . '</p>';
-		
-		wp_editor( $value , 'responsive_theme_options[' . $id . ']', $editor_settings );
+		echo '<p>' . esc_html( $heading ) . '</p>';
+
+		wp_editor( $value, 'responsive_theme_options[' . $id . ']', $editor_settings );
 		echo '<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
 		echo '</div>';
-    }
+	}
 }
