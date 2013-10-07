@@ -971,12 +971,12 @@ function responsive_widgets_init() {
 					  
 	register_sidebar( array(
 						  'name'          => __( 'Footer Widget', 'responsive' ),
-						  'description'   => __( 'Area 12 - footer.php', 'responsive' ),
+						  'description'   => __( 'Area 12 - footer.php, use a maximum of 3 widgets', 'responsive' ),
 						  'id'            => 'footer-widget',
 						  'before_title'  => '<div class="widget-title">',
 						  'after_title'   => '</div>',
-						  'before_widget' => '<div id="%1$s" class="grid col-300 widget-wrapper %2$s">',
-						  'after_widget'  => '</div>'
+						  'before_widget' => '<div id="%1$s" class="grid col-300 %2$s"><div class="widget-wrapper">',
+						  'after_widget'  => '</div></div>'
 					  ) );
 }
 
