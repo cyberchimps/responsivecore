@@ -968,6 +968,16 @@ function responsive_widgets_init() {
 						  'before_widget' => '<div id="%1$s" class="%2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
+					  
+	register_sidebar( array(
+						  'name'          => __( 'Footer Widget', 'responsive' ),
+						  'description'   => __( 'Area 12 - footer.php', 'responsive' ),
+						  'id'            => 'footer-widget',
+						  'before_title'  => '<div class="widget-title">',
+						  'after_title'   => '</div>',
+						  'before_widget' => '<div id="%1$s" class="grid col-300 widget-wrapper %2$s">',
+						  'after_widget'  => '</div>'
+					  ) );
 }
 
 add_action( 'widgets_init', 'responsive_widgets_init' );
