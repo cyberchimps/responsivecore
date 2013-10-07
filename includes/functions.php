@@ -951,7 +951,7 @@ function responsive_widgets_init() {
 
 	register_sidebar( array(
 						  'name'          => __( 'Colophon Widget', 'responsive' ),
-						  'description'   => __( 'Area 10 - sidebar-colophon.php', 'responsive' ),
+						  'description'   => __( 'Area 10 - sidebar-colophon.php, 100% width Footer widgets', 'responsive' ),
 						  'id'            => 'colophon-widget',
 						  'before_title'  => '<div class="widget-title">',
 						  'after_title'   => '</div>',
@@ -971,7 +971,7 @@ function responsive_widgets_init() {
 					  
 	register_sidebar( array(
 						  'name'          => __( 'Footer Widget', 'responsive' ),
-						  'description'   => __( 'Area 12 - footer.php, use a maximum of 3 widgets', 'responsive' ),
+						  'description'   => __( 'Area 12 - sidebar-footer.php, use a maximum of 3 widgets', 'responsive' ),
 						  'id'            => 'footer-widget',
 						  'before_title'  => '<div class="widget-title">',
 						  'after_title'   => '</div>',
