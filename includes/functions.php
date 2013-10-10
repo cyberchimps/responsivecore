@@ -1072,4 +1072,8 @@ function responsive_install_plugins() {
 
 }
 
-add_action( 'tgmpa_register', 'responsive_install_plugins' );
+// Add plugin notification only if the current user is admin.
+if( current_user_can( 'manage_options' ) ) {
+	add_action( 'tgmpa_register', 'responsive_install_plugins' );
+}
+?>
