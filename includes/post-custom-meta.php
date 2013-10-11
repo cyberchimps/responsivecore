@@ -35,31 +35,23 @@ function responsive_get_content_classes() {
 		$content_classes[] = 'grid';
 		$content_classes[] = 'col-620';
 	}
-	else {
-		if( 'sidebar-content-page' == $layout ) {
-			$content_classes[] = 'grid-right';
-			$content_classes[] = 'col-620';
-			$content_classes[] = 'fit';
-		}
-		else {
-			if( 'content-sidebar-half-page' == $layout ) {
-				$content_classes[] = 'grid';
-				$content_classes[] = 'col-460';
-			}
-			else {
-				if( 'sidebar-content-half-page' == $layout ) {
-					$content_classes[] = 'grid-right';
-					$content_classes[] = 'col-460';
-					$content_classes[] = 'fit';
-				}
-				else {
-					if( 'full-width-page' == $layout ) {
-						$content_classes[] = 'grid';
-						$content_classes[] = 'col-940';
-					}
-				}
-			}
-		}
+	elseif( 'sidebar-content-page' == $layout ) {
+		$content_classes[] = 'grid-right';
+		$content_classes[] = 'col-620';
+		$content_classes[] = 'fit';
+	}
+	elseif( 'content-sidebar-half-page' == $layout ) {
+		$content_classes[] = 'grid';
+		$content_classes[] = 'col-460';
+	}
+	elseif( 'sidebar-content-half-page' == $layout ) {
+		$content_classes[] = 'grid-right';
+		$content_classes[] = 'col-460';
+		$content_classes[] = 'fit';
+	}
+	elseif( 'full-width-page' == $layout ) {
+		$content_classes[] = 'grid';
+		$content_classes[] = 'col-940';
 	}
 
 	return apply_filters( 'responsive_content_classes', $content_classes );
@@ -76,26 +68,21 @@ function responsive_get_sidebar_classes() {
 		$sidebar_classes[] = 'col-300';
 		$sidebar_classes[] = 'fit';
 	}
-	else {
-		if( 'sidebar-content-page' == $layout ) {
-			$sidebar_classes[] = 'grid-right';
-			$sidebar_classes[] = 'col-300';
-			$sidebar_classes[] = 'rtl-fit';
-		}
-		else {
-			if( 'content-sidebar-half-page' == $layout ) {
-				$sidebar_classes[] = 'grid';
-				$sidebar_classes[] = 'col-460';
-				$sidebar_classes[] = 'fit';
-			}
-			else {
-				if( 'sidebar-content-half-page' == $layout ) {
-					$sidebar_classes[] = 'grid-right';
-					$sidebar_classes[] = 'col-460';
-					$sidebar_classes[] = 'rtl-fit';
-				}
-			}
-		}
+	elseif( 'sidebar-content-page' == $layout ) {
+		$sidebar_classes[] = 'grid-right';
+		$sidebar_classes[] = 'col-300';
+		$sidebar_classes[] = 'rtl-fit';
+	}
+	elseif( 'content-sidebar-half-page' == $layout ) {
+		$sidebar_classes[] = 'grid';
+		$sidebar_classes[] = 'col-460';
+		$sidebar_classes[] = 'fit';
+	}
+	elseif( 'sidebar-content-half-page' == $layout ) {
+		$sidebar_classes[] = 'grid-right';
+		$sidebar_classes[] = 'col-460';
+		$sidebar_classes[] = 'rtl-fit';
+
 	}
 
 	return apply_filters( 'responsive_sidebar_classes', $sidebar_classes );
@@ -134,15 +121,14 @@ function responsive_get_layout() {
 			}
 		}
 		/* Else, if post custom meta is set, use it */
-		else {
-			if( 'default' != $layout_meta ) {
-				$layout = $layout_meta;
-			}
-			/* Else, use the default */
-			else {
-				$layout = $responsive_options['static_page_layout_default'];
-			}
+		elseif( 'default' != $layout_meta ) {
+			$layout = $layout_meta;
 		}
+		/* Else, use the default */
+		else {
+			$layout = $responsive_options['static_page_layout_default'];
+		}
+
 	}
 	/* Single blog posts */
 	else {
@@ -158,15 +144,14 @@ function responsive_get_layout() {
 
 		}
 		/* Posts index */
-		else {
-			if( is_home() || is_archive() || is_search() ) {
-				$layout = $responsive_options['blog_posts_index_layout_default'];
-			}
-			/* Fallback */
-			else {
-				$layout = 'default';
-			}
+		elseif( is_home() || is_archive() || is_search() ) {
+			$layout = $responsive_options['blog_posts_index_layout_default'];
 		}
+		/* Fallback */
+		else {
+			$layout = 'default';
+		}
+
 	}
 
 	return apply_filters( 'responsive_get_layout', $layout );
@@ -200,12 +185,7 @@ function responsive_add_layout_meta_box( $post ) {
 	$priority = apply_filters( 'responsive_layout_meta_box_priority', 'default' ); // 'high', 'core', 'low', 'default'
 
 	add_meta_box(
-		'responsive_layout',
-		__( 'Layout', 'responsive' ),
-		'responsive_layout_meta_box',
-		'post',
-		$context,
-		$priority
+		'responsive_layout', __( 'Layout', 'responsive' ), 'responsive_layout_meta_box', 'post', $context, $priority
 	);
 }
 
