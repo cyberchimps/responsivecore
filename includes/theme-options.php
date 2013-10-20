@@ -286,7 +286,7 @@ function responsive_theme_options_do_page() {
 																	 'heading'     => '',
 																	 'type'        => 'editor',
 																	 'id'          => 'featured_content',
-																	 'description' => __( 'Enter your call to action text', 'responsive' ),
+																	 'description' => __( 'Paste your shortcode, video or image source', 'responsive' ),
 																	 'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
 																 )
 
