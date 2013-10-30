@@ -863,8 +863,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Main Sidebar', 'responsive' ),
 						  'description'   => __( 'Area 1 - sidebar.php - Displays on Default, Blog, Blog Excerpt page templates', 'responsive' ),
 						  'id'            => 'main-sidebar',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="widget-wrapper %2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -873,8 +873,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Right Sidebar', 'responsive' ),
 						  'description'   => __( 'Area 2 - sidebar-right.php - Displays on Content/Sidebar page templates', 'responsive' ),
 						  'id'            => 'right-sidebar',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="widget-wrapper %2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -883,8 +883,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Left Sidebar', 'responsive' ),
 						  'description'   => __( 'Area 3 - sidebar-left.php - Displays on Sidebar/Content page templates', 'responsive' ),
 						  'id'            => 'left-sidebar',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="widget-wrapper %2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -893,8 +893,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Left Sidebar Half Page', 'responsive' ),
 						  'description'   => __( 'Area 4 - sidebar-left-half.php - Displays on Sidebar Half Page/Content page templates', 'responsive' ),
 						  'id'            => 'left-sidebar-half',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="widget-wrapper %2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -903,8 +903,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Right Sidebar Half Page', 'responsive' ),
 						  'description'   => __( 'Area 5 - sidebar-right-half.php - Displays on Content/Sidebar Half Page page templates', 'responsive' ),
 						  'id'            => 'right-sidebar-half',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="widget-wrapper %2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -943,8 +943,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Gallery Sidebar', 'responsive' ),
 						  'description'   => __( 'Area 9 - sidebar-gallery.php - Displays on the page after an image has been clicked in a Gallery', 'responsive' ),
 						  'id'            => 'gallery-widget',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="widget-wrapper %2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -953,8 +953,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Colophon Widget', 'responsive' ),
 						  'description'   => __( 'Area 10 - sidebar-colophon.php, 100% width Footer widgets', 'responsive' ),
 						  'id'            => 'colophon-widget',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="colophon-widget widget-wrapper %2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -963,8 +963,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Top Widget', 'responsive' ),
 						  'description'   => __( 'Area 11 - sidebar-top.php - Displays on the right of the header', 'responsive' ),
 						  'id'            => 'top-widget',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="%2$s">',
 						  'after_widget'  => '</div>'
 					  ) );
@@ -973,8 +973,8 @@ function responsive_widgets_init() {
 						  'name'          => __( 'Footer Widget', 'responsive' ),
 						  'description'   => __( 'Area 12 - sidebar-footer.php, use a maximum of 3 widgets', 'responsive' ),
 						  'id'            => 'footer-widget',
-						  'before_title'  => '<div class="widget-title">',
-						  'after_title'   => '</div>',
+						  'before_title'  => '<div class="widget-title"><h3>',
+						  'after_title'   => '</h3></div>',
 						  'before_widget' => '<div id="%1$s" class="grid col-300 %2$s"><div class="widget-wrapper">',
 						  'after_widget'  => '</div></div>'
 					  ) );

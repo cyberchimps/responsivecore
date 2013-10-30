@@ -76,7 +76,7 @@
 		width: auto;
 	}
 
-	.top-widget .widget-title {
+	.top-widget .widget-title h3 {
 		text-align: center;
 	}
 
@@ -379,7 +379,7 @@
 		width: 75%;
 	}
 
-	.widget-title,
+	.widget-title h3,
 	.widget-title-home h3 {
 		font-size: 14px;
 		height: 13px;
