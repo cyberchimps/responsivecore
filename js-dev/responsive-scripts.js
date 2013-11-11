@@ -515,23 +515,23 @@ jQuery(document).ready(function ($) {
 			}
 		}
 		else {
-			if ($('body').hasClass('woocommerce')) {
+			if ($('body').hasClass('woocommerce') && $('h1').hasClass('page-title')) {
 				current = $('h1.page-title').html();
 			}
-			else if ($('body').hasClass('woocommerce')) {
+			else if ($('body').hasClass('woocommerce') && $('h1').hasClass('entry-title')) {
 				current = $('h1.entry-title').html();
 			}
-			else if ($('body').hasClass('archive')) {
+			else if ($('body').hasClass('archive') && $('h6').hasClass('title-archive')) {
 				current = $('h6.title-archive').html();
 			}
-			else if ($('body').hasClass('search-results')) {
+			else if ($('body').hasClass('search-results') && $('h6').hasClass('title-search-results')) {
 				current = $('h6.title-search-results').html();
 			}
-			else if ($('body').hasClass('page-template-blog-excerpt-php')) {
-				current = $('.current_page_item').text();
+			else if ($('body').hasClass('page-template-blog-excerpt-php') && $('li').hasClass('current_page_item')) {
+				current = $('li.current_page_item').text();
 			}
-			else if ($('body').hasClass('page-template-blog-php')) {
-				current = $('.current_page_item').text();
+			else if ($('body').hasClass('page-template-blog-php') && $('li').hasClass('current_page_item')) {
+				current = $('li.current_page_item').text();
 			}
 			else if ($('h1').hasClass('post-title')) {
 				current = $('h1.post-title').html();
