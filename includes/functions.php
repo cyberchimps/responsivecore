@@ -1076,4 +1076,25 @@ function responsive_install_plugins() {
 if( current_user_can( 'manage_options' ) ) {
 	add_action( 'tgmpa_register', 'responsive_install_plugins' );
 }
+
+/*
+ * Add notification to Reading Settings page to notify if Custom Front Page is enabled.
+ *
+ * @since    1.9.4.0
+ */
+function responsive_front_page_reading_notice() {
+	$screen = get_current_screen();
+	$responsive_options = responsive_get_options();
+	if ( $screen->id == 'options-reading' ) {
+		$html = '<div class="updated">';
+			if ( $responsive_options['front_page'] == 1 ) {
+				$html .= '<p>' . sprintf( __( 'The Custom Front Page is enabled. You can disable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
+			} else {
+				$html .= '<p>' . sprintf( __( 'The Custom Front Page is disabled. You can enable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
+			}
+		$html .= '</div>';
+		echo $html;
+	}
+}
+add_action( 'admin_notices', 'responsive_front_page_reading_notice' );
 ?>
