@@ -1085,9 +1085,9 @@ if( current_user_can( 'manage_options' ) ) {
 function responsive_front_page_reading_notice() {
 	$screen = get_current_screen();
 	$responsive_options = responsive_get_options();
-	if ( $screen->id == 'options-reading' ) {
+	if ( 'options-reading' == $screen->id ) {
 		$html = '<div class="updated">';
-			if ( $responsive_options['front_page'] == 1 ) {
+			if ( 1 == $responsive_options['front_page'] ) {
 				$html .= '<p>' . sprintf( __( 'The Custom Front Page is enabled. You can disable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
 			} else {
 				$html .= '<p>' . sprintf( __( 'The Custom Front Page is disabled. You can enable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
@@ -1097,4 +1097,3 @@ function responsive_front_page_reading_notice() {
 	}
 }
 add_action( 'admin_notices', 'responsive_front_page_reading_notice' );
-?>
