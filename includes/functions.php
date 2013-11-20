@@ -763,8 +763,11 @@ if( !function_exists( 'responsive_js' ) ) {
 
 		// JS at the bottom for fast page loading.
 		// except for Modernizr which enables HTML5 elements & feature detects.
-		wp_enqueue_script( 'modernizr', $template_directory_uri . '/core/js/responsive-modernizr.js', array( 'jquery' ), '2.6.1', false );
-		wp_enqueue_script( 'responsive-scripts', $template_directory_uri . '/core/js/responsive-scripts.js', array( 'jquery' ), '1.2.4', true );
+		wp_enqueue_script( 'modernizr', $template_directory_uri . '/core/js/responsive-modernizr.min.js', array( 'jquery' ), '2.6.1', false );
+		wp_enqueue_script( 'responsive-scripts', $template_directory_uri . '/core/js/responsive-scripts.min.js', array( 'jquery' ), '1.2.5', true );
+		if ( ! wp_script_is( 'tribe-placeholder' ) ) {
+			wp_enqueue_script( 'jquery-placeholder', $template_directory_uri . '/core/js/jquery.placeholder.min.js', array( 'jquery' ), '2.0.7', true );
+		}
 	}
 
 }

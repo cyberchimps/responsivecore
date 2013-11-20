@@ -342,78 +342,6 @@ jQuery(document).ready(function ($) {
 	});
 });
 
-/*
- * Simple Placeholder by @marcgg under MIT License
- * Report bugs or contribute on Gihub: https://github.com/marcgg/Simple-Placeholder
- */
-
-(function ($) {
-	$.simplePlaceholder = {
-		placeholderClass: null,
-
-		hidePlaceholder: function () {
-			var $this = $(this);
-			if ($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)) {
-				$this
-					.val("")
-					.removeClass($.simplePlaceholder.placeholderClass)
-					.data($.simplePlaceholder.placeholderData, false);
-			}
-		},
-
-		showPlaceholder: function () {
-			var $this = $(this);
-			if ($this.val() == "") {
-				$this
-					.val($this.attr('placeholder'))
-					.addClass($.simplePlaceholder.placeholderClass)
-					.data($.simplePlaceholder.placeholderData, true);
-			}
-		},
-
-		preventPlaceholderSubmit: function () {
-			$(this).find(".simple-placeholder").each(function (e) {
-				var $this = $(this);
-				if ($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)) {
-					$this.val('');
-				}
-			});
-			return true;
-		}
-	};
-
-	$.fn.simplePlaceholder = function (options) {
-		if (document.createElement('input').placeholder == undefined) {
-			var config = {
-				placeholderClass: 'placeholding',
-				placeholderData: 'simplePlaceholder.placeholding'
-			};
-
-			if (options) $.extend(config, options);
-			$.extend($.simplePlaceholder, config);
-
-			this.each(function () {
-				var $this = $(this);
-				$this.focus($.simplePlaceholder.hidePlaceholder);
-				$this.blur($.simplePlaceholder.showPlaceholder);
-				$this.data($.simplePlaceholder.placeholderData, false);
-				if ($this.val() == '') {
-					$this.val($this.attr("placeholder"));
-					$this.addClass($.simplePlaceholder.placeholderClass);
-					$this.data($.simplePlaceholder.placeholderData, true);
-				}
-				$this.addClass("simple-placeholder");
-				$(this.form).submit($.simplePlaceholder.preventPlaceholderSubmit);
-			});
-		}
-
-		return this;
-	};
-
-})(jQuery);
-
-/*global jQuery */
-/*jshint multistr:true browser:true */
 /*!
  * FitVids 1.0
  *
@@ -581,7 +509,7 @@ jQuery('.main-nav').click(function (event) {
 
 // Placeholder
 jQuery(function () {
-	jQuery('input[placeholder], textarea[placeholder]').simplePlaceholder();
+	jQuery('input[placeholder], textarea[placeholder]').placeholder();
 });
 
 // FitVids
@@ -589,8 +517,3 @@ jQuery(document).ready(function () {
 // Target your #container, #wrapper etc.
 	jQuery("#wrapper").fitVids();
 });
-
-// Have a custom video player? We now have a customSelector option where you can add your own specific video vendor selector (mileage may vary depending on vendor and fluidity of player):
-// jQuery("#thing-with-videos").fitVids({ customSelector: "iframe[src^='http://example.com'], iframe[src^='http://example.org']"});
-// Selectors are comma separated, just like CSS
-// Note: This will be the quickest way to add your own custom vendor as well as test your player's compatibility with FitVids.
