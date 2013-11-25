@@ -1076,4 +1076,13 @@ function responsive_install_plugins() {
 if( current_user_can( 'manage_options' ) ) {
 	add_action( 'tgmpa_register', 'responsive_install_plugins' );
 }
-?>
+
+function responsive_home_content_area() {
+	$responsive_options = responsive_get_options();
+	$home_content_area = $responsive_options['home_content_area'];
+	$home_content_area = apply_filters( 'home_content_area', $home_content_area );
+	echo $home_content_area;
+}
+
+add_filter( 'home_content_area', 'wpautop' );
+add_filter( 'home_content_area', 'do_shortcode', 11 );
