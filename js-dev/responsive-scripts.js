@@ -342,78 +342,6 @@ jQuery(document).ready(function ($) {
 	});
 });
 
-/*
- * Simple Placeholder by @marcgg under MIT License
- * Report bugs or contribute on Gihub: https://github.com/marcgg/Simple-Placeholder
- */
-
-(function ($) {
-	$.simplePlaceholder = {
-		placeholderClass: null,
-
-		hidePlaceholder: function () {
-			var $this = $(this);
-			if ($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)) {
-				$this
-					.val("")
-					.removeClass($.simplePlaceholder.placeholderClass)
-					.data($.simplePlaceholder.placeholderData, false);
-			}
-		},
-
-		showPlaceholder: function () {
-			var $this = $(this);
-			if ($this.val() == "") {
-				$this
-					.val($this.attr('placeholder'))
-					.addClass($.simplePlaceholder.placeholderClass)
-					.data($.simplePlaceholder.placeholderData, true);
-			}
-		},
-
-		preventPlaceholderSubmit: function () {
-			$(this).find(".simple-placeholder").each(function (e) {
-				var $this = $(this);
-				if ($this.val() == $this.attr('placeholder') && $this.data($.simplePlaceholder.placeholderData)) {
-					$this.val('');
-				}
-			});
-			return true;
-		}
-	};
-
-	$.fn.simplePlaceholder = function (options) {
-		if (document.createElement('input').placeholder == undefined) {
-			var config = {
-				placeholderClass: 'placeholding',
-				placeholderData: 'simplePlaceholder.placeholding'
-			};
-
-			if (options) $.extend(config, options);
-			$.extend($.simplePlaceholder, config);
-
-			this.each(function () {
-				var $this = $(this);
-				$this.focus($.simplePlaceholder.hidePlaceholder);
-				$this.blur($.simplePlaceholder.showPlaceholder);
-				$this.data($.simplePlaceholder.placeholderData, false);
-				if ($this.val() == '') {
-					$this.val($this.attr("placeholder"));
-					$this.addClass($.simplePlaceholder.placeholderClass);
-					$this.data($.simplePlaceholder.placeholderData, true);
-				}
-				$this.addClass("simple-placeholder");
-				$(this.form).submit($.simplePlaceholder.preventPlaceholderSubmit);
-			});
-		}
-
-		return this;
-	};
-
-})(jQuery);
-
-/*global jQuery */
-/*jshint multistr:true browser:true */
 /*!
  * FitVids 1.0
  *
@@ -515,23 +443,23 @@ jQuery(document).ready(function ($) {
 			}
 		}
 		else {
-			if ($('body').hasClass('woocommerce')) {
+			if ($('body').hasClass('woocommerce') && $('h1').hasClass('page-title')) {
 				current = $('h1.page-title').html();
 			}
-			else if ($('body').hasClass('woocommerce')) {
+			else if ($('body').hasClass('woocommerce') && $('h1').hasClass('entry-title')) {
 				current = $('h1.entry-title').html();
 			}
-			else if ($('body').hasClass('archive')) {
+			else if ($('body').hasClass('archive') && $('h6').hasClass('title-archive')) {
 				current = $('h6.title-archive').html();
 			}
-			else if ($('body').hasClass('search-results')) {
+			else if ($('body').hasClass('search-results') && $('h6').hasClass('title-search-results')) {
 				current = $('h6.title-search-results').html();
 			}
-			else if ($('body').hasClass('page-template-blog-excerpt-php')) {
-				current = $('.current_page_item').text();
+			else if ($('body').hasClass('page-template-blog-excerpt-php') && $('li').hasClass('current_page_item')) {
+				current = $('li.current_page_item').text();
 			}
-			else if ($('body').hasClass('page-template-blog-php')) {
-				current = $('.current_page_item').text();
+			else if ($('body').hasClass('page-template-blog-php') && $('li').hasClass('current_page_item')) {
+				current = $('li.current_page_item').text();
 			}
 			else if ($('h1').hasClass('post-title')) {
 				current = $('h1.post-title').html();
@@ -581,7 +509,7 @@ jQuery('.main-nav').click(function (event) {
 
 // Placeholder
 jQuery(function () {
-	jQuery('input[placeholder], textarea[placeholder]').simplePlaceholder();
+	jQuery('input[placeholder], textarea[placeholder]').placeholder();
 });
 
 // FitVids
@@ -589,8 +517,3 @@ jQuery(document).ready(function () {
 // Target your #container, #wrapper etc.
 	jQuery("#wrapper").fitVids();
 });
-
-// Have a custom video player? We now have a customSelector option where you can add your own specific video vendor selector (mileage may vary depending on vendor and fluidity of player):
-// jQuery("#thing-with-videos").fitVids({ customSelector: "iframe[src^='http://example.com'], iframe[src^='http://example.org']"});
-// Selectors are comma separated, just like CSS
-// Note: This will be the quickest way to add your own custom vendor as well as test your player's compatibility with FitVids.
