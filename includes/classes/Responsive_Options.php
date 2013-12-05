@@ -112,8 +112,6 @@ Class Responsive_Options {
 	 */
 	protected function section( $options ) {
 
-		echo ( isset( $options['heading'] ) ) ? $options['heading'] : '';
-
 		// If the width is not set to full then create normal grid size, otherwise create full width
 		echo ( !isset( $options['width'] ) || $options['width'] != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
 
