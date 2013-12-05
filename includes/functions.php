@@ -974,7 +974,7 @@ function responsive_widgets_init() {
 					  
 	register_sidebar( array(
 						  'name'          => __( 'Footer Widget', 'responsive' ),
-						  'description'   => __( 'Area 12 - sidebar-footer.php, use a maximum of 3 widgets', 'responsive' ),
+						  'description'   => __( 'Area 12 - sidebar-footer.php - Maximum of 3 widgets per row', 'responsive' ),
 						  'id'            => 'footer-widget',
 						  'before_title'  => '<div class="widget-title"><h3>',
 						  'after_title'   => '</h3></div>',
@@ -984,6 +984,28 @@ function responsive_widgets_init() {
 }
 
 add_action( 'widgets_init', 'responsive_widgets_init' );
+
+/* Add fit class to third footer widget */
+function footer_widgets( $params ) {
+
+	global $footer_widget_num; //Our widget counter variable
+
+	//Check if we are displaying "Footer Sidebar"
+	if( $params[0]['id'] == 'footer-widget' ){
+		$footer_widget_num++;
+		$divider = 3; //This is number of widgets that should fit in one row
+
+		//If it's third widget, add last class to it
+		if( $footer_widget_num % $divider == 0 ){
+			$class = 'class="fit ';
+			$params[0]['before_widget'] = str_replace( 'class="', $class, $params[0]['before_widget'] );
+		}
+
+	}
+
+	return $params;
+}
+add_filter( 'dynamic_sidebar_params', 'footer_widgets' );
 
 /**
  * Front Page function starts here. The Front page overides WP's show_on_front option. So when show_on_front option changes it sets the themes front_page to 0 therefore displaying the new option
