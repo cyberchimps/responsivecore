@@ -187,86 +187,34 @@ if( !function_exists( 'responsive_setup' ) ):
 							)
 		);
 
-		if( function_exists( 'get_custom_header' ) ) {
+		add_theme_support( 'custom-background' );
 
-			add_theme_support( 'custom-background' );
+		add_theme_support( 'custom-header', array(
+			// Header image default
+			'default-image'       => get_template_directory_uri() . '/core/images/default-logo.png',
+			// Header text display default
+			'header-text'         => false,
+			// Header image flex width
+			'flex-width'          => true,
+			// Header image width (in pixels)
+			'width'               => 300,
+			// Header image flex height
+			'flex-height'         => true,
+			// Header image height (in pixels)
+			'height'              => 100,
+			// Admin header style callback
+			'admin-head-callback' => 'responsive_admin_header_style'
+		) );
 
-		}
-		else {
-
-			// < 3.4 Backward Compatibility
-
-			/**
-			 * This feature allows users to use custom background for a theme.
-			 * @see http://codex.wordpress.org/Function_Reference/add_custom_background
-			 */
-
-			add_custom_background();
-
-		}
-
-		// WordPress 3.4 >
-		if( function_exists( 'get_custom_header' ) ) {
-
-			add_theme_support( 'custom-header', array(
-				// Header image default
-				'default-image'       => get_template_directory_uri() . '/core/images/default-logo.png',
-				// Header text display default
-				'header-text'         => false,
-				// Header image flex width
-				'flex-width'          => true,
-				// Header image width (in pixels)
-				'width'               => 300,
-				// Header image flex height
-				'flex-height'         => true,
-				// Header image height (in pixels)
-				'height'              => 100,
-				// Admin header style callback
-				'admin-head-callback' => 'responsive_admin_header_style'
-			) );
-
-			// gets included in the admin header
-			function responsive_admin_header_style() {
-				?>
-				<style type="text/css">
-					.appearance_page_custom-header #headimg {
-						background-repeat: no-repeat;
-						border: none;
-					}
-				</style><?php
-			}
-
-		}
-		else {
-
-			// Backward Compatibility
-
-			/**
-			 * This feature adds a callbacks for image header display.
-			 * In our case we are using this to display logo.
-			 * @see http://codex.wordpress.org/Function_Reference/add_custom_image_header
-			 */
-			define( 'HEADER_TEXTCOLOR', '' );
-			define( 'HEADER_IMAGE', '%s/core/images/default-logo.png' ); // %s is the template dir uri
-			define( 'HEADER_IMAGE_WIDTH', 300 ); // use width and height appropriate for your theme
-			define( 'HEADER_IMAGE_HEIGHT', 100 );
-			define( 'NO_HEADER_TEXT', true );
-
-			// gets included in the admin header
-			function responsive_admin_header_style() {
-				?>
-				<style type="text/css">
-				#headimg {
+		// gets included in the admin header
+		function responsive_admin_header_style() {
+			?>
+			<style type="text/css">
+				.appearance_page_custom-header #headimg {
 					background-repeat: no-repeat;
-					border: none !important;
-					width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
-					height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
+					border: none;
 				}
-				</style><?php
-			}
-
-			add_custom_image_header( '', 'responsive_admin_header_style' );
-
+			</style><?php
 		}
 
 		// While upgrading set theme option front page toggle not to affect old setup.
@@ -341,14 +289,13 @@ class responsive_widget_menu_class {
 		remove_filter( 'wp_nav_menu_args', array( $this, 'wp_nav_menu_args' ) );
 
 		if( 'menu' == $args['menu_class'] ) {
-			$args['menu_class'] = 'menu-widget';
+			$args['menu_class'] = apply_filters( 'responsive_menu_widget_class', 'menu_widget');
 		}
 
 		return $args;
 	}
 }
-
-new responsive_widget_menu_class();
+$GLOBALS['nav_menu_widget_classname'] = new responsive_widget_menu_class();
 
 /**
  * Removes div from wp_page_menu() and replace with ul.
@@ -741,13 +688,15 @@ if( !is_admin() ) {
 if( !function_exists( 'responsive_css' ) ) {
 
 	function responsive_css() {
-		wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/style.css', false, '1.9.3.4' );
-		wp_enqueue_style( 'responsive-media-queries', get_template_directory_uri() . '/core/css/style.css', false, '1.9.3.4' );
+		$theme  = wp_get_theme();
+		$responsive  = wp_get_theme( 'responsive' );
+		wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/style.css', false, $responsive['Version'] );
+		wp_enqueue_style( 'responsive-media-queries', get_template_directory_uri() . '/core/css/style.css', false, $responsive['Version'] );
 		if( is_rtl() ) {
-			wp_enqueue_style( 'responsive-rtl-style', get_template_directory_uri() . '/rtl.css', false, '1.9.3.4' );
+			wp_enqueue_style( 'responsive-rtl-style', get_template_directory_uri() . '/rtl.css', false, $responsive['Version'] );
 		}
 		if( is_child_theme() ) {
-			wp_enqueue_style( 'responsive-child-style', get_stylesheet_uri(), false, '1.9.3.4' );
+			wp_enqueue_style( 'responsive-child-style', get_stylesheet_uri(), false, $theme['Version'] );
 		}
 	}
 
@@ -763,14 +712,16 @@ if( !is_admin() ) {
 if( !function_exists( 'responsive_js' ) ) {
 
 	function responsive_js() {
+		$suffix = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
+		$directory = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? 'js-dev' : 'js';
 		$template_directory_uri = get_template_directory_uri();
 
 		// JS at the bottom for fast page loading.
 		// except for Modernizr which enables HTML5 elements & feature detects.
-		wp_enqueue_script( 'modernizr', $template_directory_uri . '/core/js/responsive-modernizr.min.js', array( 'jquery' ), '2.6.1', false );
-		wp_enqueue_script( 'responsive-scripts', $template_directory_uri . '/core/js/responsive-scripts.min.js', array( 'jquery' ), '1.2.5', true );
+		wp_enqueue_script( 'modernizr', $template_directory_uri . '/core/' . $directory . '/responsive-modernizr' . $suffix . '.js', array( 'jquery' ), '2.6.1', false );
+		wp_enqueue_script( 'responsive-scripts', $template_directory_uri . '/core/' . $directory . '/responsive-scripts' . $suffix . '.js', array( 'jquery' ), '1.2.5', true );
 		if ( ! wp_script_is( 'tribe-placeholder' ) ) {
-			wp_enqueue_script( 'jquery-placeholder', $template_directory_uri . '/core/js/jquery.placeholder.min.js', array( 'jquery' ), '2.0.7', true );
+			wp_enqueue_script( 'jquery-placeholder', $template_directory_uri . '/core/' . $directory . '/jquery.placeholder' . $suffix . '.js', array( 'jquery' ), '2.0.7', true );
 		}
 	}
 
@@ -843,8 +794,7 @@ function responsive_theme_support() {
 			<a class="button button-primary" href="<?php echo esc_url( 'http://cyberchimps.com/forum/free/responsive/' ); ?>" title="<?php esc_attr_e( 'Help', 'responsive' ); ?>" target="_blank">
 				<?php _e( 'Help', 'responsive' ); ?></a>
 
-			<a class="button" href="<?php echo esc_url( 'https://webtranslateit.com/en/projects/3598-Responsive-Theme' ); ?>" title="<?php esc_attr_e( 'Translate',
-																																					   'responsive' ); ?>" target="_blank">
+			<a class="button" href="<?php echo esc_url( 'https://webtranslateit.com/en/projects/3598-Responsive-Theme' ); ?>" title="<?php esc_attr_e( 'Translate', 'responsive' ); ?>" target="_blank">
 				<?php _e( 'Translate', 'responsive' ); ?></a>
 
 			<a class="button" href="<?php echo esc_url( 'http://cyberchimps.com/showcase/' ); ?>" title="<?php esc_attr_e( 'Showcase', 'responsive' ); ?>" target="_blank">
