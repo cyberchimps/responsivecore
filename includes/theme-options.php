@@ -99,12 +99,7 @@ function responsive_theme_options_do_page() {
 	?>
 
 	<div class="wrap">
-	<?php
-	/**
-	 * < 3.4 Backward Compatibility
-	 */
-	?>
-	<?php $theme_name = function_exists( 'wp_get_theme' ) ? wp_get_theme() : get_current_theme(); ?>
+	<?php $theme_name = wp_get_theme() ?>
 	<?php screen_icon();
 	echo "<h2>" . $theme_name . " " . __( 'Theme Options', 'responsive' ) . "</h2>"; ?>
 
