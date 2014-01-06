@@ -1086,44 +1086,66 @@ function responsive_gallery_atts( $out, $pairs, $atts ) {
 
 	$full_width = is_page_template( 'full-width-page.php' ) || is_page_template( 'landing-page.php' );
 
-	if ( $full_width && 1 == $out['columns'] ) {
-		$size = 'gallery-900'; //900
-	} elseif ( $full_width && 2 == $out['columns'] ) {
-		$size = 'gallery-450'; //450
-	} elseif ( $full_width && 3 == $out['columns'] ) {
-		$size = 'gallery-300'; //300
-	} elseif ( $full_width && 4 == $out['columns'] ) {
-		$size = 'gallery-200'; //225
-	} elseif ( $full_width && 5 == $out['columns'] ) {
-		$size = 'gallery-200'; //180
-	} elseif ( $full_width && 6 == $out['columns'] ) {
-		$size = 'gallery-150'; //150
-	} elseif ( $full_width && 7 == $out['columns'] ) {
-		$size = 'gallery-150'; //125
-	} elseif ( $full_width && 8 == $out['columns'] ) {
-		$size = 'gallery-150'; //112
-	} elseif ( $full_width && 9 == $out['columns'] ) {
-		$size = 'gallery-100'; //100
-	} elseif ( 1 == $out['columns'] ) {
-		$size = 'gallery-600'; //600
-	} elseif ( 2 == $out['columns'] ) {
-		$size = 'gallery-300'; //300
-	} elseif ( 3 == $out['columns'] ) {
-		$size = 'gallery-200'; //200
-	} elseif ( 4 == $out['columns'] ) {
-		$size = 'gallery-150'; //150
-	} elseif ( 5 == $out['columns'] ) {
-		$size = 'gallery-150'; //120
-	} elseif ( 6 == $out['columns'] ) {
-		$size = 'gallery-100'; //100
-	} elseif ( 7 == $out['columns'] ) {
-		$size = 'gallery-100'; //85
-	} elseif ( 8 == $out['columns'] ) {
-		$size = 'gallery-100'; //75
-	} elseif ( 9 == $out['columns'] ) {
-		$size = 'gallery-100'; //66
+	if ( $full_width ) {
+		switch ( $out['columns'] ) {
+			case 1:
+				$size = 'responsive-900'; //900
+				break;
+			case 2:
+				$size = 'responsive-450'; //450
+				break;
+			case 3:
+				$size = 'responsive-300'; //300
+				break;
+			case 4:
+				$size = 'responsive-200'; //225
+				break;
+			case 5:
+				$size = 'responsive-200'; //180
+				break;
+			case 6:
+				$size = 'responsive-150'; //150
+				break;
+			case 7:
+				$size = 'responsive-150'; //125
+				break;
+			case 8:
+				$size = 'responsive-150'; //112
+				break;
+			case 9:
+				$size = 'responsive-100'; //100
+				break;
+		}
 	} else {
-		$size = $out['size'];
+		switch ( $out['columns'] ) {
+			case 1:
+				$size = 'responsive-600'; //600
+				break;
+			case 2:
+				$size = 'responsive-300'; //300
+				break;
+			case 3:
+				$size = 'responsive-200'; //200
+				break;
+			case 4:
+				$size = 'responsive-150'; //150
+				break;
+			case 5:
+				$size = 'responsive-150'; //120
+				break;
+			case 6:
+				$size = 'responsive-100'; //100
+				break;
+			case 7:
+				$size = 'responsive-100'; //85
+				break;
+			case 8:
+				$size = 'responsive-100'; //75
+				break;
+			case 9:
+				$size = 'responsive-100'; //66
+				break;
+		}
 	}
 
 	$atts = shortcode_atts(
@@ -1133,7 +1155,7 @@ function responsive_gallery_atts( $out, $pairs, $atts ) {
 		$atts
 	);
 
-	$out['size']    = $atts['size'];
+	$out['size'] = $atts['size'];
 
 	return $out;
 
@@ -1143,10 +1165,10 @@ add_filter( 'shortcode_atts_gallery', 'responsive_gallery_atts', 10, 3 );
 /*
  * Create image sizes for the galley
  */
-add_image_size( 'gallery-100', 100, 9999 );
-add_image_size( 'gallery-150', 150, 9999 );
-add_image_size( 'gallery-200', 200, 9999 );
-add_image_size( 'gallery-300', 300, 9999 );
-add_image_size( 'gallery-450', 450, 9999 );
-add_image_size( 'gallery-600', 600, 9999 );
-add_image_size( 'gallery-900', 900, 9999 );
+add_image_size( 'responsive-100', 100, 9999 );
+add_image_size( 'responsive-150', 150, 9999 );
+add_image_size( 'responsive-200', 200, 9999 );
+add_image_size( 'responsive-300', 300, 9999 );
+add_image_size( 'responsive-450', 450, 9999 );
+add_image_size( 'responsive-600', 600, 9999 );
+add_image_size( 'responsive-900', 900, 9999 );
