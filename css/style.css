@@ -223,6 +223,10 @@
 		padding: 20px;
 	}
 
+	#wrapper .gallery .gallery-item {
+		max-width: 100%;
+	}
+
 	.hide-650 {
 		display: none;
 	}
@@ -288,6 +292,10 @@
 		float: none;
 		text-align: center;
 		text-rendering: optimizeSpeed;
+	}
+
+	#wrapper .gallery .gallery-item {
+		float: none;
 	}
 
 	.hide-480 {

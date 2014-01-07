@@ -1076,3 +1076,99 @@ function responsive_front_page_reading_notice() {
 	}
 }
 add_action( 'admin_notices', 'responsive_front_page_reading_notice' );
+
+/**
+ * Use shortcode_atts_gallery filter to add new defaults to the WordPress gallery shortcode.
+ * Allows user input in the post gallery shortcode.
+ *
+ */
+function responsive_gallery_atts( $out, $pairs, $atts ) {
+
+	$full_width = is_page_template( 'full-width-page.php' ) || is_page_template( 'landing-page.php' );
+
+	if ( $full_width ) {
+		switch ( $out['columns'] ) {
+			case 1:
+				$size = 'responsive-900'; //900
+				break;
+			case 2:
+				$size = 'responsive-450'; //450
+				break;
+			case 3:
+				$size = 'responsive-300'; //300
+				break;
+			case 4:
+				$size = 'responsive-200'; //225
+				break;
+			case 5:
+				$size = 'responsive-200'; //180
+				break;
+			case 6:
+				$size = 'responsive-150'; //150
+				break;
+			case 7:
+				$size = 'responsive-150'; //125
+				break;
+			case 8:
+				$size = 'responsive-150'; //112
+				break;
+			case 9:
+				$size = 'responsive-100'; //100
+				break;
+		}
+	} else {
+		switch ( $out['columns'] ) {
+			case 1:
+				$size = 'responsive-600'; //600
+				break;
+			case 2:
+				$size = 'responsive-300'; //300
+				break;
+			case 3:
+				$size = 'responsive-200'; //200
+				break;
+			case 4:
+				$size = 'responsive-150'; //150
+				break;
+			case 5:
+				$size = 'responsive-150'; //120
+				break;
+			case 6:
+				$size = 'responsive-100'; //100
+				break;
+			case 7:
+				$size = 'responsive-100'; //85
+				break;
+			case 8:
+				$size = 'responsive-100'; //75
+				break;
+			case 9:
+				$size = 'responsive-100'; //66
+				break;
+		}
+	}
+
+	$atts = shortcode_atts(
+		array(
+			'size' => $size,
+		),
+		$atts
+	);
+
+	$out['size'] = $atts['size'];
+
+	return $out;
+
+}
+add_filter( 'shortcode_atts_gallery', 'responsive_gallery_atts', 10, 3 );
+
+/*
+ * Create image sizes for the galley
+ */
+add_image_size( 'responsive-100', 100, 9999 );
+add_image_size( 'responsive-150', 150, 9999 );
+add_image_size( 'responsive-200', 200, 9999 );
+add_image_size( 'responsive-300', 300, 9999 );
+add_image_size( 'responsive-450', 450, 9999 );
+add_image_size( 'responsive-600', 600, 9999 );
+add_image_size( 'responsive-900', 900, 9999 );
