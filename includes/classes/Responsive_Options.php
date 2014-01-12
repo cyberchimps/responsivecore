@@ -308,7 +308,7 @@ Class Responsive_Options {
 			'editor_class'  => esc_attr( $classes )
 		);
 
-		echo '<div class="grid col-620 fit tinymce-editor">';
+		echo '<div class="tinymce-editor">';
 		echo '<p>' . esc_html( $heading ) . '</p>';
 
 		wp_editor( $value, 'responsive_theme_options[' . $id . ']', $editor_settings );
