@@ -12,7 +12,7 @@ if( !defined( 'ABSPATH' ) ) {
  * @file           theme-options.php
  * @package        Responsive
  * @author         CyberChimps
- * @copyright      2003 - 2013 ThemeID
+ * @copyright      2003 - 2014 CyberChimps
  * @license        license.txt
  * @version        Release: 1.9.6
  * @filesource     wp-content/themes/responsive/includes/theme-options.php
