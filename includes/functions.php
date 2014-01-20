@@ -546,8 +546,10 @@ if( !function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 		$html_output = '';
 
-		if( is_front_page() && 1 == $show['home'] ) {
-			$html_output .= '<div class="breadcrumb-list"><a href="' . $home_link . '">' . $text['home'] . '</a></div>';
+		if( is_front_page() ) {
+			if( 1 == $show['home'] ) {
+				$html_output .= '<div class="breadcrumb-list"><a href="' . $home_link . '">' . $text['home'] . '</a></div>';
+			}
 
 		} else {
 			$html_output .= '<div class="breadcrumb-list" xmlns:v="http://rdf.data-vocabulary.org/#">' . sprintf( $link, $home_link, $text['home'] ) . $delimiter;
@@ -567,8 +569,10 @@ if( !function_exists( 'responsive_breadcrumb_lists' ) ) {
 				}
 				$html_output .= $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
 
-			} elseif( is_search()  && 1 == $show['search'] ) {
-				$html_output .= $before . sprintf( $text['search'], get_search_query() ) . $after;
+			} elseif( is_search() ) {
+				if( 1 == $show['search'] ) {
+					$html_output .= $before . sprintf( $text['search'], get_search_query() ) . $after;
+				}
 
 			} elseif( is_day() ) {
 				$html_output .= sprintf( $link, get_year_link( get_the_time( 'Y' ) ), get_the_time( 'Y' ) ) . $delimiter;
@@ -629,8 +633,10 @@ if( !function_exists( 'responsive_breadcrumb_lists' ) ) {
 					$html_output .= $delimiter . $before . get_the_title() . $after;
 				}
 
-			} elseif( is_page() && !$parent_id & 1 == $show['current'] ) {
-				$html_output .=  $before . get_the_title() . $after;
+			} elseif( is_page() && !$parent_id ) {
+				if( 1 == $show['current'] ) {
+					$html_output .=  $before . get_the_title() . $after;
+				}
 
 			} elseif( is_page() && $parent_id ) {
 				$breadcrumbs = array();
