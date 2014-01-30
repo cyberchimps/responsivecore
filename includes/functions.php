@@ -490,7 +490,7 @@ add_filter( 'the_category', 'responsive_category_rel_removal' );
  */
 function get_responsive_breadcrumb_lists() {
 	$responsive_options = get_option( 'responsive_theme_options' );
-	if ( 1 == $responsive_options['breadcrumb'] && is_search() ) {
+	if ( 1 == $responsive_options['breadcrumb'] ) {
 		return;
 	} elseif ( function_exists( 'bcn_display' ) ) {
 		bcn_display();
@@ -498,7 +498,7 @@ function get_responsive_breadcrumb_lists() {
 		breadcrumb_trail();
 	} elseif ( function_exists( 'yoast_breadcrumb' ) ) {
 		yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' );
-	} else {
+	} elseif ( ! is_search() ) {
 		responsive_breadcrumb_lists();
 	}
 }
@@ -524,7 +524,6 @@ if ( !function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 		$show['current'] = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
 		$show['home']    = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
-		$show['search']  = 0; // 1 - show breadcrumbs on the search page, 0 - don't show
 
 		$delimiter = ' <span class="chevron">&#8250;</span> '; // delimiter between crumbs
 		$before    = '<span class="breadcrumb-current">'; // tag before the current crumb
@@ -566,9 +565,7 @@ if ( !function_exists( 'responsive_breadcrumb_lists' ) ) {
 				$html_output .= $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
 
 			} elseif ( is_search() ) {
-				if ( 1 == $show['search'] ) {
-					$html_output .= $before . sprintf( $text['search'], get_search_query() ) . $after;
-				}
+				$html_output .= $before . sprintf( $text['search'], get_search_query() ) . $after;
 
 			} elseif ( is_day() ) {
 				$html_output .= sprintf( $link, get_year_link( get_the_time( 'Y' ) ), get_the_time( 'Y' ) ) . $delimiter;
