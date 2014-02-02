@@ -1182,3 +1182,39 @@ add_image_size( 'responsive-300', 300, 9999 );
 add_image_size( 'responsive-450', 450, 9999 );
 add_image_size( 'responsive-600', 600, 9999 );
 add_image_size( 'responsive-900', 900, 9999 );
+
+/*
+ * Get social icons.
+ *
+ * @since    1.9.4.9
+ */
+function responsive_get_social_icons() {
+
+	$responsive_options = responsive_get_options();
+
+	$sites = array (
+		'twitter'     => __( 'Twitter', 'responsive' ),
+		'facebook'    => __( 'Facebook', 'responsive' ),
+		'linkedin'    => __( 'LinkedIn', 'responsive' ),
+		'youtube'     => __( 'YouTube', 'responsive' ),
+		'stumbleupon' => __( 'StumbleUpon', 'responsive' ),
+		'rss'         => __( 'RSS Feed', 'responsive' ),
+		'googleplus'  => __( 'Google+', 'responsive' ),
+		'instagram'   => __( 'Instagram', 'responsive' ),
+		'pinterest'   => __( 'Pinterest', 'responsive' ),
+		'yelp'        => __( 'Yelp!', 'responsive' ),
+		'vimeo'       => __( 'Vimeo', 'responsive' ),
+		'foursquare'  => __( 'foursquare', 'responsive' ),
+	);
+
+	$html = '<ul class="social-icons">';
+	foreach( $sites as $key => $value ) {
+		if ( !empty( $responsive_options[$key . '_uid'] ) ) {
+			$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="' . $responsive_options[$key . '_uid'] . '">' . '<img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '">' . '</a></li>';
+		}
+	}
+	$html .= '</ul><!-- .social-icons -->';
+
+	return $html;
+
+}
