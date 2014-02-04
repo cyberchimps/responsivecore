@@ -12,10 +12,10 @@ if ( !defined( 'ABSPATH' ) ) {
 function responsive_update_social_icon_options() {
 	$responsive_options = responsive_get_options();
 	// If new option does not exist then copy the option
-	if ( ! $responsive_options['googleplus_uid'] ) {
+	if ( ! isset( $responsive_options['googleplus_uid'] ) ) {
 		$responsive_options['googleplus_uid'] = $responsive_options['google_plus_uid'];
 	}
-	if ( ! $responsive_options['stumbleupon_uid'] ) {
+	if ( ! isset( $responsive_options['stumbleupon_uid'] ) ) {
 		$responsive_options['stumbleupon_uid'] = $responsive_options['stumble_uid'];
 	}
 
