@@ -57,6 +57,7 @@ function responsive_get_option_defaults() {
 	$defaults = array(
 		'breadcrumb'                      => false,
 		'cta_button'                      => false,
+		'minified_css'                    => false,
 		'front_page'                      => 1,
 		'home_headline'                   => null,
 		'home_subheadline'                => null,
@@ -690,8 +691,14 @@ if ( !function_exists( 'responsive_css' ) ) {
 	function responsive_css() {
 		$theme      = wp_get_theme();
 		$responsive = wp_get_theme( 'responsive' );
-		wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/style.css', false, $responsive['Version'] );
-		wp_enqueue_style( 'responsive-media-queries', get_template_directory_uri() . '/core/css/style.css', false, $responsive['Version'] );
+		$responsive_options = get_option( 'responsive_theme_options' );
+		if ( 1 == $responsive_options['minified_css'] ) {
+			wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/core/css/style.min.css', false, $responsive['Version'] );
+		} else {
+			wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/core/css/style.css', false, $responsive['Version'] );
+			wp_enqueue_style( 'responsive-media-queries', get_template_directory_uri() . '/core/css/responsive.css', false, $responsive['Version'] );
+		}
+
 		if ( is_rtl() ) {
 			wp_enqueue_style( 'responsive-rtl-style', get_template_directory_uri() . '/rtl.css', false, $responsive['Version'] );
 		}

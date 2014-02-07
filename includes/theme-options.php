@@ -189,6 +189,15 @@ function responsive_theme_options_do_page() {
 																	 'placeholder' => ''
 																 ),
 																 array(
+																	 'title'       => __( 'Enable minified css?', 'responsive' ),
+																	 'subtitle'    => '',
+																	 'heading'     => '',
+																	 'type'        => 'checkbox',
+																	 'id'          => 'minified_css',
+																	 'description' => __( 'check to enable', 'responsive' ),
+																	 'placeholder' => ''
+																 ),
+																 array(
 																	 'title'       => __( 'Blog Title Toggle', 'responsive' ),
 																	 'subtitle'    => '',
 																	 'heading'     => '',
