@@ -897,14 +897,14 @@ function responsive_install_plugins() {
 		)
 	);
 
-	tgmpa( $plugins, $config );
+	global $pagenow;
+	// Add plugin notification only if the current user is admin and on theme.php
+	if ( current_user_can( 'manage_options' ) && 'themes.php' == $pagenow ) {
+		tgmpa( $plugins, $config );
+	}
 
 }
-
-// Add plugin notification only if the current user is admin.
-if ( current_user_can( 'manage_options' ) ) {
-	add_action( 'tgmpa_register', 'responsive_install_plugins' );
-}
+add_action( 'tgmpa_register', 'responsive_install_plugins' );
 
 /*
  * Add notification to Reading Settings page to notify if Custom Front Page is enabled.
