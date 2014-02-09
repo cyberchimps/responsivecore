@@ -1,6 +1,6 @@
 <?php
 /**
- * Functions Insatll
+ * Functions Install
  *
  * Functions for installation & activation
  *
