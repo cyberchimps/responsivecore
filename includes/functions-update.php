@@ -26,43 +26,13 @@ function responsive_update_social_icon_options() {
 add_action( 'after_setup_theme', 'responsive_update_social_icon_options' );
 
 /**
- * Queries WordPress.org API to get details on responsive theme where we can get the current version number
- *
- * @param $theme_slug
- */
-function responsive_theme_query() {
-
-	$args = array(
-		'slug' => 'responsive'
-	);
-
-	$theme = responsive_get_theme_information( $args );
-
-	// If we cannot get the response return false
-	if ( is_wp_error( $theme ) ) {
-		return false;
-	}
-
-	else {
-		// compare the current version on wp.org to version 2. If it is version 2 or greater display a message
-		if ( version_compare( $theme->version, '2', '>=' ) ) {
-			// TODO change this to the message you want displayed
-			print_r( 'the version is way too advanced for you' );
-		}
-	}
-}
-
-// TODO this just hooks it into the header, you will want to choose something where we can display a message. Possibly everywhere :)
-add_action( 'responsive_header_top', 'responsive_theme_query' );
-
-/**
  * Used by responsive_theme_query() to get theme data from WordPress.org API and save info to cache
  *
  * @param $args
  *
  * @return array|mixed|WP_Error
  */
-function responsive_get_theme_information( $args ) {
+/*function responsive_get_theme_information( $args ) {
 	// Set the $request array
 	$request = array(
 		'body' => array(
@@ -95,4 +65,52 @@ function responsive_get_theme_information( $args ) {
 	}
 
 	return $theme;
+}*/
+
+/**
+ * Queries WordPress.org API to get details on responsive theme where we can get the current version number
+ *
+ * @param $theme_slug
+ */
+function responsive_theme_query() {
+
+	$themes = get_theme_updates();
+
+	$new_version = array();
+	foreach ( $themes as $stylesheet => $theme ) {
+		if ( 'responsive' == $stylesheet ) {
+			$new_version = $theme->update['new_version'];
+		}
+	}
+
+	// If we cannot get the response return false
+	if ( is_wp_error( $new_version ) ) {
+		return false;
+	}
+
+	// compare the current version on wp.org to version 2. If it is version 2 or greater display a message
+	if ( version_compare( $new_version, '2.0', '>' ) ) {
+		return true;
+	}
+
 }
+
+/**
+ * Add admin notice
+ *
+ */
+function responsive_admin_update_notice(){
+	global $pagenow;
+	// Add plugin notification only if the current user is admin and on theme.php
+	if ( responsive_theme_query() && current_user_can( 'update_themes' ) && ( 'themes.php' == $pagenow || 'update-core.php' == $pagenow ) ) {
+		$html = '<div class="error"><p>';
+		$html .= sprintf(
+				/* Translators: This is a big update. Please read the blog post before updating. */
+				__( '<strong>WARNING:</strong> There is a big <strong>Responsive Theme</strong> update available. Please read the %1$s before updating.', 'flowplayer5' ),
+				'<a href="' . esc_url( 'http://cyberchimps.com/2014/03/responsive-2-0-update/' ) . '">' . __( 'blog post', 'flowplayer5' ) . '</a>'
+			);
+		$html .= '</p></div>';
+		echo $html;
+	}
+}
+add_action( 'admin_notices', 'responsive_admin_update_notice' );
