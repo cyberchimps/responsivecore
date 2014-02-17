@@ -26,78 +26,37 @@ function responsive_update_social_icon_options() {
 add_action( 'after_setup_theme', 'responsive_update_social_icon_options' );
 
 /**
- * Used by responsive_theme_query() to get theme data from WordPress.org API and save info to cache
+ * Responsive 2.0 update check
  *
- * @param $args
- *
- * @return array|mixed|WP_Error
- */
-/*function responsive_get_theme_information( $args ) {
-	// Set the $request array
-	$request = array(
-		'body' => array(
-			'action'  => 'theme_information',
-			'request' => serialize( (object)$args )
-		)
-	);
-
-	// Generate a cache key that would hold the response for this request:
-	$key = 'responsive_theme_' . md5( serialize( $request ) );
-
-	// Check transient. If it's there - use that, if not re fetch the theme
-	if ( false === ( $theme = get_transient( $key ) ) ) {
-
-		// Theme not found - we need to re-fetch it
-		$response = wp_remote_post( 'http://api.wordpress.org/themes/info/1.0/', $request );
-
-		if ( is_wp_error( $response ) ) {
-			return $response;
-		}
-
-		$theme = unserialize( wp_remote_retrieve_body( $response ) );
-
-		if ( !is_object( $theme ) && !is_array( $theme ) ) {
-			return new WP_Error( 'theme_api_error', 'An unexpected error has occurred' );
-		}
-
-		// Set transient for 24 hours
-		set_transient( $key, $theme, 60 * 60 * 24 );
-	}
-
-	return $theme;
-}*/
-
-/**
  * Queries WordPress.org API to get details on responsive theme where we can get the current version number
  *
- * @param $theme_slug
+ * @return bool
  */
 function responsive_theme_query() {
 
 	$themes = get_theme_updates();
 
-	$new_version = array();
+	$new_version = false;
+
 	foreach ( $themes as $stylesheet => $theme ) {
 		if ( 'responsive' == $stylesheet ) {
 			$new_version = $theme->update['new_version'];
 		}
 	}
 
-	// If we cannot get the response return false
-	if ( is_wp_error( $new_version ) ) {
-		return false;
-	}
-
-	// compare the current version on wp.org to version 2. If it is version 2 or greater display a message
-	if ( version_compare( $new_version, '2.0', '>' ) ) {
+	// Check if we had a response and compare the current version on wp.org to version 2. If it is version 2 or greater display a message
+	if ( $new_version && version_compare( $new_version, '2', '>=' ) ) {
 		return true;
 	}
+
+	return false;
 
 }
 
 /**
- * Add admin notice
+ * Responsive 2.0 update warning message
  *
+ * Displays warning message in the update notice
  */
 function responsive_admin_update_notice(){
 	global $pagenow;
