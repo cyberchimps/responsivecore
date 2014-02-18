@@ -450,14 +450,15 @@ add_action( 'widgets_init', 'responsive_remove_recent_comments_style' );
  * Ulrich Pogson Contribution
  *
  */
-if ( !function_exists( 'responsive_post_meta_data' ) ) :
+if ( !function_exists( 'responsive_post_meta_data' ) ) {
 
 	function responsive_post_meta_data() {
 		printf( __( '<span class="%1$s">Posted on </span>%2$s<span class="%3$s"> by </span>%4$s', 'responsive' ),
 				'meta-prep meta-prep-author posted',
-				sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="timestamp updated">%3$s</span></a>',
+				sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="timestamp updated"><span class="value" title="%3$s">%4$s</span></span></a>',
 						 esc_url( get_permalink() ),
-						 esc_attr( get_the_time() ),
+						 esc_attr( get_the_title() ),
+						 esc_html( get_the_date('c')),
 						 esc_html( get_the_date() )
 				),
 				'byline',
@@ -468,7 +469,8 @@ if ( !function_exists( 'responsive_post_meta_data' ) ) :
 				)
 		);
 	}
-endif;
+
+}
 
 /**
  * This function removes WordPress generated category and tag atributes.
@@ -844,6 +846,61 @@ function responsive_add_class( $classes ) {
 }
 
 add_filter( 'body_class', 'responsive_add_class' );
+
+/**
+ * Display the classes for the conaiter div.
+ *
+ * @since 1.9.5.2
+ *
+ * @param string|array $class One or more classes to add to the class list.
+ */
+function responsive_container_class( $class = '' ) {
+	// Separates classes with a single space, collates classes for body element
+	echo 'class="' . join( ' ', responsive_get_container_class( $class ) ) . '"';
+}
+
+/**
+ * Retrieve the classes for the conatiner div as an array.
+ *
+ * @since 1.9.5.2
+ *
+ * @param string|array $class One or more classes to add to the class list.
+ * @return array Array of classes.
+ */
+function responsive_get_container_class( $class = '' ) {
+
+	$classes = array();
+
+	if ( is_home() || is_archive() )
+		$classes[] = 'hfeed';
+
+	if ( ! empty( $class ) ) {
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	} else {
+		// Ensure that we always coerce class to being an array.
+		$class = array();
+	}
+
+	$classes = array_map( 'esc_attr', $classes );
+
+	return apply_filters( 'responsive_container_class', $classes, $class );
+}
+
+/**
+ * Remove 'hentry' from post_class() on pages
+ *
+ * @since 1.9.5.2
+ */
+function responsive_page_remove_hentry( $class ) {
+	if ( is_page() ) {
+		$class = array_diff( $class, array( 'hentry' ) );
+		return $class;
+	}
+}
+add_filter( 'post_class', 'responsive_page_remove_hentry' );
+
 
 function responsive_install_plugins() {
 	$plugins = array(
