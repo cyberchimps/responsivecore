@@ -687,7 +687,7 @@ if ( !function_exists( 'responsive_css' ) ) {
 	function responsive_css() {
 		$theme      = wp_get_theme();
 		$responsive = wp_get_theme( 'responsive' );
-		$responsive_options = get_option( 'responsive_theme_options' );
+		$responsive_options = responsive_get_options();
 		if ( 1 == $responsive_options['minified_css'] ) {
 			wp_enqueue_style( 'responsive-style', get_template_directory_uri() . '/core/css/style.min.css', false, $responsive['Version'] );
 		} else {
