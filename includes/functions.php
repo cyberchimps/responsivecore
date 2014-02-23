@@ -287,7 +287,7 @@ class responsive_widget_menu_class {
 		remove_filter( 'wp_nav_menu_args', array( $this, 'wp_nav_menu_args' ) );
 
 		if ( 'menu' == $args['menu_class'] ) {
-			$args['menu_class'] = apply_filters( 'responsive_menu_widget_class', 'menu_widget' );
+			$args['menu_class'] = apply_filters( 'responsive_menu_widget_class', 'menu-widget' );
 		}
 
 		return $args;
