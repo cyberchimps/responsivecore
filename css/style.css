@@ -1100,6 +1100,41 @@ form div {
 	clip: rect(1px, 1px, 1px, 1px);
 }
 
+/* =Skip Links
+-------------------------------------------------------------- */
+.skip-container {
+	display: block;
+	padding: 0.5em 0.5em 0.5em 0;
+	position: relative;
+}
+
+.skip-link {
+	background: #f5f5f5;
+	border: 1px solid #d5d5d5;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	float: right;
+	font-size: 0.8125em;
+	margin-left: -100%;
+	padding: 0.5em;
+	text-transform: uppercase;
+}
+
+.skip-link:hover,
+.skip-link:active,
+.skip-link:focus {
+	border: 1px solid #666;
+}
+
+.custom-background .site {
+	-webkit-box-shadow: 0 -5px 5px 4px #d5d5d5;
+	-moz-box-shadow: 0 -5px 5px 4px #d5d5d5;
+	box-shadow: 0 -5px 5px 4px #d5d5d5;
+	margin: 0 auto;
+}
+
+
 /* =Top Menu
 -------------------------------------------------------------- */
 .top-menu {
