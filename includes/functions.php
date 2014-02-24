@@ -847,61 +847,6 @@ function responsive_add_class( $classes ) {
 
 add_filter( 'body_class', 'responsive_add_class' );
 
-/**
- * Display the classes for the conaiter div.
- *
- * @since 1.9.5.2
- *
- * @param string|array $class One or more classes to add to the class list.
- */
-function responsive_container_class( $class = '' ) {
-	// Separates classes with a single space, collates classes for body element
-	echo 'class="' . join( ' ', responsive_get_container_class( $class ) ) . '"';
-}
-
-/**
- * Retrieve the classes for the conatiner div as an array.
- *
- * @since 1.9.5.2
- *
- * @param string|array $class One or more classes to add to the class list.
- * @return array Array of classes.
- */
-function responsive_get_container_class( $class = '' ) {
-
-	$classes = array();
-
-	if ( is_home() || is_archive() )
-		$classes[] = 'hfeed';
-
-	if ( ! empty( $class ) ) {
-		if ( !is_array( $class ) )
-			$class = preg_split( '#\s+#', $class );
-		$classes = array_merge( $classes, $class );
-	} else {
-		// Ensure that we always coerce class to being an array.
-		$class = array();
-	}
-
-	$classes = array_map( 'esc_attr', $classes );
-
-	return apply_filters( 'responsive_container_class', $classes, $class );
-}
-
-/**
- * Remove 'hentry' from post_class() on pages
- *
- * @since 1.9.5.2
- */
-function responsive_page_remove_hentry( $class ) {
-	if ( is_page() ) {
-		$class = array_diff( $class, array( 'hentry' ) );
-		return $class;
-	}
-}
-add_filter( 'post_class', 'responsive_page_remove_hentry' );
-
-
 function responsive_install_plugins() {
 	$plugins = array(
 
