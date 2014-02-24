@@ -1744,15 +1744,8 @@ ul.menu > li:hover {
 	text-align: center;
 }
 
-/* Gallery */
-.gallery br[style] {
-	clear: none!important;
-}
-
-.gallery br:nth-last-child(1) {
-	clear: both!important;
-}
-
+/* =Gallery
+-------------------------------------------------------------- */
 /* Normal */
 .gallery-columns-1 .gallery-item {
 	max-width: 600px;
@@ -2573,6 +2566,24 @@ a.black:hover {
 }
 
 table.shop_table {
+	table-layout: fixed;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
+@media screen and (max-width:767px) {
+	table.shop_table {
+		font-size: 10px;
+	}
+}
+
+@media screen and (max-width:400px) {
+	table.shop_table {
+		font-size: 8px;
+	}
 }
 
 table.cart td.actions .coupon .input-text,
