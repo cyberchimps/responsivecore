@@ -310,11 +310,13 @@ Class Responsive_Options {
 			'editor_class'  => esc_attr( $classes )
 		);
 
-		echo '<div class="tinymce-editor">';
-		echo '<p>' . esc_html( $heading ) . '</p>';
-
-		wp_editor( $value, 'responsive_theme_options[' . $id . ']', $editor_settings );
-		echo '<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
-		echo '</div>';
+		$html = '<div class="tinymce-editor">';
+		ob_start();
+		$html .= wp_editor( $value, 'responsive_theme_options[' . $id . ']', $editor_settings );
+		$html .= ob_get_contents();
+		$html .= '<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
+		$html .= '</div>';
+		ob_clean();
+		return $html;
 	}
 }
