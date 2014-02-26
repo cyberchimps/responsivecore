@@ -56,7 +56,7 @@ function cyberchimps_display_upsell() {
 					<img src="<?php echo $directory_uri; ?>/core/includes/upsell/images/upsell-logo.png"/>
 				</a>
 			</h2>
-			<h5><?php _e( 'Themes You Can Trust', 'cyberchimps_core' ); ?></h5>
+			<h5><?php _e( 'Themes You Can Trust', 'responsive' ); ?></h5>
 		</div>
 	</div>
 	<div id="upsell_themes" class="row-fluid">
@@ -81,9 +81,9 @@ function cyberchimps_display_upsell() {
 							Options on a per-page basis allowing you control the look and feel of every page.</p>
 					</div>
 
-					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/ifeaturepro5/" target="_blank"><?php _e( 'Buy iFeature Pro5', 'cyberchimps_core' ); ?></a>
-					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/ifeaturepro/" target="_blank"><?php _e( 'View Demo', 'cyberchimps_core' ); ?></a>
-					<a class="free btn btn-success" href="http://cyberchimps.com/ifeature-free/" target="_blank"><?php _e( 'Try iFeature 5 Free', 'cyberchimps_core' ); ?></a>
+					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/ifeaturepro5/" target="_blank"><?php _e( 'Buy iFeature Pro5', 'responsive' ); ?></a>
+					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/ifeaturepro/" target="_blank"><?php _e( 'View Demo', 'responsive' ); ?></a>
+					<a class="free btn btn-success" href="http://cyberchimps.com/ifeature-free/" target="_blank"><?php _e( 'Try iFeature 5 Free', 'responsive' ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -107,9 +107,9 @@ function cyberchimps_display_upsell() {
 						<p>Business Pro 4 is built with HTML5, CSS3, and <a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a>.</p>
 					</div>
 
-					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/business-pro/" target="_blank"><?php _e( 'Buy Business Pro4', 'cyberchimps_core' ); ?></a>
-					<a class="buy btn btn-info" href="http://demos.cyberchimps.com/businesspro/" target="_blank"><?php _e( 'View Demo', 'cyberchimps_core' ); ?></a>
-					<a class="free btn btn-success" href="http://cyberchimps.com/businesslite/" target="_blank"><?php _e( 'Try Business Lite', 'cyberchimps_core' ); ?></a>
+					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/business-pro/" target="_blank"><?php _e( 'Buy Business Pro4', 'responsive' ); ?></a>
+					<a class="buy btn btn-info" href="http://demos.cyberchimps.com/businesspro/" target="_blank"><?php _e( 'View Demo', 'responsive' ); ?></a>
+					<a class="free btn btn-success" href="http://cyberchimps.com/businesslite/" target="_blank"><?php _e( 'Try Business Lite', 'responsive' ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -135,9 +135,9 @@ function cyberchimps_display_upsell() {
 							options giving you the power to control the look and feel of every page of your website. We have also added 5 new colored skins to select from!</p>
 					</div>
 
-					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/eclipse-pro/" target="_blank"><?php _e( 'Buy Eclipse Pro2', 'cyberchimps_core' ); ?></a>
-					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/eclipsepro/" target="_blank"><?php _e( 'View Demo', 'cyberchimps_core' ); ?></a>
-					<a class="free btn btn-success" href="http://cyberchimps.com/eclipse/" target="_blank"><?php _e( 'Try Eclipse 2 Free', 'cyberchimps_core' ); ?></a>
+					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/eclipse-pro/" target="_blank"><?php _e( 'Buy Eclipse Pro2', 'responsive' ); ?></a>
+					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/eclipsepro/" target="_blank"><?php _e( 'View Demo', 'responsive' ); ?></a>
+					<a class="free btn btn-success" href="http://cyberchimps.com/eclipse/" target="_blank"><?php _e( 'Try Eclipse 2 Free', 'responsive' ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -162,9 +162,9 @@ function cyberchimps_display_upsell() {
 							Twitter bar, Widgetized boxes, and Callout section. All of which can be used on a per-page basis.</p>
 					</div>
 
-					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/neuro-pro/" target="_blank"><?php _e( 'Buy Neuro Pro', 'cyberchimps_core' ); ?></a>
-					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/neuropro/" target="_blank"><?php _e( 'View Demo', 'cyberchimps_core' ); ?></a>
-					<a class="free btn btn-success" href="http://cyberchimps.com/neuro/" target="_blank"><?php _e( 'Try Neuro Free', 'cyberchimps_core' ); ?></a>
+					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/neuro-pro/" target="_blank"><?php _e( 'Buy Neuro Pro', 'responsive' ); ?></a>
+					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/neuropro/" target="_blank"><?php _e( 'View Demo', 'responsive' ); ?></a>
+					<a class="free btn btn-success" href="http://cyberchimps.com/neuro/" target="_blank"><?php _e( 'Try Neuro Free', 'responsive' ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -189,9 +189,9 @@ function cyberchimps_display_upsell() {
 							boxes, and Callout section. All of which can be used on a per-page basis.</p>
 					</div>
 
-					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/iribbon-pro/" target="_blank"><?php _e( 'Buy iRibbon Pro2', 'cyberchimps_core' ); ?></a>
-					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/iribbonpro2/" target="_blank"><?php _e( 'View Demo', 'cyberchimps_core' ); ?></a>
-					<a class="free btn btn-success" href="http://cyberchimps.com/iribbon/" target="_blank"><?php _e( 'Try iRibbon 2 Free', 'cyberchimps_core' ); ?></a>
+					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/iribbon-pro/" target="_blank"><?php _e( 'Buy iRibbon Pro2', 'responsive' ); ?></a>
+					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/iribbonpro2/" target="_blank"><?php _e( 'View Demo', 'responsive' ); ?></a>
+					<a class="free btn btn-success" href="http://cyberchimps.com/iribbon/" target="_blank"><?php _e( 'Try iRibbon 2 Free', 'responsive' ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -216,9 +216,9 @@ function cyberchimps_display_upsell() {
 							head start on the competition.</p>
 					</div>
 
-					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/cyberchimps-pro/" target="_blank"><?php _e( 'Buy Cyberchimps Pro', 'cyberchimps_core' ); ?></a>
-					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/cyberchimpspro/" target="_blank"><?php _e( 'View Demo', 'cyberchimps_core' ); ?></a>
-					<a class="free btn btn-success" href="http://cyberchimps.com/cyberchimps-free/" target="_blank"><?php _e( 'Try cyberchimps Free', 'cyberchimps_core' ); ?></a>
+					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/cyberchimps-pro/" target="_blank"><?php _e( 'Buy Cyberchimps Pro', 'responsive' ); ?></a>
+					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/cyberchimpspro/" target="_blank"><?php _e( 'View Demo', 'responsive' ); ?></a>
+					<a class="free btn btn-success" href="http://cyberchimps.com/cyberchimps-free/" target="_blank"><?php _e( 'Try cyberchimps Free', 'responsive' ); ?></a>
 				</div>
 			</div>
 		</div>
@@ -243,9 +243,9 @@ function cyberchimps_display_upsell() {
 							head start on the competition.</p>
 					</div>
 
-					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/responsive-pro/" target="_blank"><?php _e( 'Buy Responsive Pro', 'cyberchimps_core' ); ?></a>
-					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/responsivepro/" target="_blank"><?php _e( 'View Demo', 'cyberchimps_core' ); ?></a>
-					<a class="free btn btn-success" href="http://cyberchimps.com/responsive-free/" target="_blank"><?php _e( 'Try Responsive Free', 'cyberchimps_core' ); ?></a>
+					<a class="buy btn btn-primary" href="http://cyberchimps.com/store/responsive-pro/" target="_blank"><?php _e( 'Buy Responsive Pro', 'responsive' ); ?></a>
+					<a class="buy  btn btn-info" href="http://demos.cyberchimps.com/responsivepro/" target="_blank"><?php _e( 'View Demo', 'responsive' ); ?></a>
+					<a class="free btn btn-success" href="http://cyberchimps.com/responsive-free/" target="_blank"><?php _e( 'Try Responsive Free', 'responsive' ); ?></a>
 				</div>
 			</div>
 		</div>
