@@ -84,9 +84,9 @@ function responsive_get_option_defaults() {
 		'responsive_inline_css'           => '',
 		'responsive_inline_js_head'       => '',
 		'responsive_inline_css_js_footer' => '',
-		'static_page_layout_default'      => 'content-sidebar-page',
-		'single_post_layout_default'      => 'content-sidebar-page',
-		'blog_posts_index_layout_default' => 'content-sidebar-page',
+		'static_page_layout_default'      => 'default',
+		'single_post_layout_default'      => 'default',
+		'blog_posts_index_layout_default' => 'default',
 	);
 
 	return apply_filters( 'responsive_option_defaults', $defaults );

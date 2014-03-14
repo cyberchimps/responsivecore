@@ -162,6 +162,7 @@ function responsive_get_layout() {
  */
 function responsive_get_valid_layouts() {
 	$layouts = array(
+		'default'                   => __( 'Default', 'responsive' ),
 		'content-sidebar-page'      => __( 'Content/Sidebar', 'responsive' ),
 		'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
 		'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
