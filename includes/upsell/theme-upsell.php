@@ -52,7 +52,7 @@ function cyberchimps_display_upsell() {
 					<div id="upsell_header" class="span12">
 						<h2>
 							<a href="http://cyberchimps.com" target="_blank">
-								<img src="<?php echo $directory_uri; ?>core/includes/upsell/images/upsell-logo.png"/>
+								<img src="<?php echo $directory_uri; ?>/core/includes/upsell/images/upsell-logo.png"/>
 							</a>
 						</h2>
 
