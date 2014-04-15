@@ -186,7 +186,12 @@ function responsive_add_layout_meta_box( $post ) {
 	$priority = apply_filters( 'responsive_layout_meta_box_priority', 'default' ); // 'high', 'core', 'low', 'default'
 
 	add_meta_box(
-		'responsive_layout', __( 'Layout', 'responsive' ), 'responsive_layout_meta_box', 'post', $context, $priority
+		'responsive_layout',
+		__( 'Layout', 'responsive' ),
+		'responsive_layout_meta_box',
+		'post',
+		$context,
+		$priority
 	);
 }
 
