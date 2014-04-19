@@ -313,7 +313,7 @@ Class Responsive_Options {
 
 		$html = '<div class="tinymce-editor">';
 		ob_start();
-		$html .= wp_editor( $value, 'responsive_theme_options[' . $id . ']', $editor_settings );
+		$html .= wp_editor( $value, 'responsive_theme_options_' . $id . '_', $editor_settings );
 		$html .= ob_get_contents();
 		$html .= '<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
 		$html .= '</div>';
