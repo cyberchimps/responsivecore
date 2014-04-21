@@ -190,7 +190,7 @@ if ( !function_exists( 'responsive_setup' ) ):
 
 		add_theme_support( 'custom-header', array(
 			// Header image default
-			'default-image'       => get_template_directory_uri() . '/core/images/default-logo.png',
+			'default-image'       => '',
 			// Header text display default
 			'header-text'         => false,
 			// Header image flex width
