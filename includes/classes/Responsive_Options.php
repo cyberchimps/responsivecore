@@ -35,7 +35,7 @@ Class Responsive_Options {
 		$this->options            = $options;
 		$this->responsive_options = get_option( 'responsive_theme_options' );
 		// Set confirmaton text for restore default option as attributes of submit_button().
-		$this->attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore? \nAll theme settings will be lost! \nClick OK to Restore.', 'responsive' ) . '")';
+		$this->attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore?', 'responsive' ) . '\n' . __( 'All theme settings will be lost!', 'responsive' ) . '\n' . __( 'Click OK to Restore.', 'responsive' ) . '")';
 	}
 
 	/**

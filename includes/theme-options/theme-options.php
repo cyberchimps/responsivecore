@@ -95,7 +95,7 @@ function responsive_theme_options_do_page() {
 	}
 
 	// Set confirmaton text for restore default option as attributes of submit_button().
-	$attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore?', 'responsive' ) . __( 'All theme settings will be lost!', 'responsive' ) . __( 'Click OK to Restore.', 'responsive' ) . '")';
+	$attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore?', 'responsive' ) . '\n' . __( 'All theme settings will be lost!', 'responsive' ) . '\n' . __( 'Click OK to Restore.', 'responsive' ) . '")';
 	?>
 
 	<div class="wrap">
