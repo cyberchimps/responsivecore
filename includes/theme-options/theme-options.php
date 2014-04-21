@@ -95,7 +95,7 @@ function responsive_theme_options_do_page() {
 	}
 
 	// Set confirmaton text for restore default option as attributes of submit_button().
-	$attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore? \nAll theme settings will be lost! \nClick OK to Restore.', 'responsive' ) . '")';
+	$attributes['onclick'] = 'return confirm("' . __( 'Do you want to restore?', 'responsive' ) . __( 'All theme settings will be lost!', 'responsive' ) . __( 'Click OK to Restore.', 'responsive' ) . '")';
 	?>
 
 	<div class="wrap">
@@ -222,8 +222,8 @@ function responsive_theme_options_do_page() {
 																	 'heading'     => '',
 																	 'type'        => 'description',
 																	 'id'          => '',
-																	 'description' => __( 'Need to replace or remove default logo?', 'responsive' ) . sprintf( __( ' <a href="%s">Click here</a>.', 'responsive' ),
-																																							   admin_url( 'themes.php?page=custom-header' ) ),
+																	 'description' => __( 'Need to replace or remove default logo?', 'responsive' ) . sprintf( ' <a href="%s">' . __( 'Click here', 'responsive' ) . '</a>.',
+																	 admin_url( 'themes.php?page=custom-header' ) ),
 																	 'placeholder' => ''
 																 )
 															 ),
