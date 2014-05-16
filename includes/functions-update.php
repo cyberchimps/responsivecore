@@ -66,7 +66,7 @@ function responsive_admin_update_notice(){
 		$html .= sprintf(
 				/* Translators: This is a big update. Please read the blog post before updating. */
 				__( '<strong>WARNING:</strong> There is a big <strong>Responsive Theme</strong> update available. Please read the %1$s before updating.', 'responsive' ),
-				'<a href="' . esc_url( 'http://cyberchimps.com/2014/03/responsive-2-0-update/' ) . '">' . __( 'blog post', 'responsive' ) . '</a>'
+				'<a href="' . esc_url( 'http://content.cyberchimps.com/responsive-2-migration' ) . '">' . __( 'update page', 'responsive' ) . '</a>'
 			);
 		$html .= '</p></div>';
 		echo $html;
