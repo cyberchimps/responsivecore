@@ -25,14 +25,18 @@ function cyberchimps_upsell_style() {
 	wp_enqueue_style( 'bootstrap-responsive', $directory_uri . '/core/includes/upsell/bootstrap/css/bootstrap-responsive.css', 'bootstrap' );
 	wp_enqueue_style( 'cyberchimps-responsive', $directory_uri . '/core/includes/upsell/bootstrap/css/cyberchimps-responsive.css', array( 'bootstrap', 'bootstrap-responsive' ) );
 
-	wp_enqueue_script( 'bootstrap-js', $directory_uri . '/core/includes/upsell/bootstrap/js/bootstrap.min.js', array( 'jquery' ) );
-
 	wp_enqueue_style( 'upsell_style', get_template_directory_uri() . '/core/includes/upsell/css/upsell.css' );
 }
 
 // Add upsell page to the menu.
 function cyberchimps_add_upsell() {
-	$page = add_theme_page( 'More Themes', 'More Themes', 'administrator', 'cyberchimps-themes', 'cyberchimps_display_upsell' );
+	$page = add_theme_page(
+		'More Themes',
+		'More Themes',
+		'administrator',
+		'cyberchimps-themes',
+		'cyberchimps_display_upsell'
+	);
 
 	add_action( 'admin_print_styles-' . $page, 'cyberchimps_upsell_style' );
 }

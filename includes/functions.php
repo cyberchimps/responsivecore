@@ -179,12 +179,11 @@ if ( !function_exists( 'responsive_setup' ) ):
 		 * @see http://codex.wordpress.org/Function_Reference/register_nav_menus
 		 */
 		register_nav_menus( array(
-								'top-menu'        => __( 'Top Menu', 'responsive' ),
-								'header-menu'     => __( 'Header Menu', 'responsive' ),
-								'sub-header-menu' => __( 'Sub-Header Menu', 'responsive' ),
-								'footer-menu'     => __( 'Footer Menu', 'responsive' )
-							)
-		);
+			'top-menu'        => __( 'Top Menu', 'responsive' ),
+			'header-menu'     => __( 'Header Menu', 'responsive' ),
+			'sub-header-menu' => __( 'Sub-Header Menu', 'responsive' ),
+			'footer-menu'     => __( 'Footer Menu', 'responsive' )
+		) );
 
 		add_theme_support( 'custom-background' );
 
