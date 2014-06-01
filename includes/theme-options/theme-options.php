@@ -198,12 +198,12 @@ function responsive_theme_options_do_page() {
 																	 'placeholder' => ''
 																 ),
 																 array(
-																	 'title'       => __( 'Blog Title Toggle', 'responsive' ),
+																	 'title'       => __( 'Enable Blog Title', 'responsive' ),
 																	 'subtitle'    => '',
 																	 'heading'     => '',
 																	 'type'        => 'checkbox',
 																	 'id'          => 'blog_post_title_toggle',
-																	 'description' => ''
+																	 'description' => __( 'check to enable', 'responsive' ),
 																 ),
 																 array(
 																	 'title'       => __( 'Title Text', 'responsive' ),
