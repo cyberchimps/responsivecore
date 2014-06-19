@@ -56,7 +56,7 @@ function responsive_update_page_template_meta(){
 
 		if ( $pos !== false ) {
 			$meta_value = basename( $meta_value );
-			update_post_meta( $post_id, '_wp_page_template', $meta_value );
+			update_post_meta( $page->ID, '_wp_page_template', $meta_value );
 		}
 
 	}
