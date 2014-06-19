@@ -54,10 +54,9 @@ function responsive_update_page_template_meta(){
 		$page_templates_dir = 'page-templates/';
 		$pos = strpos( $meta_value, $page_templates_dir );
 
-		if ( $pos === true ) {
+		if ( $pos !== false ) {
 			$meta_value = basename( $meta_value );
 			update_post_meta( $post_id, '_wp_page_template', $meta_value );
-			//update_post_meta( $post_id, '_wp_page_template_responsive', $meta_value );
 		}
 
 	}
