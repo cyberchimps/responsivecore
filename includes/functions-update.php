@@ -34,35 +34,37 @@ add_action( 'after_setup_theme', 'responsive_update_social_icon_options' );
  *
  */
 function responsive_update_page_template_meta(){
-
-	$args = array (
+	$args = array(
 		'post_type' => 'page',
-		'meta_query'  => array(
+		'meta_query' => array(
 			array(
-				'key'     => '_wp_page_template',
-				'value'   => 'default',
+				'key' => '_wp_page_template',
+				'value' => 'default',
 				'compare' => '!='
 			)
 		)
 	);
 
-	$pages = get_pages( $args );
+	$query = new WP_Query( $args );
 
-	foreach ( $pages as $page ) {
+	if ( $query->have_posts() ) {
 
-		$meta_value = get_post_meta( $page->ID, '_wp_page_template', true );
-		$page_templates_dir = 'page-templates/';
-		$pos = strpos( $meta_value, $page_templates_dir );
+		while ( $query->have_posts() ) {
+			$query->the_post();
 
-		if ( $pos !== false ) {
-			$meta_value = basename( $meta_value );
-			update_post_meta( $page->ID, '_wp_page_template', $meta_value );
+			$meta_value = get_post_meta( get_the_ID(), '_wp_page_template', true );
+			$page_templates_dir = 'page-templates/';
+			$conatins = strpos( $meta_value, $page_templates_dir );
+
+			if ( false !== $conatins ) {
+				$meta_value = basename( $meta_value );
+				update_post_meta( get_the_ID(), '_wp_page_template', $meta_value );
+			}
+
 		}
-
 	}
-
 }
-add_action( 'switch_theme', 'responsive_update_page_template_meta' );
+add_action( 'after_switch_theme', 'responsive_update_page_template_meta' );
 
 /**
  * Responsive 2.0 update check
