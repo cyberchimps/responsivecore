@@ -1036,14 +1036,16 @@ add_filter( 'shortcode_atts_gallery', 'responsive_gallery_atts', 10, 3 );
 /*
  * Create image sizes for the galley
  */
-add_image_size( 'responsive-100', 100, 9999 );
-add_image_size( 'responsive-150', 150, 9999 );
-add_image_size( 'responsive-200', 200, 9999 );
-add_image_size( 'responsive-300', 300, 9999 );
-add_image_size( 'responsive-450', 450, 9999 );
-add_image_size( 'responsive-600', 600, 9999 );
-add_image_size( 'responsive-900', 900, 9999 );
-
+function responsive_add_image_size() {
+	add_image_size( 'responsive-100', 100, 9999 );
+	add_image_size( 'responsive-150', 150, 9999 );
+	add_image_size( 'responsive-200', 200, 9999 );
+	add_image_size( 'responsive-300', 300, 9999 );
+	add_image_size( 'responsive-450', 450, 9999 );
+	add_image_size( 'responsive-600', 600, 9999 );
+	add_image_size( 'responsive-900', 900, 9999 );
+}
+add_action( 'after_setup_theme', 'responsive_add_image_size' );
 /*
  * Get social icons.
  *
