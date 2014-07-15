@@ -1371,7 +1371,7 @@ ul.menu > li:hover {
 /* =Primary Main Menu IE Fixes
 -------------------------------------------------------------- */
 .ie7 .menu ul {
-	background: url(core/images/ie7-fix.gif) repeat;
+	background: url(../../core/images/ie7-fix.gif) repeat;
 }
 
 .ie7 .menu li li a {
@@ -1548,7 +1548,7 @@ ul.menu > li:hover {
 /* =Sub Header Menu IE Fixes
 -------------------------------------------------------------- */
 .ie7 .sub-header-menu ul {
-	background: url(core/images/ie7-fix.gif) repeat;
+	background: url(../../core/images/ie7-fix.gif) repeat;
 }
 
 .ie7 .sub-header-menu li li a {
