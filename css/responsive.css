@@ -8,7 +8,9 @@
 
 	.grid,
 	.grid-right {
+		display: block;
 		float: none;
+		width: 100%;
 	}
 
 	.copyright,
