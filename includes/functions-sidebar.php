@@ -153,7 +153,8 @@ function responsive_footer_widgets( $params ) {
 	//Check if we are displaying "Footer Sidebar"
 	if ( $params[0]['id'] == 'footer-widget' ) {
 		$footer_widget_num++;
-		$divider = apply_filters( 'responsive_number_footer_widgets', '3', ); //This is number of widgets that should fit in one row
+		$divider = 3;
+		$divider = apply_filters( 'responsive_number_footer_widgets', $divider ); //This is number of widgets that should fit in one row
 
 		//If it's third widget, add last class to it
 		if ( $footer_widget_num % $divider == 0 ) {
