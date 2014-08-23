@@ -16,7 +16,9 @@ function get_responsive_breadcrumb_lists() {
 	if ( 1 == $responsive_options['breadcrumb'] ) {
 		return;
 	} elseif ( function_exists( 'bcn_display' ) ) {
+		echo '<span class="breadcrumb" typeof="v:Breadcrumb">';
 		bcn_display();
+		echo '</span>';
 	} elseif ( function_exists( 'breadcrumb_trail' ) ) {
 		breadcrumb_trail();
 	} elseif ( function_exists( 'yoast_breadcrumb' ) && true === $yoast_options['breadcrumbs-enable'] ) {
