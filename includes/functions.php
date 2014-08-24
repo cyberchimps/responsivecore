@@ -109,7 +109,7 @@ if ( !function_exists( 'responsive_setup' ) ):
 		 * Global content width.
 		 */
 		if ( !isset( $content_width ) ) {
-			$content_width = 550;
+			$content_width = 605;
 		}
 
 		/**
@@ -211,6 +211,26 @@ if ( !function_exists( 'responsive_setup' ) ):
 	}
 
 endif;
+
+/**
+ * Adjust content width in certain contexts.
+ *
+ * Adjusts content_width value for full-width and single image attachment
+ * templates, and when there are no active widgets in the sidebar.
+ *
+ */
+function responsive_content_width() {
+	global $content_width;
+	$full_width = is_page_template( 'full-width-page.php' ) || is_404() || 'full-width-page' == responsive_get_layout();
+	if ( $full_width ) {
+		$content_width = 918;
+	}
+	$half_width = is_page_template( 'sidebar-content-half-page.php' ) || is_page_template( 'content-sidebar-half-page.php' ) || 'sidebar-content-half-page' == responsive_get_layout() || 'content-sidebar-half-page' == responsive_get_layout();
+	if ( $half_width ) {
+		$content_width = 449;
+	}
+}
+add_action( 'template_redirect', 'responsive_content_width' );
 
 /**
  * Set a fallback menu that will show a home link.
