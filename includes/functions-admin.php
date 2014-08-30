@@ -96,6 +96,11 @@ function responsive_install_plugins() {
 			'name'     => 'FooBox Image Lightbox', // The plugin name
 			'slug'     => 'foobox-image-lightbox', // The plugin slug (typically the folder name)
 			'required' => false
+		),
+		array(
+			'name'     => 'iFeature Slider', // The plugin name
+			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name)
+			'required' => false
 		)
 	);
 
