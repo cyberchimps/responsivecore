@@ -25,6 +25,16 @@ grunt.initConfig({
 		}
 	},
 
+	csscomb: {
+		dynamic_mappings: {
+			expand: true,
+			cwd: 'css/',
+			src: ['*.css', '!*.min.css'],
+			dest: 'css/',
+			ext: '.css'
+		}
+	},
+
 	cssmin: {
 		add_banner: {
 			options: {
