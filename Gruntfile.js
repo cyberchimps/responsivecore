@@ -22,6 +22,20 @@ grunt.initConfig({
 						}
 					},
 			]
+		},
+		theme_options: {
+				files: [
+					{
+						expand: true,     // Enable dynamic expansion.
+						src: 'includes/theme-options/*.js', // Actual pattern(s) to match.
+						dest: 'includes/theme-options/',
+						rename: function (dest, src) {
+							var filename = src.substring(src.lastIndexOf('/'), src.length);
+							filename = filename.substring(0, filename.lastIndexOf('.'));
+							return dest + filename + '.min.js';
+						}
+					},
+			]
 		}
 	},
 
@@ -36,13 +50,34 @@ grunt.initConfig({
 	},
 
 	cssmin: {
-		add_banner: {
+		style: {
 			options: {
 				//banner: '/* Theme Name: Responsive Author: CyberChimps.com Version: 1.9.4.9 Text Domain: responsive */'
 			},
 			files: {
 				'css/style.min.css': ['css/style.css', 'css/responsive.css']
 			}
+		},
+		upsell: {
+			expand: true,
+			cwd: 'includes/upsell/css/',
+			src: ['*.css', '!*.min.css'],
+			dest: 'includes/upsell/css/',
+			ext: '.min.css'
+		},
+		bootstrap: {
+			expand: true,
+			cwd: 'includes/upsell/bootstrap/css/',
+			src: ['*.css', '!*.min.css'],
+			dest: 'includes/upsell/bootstrap/css/',
+			ext: '.min.css'
+		},
+		theme_options: {
+			expand: true,
+			cwd: 'includes/theme-options/',
+			src: ['*.css', '!*.min.css'],
+			dest: 'includes/theme-options/',
+			ext: '.min.css'
 		}
 	},
 

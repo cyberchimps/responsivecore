@@ -30,9 +30,10 @@ require( get_template_directory() . '/core/includes/classes/Responsive_Options.p
  */
 function responsive_admin_enqueue_scripts( $hook_suffix ) {
 	$template_directory_uri = get_template_directory_uri();
+	$suffix                 = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options.css', false, '1.0' );
-	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options.js', array( 'jquery' ), '1.0' );
+	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
+	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
 }
 
 add_action( 'admin_print_styles-appearance_page_theme_options', 'responsive_admin_enqueue_scripts' );
