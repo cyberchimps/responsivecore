@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if( !defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -30,7 +30,7 @@ function responsive_template_data() {
 add_action( 'wp_head', 'responsive_template_data' );
 
 function responsive_theme_data() {
-	if( is_child_theme() ) {
+	if ( is_child_theme() ) {
 		echo '<!-- ' . get_responsive_theme_name() . ' ' . get_responsive_theme_version() . ' -->' . "\n";
 	}
 }
@@ -52,7 +52,7 @@ function get_responsive_theme_version() {
 function get_responsive_template_name() {
 	$theme  = wp_get_theme();
 	$parent = $theme->parent();
-	if( $parent ) {
+	if ( $parent ) {
 		$theme = $parent;
 	}
 
@@ -62,7 +62,7 @@ function get_responsive_template_name() {
 function get_responsive_template_version() {
 	$theme  = wp_get_theme();
 	$parent = $theme->parent();
-	if( $parent ) {
+	if ( $parent ) {
 		$theme = $parent;
 	}
 

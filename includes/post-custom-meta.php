@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if( !defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -31,25 +31,25 @@ $responsive_options = responsive_get_options();
 function responsive_get_content_classes() {
 	$content_classes = array();
 	$layout          = responsive_get_layout();
-	if( in_array( $layout, array( 'default', 'content-sidebar-page' ) ) ) {
+	if ( in_array( $layout, array( 'default', 'content-sidebar-page' ) ) ) {
 		$content_classes[] = 'grid';
 		$content_classes[] = 'col-620';
 	}
-	elseif( 'sidebar-content-page' == $layout ) {
+	elseif ( 'sidebar-content-page' == $layout ) {
 		$content_classes[] = 'grid-right';
 		$content_classes[] = 'col-620';
 		$content_classes[] = 'fit';
 	}
-	elseif( 'content-sidebar-half-page' == $layout ) {
+	elseif ( 'content-sidebar-half-page' == $layout ) {
 		$content_classes[] = 'grid';
 		$content_classes[] = 'col-460';
 	}
-	elseif( 'sidebar-content-half-page' == $layout ) {
+	elseif ( 'sidebar-content-half-page' == $layout ) {
 		$content_classes[] = 'grid-right';
 		$content_classes[] = 'col-460';
 		$content_classes[] = 'fit';
 	}
-	elseif( 'full-width-page' == $layout ) {
+	elseif ( 'full-width-page' == $layout ) {
 		$content_classes[] = 'grid';
 		$content_classes[] = 'col-940';
 	}
@@ -63,22 +63,22 @@ function responsive_get_content_classes() {
 function responsive_get_sidebar_classes() {
 	$sidebar_classes = array();
 	$layout          = responsive_get_layout();
-	if( in_array( $layout, array( 'default', 'content-sidebar-page' ) ) ) {
+	if ( in_array( $layout, array( 'default', 'content-sidebar-page' ) ) ) {
 		$sidebar_classes[] = 'grid';
 		$sidebar_classes[] = 'col-300';
 		$sidebar_classes[] = 'fit';
 	}
-	elseif( 'sidebar-content-page' == $layout ) {
+	elseif ( 'sidebar-content-page' == $layout ) {
 		$sidebar_classes[] = 'grid-right';
 		$sidebar_classes[] = 'col-300';
 		$sidebar_classes[] = 'rtl-fit';
 	}
-	elseif( 'content-sidebar-half-page' == $layout ) {
+	elseif ( 'content-sidebar-half-page' == $layout ) {
 		$sidebar_classes[] = 'grid';
 		$sidebar_classes[] = 'col-460';
 		$sidebar_classes[] = 'fit';
 	}
-	elseif( 'sidebar-content-half-page' == $layout ) {
+	elseif ( 'sidebar-content-half-page' == $layout ) {
 		$sidebar_classes[] = 'grid-right';
 		$sidebar_classes[] = 'col-460';
 		$sidebar_classes[] = 'rtl-fit';
@@ -93,7 +93,7 @@ function responsive_get_sidebar_classes() {
  */
 function responsive_get_layout() {
 	/* 404 pages */
-	if( is_404() ) {
+	if ( is_404() ) {
 		return 'default';
 	}
 	$layout = '';
@@ -103,17 +103,17 @@ function responsive_get_layout() {
 	/* Get valid layouts */
 	$valid_layouts = responsive_get_valid_layouts();
 	/* For singular pages, get post meta */
-	if( is_singular() ) {
+	if ( is_singular() ) {
 		global $post;
 		$layout_meta_value = ( false != get_post_meta( $post->ID, '_responsive_layout', true ) ? get_post_meta( $post->ID, '_responsive_layout', true ) : 'default' );
 		$layout_meta       = ( array_key_exists( $layout_meta_value, $valid_layouts ) ? $layout_meta_value : 'default' );
 	}
 	/* Static pages */
-	if( is_page() ) {
+	if ( is_page() ) {
 		$page_template = get_post_meta( $post->ID, '_wp_page_template', true );
 		/* If custom page template is defined, use it first */
-		if( 'default' != $page_template ) {
-			if( in_array( $page_template, array( 'blog.php', 'blog-excerpt.php' ) ) ) {
+		if ( 'default' != $page_template ) {
+			if ( in_array( $page_template, array( 'blog.php', 'blog-excerpt.php' ) ) ) {
 				$layout = $responsive_options['blog_posts_index_layout_default'];
 			}
 			else {
@@ -121,7 +121,7 @@ function responsive_get_layout() {
 			}
 		}
 		/* Else, if post custom meta is set, use it */
-		elseif( 'default' != $layout_meta ) {
+		elseif ( 'default' != $layout_meta ) {
 			$layout = $layout_meta;
 		}
 		/* Else, use the default */
@@ -132,9 +132,9 @@ function responsive_get_layout() {
 	}
 	/* Single blog posts */
 	else {
-		if( is_single() ) {
+		if ( is_single() ) {
 			/* If post custom meta is set, use it */
-			if( 'default' != $layout_meta ) {
+			if ( 'default' != $layout_meta ) {
 				$layout = $layout_meta;
 			}
 			/* Else, use the default */
@@ -144,7 +144,7 @@ function responsive_get_layout() {
 
 		}
 		/* Posts index */
-		elseif( is_home() || is_archive() || is_search() ) {
+		elseif ( is_home() || is_archive() || is_search() ) {
 			$layout = $responsive_options['blog_posts_index_layout_default'];
 		}
 		/* Fallback */
@@ -247,7 +247,7 @@ function responsive_layout_meta_box() {
  */
 function responsive_save_layout_post_metadata() {
 	global $post;
-	if( !isset( $post ) || !is_object( $post ) ) {
+	if ( !isset( $post ) || !is_object( $post ) ) {
 		return;
 	}
 	$valid_layouts = responsive_get_valid_layouts();

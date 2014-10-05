@@ -89,7 +89,7 @@ Class Responsive_Options {
 	protected function sub_heading( $args ) {
 
 		// If width is not set or it's not set to full then go ahead and create default layout
-		if( !isset( $args['width'] ) || $args['width'] != 'full' ) {
+		if ( !isset( $args['width'] ) || $args['width'] != 'full' ) {
 			echo '<div class="grid col-300">';
 
 			echo $args['title'];
