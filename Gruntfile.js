@@ -5,36 +5,31 @@ require('load-grunt-tasks')(grunt);
 // Project configuration.
 grunt.initConfig({
 	pkg: grunt.file.readJSON('package.json'),
+
 	uglify: {
 		options: {
 			mangle: false
 		},
-		build: {
-				files: [
-					{
-						expand: true,     // Enable dynamic expansion.
-						src: 'js-dev/*.js', // Actual pattern(s) to match.
-						dest: '/js',
-						rename: function (dest, src) {
-							var filename = src.substring(src.lastIndexOf('/'), src.length);
-							filename = filename.substring(0, filename.lastIndexOf('.'));
-							return dest + filename + '.min.js';
-						}
-					},
+		theme_options: {
+			files: [
+				{
+					expand: true,     // Enable dynamic expansion.
+					cwd: 'includes/theme-options/',      // Src matches are relative to this path.
+					src: ['*.js', '!*.min.js'], // Actual pattern(s) to match.
+					dest: 'includes/theme-options/',   // Destination path prefix.
+					ext: '.min.js',   // Dest filepaths will have this extension.
+				},
 			]
 		},
-		theme_options: {
-				files: [
-					{
-						expand: true,     // Enable dynamic expansion.
-						src: 'includes/theme-options/*.js', // Actual pattern(s) to match.
-						dest: 'includes/theme-options/',
-						rename: function (dest, src) {
-							var filename = src.substring(src.lastIndexOf('/'), src.length);
-							filename = filename.substring(0, filename.lastIndexOf('.'));
-							return dest + filename + '.min.js';
-						}
-					},
+		frontend: {
+			files: [
+				{
+					expand: true,     // Enable dynamic expansion.
+					cwd: 'js-dev/',      // Src matches are relative to this path.
+					src: ['*.js', '!*.min.js'], // Actual pattern(s) to match.
+					dest: 'js/',   // Destination path prefix.
+					ext: '.min.js',   // Dest filepaths will have this extension.
+				},
 			]
 		}
 	},
