@@ -514,9 +514,9 @@ jQuery(function () {
 });
 
 // FitVids
-jQuery(document).ready(function () {
+jQuery(function($) {
 // Target your #container, #wrapper etc.
-	jQuery("#wrapper").fitVids();
+	$("#wrapper").fitVids({ ignore: '.ls-container'});
 });
 
 // skip-link-focus-fix.js https://github.com/Automattic/_s/blob/master/js/skip-link-focus-fix.js
