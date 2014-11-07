@@ -101,8 +101,7 @@ function responsive_theme_options_do_page() {
 
 	<div class="wrap">
 	<?php $theme_name = wp_get_theme() ?>
-	<?php screen_icon();
-	echo "<h2>" . $theme_name . " " . __( 'Theme Options', 'responsive' ) . "</h2>"; ?>
+	<?php echo "<h2>" . $theme_name . " " . __( 'Theme Options', 'responsive' ) . "</h2>"; ?>
 
 
 	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>

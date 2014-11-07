@@ -26,6 +26,7 @@ function get_responsive_breadcrumb_lists() {
 	} elseif ( ! is_search() ) {
 		responsive_breadcrumb_lists();
 	}
+
 }
 
 /**
