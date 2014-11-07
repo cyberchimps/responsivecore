@@ -998,7 +998,8 @@ form div {
 /* =bbPress
     bbPress has its own breadcrumb lists
 -------------------------------------------------------------- */
-.bbPress .breadcrumb-list {
+.bbpress .breadcrumb-list,
+.bbpress .post-meta {
 	display: none;
 }
 
