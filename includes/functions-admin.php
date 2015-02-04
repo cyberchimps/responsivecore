@@ -101,6 +101,16 @@ function responsive_install_plugins() {
 			'name'     => 'iFeature Slider', // The plugin name
 			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name)
 			'required' => false
+		),
+		array(
+			'name'     => 'Wp Product Review', // The plugin name
+			'slug'     => 'wp-product-review', // The plugin slug (typically the folder name)
+			'required' => false
+		),
+		array(
+			'name'     => 'Tweet Old Post', // The plugin name
+			'slug'     => 'tweet-old-post', // The plugin slug (typically the folder name)
+			'required' => false
 		)
 	);
 
