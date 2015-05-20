@@ -54,10 +54,11 @@ function responsive_theme_options_add_page() {
 
 function responsive_inline_css() {
 	global $responsive_options;
-	if ( !empty( $responsive_options['responsive_inline_css'] ) ) {
+	$is_inlinecss = get_theme_mod('responsive_inline_css');
+	if ( !empty( $is_inlinecss ) ) {
 		echo '<!-- Custom CSS Styles -->' . "\n";
 		echo '<style type="text/css" media="screen">' . "\n";
-		echo $responsive_options['responsive_inline_css'] . "\n";
+		echo get_theme_mod('responsive_inline_css') . "\n";
 		echo '</style>' . "\n";
 	}
 }
@@ -66,9 +67,10 @@ add_action( 'wp_head', 'responsive_inline_css', 110 );
 
 function responsive_inline_js_head() {
 	global $responsive_options;
-	if ( !empty( $responsive_options['responsive_inline_js_head'] ) ) {
+	$is_inline_js_hader = get_theme_mod('responsive_inline_js_head');
+	if ( !empty( $is_inline_js_hader ) ) {
 		echo '<!-- Custom Scripts -->' . "\n";
-		echo $responsive_options['responsive_inline_js_head'];
+		echo get_theme_mod('responsive_inline_js_head');
 		echo "\n";
 	}
 }
@@ -77,9 +79,10 @@ add_action( 'wp_head', 'responsive_inline_js_head' );
 
 function responsive_inline_js_footer() {
 	global $responsive_options;
-	if ( !empty( $responsive_options['responsive_inline_js_footer'] ) ) {
+	$is_inline_js_footer = get_theme_mod('responsive_inline_js_footer');
+	if ( !empty( $is_inline_js_footer ) ) {
 		echo '<!-- Custom Scripts -->' . "\n";
-		echo $responsive_options['responsive_inline_js_footer'];
+		echo get_theme_mod('responsive_inline_js_footer');
 		echo "\n";
 	}
 }

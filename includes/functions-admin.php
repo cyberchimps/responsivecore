@@ -174,7 +174,7 @@ function responsive_front_page_reading_notice() {
 	$responsive_options = responsive_get_options();
 	if ( 'options-reading' == $screen->id ) {
 		$html = '<div class="updated">';
-		if ( 1 == $responsive_options['front_page'] ) {
+		if ( 1 == get_theme_mod('front_page') ) {
 			$html .= '<p>' . sprintf( __( 'The Custom Front Page is enabled. You can disable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
 		} else {
 			$html .= '<p>' . sprintf( __( 'The Custom Front Page is disabled. You can enable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';

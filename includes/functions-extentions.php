@@ -12,8 +12,9 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function get_responsive_breadcrumb_lists() {
 	$responsive_options = get_option( 'responsive_theme_options' );
+
 	$yoast_options = get_option( 'wpseo_internallinks' );
-	if ( 1 == $responsive_options['breadcrumb'] ) {
+	if ( 1 == get_theme_mod('breadcrumb') ) {
 		return;
 	} elseif ( function_exists( 'bcn_display' ) ) {
 		echo '<span class="breadcrumb" typeof="v:Breadcrumb">';
@@ -336,9 +337,10 @@ function responsive_get_social_icons() {
 
 	$html = '<ul class="social-icons">';
 	foreach( $sites as $key => $value ) {
-		if ( !empty( $responsive_options[$key . '_uid'] ) ) {
-			$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="' . $responsive_options[$key . '_uid'] . '">' . '<img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '">' . '</a></li>';
-		}
+		$temp = get_theme_mod($key . '_uid');
+		 if ( !empty( $temp ) ) {
+			$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="' . get_theme_mod($key . '_uid') . '">' . '<img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '">' . '</a></li>';
+		 }
 	}
 	$html .= '</ul><!-- .social-icons -->';
 
