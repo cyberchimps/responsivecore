@@ -114,10 +114,10 @@ function responsive_get_layout() {
 		/* If custom page template is defined, use it first */
 		if ( 'default' != $page_template ) {
 			if ( in_array( $page_template, array( 'blog.php', 'blog-excerpt.php' ) ) ) {
-				$layout = $responsive_options['blog_posts_index_layout_default'];
+				$layout = get_theme_mod('blog_posts_index_layout_default');
 			}
 			else {
-				$layout = $responsive_options['static_page_layout_default'];
+				$layout = get_theme_mod('static_page_layout_default');
 			}
 		}
 		/* Else, if post custom meta is set, use it */
@@ -126,7 +126,7 @@ function responsive_get_layout() {
 		}
 		/* Else, use the default */
 		else {
-			$layout = $responsive_options['static_page_layout_default'];
+			$layout = get_theme_mod('static_page_layout_default');
 		}
 
 	}
@@ -139,13 +139,13 @@ function responsive_get_layout() {
 			}
 			/* Else, use the default */
 			else {
-				$layout = $responsive_options['single_post_layout_default'];
+				$layout = get_theme_mod('single_post_layout_default');
 			}
 
 		}
 		/* Posts index */
 		elseif ( is_home() || is_archive() || is_search() ) {
-			$layout = $responsive_options['blog_posts_index_layout_default'];
+			$layout = get_theme_mod('blog_posts_index_layout_default');
 		}
 		/* Fallback */
 		else {
