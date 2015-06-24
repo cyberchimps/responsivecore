@@ -283,7 +283,7 @@ function responsive_customize_register( $wp_customize ) {
 		'title'                 => __( 'CSS Styles', 'responsive' ),
 		'priority'              => 30
 	) );
-	$wp_customize->add_setting( 'responsive_theme_options[responsive_inline_css]' ,array( 'sanitize_callback' => 'responsive_sanitize_textarea', 'type' => 'option' ) );
+	$wp_customize->add_setting( 'responsive_theme_options[responsive_inline_css]' ,array( 'sanitize_callback' => 'wp_filter_nohtml_kses', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_responsive_inline_css', array(
 		'label'                 => __( 'Custom CSS Styles', 'responsive' ),
 		'section'               => 'css_styles',
@@ -299,7 +299,7 @@ function responsive_customize_register( $wp_customize ) {
 		'title'                 => __( 'Scripts', 'responsive' ),
 		'priority'              => 30
 	) );
-	$wp_customize->add_setting( 'responsive_theme_options[responsive_inline_js_head]',array( 'sanitize_callback' => 'responsive_sanitize_textarea', 'type' => 'option' ) );
+	$wp_customize->add_setting( 'responsive_theme_options[responsive_inline_js_head]',array( 'sanitize_callback' => 'wp_filter_nohtml_kses', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_responsive_inline_js_head', array(
 		'label'                 => __( 'Embeds to header.php', 'responsive' ),
 		'section'               => 'scripts',
@@ -307,7 +307,7 @@ function responsive_customize_register( $wp_customize ) {
 		'type'                  => 'textarea'
 	) );
 
-	$wp_customize->add_setting( 'responsive_theme_options[responsive_inline_js_footer]',array( 'sanitize_callback' => 'responsive_sanitize_textarea', 'type' => 'option' ));
+	$wp_customize->add_setting( 'responsive_theme_options[responsive_inline_js_footer]',array( 'sanitize_callback' => 'wp_filter_nohtml_kses', 'type' => 'option' ));
 	$wp_customize->add_control( 'res_responsive_inline_js_footer', array(
 		'label'                 => __( 'Embeds to footer.php', 'responsive' ),
 		'section'               => 'scripts',
