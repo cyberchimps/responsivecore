@@ -96,11 +96,6 @@ function responsive_install_plugins() {
 			'name'     => 'inSite for WP: Personalization Made Easy', // The plugin name
 			'slug'     => 'insite-for-wp-personalization-made-easy', // The plugin slug (typically the folder name)
 			'required' => false
-		),
-		array(
-			'name'     => 'SlideDeck 2', // The plugin name
-			'slug'     => 'slidedeck2', // The plugin slug (typically the folder name)
-			'required' => false
 		)
 	);
 
