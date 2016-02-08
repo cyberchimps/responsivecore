@@ -91,11 +91,6 @@ function responsive_install_plugins() {
 			'name'     => 'iFeature Slider', // The plugin name
 			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name)
 			'required' => false
-		),
-		array(
-			'name'     => 'inSite for WP: Personalization Made Easy', // The plugin name
-			'slug'     => 'insite-for-wp-personalization-made-easy', // The plugin slug (typically the folder name)
-			'required' => false
 		)
 	);
 
