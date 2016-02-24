@@ -375,3 +375,78 @@ if ( !function_exists( 'responsive_post_meta_data' ) ) {
 	}
 
 }
+
+
+/**
+ * Added the footer copyright setting to the theme customizer - starts
+ */
+function responsive_footer_customizer( $wp_customize ) {
+	$wp_customize->add_section(
+		'footer_section',
+		array(
+		    'title' => 'Footer Settings',
+		    'priority' => 35,
+		)
+	    );
+
+	  $wp_customize->add_setting(
+	    'copyright_textbox',
+	    array(
+		'default' => 'Default copyright text',
+	    )
+	  );
+
+	$wp_customize->add_setting(
+	    'poweredby_link',
+	    array(
+		'default' => '',
+	    )
+	  );	
+
+	$wp_customize->add_control(
+	    'copyright_textbox',
+	    array(
+		'label' => 'Copyright text',
+		'section' => 'footer_section',
+		'type' => 'text',
+	    )
+		 
+	);
+	$wp_customize->add_control(
+	    'poweredby_link',
+	    array(
+		'label' => 'Display Powered By WordPress Link',
+		'section' => 'footer_section',
+		'type' => 'checkbox',
+	    )
+		 
+	);
+}
+add_action( 'customize_register', 'responsive_footer_customizer' );
+
+function fetch_copyright(){
+	?>
+	<script>
+		jQuery(document).ready(function(){
+		var copyright_text = "<?php echo get_theme_mod('copyright_textbox'); ?>";
+		var cyberchimps_link = "<?php echo get_theme_mod('poweredby_link'); ?>";
+		var siteurl = "<?php echo site_url(); ?>"; 
+
+		jQuery(".copyright a").text("&nbsp;"+copyright_text);
+		jQuery(".copyright a").attr('href',siteurl);
+		if(cyberchimps_link == 1)
+		{
+			jQuery(".powered").css("display","block");
+		}
+		else{
+			jQuery(".powered").css("display","none");
+		}
+		});
+	</script>
+<?php
+}
+add_action('wp_head','fetch_copyright');
+
+/**
+ * Added the footer copyright setting to the theme customizer - ends
+ */
