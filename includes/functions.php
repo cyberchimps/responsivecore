@@ -432,7 +432,7 @@ function fetch_copyright(){
 		var cyberchimps_link = "<?php echo get_theme_mod('poweredby_link'); ?>";
 		var siteurl = "<?php echo site_url(); ?>"; 
 
-		jQuery(".copyright a").text("&nbsp;"+copyright_text);
+		jQuery(".copyright a").text(" "+copyright_text);
 		jQuery(".copyright a").attr('href',siteurl);
 		if(cyberchimps_link == 1)
 		{
