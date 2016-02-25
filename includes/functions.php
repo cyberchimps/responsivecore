@@ -384,7 +384,7 @@ function responsive_footer_customizer( $wp_customize ) {
 	$wp_customize->add_section(
 		'footer_section',
 		array(
-		    'title' => 'Footer Settings',
+		    'title' => __('Footer Settings','responsive'),
 		    'priority' => 35,
 		)
 	    );
@@ -392,7 +392,8 @@ function responsive_footer_customizer( $wp_customize ) {
 	  $wp_customize->add_setting(
 	    'copyright_textbox',
 	    array(
-		'default' => 'Default copyright text',
+		'default' => __('Default copyright text','responsive'),
+		'transport' => 'postMessage',
 	    )
 	  );
 
@@ -406,21 +407,22 @@ function responsive_footer_customizer( $wp_customize ) {
 	$wp_customize->add_control(
 	    'copyright_textbox',
 	    array(
-		'label' => 'Copyright text',
+		'label' => __('Copyright text','responsive'),
 		'section' => 'footer_section',
-		'type' => 'text',
+		 'type' => 'text',
 	    )
 		 
 	);
 	$wp_customize->add_control(
 	    'poweredby_link',
 	    array(
-		'label' => 'Display Powered By WordPress Link',
+		'label' => __('Display Powered By WordPress Link','responsive'),
 		'section' => 'footer_section',
 		'type' => 'checkbox',
 	    )
 		 
 	);
+	set_theme_mod( 'copyright_textbox', 'Default copyright text' );
 }
 add_action( 'customize_register', 'responsive_footer_customizer' );
 
