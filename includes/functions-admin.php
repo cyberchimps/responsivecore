@@ -39,8 +39,12 @@ function responsive_upgrade_bar() {
 					style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
 			</div>
 		</div>
+		
+	
 	</div>
-
+	<div class="updated">
+		<p><strong><?php _e('Pro version has slidedeck integrated and so you can create sliders using 13 dynamic sources','responsive'); ?></strong></p>
+	</div>
 <?php
 }
 
