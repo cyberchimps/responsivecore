@@ -392,6 +392,7 @@ function responsive_footer_customizer( $wp_customize ) {
 	  $wp_customize->add_setting(
 	    'copyright_textbox',
 	    array(
+		'sanitize_callback' => 'sanitize_text_field',
 		'default' => __('Default copyright text','responsive'),
 	    )
 	  );
@@ -399,6 +400,7 @@ function responsive_footer_customizer( $wp_customize ) {
 	$wp_customize->add_setting(
 	    'poweredby_link',
 	    array(
+		'sanitize_callback' => 'responsive_sanitize_checkbox',
 		'default' => '',
 	    )
 	  );	
