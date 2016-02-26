@@ -393,7 +393,6 @@ function responsive_footer_customizer( $wp_customize ) {
 	    'copyright_textbox',
 	    array(
 		'default' => __('Default copyright text','responsive'),
-		'transport' => 'postMessage',
 	    )
 	  );
 
@@ -422,7 +421,9 @@ function responsive_footer_customizer( $wp_customize ) {
 	    )
 		 
 	);
+	if( !get_option('copyright_textbox') ) {
 	set_theme_mod( 'copyright_textbox', 'Default copyright text' );
+	}
 }
 add_action( 'customize_register', 'responsive_footer_customizer' );
 
@@ -433,8 +434,13 @@ function fetch_copyright(){
 		var copyright_text = "<?php echo get_theme_mod('copyright_textbox'); ?>";
 		var cyberchimps_link = "<?php echo get_theme_mod('poweredby_link'); ?>";
 		var siteurl = "<?php echo site_url(); ?>"; 
-
-		jQuery(".copyright a").text(" "+copyright_text);
+		if(copyright_text == "")
+		{
+			jQuery(".copyright a").text(" "+"Default copyright text");
+		}
+		else{ 
+			jQuery(".copyright a").text(" "+copyright_text);
+		}
 		jQuery(".copyright a").attr('href',siteurl);
 		if(cyberchimps_link == 1)
 		{
