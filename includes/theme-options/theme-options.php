@@ -213,6 +213,24 @@ function responsive_theme_options_do_page() {
 				'id'          => 'blog_post_title_text',
 				'description' => '',
 				'placeholder' => __( 'Blog', 'responsive' )
+			),
+			array(
+				'title'       => __( 'Copyright Text', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'text',
+				'id'          => 'copyright_textbox',
+				'description' => '',
+				'placeholder' => __( 'Default Copyright Text', 'responsive' )
+			),
+			array(
+				'title'       => __( 'Display Powered By WordPress Link', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'checkbox',
+				'id'          => 'poweredby_link',
+				'description' => '',
+				'placeholder' => ''
 			)
 		),
 		'logo_upload' => array(
