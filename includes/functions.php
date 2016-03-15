@@ -380,61 +380,14 @@ if ( !function_exists( 'responsive_post_meta_data' ) ) {
 /**
  * Added the footer copyright setting to the theme customizer - starts
  */
-function responsive_footer_customizer( $wp_customize ) {
-	$wp_customize->add_section(
-		'footer_section',
-		array(
-		    'title' => __('Footer Settings','responsive'),
-		    'priority' => 35,
-		)
-	    );
-
-	  $wp_customize->add_setting(
-	    'copyright_textbox',
-	    array(
-		'sanitize_callback' => 'sanitize_text_field',
-		'default' => __('Default copyright text','responsive'),
-	    )
-	  );
-
-	$wp_customize->add_setting(
-	    'poweredby_link',
-	    array(
-		'sanitize_callback' => 'responsive_sanitize_checkbox',
-		'default' => '',
-	    )
-	  );	
-
-	$wp_customize->add_control(
-	    'copyright_textbox',
-	    array(
-		'label' => __('Copyright text','responsive'),
-		'section' => 'footer_section',
-		 'type' => 'text',
-	    )
-		 
-	);
-	$wp_customize->add_control(
-	    'poweredby_link',
-	    array(
-		'label' => __('Display Powered By WordPress Link','responsive'),
-		'section' => 'footer_section',
-		'type' => 'checkbox',
-	    )
-		 
-	);
-	if( !get_option('copyright_textbox') ) {
-	set_theme_mod( 'copyright_textbox', 'Default copyright text' );
-	}
-}
-add_action( 'customize_register', 'responsive_footer_customizer' );
 
 function fetch_copyright(){
+	global $responsive_options;
 	?>
 	<script>
 		jQuery(document).ready(function(){
-		var copyright_text = "<?php echo get_theme_mod('copyright_textbox'); ?>";
-		var cyberchimps_link = "<?php echo get_theme_mod('poweredby_link'); ?>";
+		var copyright_text = "<?php echo $responsive_options[copyright_textbox]; ?>";
+		var cyberchimps_link = "<?php echo $responsive_options[poweredby_link]; ?>";
 		var siteurl = "<?php echo site_url(); ?>"; 
 		if(copyright_text == "")
 		{
