@@ -391,12 +391,12 @@ function fetch_copyright(){
 		var siteurl = "<?php echo site_url(); ?>"; 
 		if(copyright_text == "")
 		{
-			jQuery(".copyright a").text(" "+"Default copyright text");
+			jQuery(".copyright #copyright_link").text(" "+"Default copyright text");
 		}
 		else{ 
-			jQuery(".copyright a").text(" "+copyright_text);
+			jQuery(".copyright #copyright_link").text(" "+copyright_text);
 		}
-		jQuery(".copyright a").attr('href',siteurl);
+		jQuery(".copyright #copyright_link").attr('href',siteurl);
 		if(cyberchimps_link == 1)
 		{
 			jQuery(".powered").css("display","block");
