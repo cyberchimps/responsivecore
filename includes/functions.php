@@ -386,8 +386,8 @@ function fetch_copyright(){
 	?>
 	<script>
 		jQuery(document).ready(function(){
-		var copyright_text = "<?php echo $responsive_options[copyright_textbox]; ?>";
-		var cyberchimps_link = "<?php echo $responsive_options[poweredby_link]; ?>";
+		var copyright_text = "<?php if (isset($responsive_options['copyright_textbox'])) { echo $responsive_options['copyright_textbox']; } ?>";
+		var cyberchimps_link = "<?php if (isset($responsive_options['poweredby_link'])) { echo $responsive_options['poweredby_link']; } ?>";
 		var siteurl = "<?php echo site_url(); ?>"; 
 		if(copyright_text == "")
 		{
