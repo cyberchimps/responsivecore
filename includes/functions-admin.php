@@ -43,7 +43,8 @@ function responsive_upgrade_bar() {
 	
 	</div>
 	<div class="updated">
-		<p><strong><?php _e('Pro version has slidedeck integrated and so you can create sliders using 13 dynamic sources','responsive'); ?></strong></p>
+		<p><strong><?php _e('<a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.
+Upgrade to <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> Today.','responsive'); ?></strong></p>
 	</div>
 <?php
 }
