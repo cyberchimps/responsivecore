@@ -115,7 +115,7 @@ Class Responsive_Options {
 		// If the width is not set to full then create normal grid size, otherwise create full width
 		$html = ( !isset( $options['width'] ) || $options['width'] != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
 
-		$html .= $this->$options['type']( $options );
+		$html .= $this->{$options['type']}( $options );
 
 		$html .= '</div>';
 
