@@ -176,7 +176,7 @@ function responsive_theme_options_do_page() {
 				'heading'     => '',
 				'type'        => 'checkbox',
 				'id'          => 'breadcrumb',
-				'description' => __( 'check to disable', 'responsive' ),
+				'description' => __( 'Check to disable', 'responsive' ),
 				'placeholder' => ''
 			),
 			array(
@@ -185,7 +185,7 @@ function responsive_theme_options_do_page() {
 				'heading'     => '',
 				'type'        => 'checkbox',
 				'id'          => 'cta_button',
-				'description' => __( 'check to disable', 'responsive' ),
+				'description' => __( 'Check to disable', 'responsive' ),
 				'placeholder' => ''
 			),
 			array(
@@ -194,7 +194,7 @@ function responsive_theme_options_do_page() {
 				'heading'     => '',
 				'type'        => 'checkbox',
 				'id'          => 'minified_css',
-				'description' => __( 'check to enable', 'responsive' ),
+				'description' => __( 'Check to enable', 'responsive' ),
 				'placeholder' => ''
 			),
 			array(
@@ -203,7 +203,7 @@ function responsive_theme_options_do_page() {
 				'heading'     => '',
 				'type'        => 'checkbox',
 				'id'          => 'blog_post_title_toggle',
-				'description' => __( 'check to enable', 'responsive' ),
+				'description' => __( 'Check to enable', 'responsive' ),
 			),
 			array(
 				'title'       => __( 'Title Text', 'responsive' ),
