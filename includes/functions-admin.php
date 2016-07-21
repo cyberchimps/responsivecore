@@ -12,12 +12,13 @@ function responsive_upgrade_bar() {
 	?>
 
 	<div class="upgrade-callout">
-		<p><img src="<?php echo get_template_directory_uri(); ?>/core/includes/theme-options/images/chimp.png" alt="CyberChimps"/>
-			<?php printf( __( 'Welcome to %1$s! Upgrade to %2$s today.', 'responsive' ),
-						  'Responsive',
+		<p class="responsivepro-offer"><img src="<?php echo get_template_directory_uri(); ?>/core/includes/theme-options/images/chimp.png" alt="CyberChimps"/>
+			<?php printf( __( 'Get %1$s off on %2$s using Coupon Code <span class="coupon-code">RESPONSIVE30</span>', 'responsive' ),
+						  '30%',
 						  ' <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> '
 			); ?>
 		</p>
+                <!-- <p class="responsivepro-offer">Get 30% off on Responsive Pro using Coupon Code RESPONSIVE30</p> -->
 
 		<div class="social-container">
 			<div class="social">
