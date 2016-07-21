@@ -83,6 +83,7 @@ function responsive_get_option_defaults() {
 		'foursquare_uid'                  => '',
 		'responsive_inline_css'           => '',
 		'responsive_inline_js_head'       => '',
+		'responsive_inline_js_footer' => '',
 		'responsive_inline_css_js_footer' => '',
 		'static_page_layout_default'      => 'default',
 		'single_post_layout_default'      => 'default',
