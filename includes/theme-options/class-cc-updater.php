@@ -19,7 +19,8 @@ if(!class_exists('CC_Updater')) :
 		
 		$strResponseMessage = '';
 		$username = $this->username;	$password = $this->password;
-		$current_theme_name = apply_filters( 'cyberchimps_current_theme_name', 'CyberChimps' );
+		$themeDetails = wp_get_theme();
+		$current_theme_name = $themeDetails->get('Name');
 		$api_values = array(
 				'cc_action_to_take' => 'check_cc_login_details',
 				'username'	   => $username,
