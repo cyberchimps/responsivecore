@@ -198,7 +198,7 @@ function responsive_customize_register( $wp_customize ) {
 
 	$wp_customize->add_setting( 'responsive_theme_options[youtube_uid]' , array( 'sanitize_callback' => 'esc_url_raw', 'type' => 'option' ));
 	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'res_youtube', array(
-		'label'             => __( 'Tumblr', 'responsive' ),
+		'label'             => __( 'YouTube', 'responsive' ),
 		'section'           => 'responsive_social_media',
 		'settings'          => 'responsive_theme_options[youtube_uid]'
 	) ) );
