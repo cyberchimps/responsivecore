@@ -273,7 +273,7 @@ function responsive_theme_options_do_page() {
 				'type'        => 'text',
 				'id'          => 'home_headline',
 				'description' => __( 'Enter your headline', 'responsive' ),
-				'placeholder' => __( 'Hello, World!', 'responsive' )
+				'placeholder' => __( 'HAPPINESS', 'responsive' )
 			),
 			array(
 				'title'       => __( 'Subheadline', 'responsive' ),
@@ -282,7 +282,7 @@ function responsive_theme_options_do_page() {
 				'type'        => 'text',
 				'id'          => 'home_subheadline',
 				'description' => __( 'Enter your subheadline', 'responsive' ),
-				'placeholder' => __( 'Your H2 subheadline here', 'responsive' )
+				'placeholder' => __( 'IS A WARM CUP', 'responsive' )
 			),
 			array(
 				'title'       => __( 'Content Area', 'responsive' ),
