@@ -547,7 +547,7 @@ function cyberchimps_account_page() {
 				
 				<div class="panel-heading"><h3 class="panel-title" style="line-height: 20px;"><?php echo "Enter CyberChimps Account Details";?></h3></div>				
 				<div class="panel panel-primary">
-<span class="ccinfo"><?php _e('To receive update notifications and to update automatically, please authenticate your access using your CyberChimps Login Credentials','iribbonpro') ?></span>
+<span class="ccinfo"><?php _e('To receive update notifications and to update automatically, please authenticate your access using your CyberChimps Login Credentials','responsive') ?></span>
 		
 					<span class="updateres"><?php if ($strResponseMessage != '' ) echo $strResponseMessage; ?></span>
 				      <div class="panel-body">
