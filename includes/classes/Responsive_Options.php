@@ -47,12 +47,30 @@ Class Responsive_Options {
 	 */
 	public function render_display() {
 		$html = '';
+		$i=1;
+		foreach( $this->sections as $section ) {			
+			$this->display_title( $section['id'], $section['title'],$i++);
+		}
+		$i=1;
+		echo '<ul>';
 		foreach( $this->sections as $section ) {
 			$sub = $this->options[$section['id']];
-			$this->container( $section['title'], $sub );
+			$this->display_data($section['id'],$sub,$i++);
 		}
+		echo '</ul>';		
 	}
-
+	
+	protected function display_title( $id, $title ,$i ) {
+	
+		$check ='';
+		if ($i == '1')
+			$check = 'checked=checked';
+		
+		echo '<input type="radio"' . $check . ' name="sky-tabs" id="sky-'. $id .'"  class="sky-tab-content-' . $i . '">';
+		echo '<label for="sky-' . $id . '"><span><span><i class="fa fa-bolt"></i>' . esc_html ($title) . ' </span></span></label>';
+		
+	}
+	
 	/**
 	 * Creates main sections title and container
 	 *
@@ -63,21 +81,21 @@ Class Responsive_Options {
 	 *
 	 * @return string
 	 */
-	protected function container( $title, $sub ) {
-
-		echo '<h3 class="rwd-toggle"><a href="#">' . esc_html( $title ) . '</a></h3>
-                <div class="rwd-container">
-                <div class="rwd-block">';
+	protected function display_data( $id, $sub, $i ) {
+	
+		echo '<li class="sky-tab-content-'. $i . '">			
+			  <div class="typography">';
+		//echo '<p>';
 		foreach( $sub as $opt ) {
 			echo $this->sub_heading( $this->parse_args( $opt ) );
 			echo $this->section( $this->parse_args( $opt ) );
 		}
-
 		echo $this->save();
-		echo '</div><!-- rwd-block --></div><!-- rwd-container -->';
-
+		//echo '</p>';
+		echo '</div>	 </li>';
+	
 	}
-
+	
 	/**
 	 * Creates the title section for each option input
 	 *
@@ -162,7 +180,7 @@ Class Responsive_Options {
 		$value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
 
 		$html = '<p>' . esc_html( $heading ) . '</p>
-                <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="' . esc_attr( $classes ) . '" cols="50" rows="30" name="' . esc_attr(
+                <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="' . esc_attr( $classes ) . '" cols="50" rows="10" name="' . esc_attr(
 				'responsive_theme_options[' . $id .
 				']'
 			) . '"
@@ -239,7 +257,7 @@ Class Responsive_Options {
                 <p class="submit">
 				' . get_submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ) .
 			get_submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false, $this->attributes ) . '
-                <a href="http://cyberchimps.com/store/responsivepro/" class="button upgrade">' . __( 'Upgrade', 'responsive' ) . '</a>
+                <!--<a href="http://cyberchimps.com/store/responsivepro/" class="button upgrade">' . __( 'Upgrade', 'responsive' ) . '</a>-->
                 </p>
                 </div>';
 
