@@ -31,8 +31,8 @@ require( get_template_directory() . '/core/includes/classes/Responsive_Options.p
 function responsive_admin_enqueue_scripts( $hook_suffix ) {
 	$template_directory_uri = get_template_directory_uri();
 	$suffix                 = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
-	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
+	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . '.css', false, '1.0' );
+	//wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
 	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
 	wp_enqueue_script( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs-ie8.js');
 	wp_enqueue_style('adminfontAwesome', $directory_uri . '/pro/lib/css/font-awesome.min.css');
@@ -513,7 +513,7 @@ function responsive_theme_options_do_page() {
 	}
 
 	?>
-	<form method="post" action="options.php">
+	<form id="form" method="post" action="">
 		<?php settings_fields( 'responsive_options' ); ?>
 		<?php global $responsive_options; ?>		
 		
