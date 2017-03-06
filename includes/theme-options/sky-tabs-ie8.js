@@ -14,8 +14,9 @@ jQuery(function()
 	});
 });
 jQuery(document).ready(function ($) {
-	jQuery('#form').submit( function (e) {		
-	    if (e.originalEvent.explicitOriginalTarget.id == "responsive_theme_options[submit]") {
+	jQuery('#form').submit( function (e) {	
+		var a = $(document.activeElement.id).selector;	
+	    if (a == "responsive_theme_options[submit]") {
 	        var b =  $(this).serialize();	       
 	        jQuery.post( 'options.php', b ).error( 
 	            function() {
