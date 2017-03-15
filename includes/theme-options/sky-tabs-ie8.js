@@ -14,7 +14,8 @@ jQuery(function()
 	});
 });
 jQuery(document).ready(function ($) {
-	jQuery('#form').submit( function (e) {	
+	jQuery('#form').submit( function (e) {
+		tinyMCE.triggerSave();	
 		var a = $(document.activeElement.id).selector;	
 	    if (a == "responsive_theme_options[submit]") {
 	        var b =  $(this).serialize();	       
