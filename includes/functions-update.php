@@ -113,4 +113,4 @@ function responsive_admin_update_notice(){
 		echo $html;
 	}
 }
-add_action( 'admin_notices', 'responsive_admin_update_notice' );
+//add_action( 'admin_notices', 'responsive_admin_update_notice' );  Commented as this is not required
