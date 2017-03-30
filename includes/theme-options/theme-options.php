@@ -35,7 +35,6 @@ function responsive_admin_enqueue_scripts( $hook_suffix ) {
 	//wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
 	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
 	wp_enqueue_script( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs-ie8.js');
-	wp_enqueue_style('adminfontAwesome', $directory_uri . '/pro/lib/css/font-awesome.min.css');
 	wp_enqueue_style('responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs.css');
 	wp_enqueue_script ('jquery');
 }
