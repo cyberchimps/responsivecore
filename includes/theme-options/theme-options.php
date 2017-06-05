@@ -315,6 +315,15 @@ function responsive_theme_options_do_page() {
 				'description' => __( 'Enter your call to action text', 'responsive' ),
 				'placeholder' => __( 'Call to Action', 'responsive' )
 			),
+                     array(
+				'title'       => __( 'Call to Action Button Style', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'checkbox',
+				'id'          => 'button_style_flat',
+				'description' => sprintf( __( 'Enable Flat Style Button', 'responsive' ) ),
+				'placeholder' => ''
+			),
 			array(
 				'title'       => __( 'Featured Content', 'responsive' ),
 				'subtitle'    => '<a class="help-links" href="' . esc_url( 'http://cyberchimps.com/guide/responsive/' ) . '" title="' . esc_attr__( 'See Docs', 'responsive' ) . '" target="_blank">' .
