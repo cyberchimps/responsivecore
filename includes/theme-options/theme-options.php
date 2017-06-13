@@ -33,7 +33,7 @@ function responsive_admin_enqueue_scripts( $hook_suffix ) {
 	$suffix                 = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . '.css', false, '1.0' );
 	//wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
-	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
+	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options.js', array( 'jquery' ), '1.0' );
 	wp_enqueue_script( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs-ie8.js');
 	wp_enqueue_style('responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs.css');
 	wp_enqueue_script ('jquery');
@@ -327,15 +327,25 @@ function responsive_theme_options_do_page() {
                                     )
                           ),
 			array(
-				'title'       => __( 'Featured Content', 'responsive' ),
-				'subtitle'    => '<a class="help-links" href="' . esc_url( 'http://cyberchimps.com/guide/responsive/' ) . '" title="' . esc_attr__( 'See Docs', 'responsive' ) . '" target="_blank">' .
+				'title'       => __( '<p class="featured_content_field">Featured Content</p>', 'responsive' ),
+				'subtitle'    => '<a class="featured_content_field help-links" href="' . esc_url( 'http://cyberchimps.com/guide/responsive/' ) . '" title="' . esc_attr__( 'See Docs', 'responsive' ) . '" target="_blank">' .
 				 __( 'See Docs', 'responsive' ) . '</a>',
 				'heading'     => '',
 				'type'        => 'editor',
 				'id'          => 'featured_content',
 				'description' => __( 'Paste your shortcode, video or image source', 'responsive' ),
-				'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
-			)
+				'placeholder' => "<img class='featured_content_field aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
+			),
+                    array(
+				'title'       => __( '<p class="home_banner_field">Upload Home Banner Image</p>', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'upload',
+				'id'          => 'banner_image',
+				'description' => __( 'maximum width and height 32px', 'responsive' ),
+				'placeholder' => '',
+				'button'      => __( 'Upload', 'responsive' )
+			),
 
 		),
 		'layouts' => array(

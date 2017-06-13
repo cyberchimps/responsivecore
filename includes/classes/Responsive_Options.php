@@ -202,10 +202,10 @@ Class Responsive_Options {
 	 * @return string
 	 */
 	protected function select( $args ) {
-
+                
 		extract( $args );
-
-		$html = '<select id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
+              
+		$html = '<select class='.$class.' id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
 		foreach( $options as $key => $value ) {
 			$html .= '<option' . selected( $this->responsive_options[$id], $key, false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
 		}
@@ -316,7 +316,7 @@ Class Responsive_Options {
 	protected function editor( $args ) {
 
 		extract( $args );
-
+               // error_log(print_r($args['id'],true));
 		$class[] = 'large-text';
 		$classes = implode( ' ', $class );
 
@@ -328,8 +328,16 @@ Class Responsive_Options {
 			'tinymce'       => array( 'plugins' => 'wordpress' ),
 			'editor_class'  => esc_attr( $classes )
 		);
+                if($args['id'] === 'home_content_area')
+                {
+                    $editor_class = 'res_home_content_area';
+                }
+                else if($args['id'] === 'featured_content')
+                {
+                    $editor_class = 'res_featured_content_area';
+                }
 
-		$html = '<div class="tinymce-editor">';
+		$html = '<div class="tinymce-editor '.$editor_class.'">';
 		ob_start();
 		$html .= wp_editor( $value, 'responsive_theme_options_' . $id . '_', $editor_settings );
 		$html .= ob_get_contents();

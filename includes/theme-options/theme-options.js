@@ -1,5 +1,6 @@
 // JavaScript Document
 jQuery(document).ready(function ($) {
+    
 
 	$(".rwd-container").hide();
 
@@ -17,3 +18,27 @@ jQuery(document).ready(function ($) {
 
 	}, 2000);
 });
+// Image Full width template
+jQuery(document).ready(function ($) {
+    $('.home_banner').hide();
+    $('.home_banner_field').hide();
+    $( ".responsive_layouts" ).change(function() {
+       
+    $current_layout = $(this).val();
+     
+     if($current_layout === 'full-width-image')
+     {
+         $('.res_featured_content_area').hide();
+         $('.featured_content_field').hide();
+         $('.home_banner').show();
+         $('.home_banner_field').show();
+     }
+     else
+     {
+          $('.res_featured_content_area').show();
+         $('.featured_content_field').show();
+         $('.home_banner').hide();
+         $('.home_banner_field').hide();
+     }
+     });
+ });
