@@ -204,8 +204,16 @@ Class Responsive_Options {
 	protected function select( $args ) {
                 
 		extract( $args );
+                if($args['id'] === 'featured_area_layout')
+                {
+                    $layout_class = 'responsive_layouts';
+                }
+                else
+                {
+                 $layout_class ='';   
+                }
               
-		$html = '<select class='.$class.' id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
+		$html = '<select class='.$layout_class.' id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
 		foreach( $options as $key => $value ) {
 			$html .= '<option' . selected( $this->responsive_options[$id], $key, false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
 		}
@@ -316,7 +324,7 @@ Class Responsive_Options {
 	protected function editor( $args ) {
 
 		extract( $args );
-               // error_log(print_r($args['id'],true));
+               
 		$class[] = 'large-text';
 		$classes = implode( ' ', $class );
 

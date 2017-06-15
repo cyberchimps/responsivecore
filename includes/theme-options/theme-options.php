@@ -33,7 +33,7 @@ function responsive_admin_enqueue_scripts( $hook_suffix ) {
 	$suffix                 = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . '.css', false, '1.0' );
 	//wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
-	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options.js', array( 'jquery' ), '1.0' );
+	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
 	wp_enqueue_script( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs-ie8.js');
 	wp_enqueue_style('responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs.css');
 	wp_enqueue_script ('jquery');
@@ -342,7 +342,6 @@ function responsive_theme_options_do_page() {
 				'heading'     => '',
 				'type'        => 'upload',
 				'id'          => 'banner_image',
-				'description' => __( 'maximum width and height 32px', 'responsive' ),
 				'placeholder' => '',
 				'button'      => __( 'Upload', 'responsive' )
 			),
