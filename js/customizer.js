@@ -41,4 +41,9 @@
 			$( '.call-to-action > a' ).text( to );
 		} );
 	} );
+        wp.customize( 'responsive_theme_options[banner_image]', function( value ) {
+        value.bind( function( to ) {
+            $( '#featured' ).css( 'background','url(' + to + ')' );
+        } );
+        } );
 } )( jQuery );

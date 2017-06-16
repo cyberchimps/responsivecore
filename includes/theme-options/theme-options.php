@@ -327,15 +327,24 @@ function responsive_theme_options_do_page() {
                                     )
                           ),
 			array(
-				'title'       => __( 'Featured Content', 'responsive' ),
-				'subtitle'    => '<a class="help-links" href="' . esc_url( 'http://cyberchimps.com/guide/responsive/' ) . '" title="' . esc_attr__( 'See Docs', 'responsive' ) . '" target="_blank">' .
+				'title'       => __( '<p class="featured_content_field">Featured Content</p>', 'responsive' ),
+				'subtitle'    => '<a class="featured_content_field help-links" href="' . esc_url( 'http://cyberchimps.com/guide/responsive/' ) . '" title="' . esc_attr__( 'See Docs', 'responsive' ) . '" target="_blank">' .
 				 __( 'See Docs', 'responsive' ) . '</a>',
 				'heading'     => '',
 				'type'        => 'editor',
 				'id'          => 'featured_content',
 				'description' => __( 'Paste your shortcode, video or image source', 'responsive' ),
-				'placeholder' => "<img class='aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
-			)
+				'placeholder' => "<img class='featured_content_field aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
+			),
+                    array(
+				'title'       => __( '<p class="home_banner_field">Upload Home Banner Image</p>', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'upload',
+				'id'          => 'banner_image',
+				'placeholder' => '',
+				'button'      => __( 'Upload', 'responsive' )
+			),
 
 		),
 		'layouts' => array(
