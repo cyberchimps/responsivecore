@@ -270,6 +270,24 @@ Class Responsive_Options {
                 </div>';
 
 	}
+	public static function responsive_pro_categorylist_validate( $input ) {
+		// An array of valid results
+		$args = array(
+				'type'         => 'post',
+				'orderby'      => 'name',
+				'order'        => 'ASC',
+				'hide_empty'   => 1,
+				'hierarchical' => 1,
+				'taxonomy'     => 'category'
+		);
+		$option_categories = array();
+		$category_lists = get_categories( $args );
+		$option_categories[''] = esc_html(__( 'Choose Category', 'responsive' ));
+		foreach( $category_lists as $category ){
+			$option_categories[$category->term_id] = $category->name;
+		}
+		return $option_categories;		
+	}
 
 	/**
 	 * Default layouts static function

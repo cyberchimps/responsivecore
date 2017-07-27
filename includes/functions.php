@@ -291,9 +291,13 @@ if ( !function_exists( 'responsive_js' ) ) {
 		$suffix                 = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 		$directory              = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? 'js-dev' : 'js';
 		$template_directory_uri = get_template_directory_uri();
-
+		$responsive_options = get_option( 'responsive_theme_options' );
 		// JS at the bottom for fast page loading.
 		// except for Modernizr which enables HTML5 elements & feature detects.
+		if ($responsive_options['front_page'] == 1 && isset( $responsive_options['testimonials']) && $responsive_options['testimonials'] == '1') {
+		wp_enqueue_style( 'if-style'    , get_template_directory_uri() .'/template-parts/css/if-slider.css' );
+		wp_enqueue_script( 'if-script'  , get_template_directory_uri().'/template-parts/js/if-slider.js'   , array( 'jquery' ), '1.0.0',false);
+		}
 		wp_enqueue_script( 'modernizr', $template_directory_uri . '/core/' . $directory . '/responsive-modernizr' . $suffix . '.js', array( 'jquery' ), '2.6.1', false );
 		wp_enqueue_script( 'responsive-scripts', $template_directory_uri . '/core/' . $directory . '/responsive-scripts' . $suffix . '.js', array( 'jquery' ), '1.2.6', true );
 		if ( !wp_script_is( 'tribe-placeholder' ) ) {

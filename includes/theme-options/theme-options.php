@@ -336,6 +336,7 @@ function responsive_theme_options_do_page() {
 				'description' => __( 'Paste your shortcode, video or image source', 'responsive' ),
 				'placeholder' => "<img class='featured_content_field aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
 			),
+			
                     array(
 				'title'       => __( '<p class="home_banner_field">Upload Home Banner Image</p>', 'responsive' ),
 				'subtitle'    => '',
@@ -345,6 +346,34 @@ function responsive_theme_options_do_page() {
 				'placeholder' => '',
 				'button'      => __( 'Upload', 'responsive' )
 			),
+			array(
+					'title'       => __( 'Enable Testimonial Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'testimonials',
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Testimonial Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'testimonial_title',
+					'description' => __( 'Enter your testimonial title', 'responsive' ),
+					'placeholder' => __( 'Testimonial', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Select Post for testimonial', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'testimonial_val',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::responsive_pro_categorylist_validate()
+			)
+
 
 		),
 		'layouts' => array(
