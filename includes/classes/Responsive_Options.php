@@ -270,7 +270,7 @@ Class Responsive_Options {
                 </div>';
 
 	}
-	public static function responsive_pro_categorylist_validate( $input ) {
+	public static function responsive_pro_categorylist_validate( ) {
 		// An array of valid results
 		$args = array(
 				'type'         => 'post',
