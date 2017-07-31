@@ -363,7 +363,7 @@ function responsive_theme_options_do_page() {
 					'placeholder' => __( 'Testimonial', 'responsive' )
 			),
 			array(
-					'title'       => __( 'Select Post for testimonial', 'responsive' ),
+					'title'       => __( 'Select Category for testimonial', 'responsive' ),
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'select',
@@ -391,7 +391,7 @@ function responsive_theme_options_do_page() {
 					'placeholder' => __( 'Team', 'responsive' )
 			),
 			array(
-					'title'       => __( 'Select Post for team', 'responsive' ),
+					'title'       => __( 'Select Category for team', 'responsive' ),
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'select',
