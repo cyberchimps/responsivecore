@@ -336,15 +336,14 @@ function responsive_theme_options_do_page() {
 				'description' => __( 'Paste your shortcode, video or image source', 'responsive' ),
 				'placeholder' => "<img class='featured_content_field aligncenter' src='" . get_template_directory_uri() . "'/core/images/featured-image.png' width='440' height='300' alt='' />"
 			),
-			
-                    array(
-				'title'       => __( '<p class="home_banner_field">Upload Home Banner Image</p>', 'responsive' ),
-				'subtitle'    => '',
-				'heading'     => '',
-				'type'        => 'upload',
-				'id'          => 'banner_image',
-				'placeholder' => '',
-				'button'      => __( 'Upload', 'responsive' )
+			array(
+					'title'       => __( '<p class="home_banner_field">Upload Home Banner Image</p>', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'upload',
+					'id'          => 'banner_image',
+					'placeholder' => '',
+					'button'      => __( 'Upload', 'responsive' )
 			),
 			array(
 					'title'       => __( 'Enable Testimonial Section', 'responsive' ),
@@ -372,8 +371,35 @@ function responsive_theme_options_do_page() {
 					'description' => '',
 					'placeholder' => '',
 					'options'     => Responsive_Options::responsive_pro_categorylist_validate()
-			)
-
+			),
+			array(
+					'title'       => __( 'Enable Team Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'team',
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Team Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'team_title',
+					'description' => __( 'Enter your team title', 'responsive' ),
+					'placeholder' => __( 'Team', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Select Post for team', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'team_val',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::responsive_pro_categorylist_validate()
+			),				
+                    
 
 		),
 		'layouts' => array(
