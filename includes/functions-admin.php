@@ -97,6 +97,11 @@ function responsive_install_plugins() {
 			'name'     => 'iFeature Slider', // The plugin name
 			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name)
 			'required' => false
+		),
+		array(
+				'name'     => 'WPForms Lite', // The plugin name
+				'slug'     => 'wpforms-lite', // The plugin slug (typically the folder name)
+				'required' => false
 		)
 	);
 
