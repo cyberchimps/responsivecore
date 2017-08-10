@@ -92,6 +92,15 @@ function responsive_get_sidebar_classes() {
  * Get current layout
  */
 function responsive_get_layout() {
+
+	/* WooCommerce Shop page */
+	if ( class_exists( 'WooCommerce' ) ) {
+		if( is_shop() )
+		{
+			return 'default';
+		}
+	}
+	
 	/* 404 pages */
 	if ( is_404() ) {
 		return 'default';
