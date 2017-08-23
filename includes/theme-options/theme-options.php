@@ -346,6 +346,43 @@ function responsive_theme_options_do_page() {
 					'button'      => __( 'Upload', 'responsive' )
 			),
 			array(
+					'title'       => __( 'Enable About Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'about',					
+					'placeholder' => ''
+			),				
+			array(
+					'title'       => __( 'About Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'about_title',					
+					'placeholder' => __( 'About Box Title', 'responsive' )
+			),
+			array(
+					'title'       => __( 'About Text', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'about_text',					
+			),
+			array(
+					'title'       => __( 'Call to Action (text) ', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'about_cta_text',					
+			),
+			array(
+					'title'       => __( 'Call to Action (Url)', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'about_cta_url',					
+			),
+			array(
 					'title'       => __( 'Enable Testimonial Section', 'responsive' ),
 					'subtitle'    => '',
 					'heading'     => '',
