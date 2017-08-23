@@ -322,7 +322,7 @@
 	body {
 	}
 
-	#featured p {
+	#featured p, .testimonial_main_text {
 		font-size: 12px;
 		line-height: 1.5em;
 	}

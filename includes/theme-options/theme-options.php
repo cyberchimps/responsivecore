@@ -246,7 +246,7 @@ function responsive_theme_options_do_page() {
 				'id'          => 'poweredby_link',
 				'description' => '',
 				'placeholder' => ''
-			)
+			)			
 		),
 		'logo_upload' => array(
 			array(
