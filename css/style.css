@@ -2852,23 +2852,18 @@ border-radius: 4px;
 padding-bottom: 40px;
 width: 99.893617021277%;
 }
-#about_div .about-title {	
-	padding-left: 80px;
-}
-#about_div .about-cta{
-	margin-top: 4em;	
-}
 #about_div .about_text {	
-	padding-left: 80px;
 	font-size: 18px;
+	text-align: center;
 font-weight: 200;
 line-height: 27px
 }
-.about-cta a {
+#about_div {text-align: center;}
+.about-content a {
 	font-size: 20px;
 	padding: 15px 15px;
 }
-#testimonial_div .section_title:after, #team_div .section_title:after{
+#testimonial_div .section_title:after, #team_div .section_title:after,#about_div .section_title:after{
 	border-bottom: solid 2px #555555;
 	width: 60px;
 	text-align: center;
@@ -2956,7 +2951,7 @@ vertical-align: top;
 {
 	font-size: 1.7em;
 }
-.contact_right p {margin:10px 10px;}
+.contact_right p {margin:10px 0px 10px 16%;}
 .contact_left span {font-size: 1.1em;
 padding-left: 12px;
 padding-bottom: 24px;
@@ -2965,19 +2960,21 @@ display: inline-block;
 }
 .contact_div {	
 	font-size: 14px;
-	padding: 20px;
+	box-sizing: border-box;
+	padding: 20px;	
 	-moz-border-radius: 4px;
 -webkit-border-radius: 4px;
 background-color: #ffffff;
 border: 1px solid #e5e5e5;
 border-radius: 4px;
-width: 96%;
+background: url('../../core/images/default-contact.jpg');
 background-size:cover;
 color: #ffffff;
 }
 .contact_subtitle {text-align: center;margin: 17px 0 17px 0;font-size: 18px}
 .contact_title { 
 	text-align: center;
+	line-height: 1em;
 	text-transform: uppercase;
 padding-left: 40px;
 padding-right: 40px;
@@ -2987,10 +2984,16 @@ font-size: 2.250em;
 font-weight: 700;
 }
 .contact_right label {font-weight: normal;}
+.contact_right .wpcf7{
+	width: 100%;
+}
 .contact_right textarea {
 height: 70px;
+padding: 12px 42px 0px 0px;
+color: #f2f2f2;
 background-color: transparent;
 border-radius: 0;
+width: 100%;
 box-shadow: none;
 border-width: 0;
 border-bottom-color: #cec9c4;
@@ -3007,34 +3010,46 @@ border-bottom-width: 3px;
 	border: 1px solid #115290;
 	color: #ffffff;	
 	line-height: 20px;
-	padding: 15px 35px;
+	padding: 10px 22px;
 	box-shadow:none;
 	font-weight:normal;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4f9eea, endColorstr=#1874cd)";
 	text-shadow: 0 -1px 0 #115290;
+	border-radius: 2px;
+	display: inline-block;
+	font-weight: 700;
+	margin: 0;
+	vertical-align: middle;
+	white-space: nowrap;
 }
 .contact_right .wpcf7-submit:hover {
 background-color: #7db7f0;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#7db7f0), to(#1874cd));
-	background-image: -webkit-linear-gradient(top, #7db7f0, #1874cd);
-	background-image: -moz-linear-gradient(top, #7db7f0, #1874cd);
-	background-image: -ms-linear-gradient(top, #7db7f0, #1874cd);
-	background-image: -o-linear-gradient(top, #7db7f0, #1874cd);
-	background-image: linear-gradient(to top, #7db7f0, #1874cd);
-	border: 1px solid #115290;
-	color: #ffffff;
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7db7f0, endColorstr=#1874cd)";
+background-image: -webkit-gradient(linear, left top, left bottom, from(#7db7f0), to(#1874cd));
+background-image: -webkit-linear-gradient(top, #7db7f0, #1874cd);
+background-image: -moz-linear-gradient(top, #7db7f0, #1874cd);
+background-image: -ms-linear-gradient(top, #7db7f0, #1874cd);
+background-image: -o-linear-gradient(top, #7db7f0, #1874cd);
+background-image: linear-gradient(to top, #7db7f0, #1874cd);
+border: 1px solid #115290;
+color: #ffffff;
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7db7f0, endColorstr=#1874cd)";
+border-radius: 2px;
+display: inline-block;
+font-weight: 700;
+margin: 0;
+vertical-align: middle;
+white-space: nowrap;
 }
 .contact_right form { margin-bottom: 0;}
 .contact_left {margin-top: 20px; }
 .contact_right select, input[type="text"], input[type="password"], input[type="email"] {
-	color: #f2f2f2;
-	width: 90%;
-	padding: 2px 2px 2px 0px;
-	background-color: transparent;
-	border-radius: 0;
-	box-shadow: none;
-	border-width: 0;
-	border-bottom-width: 3px;
-	border-bottom-color: #cec9c4;
-	}
+width: 100%;
+color: #f2f2f2;
+padding: 12px 2px 2px 0px;
+background-color: transparent;
+border-radius: 0;
+box-shadow: none;
+border-width: 0;
+border-bottom-width: 3px;
+border-bottom-color: #cec9c4;
+}

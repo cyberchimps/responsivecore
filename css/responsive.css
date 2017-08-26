@@ -5,7 +5,8 @@
 
 	body {
 	}
-
+	.contact_div .contact_right {margin-left: 0%;}
+	.contact_div .contact_left, .contact_div .contact_right {text-align: center;}
 	.grid,
 	.grid-right {
 		display: block;
@@ -322,7 +323,7 @@
 	body {
 	}
 
-	#featured p, .testimonial_main_text {
+	#featured p, .testimonial_main_text, #about_div .about_text {
 		font-size: 12px;
 		line-height: 1.5em;
 	}
@@ -335,7 +336,7 @@
 		font-size: 15px;
 	}
 
-	.call-to-action a.button {
+	.call-to-action a.button, .about-content a {
 		font-size: 14px;
 		padding: 7px 17px;
 	}
