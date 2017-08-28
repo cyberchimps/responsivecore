@@ -384,6 +384,34 @@ function responsive_theme_options_do_page() {
 					'id'          => 'about_cta_url',					
 			),
 			array(
+					'title'       => __( 'Enable Feature Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'feature',
+					'description' => __( 'The featured image, title and content from the posts will be used to display the client testimonials. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Feature Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'feature_title',
+					'description' => __( 'Enter your feature title', 'responsive' ),
+					'placeholder' => __( 'Features', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Select Category for feature', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'select',
+					'id'          => 'feature_val',
+					'description' => '',
+					'placeholder' => '',
+					'options'     => Responsive_Options::responsive_pro_categorylist_validate()
+			),
+			array(
 					'title'       => __( 'Enable Testimonial Section', 'responsive' ),
 					'subtitle'    => '',
 					'heading'     => '',
