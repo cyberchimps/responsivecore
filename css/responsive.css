@@ -6,6 +6,7 @@
 	body {
 	}
 	.contact_div .contact_right {margin-left: 0%;}
+	.contact_right p {margin: 0;}
 	.contact_div .contact_left, .contact_div .contact_right {text-align: center;}
 	.grid,
 	.grid-right {
