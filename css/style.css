@@ -2683,7 +2683,10 @@ table.cart td.actions .coupon .input-text {
 #footer-wrapper .grid.col-940 {
 	margin: 0;
 }
-
+#footer-wrapper .contact_div
+{
+	margin-bottom: 2.127659574468%!important;
+}
 .scroll-top {
 	text-align: center;
 }

@@ -389,7 +389,7 @@ function responsive_theme_options_do_page() {
 					'heading'     => '',
 					'type'        => 'checkbox',
 					'id'          => 'feature',
-					'description' => __( 'The featured image, title and content from the posts will be used to display the client testimonials. Recommended image size for the featured images: 164 x 164px', 'responsive' ),
+					'description' => __( 'The featured image, title and content from the posts will be used to display the features. Recommended image size for the featured images: 130 x 130px', 'responsive' ),
 					'placeholder' => ''
 			),
 			array(
