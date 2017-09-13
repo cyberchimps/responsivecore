@@ -1379,12 +1379,21 @@ ul.menu > li:hover {
 -------------------------------------------------------------- */
 .sub-header-menu {
 	background-color: #ffffff;
+	//border: 1px solid #e5e5e5;
+	//border-top: none;
+	//clear: both;
+	margin: 0 auto;
+}
+.sub-nav{
+	background-color: #ffffff;
 	border: 1px solid #e5e5e5;
 	border-top: none;
 	clear: both;
-	margin: 0 auto;
 }
-
+.sub-header-menu {display: block;
+	list-style-type: none;
+	padding: 0;
+	}
 .sub-header-menu,
 .sub-header-menu ul {
 	display: block;

@@ -56,6 +56,7 @@
 		display: block;
 	}
 	.footer-menu { padding-left: 20px;padding-right: 20px;  }	
+	.powered {text-align: left;padding-left: 20px;}
 .copyright {padding-left: 20px;}
 }
 
@@ -258,6 +259,7 @@
 		padding-bottom: 10px;
 		text-align: center;
 	}
+	.powered {text-align:center;}
 	.copyright {text-align: center;padding: 0;}
 }
 
