@@ -1382,7 +1382,11 @@ ul.menu > li:hover {
 	//border: 1px solid #e5e5e5;
 	//border-top: none;
 	//clear: both;
+	max-width: 960px;
 	margin: 0 auto;
+	display: block;
+	list-style-type: none;
+	padding: 0;
 }
 .sub-nav{
 	background-color: #ffffff;
@@ -1390,11 +1394,6 @@ ul.menu > li:hover {
 	border-top: none;
 	clear: both;
 }
-.sub-header-menu {display: block;
-	list-style-type: none;
-	padding: 0;
-	}
-.sub-header-menu,
 .sub-header-menu ul {
 	display: block;
 	list-style-type: none;
