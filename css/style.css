@@ -2854,6 +2854,13 @@ BDO[DIR="rtl"] {
 	background: url(../../images/testimonial_icon.png) no-repeat 4px 0px;   
     padding-right: 40px;    
 }
+.full-width-no-box .testimonial_main_text {
+    font-size: 18px;	
+    margin-top: 46px;
+	line-height: 27px;
+	background: url(../../images/testimonial_icon-other.png) no-repeat 4px 0px;   
+    padding-right: 40px;    
+} 
 #testimonial_div, #team_div, #about_div, #feature_div  
 {
 	-moz-border-radius: 4px;
