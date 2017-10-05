@@ -271,6 +271,22 @@ function responsive_theme_options_do_page() {
 				'placeholder' => ''
 			),
 			array(
+					'title'       => __( 'Enable Slider on Home Page', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'enable_slider',					
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Slidedeck shortcode', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'home_slider',
+					'description' => __( 'Create slider using Slidedeck', 'responsive' )					
+			),
+			array(
 				'title'       => __( 'Headline', 'responsive' ),
 				'subtitle'    => '',
 				'heading'     => '',
