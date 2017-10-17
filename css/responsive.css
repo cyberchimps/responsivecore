@@ -55,6 +55,11 @@
 	.show-980 {
 		display: block;
 	}
+	.full-width-no-box #testimonial_div .section_title {padding-top: 17px;}
+	#about_div .section_title::after {margin: 0 auto;top:40px;}
+	#about_div .section_title {text-align: center;}
+	#about_div .about-content {text-align: center;}
+	#about_div .about_cta {margin-top: 0;}
 	.footer-menu { padding-left: 20px;padding-right: 20px;  }	
 	.powered {text-align: left;padding-left: 20px;}
 .copyright {padding-left: 20px;}
@@ -94,7 +99,7 @@
 
 	.js .sub-header-menu {
 		display: none;
-	}
+	}		
 
 	.js .main-nav {
 		position: relative;
@@ -256,11 +261,19 @@
 	}
 
 	#footer .social-icons {
+		padding-top:10px;
 		padding-bottom: 10px;
 		text-align: center;
 	}
 	.powered {text-align:center;}
 	.copyright {text-align: center;padding: 0;}
+	#about_div .about_text {
+		padding: 0 20px 0 20px;
+	}
+	#about_div .about_cta {margin-top: 0;}
+	#about_div .section_title {
+		padding-left:20px; 
+	}	
 }
 
 @media screen and (max-width: 480px) {
