@@ -2176,9 +2176,9 @@ a.blue:hover {
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7db7f0, endColorstr=#1874cd)";
 	text-shadow: 0 -1px 0 #115290;
 }
-/* Begin: Flat button style  */
 a.blue.flat {
 	background-image: none;
+/* Begin: Flat button style  */
 	border: none;
         background-color: #1874cd;
 }
@@ -2200,8 +2200,8 @@ a.red {
 	background-image: -o-linear-gradient(top, #ff2323, #cd0000);
 	background-image: linear-gradient(to top, #ff2323, #cd0000);
 	border: 1px solid #890000;
-	color: #ffffff;
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff2323, endColorstr=#cd0000)";
+	color: #ffffff;
 	text-shadow: 0 -1px 0 #890000;
 }
 
@@ -2681,7 +2681,12 @@ table.cart td.actions .coupon .input-text {
 		float: none;
 	}
 }
-
+.default-layout .sticky-header .main-nav, .boxed-layout .sticky-header .main-nav{background-color:inherit; background-image: none;}
+.boxed-layout .sticky-header { 
+	width: 85%;
+	left: 7.5%;
+	margin: 0 auto!important; 
+}
 /* =Polylang
 -------------------------------------------------------------- */
 .widget_polylang li {
@@ -2765,6 +2770,7 @@ table.cart td.actions .coupon .input-text {
 	margin-right: 0;
 }
 .full-width-no-box #footer-wrapper .contact_div {margin-bottom: 0!important;}
+.full-width-no-box #footer-wrapper .social_div {margin-bottom: 0!important;}
 .full-width-no-box #footer .social-icons { text-align: center;}
 .full-width-no-box #footer_widget a {color: #ffffff;}
 .full-width-no-box #footer_widget a:hover {color:edeaea;} 
