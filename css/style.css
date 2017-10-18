@@ -2681,7 +2681,7 @@ table.cart td.actions .coupon .input-text {
 		float: none;
 	}
 }
-.default-layout .sticky-header .main-nav, .boxed-layout .sticky-header .main-nav{background-color:inherit; background-image: none;}
+.default-layout .sticky-header .main-nav{background-color:inherit; background-image: none;}
 .boxed-layout .sticky-header { 
 	width: 85%;
 	left: 7.5%;
@@ -3059,7 +3059,7 @@ line-height: 27px;
 	padding: 0 12px;
 }
 .blogtitle { margin-top:0;text-align: center;}
-.page-template-blog-3-col .read-more a{
+.page-template-blog-3-col .read-more a,.blog-3-col .read-more a{
 	background-color: #1874cd; /* Dodger Blue */
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#4f9eea), to(#1874cd));
 	background-image: -webkit-linear-gradient(top, #4f9eea, #1874cd);
