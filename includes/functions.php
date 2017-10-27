@@ -97,6 +97,7 @@ function responsive_get_option_defaults() {
 		'static_page_layout_default'      => 'default',
 		'single_post_layout_default'      => 'default',
 		'blog_posts_index_layout_default' => 'default',
+			'home-widgets'				=> false
 	);
 
 	return apply_filters( 'responsive_option_defaults', $defaults );
