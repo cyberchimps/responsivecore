@@ -146,7 +146,7 @@
 		text-align: left;
 		cursor: pointer;
 	}
-.js .main-nav .menu li .current_page_item a {color: #fff;}
+.js .main-nav .menu li.current_page_item a {color: #fff;}
 	.js .main-nav .menu li.current_page_item,
 	.js .menu .current_page_item a,
 	.js .menu .current-menu-item a {
