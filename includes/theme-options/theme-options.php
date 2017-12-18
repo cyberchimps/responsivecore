@@ -481,7 +481,21 @@ function responsive_theme_options_do_page() {
 					'description' => '',
 					'placeholder' => '',
 					'options'     => Responsive_Options::responsive_pro_categorylist_validate()
-			),				
+			),		
+			array(
+							'title'			=> __('Select team Layout', 'responsive'),
+							'subtitle'		=> '',
+							'heading'     	=> '',
+							'type'        	=> 'radio_grid',
+							'id'          	=> 'team_design',
+							'description' 	=> '',
+							'values'		=> array(
+									'team_design-1'	=> __('Default', 'responsive'),
+									'team_design-2' => __('2 Column Layout', 'responsive'),																		
+							),
+							'placeholder' 	=> ''
+					),
+			//),
 			array(
 					'title'       => __( 'Click to disable home page widgets', 'responsive' ),
 					'subtitle'    => '',
@@ -490,6 +504,75 @@ function responsive_theme_options_do_page() {
 					'id'          => 'home-widgets',					
 					'placeholder' => ''
 			),
+			array(
+					'title'       => __( 'Enable Contact Section', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'contact',
+					'description' => __( 'Check to enable', 'responsive' ),
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Upload Contact Section Background Image', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'upload',
+					'id'          => 'contact_bgimage',
+					'placeholder' => '',
+					'button'      => __( 'Upload', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Contact section Title', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_title',
+					'description' => '',
+					'placeholder' => __( 'Contact', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Contact section Subtitle', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_subtitle',
+					'description' => '',
+					'placeholder' => __( 'Contact subtitle', 'responsive' )
+			),
+			array(
+					'title'       => __( 'Address', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_add',
+					'description' => ''
+			),
+			array(
+					'title'       => __( 'Email', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_email',
+					'description' => ''
+			
+			),
+			array(
+					'title'       => __( 'Phone no', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_ph',
+					'description' => ''
+			),
+			array(
+					'title'       => __( 'Contact form shortcode Subtitle', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'text',
+					'id'          => 'contact_content',
+					'description' => ''
+			)
 
 		),
 		'layouts' => array(

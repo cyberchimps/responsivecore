@@ -242,7 +242,41 @@ Class Responsive_Options {
 
 		return $html;
 	}
-
+	protected function radio_grid( $args ){
+	
+		extract($args);
+	
+		$saved_value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : 'default-layout';
+	
+		$html = '<div class="responsive-layouts-wrapper">';
+	
+		if( !empty($values) ){
+	
+			foreach ($values as $radio_input => $key ) {
+	
+				if( $saved_value == $radio_input ){
+					$selected = 'selected-grid';
+					$checked = 'checked = checked';
+				}
+				else{
+					$selected = '';
+					$checked = '';
+				}
+	
+				$grid_layout_image = get_template_directory_uri().'/pro/lib/images/'. $radio_input .'.png';
+	
+				$html .= '<div class="radio-grids-option-wrapper">';
+				$html .= '<div class="radio-grid-description">' . $key . '</div>';
+				$html .= '<img class="'.$selected.'" src = "' . $grid_layout_image . '" onclick="document.getElementById(\'' . $radio_input . '\').checked=true;"/>';
+				$html .= '<input type="radio" id="' . $radio_input . '" name="responsive_theme_options[' . $id .']" class="radio-grids" ' . $checked . ' value="' . $radio_input .'" style="display: none;">';
+				$html .= '</div>';
+			}
+		}
+	
+		$html .= '</div>';
+	
+		return $html;
+	}
 	/**
 	 * Creates description only. No input
 	 */
