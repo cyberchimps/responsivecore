@@ -2946,6 +2946,8 @@ BDO[DIR="rtl"] {
 
 .section-team-2col .team_img img {
 	max-width: 100%;
+	border: 3px solid #585858;
+	border-radius: 100%;
 }
 .section-team-2col .team-info .team_member, .section-team-2col .team-info .team_designation { 
 	text-align: left;
@@ -2957,10 +2959,17 @@ BDO[DIR="rtl"] {
 
 }
 .section-team-2col .team-info .team_member { margin-top: 0px; }
+.section-team-2col .col-620 { width: 64%;}
 .section-team-2col .team-info .team_designation { margin-top: 6px;}
+.team_main_div .section-team-2col .social a:hover { color: #585858;}
 .team_main_div .section-team-2col { margin-top: 40px; }
 .section-team-2col .team_img { 
-	margin-top: 0px;position: relative;}
+	margin-top: 0px;
+	margin-left: 10px;
+	position: relative;
+	width: 144px;
+	height: 144px;
+}
 .team_main_div .section-team-2col .social { text-align: left; }
 .team_main_div .section-team-2col .social a {
 	color: #ababab;
@@ -2974,20 +2983,24 @@ BDO[DIR="rtl"] {
     cursor: pointer;
 }
 .section-team-2col .img_overlay{
-	background-color: #e14c3d;
+	//background-color: #e14c3d;
 	display: block;
-	height: 100%;
+	height: 149px;
 	opacity: 0;
 	border-radius: 50%;
     position: absolute;    
     visibility: hidden;
-    width: 100%;
+    width: 149px;
     -webkit-transition: all .8s;
     -o-transition: all .8s;
     -moz-transition: all .8s;
     transition: all .8s;
 }
-
+.section-team-2col .team_img:hover .img_overlay { 
+	background-color: #585858; 
+}
+//.default-layout .section-team-2col .team_img { margin-left: 20px; }
+.default-layout .section-team-2col .team-info { margin-left: 20px;}
 //.team_main_div .team_img img {border: 4px solid #ccc}
 .testimonial_main_div .testimonial_img img ,.team_main_div .team_img img,.feature_main_div .feature_img img{
     -webkit-border-radius: 100%;

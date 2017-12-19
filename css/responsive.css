@@ -62,7 +62,18 @@
 	#about_div .about_cta {margin-top: 0;}
 	.footer-menu { padding-left: 20px;padding-right: 20px;  }	
 	.powered {text-align: left;padding-left: 20px;}
-.copyright {padding-left: 20px;}
+	.section-team-2col .team-info .team_member, .section-team-2col .team-info .team_designation ,.team_main_div .section-team-2col .social { 
+		text-align: center;
+		margin-left: 0px; 
+	}
+	.section-team-2col .col-620 { width: 100%;}
+	
+	.section-team-2col .team_img {margin: 0 auto 15px auto;}
+	.section-team-2col .team-info .team_desc { 
+		text-align:center;
+		margin-left: 0px;
+	}	
+	.copyright {padding-left: 20px;}	
 }
 
 @media screen and (max-width: 650px) {
