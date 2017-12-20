@@ -158,6 +158,10 @@
 		cursor: pointer;
 	}
 .js .main-nav .menu li.current_page_item a {color: #fff;}
+.full-width-no-box .main-nav .menu li.current_page_item a{
+	color:#444444;
+}
+
 	.js .main-nav .menu li.current_page_item,
 	.js .menu .current_page_item a,
 	.js .menu .current-menu-item a {
@@ -178,7 +182,7 @@
 		position: relative;
 		padding: 0 10px 0 40px;
 	}
-
+	.full-width-no-box.js .main-nav .menu li a:hover {color:#444444;}
 	.js .main-nav .menu li a:hover
 	 {
 		background-image: none;

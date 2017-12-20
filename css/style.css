@@ -2939,7 +2939,7 @@ BDO[DIR="rtl"] {
 	margin-top: 40px;
 }
 .feature_main_div .feature_img img {  width: 130px;  height: 130px;border: 6px solid #ccc; }
-.testimonial_main_div .testimonial_img img,.section-team .team_img img {
+.testimonial_main_div .testimonial_img img {
   width: 178px;
   height: 178px;
   border: 4px solid #fff;
@@ -3004,6 +3004,13 @@ BDO[DIR="rtl"] {
 //.default-layout .section-team-2col .team_img { margin-left: 20px; }
 .default-layout .section-team-2col .team-info { margin-left: 20px;}
 //.team_main_div .team_img img {border: 4px solid #ccc}
+/*.team_main_div .team_img
+{
+	width: 144px;
+	height: 144px;
+	margin: 40px auto;
+margin-bottom: 20px;
+}*/
 .testimonial_main_div .testimonial_img img ,.team_main_div .team_img img,.feature_main_div .feature_img img{
     -webkit-border-radius: 100%;
        -moz-border-radius: 100%;
