@@ -1342,6 +1342,8 @@ ul.menu > li:hover {
 .menu .current_page_item a { 
 	color: #fff;
 }
+.full-width-no-box .menu .current_page_item .sub-menu a ,.full-width-no-box .menu .current_page_item .sub-menu a:hover, .full-width-no-box .menu .sub-menu .current_page_item a{ color: #444;}
+
 .front-page .menu .current_page_item a {
 	background: none;
 	background-color: transparent;
