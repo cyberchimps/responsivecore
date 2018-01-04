@@ -1311,7 +1311,7 @@ form div {
 	height: 45px;
 	line-height: 45px;
 	margin: 0;
-	padding: 0 0.9em;
+	padding: 0 20px;
 	position: relative;
 	text-decoration: none;
 	text-shadow: 0 -1px 0 #000000;
@@ -3145,6 +3145,7 @@ line-height: 27px;
 	-o-transition:all .3s;
 	transition:all .3s;
 }
+.team_main_div .social a:hover { background-color: #ccc;}
 .page-template-blog-3-col .post-data {
 	margin-top:0px; 
 }
@@ -3304,4 +3305,40 @@ box-shadow: none;
 border-width: 0;
 border-bottom-width: 3px;
 border-bottom-color: #cec9c4;
+}		
+.sub-menu .menu-item-has-children::after {
+	position: absolute;
+    font-family: FontAwesome;
+    content: "\f105";
+    top: 6px;
+    right: 7px;
+    color: #ffffff;
+}
+.menu-item-has-children::after {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "\f107";
+    top: 14px;
+    right: 5px;
+    color: #ffffff;
+    font-size: 15px;
+}
+.menu-item-has-children {
+	position: relative;
+}
+#footer .social-icons .rounded-icons i.fa-twitter:hover { background-color: #37bce9;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-facebook:hover { background-color: #556fa3;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-linkedin:hover { background-color: #00659c;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-youtube:hover { background-color: #cd201f;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-stumbleupon:hover { background-color: #eb4924;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-rss:hover { background-color: #f26522;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-google-plus-official:hover { background-color: #b43727;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-instagram:hover { background-color: #5851db;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-pinterest:hover { background-color: #cd2123;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-yelp:hover { background-color: #b81d1f;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-vimeo:hover { background-color: #1ab7ea;color:#fff;}
+#footer .social-icons .rounded-icons i.fa-foursquare:hover { background-color: #f94877;color:#fff;}
+#footer .social-icons img:hover { opacity: 0.8; }
+.description {
+	font-style: italic;
 }
