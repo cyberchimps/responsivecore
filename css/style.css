@@ -3145,7 +3145,7 @@ line-height: 27px;
 	-o-transition:all .3s;
 	transition:all .3s;
 }
-.team_main_div .social a:hover { background-color: #ccc;}
+.team_main_div .section-team .social a:hover { background-color: #ccc;}
 .page-template-blog-3-col .post-data {
 	margin-top:0px; 
 }
