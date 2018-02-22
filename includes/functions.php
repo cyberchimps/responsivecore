@@ -97,6 +97,7 @@ function responsive_get_option_defaults() {
 		'static_page_layout_default'      => 'default',
 		'single_post_layout_default'      => 'default',
 		'blog_posts_index_layout_default' => 'default',
+			'site_footer_option'            => 'footer-3-col',
 			'home-widgets'				=> false
 	);
 

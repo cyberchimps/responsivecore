@@ -2800,7 +2800,7 @@ table.cart td.actions .coupon .input-text {
 }
 
 #footer_widget .col-300:nth-child(3n+3) {
-	margin-right: 0;
+	//margin-right: 0;
 }
 .full-width-no-box #footer-wrapper .contact_div {margin-bottom: 0!important;}
 .full-width-no-box #footer-wrapper .social_div {margin-bottom: 0!important;}
