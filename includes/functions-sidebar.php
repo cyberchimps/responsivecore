@@ -170,7 +170,7 @@ function responsive_footer_widgets( $params ) {
 		}
 		else if($layout == 'footer-1-col')
 		{
-			$class                      = 'class="col-860 ';
+			$class                      = 'class="col-940 ';
 			$divider = 1;
 			$params[0]['before_widget'] = preg_replace('/class="/', $class, $params[0]['before_widget'],1 );
 		}
