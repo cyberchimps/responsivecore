@@ -3342,3 +3342,131 @@ border-bottom-color: #cec9c4;
 .description {
 	font-style: italic;
 }
+
+/*
+	Gutenberg css 
+ */
+
+ figure.wp-block-audio.aligncenter{
+ 	text-align: center;
+ }
+
+ figure.wp-block-audio.aligncenter audio{
+ 	width: 100%;
+ }
+
+ .wp-block-cover.aligncenter{
+	 clear: both;
+ }
+
+ div .wp-block-cover-text{
+  	position: absolute;
+     color: #fff;
+     font-size: 2em;
+     line-height: 1.25;
+     margin-bottom: 0;
+     max-width: 610px;
+     padding: 14px;
+     text-align: center;
+     z-index: 1;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+ 	width: 100%;
+
+ }
+
+ .wp-block-image {
+     margin-bottom: 20px;
+ }
+
+ .wp-block-gallery .blocks-gallery-item figcaption{
+	 padding: 40px 0 5px;
+ }
+ .has-black-background-color{
+	background-color: #000;
+ }
+ .has-black-color{
+	color: #000;
+ }
+ .has-blue-background-color{
+	background-color: #1874cd;
+ }
+ .has-blue-color{
+	color: #1874cd;
+ }
+ .has-darkblue-background-color{
+	background-color: #246694;
+ }
+ .has-darkblue-color{
+	color: #246694;
+ }
+ .has-green-background-color{
+	background-color: #41770b;
+ }
+ .has-green-color{
+	color: #41770b;
+ }
+ .has-magenta-background-color{
+	background-color: #b30b6a;
+ }
+ .has-magenta-color{
+	color: #b30b6a;
+ }
+ .has-muddy-background-color{
+	background-color: #B88557;
+ }
+ .has-muddy-color{
+	color: #B88557;
+ }
+ .has-orange-background-color{
+	background-color: #fe811a;
+ }
+ .has-orange-color{
+	color: #fe811a;
+ }
+ .has-pink-background-color{
+	background-color: #fe74a2;
+ }
+ .has-pink-color{
+	color: #fe74a2;
+ }
+ .has-purple-background-color{
+	background-color: #6819c9;
+ }
+ .has-purple-color{
+	color: #6819c9;
+ }
+ .has-red-background-color{
+	background-color: #8b001f;
+ }
+ .has-red-color{
+	color: #8b001f;
+ }
+ .has-rust-background-color{
+	background-color: #c6931a;
+ }
+ .has-rust-color{
+	color: #c6931a;
+ }
+ .has-scarlet-background-color{
+	background-color: #ed806d;
+ }
+ .has-scarlet-color{
+	color: #ed806d;
+ }
+ .has-teal-background-color{
+	background-color: #1ac6c4;
+ }
+ .has-teal-color{
+	color: #1ac6c4;
+ }
+ .has-yellow-background-color{
+	background-color: #c6c819;
+ }
+ .has-yellow-color{
+	color: #c6c819;
+ }
+/*
+	Gutenberg css -- END
+ */
