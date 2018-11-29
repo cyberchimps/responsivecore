@@ -12,7 +12,11 @@
 }
 
 .wp-block-paragraph.editor-rich-text__tinymce.mce-content-body,
+.wp-block-freeform.block-library-rich-text__tinymce.mce-content-body p,
 .editor-rich-text__tinymce.mce-content-body,
+.editor-styles-wrapper p,
+.edit-post-visual-editor p.wp-block-subhead,
+.wp-block-paragraph.editor-rich-text__tinymce,
 .editor-block-list__block,
 .editor-block-list__block p {
 	font-size: 1em ;
@@ -94,6 +98,17 @@ address{
     margin-top: .5em;
 }
 
+.wp-block-freeform.block-library-rich-text__tinymce h1::after,
+.wp-block-heading h1.editor-rich-text__tinymce::after 
+{
+	border-bottom: solid 2px #7c7b7b;
+    width: 100px;
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -9px;
+    right: 0;
+}
 .wp-block-freeform.block-library-rich-text__tinymce h2,
 .wp-block-heading h2.editor-rich-text__tinymce {
 	font-size: 2.250em;
@@ -268,6 +283,9 @@ table.wp-block-table td div.wp-block-table__cell-content{
 	margin: 5px 20px 20px 0;
 	padding: 11px 24px;
 }
+.wp-block-button .wp-block-button__link {
+	color: #fff;
+}
 
 /**
  * blockquote styles
@@ -351,6 +369,10 @@ blockquote cite{
 
 .wp-block-pullquote.alignleft blockquote>.editor-rich-text p, .wp-block-pullquote.alignright blockquote>.editor-rich-text p {
 	font-size: 20px;
+}
+
+.wp-block-pullquote.alignleft, .wp-block-pullquote.alignright {
+	margin: 5px 20px 20px 0;
 }
 
 /**
