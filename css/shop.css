@@ -374,8 +374,8 @@
 		padding: 10px;
 	}
 
-	.woocommerce .button {
-	    font-size: 1em !important;
+	.woocommerce-cart .woocommerce .button {
+	    padding: 1em !important;
 	}
 
 }
