@@ -1,25 +1,10 @@
 #custom_shop .woocommerce ul.products li.product, .woocommerce-page ul.products li.product
 {
 	border: 1px solid #cfcfcf;
-	width:48%;
 	padding:2%;
 	box-sizing: border-box;
-    margin: 0 0 2.992em;
 	margin-bottom:2em;
 	text-align: center;
-}
-
-.upsells ul.products li.product,
-.related ul.products li.product{
-	margin: 0 2.9% 2.992em 0;
-}
-
-
-@media only screen and (max-width: 450px) {
-	#custom_shop .woocommerce ul.products li.product, .woocommerce-page ul.products li.product
-	{
-		width:100%;
-	}
 }
 
 #custom_shop .woocommerce ul.products li.product .onsale, .woocommerce-page ul.products li.product .onsale
@@ -32,6 +17,25 @@
 	right: 13px;
     top: 2em;
     padding:7px;
+}
+
+@media only screen and (min-width: 769px) {
+	.woocommerce ul.products.columns-5 li.product, .woocommerce-page ul.products.columns-5 li.product,
+	.woocommerce ul.products.columns-6 li.product, .woocommerce-page ul.products.columns-6 li.product {
+		padding: 0.5%;
+	}
+
+	#custom_shop .woocommerce ul.products li.product .onsale, .woocommerce-page ul.products li.product .onsale {
+		right: 0;
+	    top: 1em;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	#custom_shop .woocommerce ul.products li.product, .woocommerce-page ul.products li.product
+	{
+		width:100%;
+	}
 }
 
 /* To align the title, price, and add to cart button. */
@@ -103,12 +107,6 @@
 	background-color: #3a6727;
 }
 
-.products > li:nth-of-type(2n+1), .products > div > div > li:nth-of-type(2n+1)
-{
-	clear:both;
-}
-
-
 .single-product .col-620
 {
 	width:100%;
@@ -149,13 +147,6 @@
 .single-product #content-woocommerce .product .price
 {
 	font-size:1.5em;
-}
-
-@media (min-width: 769px) {
-	#content-woocommerce .related ul.products li.product
-	{
-		width: 22.05%;
-	}
 }
 
 .single-product #content-woocommerce .product .related .price
@@ -236,7 +227,7 @@
 }
 
 .woocommerce .button {
-    font-size: 1.2em !important;
+    font-size: 1em !important;
 }
 
 .checkout-button.button.alt.wc-forward {
@@ -313,14 +304,6 @@
 
 
 /* related products */
-.single-product .related .products > li:nth-of-type(2n+1), .single-product .related .products > div > div > li:nth-of-type(2n+1)
-{
-	clear:none;
-}
-.single-product .related
-{
-	clear: both;
-}
 
 .woocommerce input {
     color: #777;
@@ -338,21 +321,10 @@
 	border-radius: 3px;
 }
 
-.upsells ul.products li.product
-{
-	width:22.05%;
-}
-
 .input-text.qty.text {
-    padding: 7.5px;
+    padding: 5px;
 }
 
-
-.woocommerce ul.products[class*=columns-] li.product:nth-child(2n),
-.woocommerce-page ul.products[class*=columns-] li.product:nth-child(2n) {
-    float: right;
-    clear: none!important;
-}
 
 @media ( max-width : 460px ) {
 	#content-woocommerce {
