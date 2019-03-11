@@ -54,7 +54,7 @@ function responsive_theme_options_init() {
 function responsive_theme_options_add_page() {
 	add_theme_page( __( 'Theme Options', 'responsive' ), __( 'Theme Options', 'responsive' ), 'edit_theme_options', 'theme_options', 'responsive_theme_options_do_page' );
 	$cyberchimps_login_page = add_theme_page( __( 'CyberChimps Account', 'responsive' ), __( 'CyberChimps Account', 'responsive' ), 'edit_theme_options', 'cyberchimps-account', 'cyberchimps_account_page' );
-	
+
 	add_action( "admin_print_styles-$cyberchimps_login_page", 'cyberchimps_load_styles_account' );
 }
 
@@ -63,8 +63,8 @@ function cyberchimps_load_styles_account() {
 	// Set template directory uri
 	$directory_uri = get_template_directory_uri();
 
-	wp_enqueue_style( 'options-css', $directory_uri . '/core/includes/theme-options/options.css' );	
-	
+	wp_enqueue_style( 'options-css', $directory_uri . '/core/includes/theme-options/options.css' );
+
 }
 
 function responsive_inline_css() {
@@ -246,7 +246,7 @@ function responsive_theme_options_do_page() {
 				'id'          => 'poweredby_link',
 				'description' => '',
 				'placeholder' => ''
-			)			
+			)
 		),
 		'logo_upload' => array(
 			array(
@@ -275,7 +275,7 @@ function responsive_theme_options_do_page() {
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'checkbox',
-					'id'          => 'enable_slider',					
+					'id'          => 'enable_slider',
 					'placeholder' => ''
 			),
 			array(
@@ -284,7 +284,7 @@ function responsive_theme_options_do_page() {
 					'heading'     => '',
 					'type'        => 'text',
 					'id'          => 'home_slider',
-					'description' => __( 'Create slider using Slidedeck', 'responsive' )					
+					'description' => __( 'Create slider using Slidedeck', 'responsive' )
 			),
 			array(
 				'title'       => __( 'Headline', 'responsive' ),
@@ -339,7 +339,7 @@ function responsive_theme_options_do_page() {
                                 'type'        => 'select',
                                 'options'     => array(
                                     'default'  => __( 'Gradient', 'responsive' ),
-			             'flat_style' => __( 'Flat', 'responsive' ) 
+			             'flat_style' => __( 'Flat', 'responsive' )
                                     )
                           ),
 			array(
@@ -366,15 +366,15 @@ function responsive_theme_options_do_page() {
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'checkbox',
-					'id'          => 'about',					
+					'id'          => 'about',
 					'placeholder' => ''
-			),				
+			),
 			array(
 					'title'       => __( 'About Title', 'responsive' ),
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'text',
-					'id'          => 'about_title',					
+					'id'          => 'about_title',
 					'placeholder' => __( 'About Box Title', 'responsive' )
 			),
 			array(
@@ -382,14 +382,14 @@ function responsive_theme_options_do_page() {
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'text',
-					'id'          => 'about_text',					
+					'id'          => 'about_text',
 			),
 			array(
 					'title'       => __( 'Call to Action (text) ', 'responsive' ),
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'text',
-					'id'          => 'about_cta_text',					
+					'id'          => 'about_cta_text',
 			),
 			array(
 					'title'       => __( 'Call to Action (Url)', 'responsive' ),
@@ -397,7 +397,7 @@ function responsive_theme_options_do_page() {
 					'heading'     => '',
 					'type'        => 'text',
 					'description' => __( 'Enter url as http://www.example.com', 'responsive' ),
-					'id'          => 'about_cta_url',					
+					'id'          => 'about_cta_url',
 			),
 			array(
 					'title'       => __( 'Enable Feature Section', 'responsive' ),
@@ -481,7 +481,7 @@ function responsive_theme_options_do_page() {
 					'description' => '',
 					'placeholder' => '',
 					'options'     => Responsive_Options::responsive_pro_categorylist_validate()
-			),		
+			),
 			array(
 							'title'			=> __('Select team Layout', 'responsive'),
 							'subtitle'		=> '',
@@ -491,7 +491,7 @@ function responsive_theme_options_do_page() {
 							'description' 	=> '',
 							'values'		=> array(
 									'team_design-1'	=> __('Default', 'responsive'),
-									'team_design-2' => __('2 Column Layout', 'responsive'),																		
+									'team_design-2' => __('2 Column Layout', 'responsive'),
 							),
 							'placeholder' 	=> ''
 					),
@@ -501,7 +501,7 @@ function responsive_theme_options_do_page() {
 					'subtitle'    => '',
 					'heading'     => '',
 					'type'        => 'checkbox',
-					'id'          => 'home-widgets',					
+					'id'          => 'home-widgets',
 					'placeholder' => ''
 			),
 			array(
@@ -555,7 +555,7 @@ function responsive_theme_options_do_page() {
 					'type'        => 'text',
 					'id'          => 'contact_email',
 					'description' => ''
-			
+
 			),
 			array(
 					'title'       => __( 'Phone no', 'responsive' ),
@@ -771,18 +771,18 @@ function responsive_theme_options_do_page() {
 	?>
 	<form id="form" method="post" action="">
 		<?php settings_fields( 'responsive_options' ); ?>
-		<?php global $responsive_options; ?>		
-		
+		<?php global $responsive_options; ?>
+
 		<div class="body">
-		
+
 			<!-- tabs -->
 			<div class="sky-tabs sky-tabs-pos-left sky-tabs-anim-flip sky-tabs-response-to-icons">
 			<?php
 			$display->render_display();
 			?>
 			</div>
-		</div>		
-		
+		</div>
+
 	</form>
 	</div><!-- wrap -->
 <?php
@@ -808,12 +808,12 @@ function cyberchimps_account_page() {
 			$cc_user_login_id = get_option("cc_account_user_details");
 		}
 	}
-	?>							
-				
-				<div class="panel-heading"><h3 class="panel-title" style="line-height: 20px;"><?php echo "Enter CyberChimps Account Details";?></h3></div>				
+	?>
+
+				<div class="panel-heading"><h3 class="panel-title" style="line-height: 20px;"><?php echo "Enter CyberChimps Account Details";?></h3></div>
 				<div class="panel panel-primary">
 <span class="ccinfo"><?php _e('To receive update notifications and to update automatically, please authenticate your access using your CyberChimps Login Credentials','responsive') ?></span>
-		
+
 					<span class="updateres"><?php if ($strResponseMessage != '' ) echo $strResponseMessage; ?></span>
 				      <div class="panel-body">
 						<form action="" id="formSettings" method="post">
@@ -823,12 +823,12 @@ function cyberchimps_account_page() {
 								  <label for="ccpwd">Password</label>
 								<input type="password" id="ccpwd" class="form-control" name="ccpwd" placeholder="Enter Password" data-placement="right" title="Please Enter Password" value="<?php echo $cc_user_login_id['password'];?>"/>
 						   </div>
-						   <input type="submit" id="ccSubmitBtn" name="ccSubmitBtn" class="button button-primary" value="Authenticate">						   
+						   <input type="submit" id="ccSubmitBtn" name="ccSubmitBtn" class="button button-primary" value="Authenticate">
 					   </form>
 					</div>
 				</div>
-			 	   
-	<?php 	 		
+
+	<?php
 		}
 /**
  * Sanitize and validate input. Accepts an array, return a sanitized array.
@@ -906,14 +906,14 @@ function cyberchimps_invalid_account_details() {
 
 	if ( 'not_found' === get_option('cc_account_status') ) {
 		printf( __(
-		'<div class="notice notice-error is-dismissible"><p><strong>CyberChimps - Invalid Account Details</strong>. Please re-enter <a href="%1$s" class="button">Re-Enter</a></p></div>'),
+		'<div class="notice notice-error is-dismissible"><p><strong>CyberChimps - Invalid Account Details</strong>. Please re-enter <a href="%1$s" class="button">Re-Enter</a></p></div>', 'responsive' ),
 		esc_url( admin_url( 'admin.php?page=cyberchimps-account' ) )
 		);
 	}
 
 	if ( '' === get_option('cc_account_user_details') ) {
 		printf( __(
-		'<div class="notice notice-info"><p><strong>Please enter CyberChimps Account Details in order to receive auto updates when available</strong>. <a href="%1$s" class="button">Click Here</a></p></div>'),
+		'<div class="notice notice-info"><p><strong>Please enter CyberChimps Account Details in order to receive auto updates when available</strong>. <a href="%1$s" class="button">Click Here</a></p></div>', 'responsive' ),
 		esc_url( admin_url( 'admin.php?page=cyberchimps-account' ) )
 		);
 	}
