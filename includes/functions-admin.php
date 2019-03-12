@@ -84,7 +84,7 @@ function responsive_theme_support() {
 
 add_action( 'responsive_theme_options', 'responsive_theme_support', 2 );
 
-function responsive_register_required_plugins() {
+function responsive_install_plugins() {
 	$plugins = array(
 
 		// This is an example of how to include a plugin pre-packaged with a theme
@@ -153,7 +153,7 @@ function responsive_register_required_plugins() {
 		tgmpa( $plugins, $config );
 
 }
-add_action( 'tgmpa_register', 'responsive_register_required_plugins' );
+add_action( 'tgmpa_register', 'responsive_install_plugins' );
 
 /*
  * Add notification to Reading Settings page to notify if Custom Front Page is enabled.
