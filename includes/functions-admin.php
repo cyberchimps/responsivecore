@@ -40,8 +40,8 @@ function responsive_upgrade_bar() {
 					style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
 			</div>
 		</div>
-		
-	
+
+
 	</div>
 	<div class="updated">
 		<p><strong><?php _e('<a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.
@@ -102,7 +102,12 @@ function responsive_install_plugins() {
 				'name'     => 'WPForms Lite', // The plugin name
 				'slug'     => 'wpforms-lite', // The plugin slug (typically the folder name)
 				'required' => false
-		)
+		),
+		array(
+				'name'     => 'SlideDeck', // The plugin name
+				'slug'     => 'slidedeck', // The plugin slug (typically the folder name)
+				'required' => false
+		),
 	);
 
 	// Change this to your theme text domain, used for internationalising strings
@@ -119,8 +124,7 @@ function responsive_install_plugins() {
 	$config = array(
 		'domain'           => $theme_text_domain, // Text domain - likely want to be the same as your theme.
 		'default_path'     => '', // Default absolute path to pre-packaged plugins
-		'parent_menu_slug' => 'themes.php', // Default parent menu slug
-		'parent_url_slug'  => 'themes.php', // Default parent URL slug
+		'parent_slug' => 'themes.php', // Default parent menu slug
 		'menu'             => 'install-responsive-addons', // Menu slug
 		'has_notices'      => true, // Show admin notices or not
 		'is_automatic'     => true, // Automatically activate plugins after installation or not
@@ -146,11 +150,7 @@ function responsive_install_plugins() {
 		)
 	);
 
-	global $pagenow;
-	// Add plugin notification only if the current user is admin and on theme.php
-	if ( current_user_can( 'manage_options' ) && 'themes.php' == $pagenow ) {
 		tgmpa( $plugins, $config );
-	}
 
 }
 add_action( 'tgmpa_register', 'responsive_install_plugins' );
