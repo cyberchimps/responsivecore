@@ -1,7 +1,7 @@
 <?php
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -13,12 +13,15 @@ function responsive_upgrade_bar() {
 
 	<div class="upgrade-callout">
 		<p class="responsivepro-offer"><img src="<?php echo get_template_directory_uri(); ?>/core/includes/theme-options/images/chimp.png" alt="CyberChimps"/>
-			<?php printf( __( 'Get %1$s off on %2$s using Coupon Code <span class="coupon-code">RESPONSIVE30</span>', 'responsive' ),
-						  '30%',
-						  ' <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> '
-			); ?>
+			<?php
+			printf(
+				__( 'Get %1$s off on %2$s using Coupon Code <span class="coupon-code">RESPONSIVE30</span>', 'responsive' ),
+				'30%',
+				' <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> '
+			);
+			?>
 		</p>
-                <!-- <p class="responsivepro-offer">Get 30% off on Responsive Pro using Coupon Code RESPONSIVE30</p> -->
+				<!-- <p class="responsivepro-offer">Get 30% off on Responsive Pro using Coupon Code RESPONSIVE30</p> -->
 
 		<div class="social-container">
 			<div class="social">
@@ -44,10 +47,17 @@ function responsive_upgrade_bar() {
 
 	</div>
 	<div class="updated">
-		<p><strong><?php _e('<a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.
-Upgrade to <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> Today.','responsive'); ?></strong></p>
+		<p><strong>
+		<?php
+		_e(
+			'<a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.
+Upgrade to <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> Today.',
+			'responsive'
+		);
+		?>
+					</strong></p>
 	</div>
-<?php
+	<?php
 }
 
 add_action( 'responsive_theme_options', 'responsive_upgrade_bar', 1 );
@@ -79,7 +89,7 @@ function responsive_theme_support() {
 		</div>
 	</div>
 
-<?php
+	<?php
 }
 
 add_action( 'responsive_theme_options', 'responsive_theme_support', 2 );
@@ -91,22 +101,22 @@ function responsive_install_plugins() {
 		array(
 			'name'     => 'Responsive Add Ons', // The plugin name
 			'slug'     => 'responsive-add-ons', // The plugin slug (typically the folder name)
-			'required' => false
+			'required' => false,
 		),
 		array(
 			'name'     => 'iFeature Slider', // The plugin name
 			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name)
-			'required' => false
+			'required' => false,
 		),
 		array(
-				'name'     => 'WPForms Lite', // The plugin name
-				'slug'     => 'wpforms-lite', // The plugin slug (typically the folder name)
-				'required' => false
+			'name'     => 'WPForms Lite', // The plugin name
+			'slug'     => 'wpforms-lite', // The plugin slug (typically the folder name)
+			'required' => false,
 		),
 		array(
-				'name'     => 'SlideDeck', // The plugin name
-				'slug'     => 'slidedeck', // The plugin slug (typically the folder name)
-				'required' => false
+			'name'     => 'SlideDeck', // The plugin name
+			'slug'     => 'slidedeck', // The plugin slug (typically the folder name)
+			'required' => false,
 		),
 	);
 
@@ -122,14 +132,14 @@ function responsive_install_plugins() {
 	 */
 
 	$config = array(
-		'domain'           => $theme_text_domain, // Text domain - likely want to be the same as your theme.
-		'default_path'     => '', // Default absolute path to pre-packaged plugins
-		'parent_slug' => 'themes.php', // Default parent menu slug
-		'menu'             => 'install-responsive-addons', // Menu slug
-		'has_notices'      => true, // Show admin notices or not
-		'is_automatic'     => true, // Automatically activate plugins after installation or not
-		'message'          => '', // Message to output right before the plugins table
-		'strings'          => array(
+		'domain'       => $theme_text_domain, // Text domain - likely want to be the same as your theme.
+		'default_path' => '', // Default absolute path to pre-packaged plugins
+		'parent_slug'  => 'themes.php', // Default parent menu slug
+		'menu'         => 'install-responsive-addons', // Menu slug
+		'has_notices'  => true, // Show admin notices or not
+		'is_automatic' => true, // Automatically activate plugins after installation or not
+		'message'      => '', // Message to output right before the plugins table
+		'strings'      => array(
 			'page_title'                      => __( 'Responsive Add Features', 'responsive' ),
 			'menu_title'                      => __( 'Activate Add Ons', 'responsive' ),
 			'installing'                      => __( 'Installing Plugin: %s', 'responsive' ), // %1$s = plugin name
@@ -146,8 +156,8 @@ function responsive_install_plugins() {
 			'activate_link'                   => _n_noop( 'Activate installed plugin', 'Activate installed plugins', 'responsive' ),
 			'return'                          => __( 'Return to Required Plugins Installer', 'responsive' ),
 			'plugin_activated'                => __( 'Plugin activated successfully.', 'responsive' ),
-			'complete'                        => __( 'All plugins installed and activated successfully. %s', 'responsive' ) // %1$s = dashboard link
-		)
+			'complete'                        => __( 'All plugins installed and activated successfully. %s', 'responsive' ), // %1$s = dashboard link
+		),
 	);
 
 		tgmpa( $plugins, $config );

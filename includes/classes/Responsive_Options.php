@@ -6,7 +6,6 @@
  *
  * Requires a sections array and an options array
  *
- *
  * @file           Responsive_Options.php
  * @package        Responsive
  * @author         CyberChimps
@@ -16,7 +15,7 @@
  * @since          available since Release 1.9.5
  */
 
-Class Responsive_Options {
+class Responsive_Options {
 
 	public $sections;
 
@@ -47,30 +46,31 @@ Class Responsive_Options {
 	 */
 	public function render_display() {
 		$html = '';
-		$i=1;
-		foreach( $this->sections as $section ) {			
-			$this->display_title( $section['id'], $section['title'],$i++);
+		$i    = 1;
+		foreach ( $this->sections as $section ) {
+			$this->display_title( $section['id'], $section['title'], $i++ );
 		}
-		$i=1;
+		$i = 1;
 		echo '<ul>';
-		foreach( $this->sections as $section ) {
-			$sub = $this->options[$section['id']];
-			$this->display_data($section['id'],$sub,$i++);
+		foreach ( $this->sections as $section ) {
+			$sub = $this->options[ $section['id'] ];
+			$this->display_data( $section['id'], $sub, $i++ );
 		}
-		echo '</ul>';		
+		echo '</ul>';
 	}
-	
-	protected function display_title( $id, $title ,$i ) {
-	
-		$check ='';
-		if ($i == '1')
+
+	protected function display_title( $id, $title, $i ) {
+
+		$check = '';
+		if ( $i == '1' ) {
 			$check = 'checked=checked';
-		
-		echo '<input type="radio"' . $check . ' name="sky-tabs" id="sky-'. $id .'"  class="sky-tab-content-' . $i . '">';
-		echo '<label for="sky-' . $id . '"><span><span><i class="fa fa-bolt"></i>' . esc_html ($title) . ' </span></span></label>';
-		
+		}
+
+		echo '<input type="radio"' . $check . ' name="sky-tabs" id="sky-' . $id . '"  class="sky-tab-content-' . $i . '">';
+		echo '<label for="sky-' . $id . '"><span><span><i class="fa fa-bolt"></i>' . esc_html( $title ) . ' </span></span></label>';
+
 	}
-	
+
 	/**
 	 * Creates main sections title and container
 	 *
@@ -82,20 +82,20 @@ Class Responsive_Options {
 	 * @return string
 	 */
 	protected function display_data( $id, $sub, $i ) {
-	
-		echo '<li class="sky-tab-content-'. $i . '">			
+
+		echo '<li class="sky-tab-content-' . $i . '">			
 			  <div class="typography">';
-		//echo '<p>';
-		foreach( $sub as $opt ) {
+		// echo '<p>';
+		foreach ( $sub as $opt ) {
 			echo $this->sub_heading( $this->parse_args( $opt ) );
 			echo $this->section( $this->parse_args( $opt ) );
 		}
 		echo $this->save();
-		//echo '</p>';
+		// echo '</p>';
 		echo '</div>	 </li>';
-	
+
 	}
-	
+
 	/**
 	 * Creates the title section for each option input
 	 *
@@ -107,7 +107,7 @@ Class Responsive_Options {
 	protected function sub_heading( $args ) {
 
 		// If width is not set or it's not set to full then go ahead and create default layout
-		if ( !isset( $args['width'] ) || $args['width'] != 'full' ) {
+		if ( ! isset( $args['width'] ) || $args['width'] != 'full' ) {
 			echo '<div class="grid col-300">';
 
 			echo $args['title'];
@@ -131,7 +131,7 @@ Class Responsive_Options {
 	protected function section( $options ) {
 
 		// If the width is not set to full then create normal grid size, otherwise create full width
-		$html = ( !isset( $options['width'] ) || $options['width'] != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
+		$html = ( ! isset( $options['width'] ) || $options['width'] != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
 
 		$html .= $this->{$options['type']}( $options );
 
@@ -152,7 +152,7 @@ Class Responsive_Options {
 
 		extract( $args );
 
-		$value = ( !empty( $this->responsive_options[$id] ) ) ? ( $this->responsive_options[$id] ) : '';
+		$value = ( ! empty( $this->responsive_options[ $id ] ) ) ? ( $this->responsive_options[ $id ] ) : '';
 
 		$html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="regular-text" type="text" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" value="'
 			. esc_html( $value ) . '"
@@ -177,13 +177,13 @@ Class Responsive_Options {
 		$class[] = 'large-text';
 		$classes = implode( ' ', $class );
 
-		$value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
+		$value = ( ! empty( $this->responsive_options[ $id ] ) ) ? $this->responsive_options[ $id ] : '';
 
 		$html = '<p>' . esc_html( $heading ) . '</p>
                 <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="' . esc_attr( $classes ) . '" cols="50" rows="10" name="' . esc_attr(
-				'responsive_theme_options[' . $id .
+			'responsive_theme_options[' . $id .
 				']'
-			) . '"
+		) . '"
                  placeholder="' . $placeholder . '">' .
 			esc_html( $value ) .
 			'</textarea>
@@ -202,20 +202,17 @@ Class Responsive_Options {
 	 * @return string
 	 */
 	protected function select( $args ) {
-                
+
 		extract( $args );
-                if($args['id'] === 'featured_area_layout')
-                {
-                    $layout_class = 'responsive_layouts';
-                }
-                else
-                {
-                 $layout_class ='';   
-                }
-              
-		$html = '<select class='.$layout_class.' id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
-		foreach( $options as $key => $value ) {
-			$html .= '<option' . selected( $this->responsive_options[$id], $key, false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
+		if ( $args['id'] === 'featured_area_layout' ) {
+			$layout_class = 'responsive_layouts';
+		} else {
+			$layout_class = '';
+		}
+
+		$html = '<select class=' . $layout_class . ' id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
+		foreach ( $options as $key => $value ) {
+			$html .= '<option' . selected( $this->responsive_options[ $id ], $key, false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
 		}
 		$html .= '</select>';
 
@@ -234,7 +231,7 @@ Class Responsive_Options {
 
 		extract( $args );
 
-		$checked = ( isset( $this->responsive_options[$id] ) ) ? checked( '1', esc_attr( $this->responsive_options[$id] ), false ) : checked( 0, 1 );
+		$checked = ( isset( $this->responsive_options[ $id ] ) ) ? checked( '1', esc_attr( $this->responsive_options[ $id ] ), false ) : checked( 0, 1 );
 
 		$html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" type="checkbox" value="1" ' . $checked . '
          />
@@ -242,39 +239,38 @@ Class Responsive_Options {
 
 		return $html;
 	}
-	protected function radio_grid( $args ){
-	
-		extract($args);
-	
-		$saved_value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : 'default-layout';
-	
+	protected function radio_grid( $args ) {
+
+		extract( $args );
+
+		$saved_value = ( ! empty( $this->responsive_options[ $id ] ) ) ? $this->responsive_options[ $id ] : 'default-layout';
+
 		$html = '<div class="responsive-layouts-wrapper">';
-	
-		if( !empty($values) ){
-	
-			foreach ($values as $radio_input => $key ) {
-	
-				if( $saved_value == $radio_input ){
+
+		if ( ! empty( $values ) ) {
+
+			foreach ( $values as $radio_input => $key ) {
+
+				if ( $saved_value == $radio_input ) {
 					$selected = 'selected-grid';
-					$checked = 'checked = checked';
-				}
-				else{
+					$checked  = 'checked = checked';
+				} else {
 					$selected = '';
-					$checked = '';
+					$checked  = '';
 				}
-	
-				$grid_layout_image = get_template_directory_uri().'/pro/lib/images/'. $radio_input .'.png';
-	
+
+				$grid_layout_image = get_template_directory_uri() . '/pro/lib/images/' . $radio_input . '.png';
+
 				$html .= '<div class="radio-grids-option-wrapper">';
 				$html .= '<div class="radio-grid-description">' . $key . '</div>';
-				$html .= '<img class="'.$selected.'" src = "' . $grid_layout_image . '" onclick="document.getElementById(\'' . $radio_input . '\').checked=true;"/>';
-				$html .= '<input type="radio" id="' . $radio_input . '" name="responsive_theme_options[' . $id .']" class="radio-grids" ' . $checked . ' value="' . $radio_input .'" style="display: none;">';
+				$html .= '<img class="' . $selected . '" src = "' . $grid_layout_image . '" onclick="document.getElementById(\'' . $radio_input . '\').checked=true;"/>';
+				$html .= '<input type="radio" id="' . $radio_input . '" name="responsive_theme_options[' . $id . ']" class="radio-grids" ' . $checked . ' value="' . $radio_input . '" style="display: none;">';
 				$html .= '</div>';
 			}
 		}
-	
+
 		$html .= '</div>';
-	
+
 		return $html;
 	}
 	/**
@@ -304,23 +300,23 @@ Class Responsive_Options {
                 </div>';
 
 	}
-	public static function responsive_pro_categorylist_validate( ) {
+	public static function responsive_pro_categorylist_validate() {
 		// An array of valid results
-		$args = array(
-				'type'         => 'post',
-				'orderby'      => 'name',
-				'order'        => 'ASC',
-				'hide_empty'   => 1,
-				'hierarchical' => 1,
-				'taxonomy'     => 'category'
+		$args                  = array(
+			'type'         => 'post',
+			'orderby'      => 'name',
+			'order'        => 'ASC',
+			'hide_empty'   => 1,
+			'hierarchical' => 1,
+			'taxonomy'     => 'category',
 		);
-		$option_categories = array();
-		$category_lists = get_categories( $args );
-		$option_categories[''] = esc_html(__( 'Choose Category', 'responsive' ));
-		foreach( $category_lists as $category ){
-			$option_categories[$category->term_id] = $category->name;
+		$option_categories     = array();
+		$category_lists        = get_categories( $args );
+		$option_categories[''] = esc_html( __( 'Choose Category', 'responsive' ) );
+		foreach ( $category_lists as $category ) {
+			$option_categories[ $category->term_id ] = $category->name;
 		}
-		return $option_categories;		
+		return $option_categories;
 	}
 
 	/**
@@ -335,7 +331,7 @@ Class Responsive_Options {
 			'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
 			'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
 			'sidebar-content-half-page' => __( 'Sidebar/Content Half Page', 'responsive' ),
-			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' )
+			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' ),
 		);
 
 		return apply_filters( 'responsive_valid_layouts', $layouts );
@@ -347,15 +343,15 @@ Class Responsive_Options {
 	 */
 	public static function blog_valid_layouts() {
 		$bloglayouts = array(
-				'default'                   => __( 'Default', 'responsive' ),
-				'content-sidebar-page'      => __( 'Content/Sidebar', 'responsive' ),
-				'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
-				'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
-				'sidebar-content-half-page' => __( 'Sidebar/Content Half Page', 'responsive' ),
-				'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' ),
-				'blog-3-col'      			=> __( 'Blog 3 Column', 'responsive' )
+			'default'                   => __( 'Default', 'responsive' ),
+			'content-sidebar-page'      => __( 'Content/Sidebar', 'responsive' ),
+			'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
+			'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
+			'sidebar-content-half-page' => __( 'Sidebar/Content Half Page', 'responsive' ),
+			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' ),
+			'blog-3-col'                => __( 'Blog 3 Column', 'responsive' ),
 		);
-	
+
 		return apply_filters( 'responsive_blog_valid_layouts', $bloglayouts );
 	}
 
@@ -376,7 +372,7 @@ Class Responsive_Options {
 			'class'       => array(),
 			'description' => '',
 			'placeholder' => '',
-			'options'     => array()
+			'options'     => array(),
 		);
 
 		$result = array_merge( $default_args, $args );
@@ -394,28 +390,25 @@ Class Responsive_Options {
 	protected function editor( $args ) {
 
 		extract( $args );
-               
+
 		$class[] = 'large-text';
 		$classes = implode( ' ', $class );
 
-		$value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : '';
+		$value = ( ! empty( $this->responsive_options[ $id ] ) ) ? $this->responsive_options[ $id ] : '';
 
 		$editor_settings = array(
 			'textarea_name' => 'responsive_theme_options[' . $id . ']',
 			'media_buttons' => true,
 			'tinymce'       => array( 'plugins' => 'wordpress' ),
-			'editor_class'  => esc_attr( $classes )
+			'editor_class'  => esc_attr( $classes ),
 		);
-                if($args['id'] === 'home_content_area')
-                {
-                    $editor_class = 'res_home_content_area';
-                }
-                else if($args['id'] === 'featured_content')
-                {
-                    $editor_class = 'res_featured_content_area';
-                }
+		if ( $args['id'] === 'home_content_area' ) {
+			$editor_class = 'res_home_content_area';
+		} elseif ( $args['id'] === 'featured_content' ) {
+			$editor_class = 'res_featured_content_area';
+		}
 
-		$html = '<div class="tinymce-editor '.$editor_class.'">';
+		$html = '<div class="tinymce-editor ' . $editor_class . '">';
 		ob_start();
 		$html .= wp_editor( $value, 'responsive_theme_options_' . $id . '_', $editor_settings );
 		$html .= ob_get_contents();
