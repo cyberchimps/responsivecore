@@ -1,6 +1,6 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -20,7 +20,7 @@ function get_responsive_breadcrumb_lists() {
 		echo '</span>';
 	} elseif ( function_exists( 'breadcrumb_trail' ) ) {
 		breadcrumb_trail();
-	} elseif ( function_exists( 'yoast_breadcrumb' ) && true === $yoast_options['breadcrumbs-enable'] ) {
+	} elseif ( function_exists( 'yoast_breadcrumb' ) && true == $yoast_options['breadcrumbs-enable'] ) {
 		yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' );
 	} elseif ( ! is_search() ) {
 		responsive_breadcrumb_lists();
@@ -38,7 +38,7 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 	function responsive_breadcrumb_lists() {
 
-		/* === OPTIONS === */
+		/* == OPTIONS == */
 		$text['home']     = __( 'Home', 'responsive' ); // text for the 'Home' link
 		$text['category'] = __( 'Archive for %s', 'responsive' ); // text for a category page
 		$text['search']   = __( 'Search results for: %s', 'responsive' ); // text for a search results page
@@ -52,7 +52,7 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 		$delimiter = ' <span class="chevron">&#8250;</span> '; // delimiter between crumbs
 		$before    = '<span class="breadcrumb-current">'; // tag before the current crumb
 		$after     = '</span>'; // tag after the current crumb
-		/* === END OF OPTIONS === */
+		/* == END OF OPTIONS == */
 
 		$home_link   = home_url( '/' );
 		$before_link = '<span class="breadcrumb" typeof="v:Breadcrumb">';
@@ -299,7 +299,8 @@ function responsive_add_image_size() {
 	add_image_size( 'responsive-900', 900, 9999 );
 }
 add_action( 'after_setup_theme', 'responsive_add_image_size' );
-/*
+
+/**
  * Get social icons.
  *
  * @since    1.9.4.9

@@ -1,6 +1,6 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -118,7 +118,7 @@ function responsive_theme_options_do_page() {
 	<?php echo '<h2>' . $theme_name . ' ' . __( 'Theme Options', 'responsive' ) . '</h2>'; ?>
 
 
-	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
+	<?php if ( false != $_REQUEST['settings-updated'] ) : ?>
 		<div class="updated fade"><p><strong><?php _e( 'Options Saved', 'responsive' ); ?></strong></p></div>
 	<?php endif; ?>
 
@@ -348,7 +348,7 @@ function responsive_theme_options_do_page() {
 				array(
 					'title'       => __( '<p class="featured_content_field">Featured Content</p>', 'responsive' ),
 					'subtitle'    => '<a class="featured_content_field help-links" href="' . esc_url( 'http://cyberchimps.com/guide/responsive/' ) . '" title="' . esc_attr__( 'See Docs', 'responsive' ) . '" target="_blank">' .
-					 __( 'See Docs', 'responsive' ) . '</a>',
+					__( 'See Docs', 'responsive' ) . '</a>',
 					'heading'     => '',
 					'type'        => 'editor',
 					'id'          => 'featured_content',
@@ -823,16 +823,16 @@ function cyberchimps_account_page() {
 						echo $strResponseMessage;}
 					?>
 						</span>
-					  <div class="panel-body">
+					<div class="panel-body">
 						<form action="" id="formSettings" method="post">
-							 <div class="form-group">
+							<div class="form-group">
 								<label for="ccuname">User Name</label>
 								<input type="text" id="ccuname" class="form-control" name="ccuname" placeholder="Enter Account User Name" data-placement="right" title="Please Enter User Name" value="<?php echo $cc_user_login_id['username']; ?>"/>
-								  <label for="ccpwd">Password</label>
+								<label for="ccpwd">Password</label>
 								<input type="password" id="ccpwd" class="form-control" name="ccpwd" placeholder="Enter Password" data-placement="right" title="Please Enter Password" value="<?php echo $cc_user_login_id['password']; ?>"/>
-						   </div>
-						   <input type="submit" id="ccSubmitBtn" name="ccSubmitBtn" class="button button-primary" value="Authenticate">
-					   </form>
+						</div>
+						<input type="submit" id="ccSubmitBtn" name="ccSubmitBtn" class="button button-primary" value="Authenticate">
+					</form>
 					</div>
 				</div>
 
@@ -911,7 +911,7 @@ add_action( 'admin_notices', 'cyberchimps_invalid_account_details' );
 // Function to display if inavalid account details
 function cyberchimps_invalid_account_details() {
 
-	if ( 'not_found' === get_option( 'cc_account_status' ) ) {
+	if ( 'not_found' == get_option( 'cc_account_status' ) ) {
 		printf(
 			__(
 				'<div class="notice notice-error is-dismissible"><p><strong>CyberChimps - Invalid Account Details</strong>. Please re-enter <a href="%1$s" class="button">Re-Enter</a></p></div>',
@@ -921,7 +921,7 @@ function cyberchimps_invalid_account_details() {
 		);
 	}
 
-	if ( '' === get_option( 'cc_account_user_details' ) ) {
+	if ( '' == get_option( 'cc_account_user_details' ) ) {
 		printf(
 			__(
 				'<div class="notice notice-info"><p><strong>Please enter CyberChimps Account Details in order to receive auto updates when available</strong>. <a href="%1$s" class="button">Click Here</a></p></div>',

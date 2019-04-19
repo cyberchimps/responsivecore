@@ -15,10 +15,14 @@
  * @link     http://www.cyberchimps.com/
  */
 
-// Add stylesheet and JS for upsell page.
+/**
+ * Add stylesheet and JS for upsell page.
+ *
+ * @return void [description]
+ */
 function cyberchimps_upsell_style() {
 
-	// Set template directory uri
+	// Set template directory uri.
 	$directory_uri = get_template_directory_uri();
 	$suffix        = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
@@ -194,7 +198,7 @@ function cyberchimps_get_themes( $request ) {
 	$key = 'cyberchimps_' . md5( serialize( $request ) );
 
 	// Check transient. If it's there - use that, if not re fetch the theme
-	if ( false === ( $themes = get_transient( $key ) ) ) {
+	if ( false == ( $themes = get_transient( $key ) ) ) {
 
 		// Transient expired/does not exist. Send request to the API.
 		$response = wp_remote_post( 'http://api.wordpress.org/themes/info/1.0/', $request );

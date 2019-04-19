@@ -84,7 +84,7 @@ class Responsive_Options {
 	protected function display_data( $id, $sub, $i ) {
 
 		echo '<li class="sky-tab-content-' . $i . '">			
-			  <div class="typography">';
+			<div class="typography">';
 		// echo '<p>';
 		foreach ( $sub as $opt ) {
 			echo $this->sub_heading( $this->parse_args( $opt ) );
@@ -204,7 +204,7 @@ class Responsive_Options {
 	protected function select( $args ) {
 
 		extract( $args );
-		if ( $args['id'] === 'featured_area_layout' ) {
+		if ( $args['id'] == 'featured_area_layout' ) {
 			$layout_class = 'responsive_layouts';
 		} else {
 			$layout_class = '';
@@ -402,9 +402,9 @@ class Responsive_Options {
 			'tinymce'       => array( 'plugins' => 'wordpress' ),
 			'editor_class'  => esc_attr( $classes ),
 		);
-		if ( $args['id'] === 'home_content_area' ) {
+		if ( $args['id'] == 'home_content_area' ) {
 			$editor_class = 'res_home_content_area';
-		} elseif ( $args['id'] === 'featured_content' ) {
+		} elseif ( $args['id'] == 'featured_content' ) {
 			$editor_class = 'res_featured_content_area';
 		}
 

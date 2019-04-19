@@ -41,21 +41,21 @@ add_theme_support(
 	array(
 
 		/**
-		 * As a Theme developer, use the 'all' parameter, to declare support for all
-		 * hook types.
-		 * Please make sure you then actually reference all the hooks in this file,
-		 * Plugin developers depend on it!
-		 */
+		* As a Theme developer, use the 'all' parameter, to declare support for all
+		* hook types.
+		* Please make sure you then actually reference all the hooks in this file,
+		* Plugin developers depend on it!
+		*/
 		'all',
 
 		/**
-		 * Themes can also choose to only support certain hook types.
-		 * Please make sure you then actually reference all the hooks in this type
-		 * family.
-		 *
-		 * When the 'all' parameter was set, specific hook types do not need to be
-		 * added explicitly.
-		 */
+		* Themes can also choose to only support certain hook types.
+		* Please make sure you then actually reference all the hooks in this type
+		* family.
+		*
+		* When the 'all' parameter was set, specific hook types do not need to be
+		* added explicitly.
+		*/
 		'head',
 		'header',
 		'content',
@@ -86,9 +86,9 @@ add_theme_support(
  *            add_action( 'tha_head_top', 'prefix_header_top' );
  * </code>
  *
- * @param bool  $bool true
- * @param array $args The hook type being checked
- * @param array $registered All registered hook types
+ * @param bool  $bool true.
+ * @param array $args The hook type being checked.
+ * @param array $registered All registered hook types.
  *
  * @return bool
  */
@@ -106,7 +106,11 @@ add_filter( 'current_theme_supports-tha_hooks', 'tha_current_theme_supports', 10
 function tha_head_top() {
 	do_action( 'tha_head_top' );
 }
-
+/**
+ * [tha_head_bottom description]
+ *
+ * @return void [description]
+ */
 function tha_head_bottom() {
 	do_action( 'tha_head_bottom' );
 }
@@ -119,15 +123,29 @@ function tha_head_bottom() {
 function tha_header_before() {
 	do_action( 'tha_header_before' );
 }
-
+/**
+ * [tha_header_after description]
+ *
+ * @return void [description]
+ */
 function tha_header_after() {
 	do_action( 'tha_header_after' );
 }
 
+/**
+ * [tha_header_top description]
+ *
+ * @return void [description]
+ */
 function tha_header_top() {
 	do_action( 'tha_header_top' );
 }
 
+/**
+ * [tha_header_bottom description]
+ *
+ * @return void [description]
+ */
 function tha_header_bottom() {
 	do_action( 'tha_header_bottom' );
 }
@@ -140,15 +158,27 @@ function tha_header_bottom() {
 function tha_content_before() {
 	do_action( 'tha_content_before' );
 }
-
+/**
+ * [tha_content_after description]
+ *
+ * @return void [description]
+ */
 function tha_content_after() {
 	do_action( 'tha_content_after' );
 }
-
+/**
+ * [tha_content_top description]
+ *
+ * @return void [description]
+ */
 function tha_content_top() {
 	do_action( 'tha_content_top' );
 }
-
+/**
+ * [tha_content_bottom description]
+ *
+ * @return void [description]
+ */
 function tha_content_bottom() {
 	do_action( 'tha_content_bottom' );
 }
@@ -161,15 +191,27 @@ function tha_content_bottom() {
 function tha_entry_before() {
 	do_action( 'tha_entry_before' );
 }
-
+/**
+ * [tha_entry_after description]
+ *
+ * @return void [description]
+ */
 function tha_entry_after() {
 	do_action( 'tha_entry_after' );
 }
-
+/**
+ * [tha_entry_top description]
+ *
+ * @return void [description]
+ */
 function tha_entry_top() {
 	do_action( 'tha_entry_top' );
 }
-
+/**
+ * [tha_entry_bottom description]
+ *
+ * @return void [description]
+ */
 function tha_entry_bottom() {
 	do_action( 'tha_entry_bottom' );
 }
@@ -183,6 +225,11 @@ function tha_comments_before() {
 	do_action( 'tha_comments_before' );
 }
 
+/**
+ * [tha_comments_after description]
+ *
+ * @return void [description]
+ */
 function tha_comments_after() {
 	do_action( 'tha_comments_after' );
 }
@@ -196,14 +243,29 @@ function tha_sidebars_before() {
 	do_action( 'tha_sidebars_before' );
 }
 
+/**
+ * [tha_sidebars_after description]
+ *
+ * @return void [description]
+ */
 function tha_sidebars_after() {
 	do_action( 'tha_sidebars_after' );
 }
 
+/**
+ * [tha_sidebar_top description]
+ *
+ * @return void [description]
+ */
 function tha_sidebar_top() {
 	do_action( 'tha_sidebar_top' );
 }
 
+/**
+ * [tha_sidebar_bottom description]
+ *
+ * @return void [description]
+ */
 function tha_sidebar_bottom() {
 	do_action( 'tha_sidebar_bottom' );
 }
@@ -217,14 +279,29 @@ function tha_footer_before() {
 	do_action( 'tha_footer_before' );
 }
 
+/**
+ * [tha_footer_after description]
+ *
+ * @return void [description]
+ */
 function tha_footer_after() {
 	do_action( 'tha_footer_after' );
 }
 
+/**
+ * [tha_footer_top description]
+ *
+ * @return void [description]
+ */
 function tha_footer_top() {
 	do_action( 'tha_footer_top' );
 }
 
+/**
+ * [tha_footer_bottom description]
+ *
+ * @return void [description]
+ */
 function tha_footer_bottom() {
 	do_action( 'tha_footer_bottom' );
 }

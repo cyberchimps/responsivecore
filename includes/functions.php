@@ -1,6 +1,6 @@
 <?php
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -119,20 +119,20 @@ if ( ! function_exists( 'responsive_setup' ) ) :
 		$template_directory = get_template_directory();
 
 		/**
-		 * Global content width.
-		 */
+		* Global content width.
+		*/
 		if ( ! isset( $content_width ) ) {
 			$content_width = 605;
 		}
 
 		/**
-		 * Responsive is now available for translations.
-		 * The translation files are in the /languages/ directory.
-		 * Translations are pulled from the WordPress default lanaguge folder
-		 * then from the child theme and then lastly from the parent theme.
-		 *
-		 * @see http://codex.wordpress.org/Function_Reference/load_theme_textdomain
-		 */
+		* Responsive is now available for translations.
+		* The translation files are in the /languages/ directory.
+		* Translations are pulled from the WordPress default lanaguge folder
+		* then from the child theme and then lastly from the parent theme.
+		*
+		* @see http://codex.wordpress.org/Function_Reference/load_theme_textdomain
+		*/
 
 		$domain = 'responsive';
 
@@ -141,38 +141,38 @@ if ( ! function_exists( 'responsive_setup' ) ) :
 		load_theme_textdomain( $domain, get_template_directory() . '/languages/' );
 
 		/**
-		 * Add callback for custom TinyMCE editor stylesheets. (editor-style.css)
-		 *
-		 * @see http://codex.wordpress.org/Function_Reference/add_editor_style
-		 */
+		* Add callback for custom TinyMCE editor stylesheets. (editor-style.css)
+		*
+		* @see http://codex.wordpress.org/Function_Reference/add_editor_style
+		*/
 		add_editor_style();
 
 		/**
-		 * This feature enables post and comment RSS feed links to head.
-		 *
-		 * @see http://codex.wordpress.org/Function_Reference/add_theme_support#Feed_Links
-		 */
+		* This feature enables post and comment RSS feed links to head.
+		*
+		* @see http://codex.wordpress.org/Function_Reference/add_theme_support#Feed_Links
+		*/
 		add_theme_support( 'automatic-feed-links' );
 
 		/**
-		 * This feature enables post-thumbnail support for a theme.
-		 *
-		 * @see http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
-		 */
+		* This feature enables post-thumbnail support for a theme.
+		*
+		* @see http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+		*/
 		add_theme_support( 'post-thumbnails' );
 
 		/**
-		 * This feature enables woocommerce support for a theme.
-		 *
-		 * @see http://www.woothemes.com/2013/02/last-call-for-testing-woocommerce-2-0-coming-march-4th/
-		 */
+		* This feature enables woocommerce support for a theme.
+		*
+		* @see http://www.woothemes.com/2013/02/last-call-for-testing-woocommerce-2-0-coming-march-4th/
+		*/
 		add_theme_support( 'woocommerce' );
 
 		/**
-		 * This feature enables custom-menus support for a theme.
-		 *
-		 * @see http://codex.wordpress.org/Function_Reference/register_nav_menus
-		 */
+		* This feature enables custom-menus support for a theme.
+		*
+		* @see http://codex.wordpress.org/Function_Reference/register_nav_menus
+		*/
 		register_nav_menus(
 			array(
 				'top-menu'        => __( 'Top Menu', 'responsive' ),
@@ -320,7 +320,7 @@ if ( ! function_exists( 'responsive_js' ) ) {
 		$template_directory_uri = get_template_directory_uri();
 		$responsive_options     = get_option( 'responsive_theme_options' );
 
-		if ( $responsive_options['front_page'] == 1 && isset( $responsive_options['testimonials'] ) && $responsive_options['testimonials'] == '1' ) {
+		if ( $responsive_options['front_page'] == 1 && isset( $responsive_options['testimonials'] ) && '1' == $responsive_options['testimonials'] ) {
 			wp_enqueue_style( 'if-style', get_template_directory_uri() . '/template-parts/css/if-slider.css' );
 			wp_enqueue_script( 'if-script', get_template_directory_uri() . '/template-parts/js/if-slider.js', array( 'jquery' ), '1.0.0', false );
 		}
@@ -419,7 +419,7 @@ add_action( 'wp_enqueue_scripts', 'responsive_enqueue_comment_reply' );
 function responsive_front_page_override( $new, $orig ) {
 	global $responsive_options;
 
-	if ( $orig !== $new ) {
+	if ( $orig != $new ) {
 		$responsive_options['front_page'] = 0;
 
 		update_option( 'responsive_theme_options', $responsive_options );

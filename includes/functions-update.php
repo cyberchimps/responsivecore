@@ -1,5 +1,5 @@
 <?php
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -56,7 +56,7 @@ function responsive_update_page_template_meta() {
 			$page_templates_dir = 'page-templates/';
 			$conatins           = strpos( $meta_value, $page_templates_dir );
 
-			if ( false !== $conatins ) {
+			if ( false != $conatins ) {
 				$meta_value = basename( $meta_value );
 				update_post_meta( get_the_ID(), '_wp_page_template', $meta_value );
 			}
