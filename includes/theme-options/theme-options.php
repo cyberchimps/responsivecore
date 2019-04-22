@@ -1,10 +1,4 @@
 <?php
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Theme Options
  *
@@ -19,22 +13,30 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since          available since Release 1.0
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Call the options class
  */
-require get_template_directory() . '/core/includes/classes/Responsive_Options.php';
+require get_template_directory() . '/core/includes/classes/class-responsive-options.php';
 
 /**
  * A safe way of adding JavaScripts to a WordPress generated page.
+ *
+ * @param  [type] $hook_suffix [description].
+ * @return void              [description]
  */
 function responsive_admin_enqueue_scripts( $hook_suffix ) {
 	$template_directory_uri = get_template_directory_uri();
 	$suffix                 = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . '.css', false, '1.0' );
-	// wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.css', false, '1.0' );
-	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0' );
-	wp_enqueue_script( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs-ie8.js' );
-	wp_enqueue_style( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs.css' );
+	wp_enqueue_style( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options.css', array(), '1.0' );
+	// wp_enqueue_style responsive-theme-options template_directory_uri core/includes/theme-options/theme-options suffix css false 1.0' .
+	wp_enqueue_script( 'responsive-theme-options', $template_directory_uri . '/core/includes/theme-options/theme-options' . $suffix . '.js', array( 'jquery' ), '1.0', false );
+	wp_enqueue_script( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs-ie8.js', array(), '1.0', false );
+	wp_enqueue_style( 'responsive-skytabs', $template_directory_uri . '/core/includes/theme-options/sky-tabs.css', false, '1.0' );
 	wp_enqueue_script( 'jquery' );
 }
 
@@ -57,15 +59,25 @@ function responsive_theme_options_add_page() {
 	add_action( "admin_print_styles-$cyberchimps_login_page", 'cyberchimps_load_styles_account' );
 }
 
+/**
+ * [cyberchimps_load_styles_account description]
+ *
+ * @return void [description]
+ */
 function cyberchimps_load_styles_account() {
 
-	// Set template directory uri
+	// Set template directory uri.
 	$directory_uri = get_template_directory_uri();
 
-	wp_enqueue_style( 'options-css', $directory_uri . '/core/includes/theme-options/options.css' );
+	wp_enqueue_style( 'options-css', $directory_uri . '/core/includes/theme-options/options.css', array(), '1.0' );
 
 }
 
+/**
+ * [responsive_inline_css description]
+ *
+ * @return void [description]
+ */
 function responsive_inline_css() {
 	global $responsive_options;
 	if ( ! empty( $responsive_options['responsive_inline_css'] ) ) {
@@ -78,6 +90,11 @@ function responsive_inline_css() {
 
 add_action( 'wp_head', 'responsive_inline_css', 110 );
 
+/**
+ * [responsive_inline_js_head description]
+ *
+ * @return void [description]
+ */
 function responsive_inline_js_head() {
 	global $responsive_options;
 	if ( ! empty( $responsive_options['responsive_inline_js_head'] ) ) {
@@ -89,6 +106,11 @@ function responsive_inline_js_head() {
 
 add_action( 'wp_head', 'responsive_inline_js_head' );
 
+/**
+ * [responsive_inline_js_footer description]
+ *
+ * @return void [description]
+ */
 function responsive_inline_js_footer() {
 	global $responsive_options;
 	if ( ! empty( $responsive_options['responsive_inline_js_footer'] ) ) {
@@ -115,14 +137,14 @@ function responsive_theme_options_do_page() {
 
 	<div class="wrap">
 	<?php $theme_name = wp_get_theme(); ?>
-	<?php echo '<h2>' . $theme_name . ' ' . __( 'Theme Options', 'responsive' ) . '</h2>'; ?>
+	<?php echo wp_kses_post( '<h2>' . $theme_name . ' ' . __( 'Theme Options', 'responsive' ) . '</h2>' ); ?>
 
 
 	<?php if ( false != $_REQUEST['settings-updated'] ) : ?>
-		<div class="updated fade"><p><strong><?php _e( 'Options Saved', 'responsive' ); ?></strong></p></div>
+		<div class="updated fade"><p><strong><?php esc_html_e( 'Options Saved', 'responsive' ); ?></strong></p></div>
 	<?php endif; ?>
 
-	<?php responsive_theme_options(); // Theme Options Hook ?>
+	<?php responsive_theme_options(); // Theme Options Hook. ?>
 
 	<?php
 
@@ -270,7 +292,7 @@ function responsive_theme_options_do_page() {
 					'heading'     => '',
 					'type'        => 'checkbox',
 					'id'          => 'front_page',
-					'description' => sprintf( __( 'Overrides the WordPress %1$1sfront page option%2$2s', 'responsive' ), '<a href="options-reading.php">', '</a>' ),
+					'description' => sprintf( wp_kses( 'Overrides the WordPress %1$1sfront page option%2$2s', 'responsive' ), '<a href="options-reading.php">', '</a>' ),
 					'placeholder' => '',
 				),
 				array(
@@ -791,22 +813,31 @@ function responsive_theme_options_do_page() {
 	<?php
 }
 
-// Function to display login page
+/**
+ * Function to display login page
+ *
+ * @return void [description].
+ */
 function cyberchimps_account_page() {
-	$strResponseMessage = '';
+	$str_response_message = '';
 	$cc_user_login_id   = get_option( 'cc_account_user_details' );
 
-	if ( isset( $_POST['ccSubmitBtn'] ) ) {
-		// Unset value if already set
+	if ( isset( $_POST['ccSubmitBtn'] ) && check_admin_referer( 'authenticate_cc_form', 'authenticate_username_pass' ) ) {
+		// Unset value if already set.
 		update_option( 'cc_account_user_details', '' );
 		update_option( 'cc_account_status', '' );
-		$username = $_POST['ccuname'];
-		$password = $_POST['ccpwd'];
+		if ( isset( $_POST['ccuname'] ) ) {
+			$username = sanitize_text_field( wp_unslash( $_POST['ccuname'] ) );
+		}
+
+		if ( isset( $_POST['ccpwd'] ) ) {
+			$password = sanitize_text_field( wp_unslash( $_POST['ccpwd'] ) );
+		}
 
 		require_once 'class-cc-updater.php';
 		if ( isset( $username ) && isset( $password ) ) {
 			$ccuser             = new CC_Updater( $username, $password );
-			$strResponseMessage = $ccuser->validate();
+			$str_response_message = $ccuser->validate();
 			set_transient( 'cc_validate_user_details', 'validate_user', WEEK_IN_SECONDS );
 			$cc_user_login_id = get_option( 'cc_account_user_details' );
 		}
@@ -815,31 +846,36 @@ function cyberchimps_account_page() {
 
 				<div class="panel-heading"><h3 class="panel-title" style="line-height: 20px;"><?php echo 'Enter CyberChimps Account Details'; ?></h3></div>
 				<div class="panel panel-primary">
-<span class="ccinfo"><?php _e( 'To receive update notifications and to update automatically, please authenticate your access using your CyberChimps Login Credentials', 'responsive' ); ?></span>
+					<span class="ccinfo"><?php esc_html_e( 'To receive update notifications and to update automatically, please authenticate your access using your CyberChimps Login Credentials', 'responsive' ); ?></span>
 
 					<span class="updateres">
 					<?php
-					if ( $strResponseMessage != '' ) {
-						echo $strResponseMessage;}
+					if ( '' != $str_response_message ) {
+						echo wp_kses_post( $str_response_message );}
 					?>
 						</span>
 					<div class="panel-body">
 						<form action="" id="formSettings" method="post">
 							<div class="form-group">
 								<label for="ccuname">User Name</label>
-								<input type="text" id="ccuname" class="form-control" name="ccuname" placeholder="Enter Account User Name" data-placement="right" title="Please Enter User Name" value="<?php echo $cc_user_login_id['username']; ?>"/>
+								<input type="text" id="ccuname" class="form-control" name="ccuname" placeholder="Enter Account User Name" data-placement="right" title="Please Enter User Name" value="<?php echo esc_html( $cc_user_login_id['username'] ); ?>"/>
 								<label for="ccpwd">Password</label>
-								<input type="password" id="ccpwd" class="form-control" name="ccpwd" placeholder="Enter Password" data-placement="right" title="Please Enter Password" value="<?php echo $cc_user_login_id['password']; ?>"/>
+								<input type="password" id="ccpwd" class="form-control" name="ccpwd" placeholder="Enter Password" data-placement="right" title="Please Enter Password" value="<?php echo esc_html( $cc_user_login_id['password'] ); ?>"/>
 						</div>
 						<input type="submit" id="ccSubmitBtn" name="ccSubmitBtn" class="button button-primary" value="Authenticate">
+						<?php wp_nonce_field( 'authenticate_cc_form', 'authenticate_username_pass' ); ?>
 					</form>
 					</div>
 				</div>
 
 	<?php
 }
+
 /**
  * Sanitize and validate input. Accepts an array, return a sanitized array.
+ *
+ * @param  [type] $input [description].
+ * @return [type]        [description]
  */
 function responsive_theme_options_validate( $input ) {
 
@@ -852,7 +888,7 @@ function responsive_theme_options_validate( $input ) {
 
 	} else {
 
-		// checkbox value is either 0 or 1
+		// checkbox value is either 0 or 1.
 		foreach ( array(
 			'breadcrumb',
 			'cta_button',
@@ -861,7 +897,7 @@ function responsive_theme_options_validate( $input ) {
 			if ( ! isset( $input[ $checkbox ] ) ) {
 				$input[ $checkbox ] = null;
 			}
-			$input[ $checkbox ] = ( $input[ $checkbox ] == 1 ? 1 : 0 );
+			$input[ $checkbox ] = ( 1 == $input[ $checkbox ] ? 1 : 0 );
 		}
 		foreach ( array(
 			'static_page_layout_default',
@@ -908,14 +944,51 @@ function responsive_theme_options_validate( $input ) {
 }
 
 add_action( 'admin_notices', 'cyberchimps_invalid_account_details' );
-// Function to display if inavalid account details
+/**
+ *  Function to display if inavalid account details
+ *
+ * @return void [description]
+ */
 function cyberchimps_invalid_account_details() {
+	$allowed_html = array(
+		'div'    => array(
+			'class' => array(),
+			'id'    => array(),
+		),
+
+		'p'      => array(
+			'class' => array(),
+			'id'    => array(),
+		),
+
+		'input'  => array(
+			'class' => array(),
+			'id'    => array(),
+			'name'  => array(),
+			'value' => array(),
+		),
+
+		'button' => array(
+			'class' => array(),
+			'id'    => array(),
+			'value' => array(),
+		),
+
+		'a'      => array(
+			'href'  => array(),
+			'title' => array(),
+		),
+
+		'br'     => array(),
+		'em'     => array(),
+		'strong' => array(),
+	);
 
 	if ( 'not_found' == get_option( 'cc_account_status' ) ) {
 		printf(
-			__(
+			wp_kses(
 				'<div class="notice notice-error is-dismissible"><p><strong>CyberChimps - Invalid Account Details</strong>. Please re-enter <a href="%1$s" class="button">Re-Enter</a></p></div>',
-				'responsive'
+				$allowed_html
 			),
 			esc_url( admin_url( 'admin.php?page=cyberchimps-account' ) )
 		);
@@ -923,9 +996,9 @@ function cyberchimps_invalid_account_details() {
 
 	if ( '' == get_option( 'cc_account_user_details' ) ) {
 		printf(
-			__(
+			wp_kses(
 				'<div class="notice notice-info"><p><strong>Please enter CyberChimps Account Details in order to receive auto updates when available</strong>. <a href="%1$s" class="button">Click Here</a></p></div>',
-				'responsive'
+				$allowed_html
 			),
 			esc_url( admin_url( 'admin.php?page=cyberchimps-account' ) )
 		);

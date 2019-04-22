@@ -10,7 +10,7 @@
  *
  * @link http://justintadlock.com/archives/2015/05/26/multiple-checkbox-customizer-control
  */
-class responsive_Customize_Control_Checkbox_Multiple extends WP_Customize_Control {
+class Responsive_Customize_Control_Checkbox_Multiple extends WP_Customize_Control {
 
 	/**
 	 * The type of customize control being rendered.
@@ -29,7 +29,7 @@ class responsive_Customize_Control_Checkbox_Multiple extends WP_Customize_Contro
 	 * @return void
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'responsive-customize-controls', trailingslashit( get_template_directory_uri() ) . 'core/includes/js/customize-controls.js', array( 'jquery' ) );
+		wp_enqueue_script( 'responsive-customize-controls', trailingslashit( get_template_directory_uri() ) . 'core/includes/js/customize-controls.js', array( 'jquery' ), '1.0', false );
 	}
 
 	/**
@@ -50,7 +50,7 @@ class responsive_Customize_Control_Checkbox_Multiple extends WP_Customize_Contro
 		<?php endif; ?>
 
 		<?php if ( ! empty( $this->description ) ) : ?>
-			<span class="description customize-control-description"><?php echo $this->description; ?></span>
+			<span class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
 		<?php endif; ?>
 
 		<?php $multi_values = ! is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
@@ -60,7 +60,7 @@ class responsive_Customize_Control_Checkbox_Multiple extends WP_Customize_Contro
 
 				<li>
 					<label>
-						<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
+						<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> />
 						<?php echo esc_html( $label ); ?>
 					</label>
 				</li>

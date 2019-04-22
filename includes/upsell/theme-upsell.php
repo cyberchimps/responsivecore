@@ -26,14 +26,16 @@ function cyberchimps_upsell_style() {
 	$directory_uri = get_template_directory_uri();
 	$suffix        = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	wp_enqueue_style( 'bootstrap', $directory_uri . '/core/includes/upsell/bootstrap/css/bootstrap' . $suffix . '.css' );
-	wp_enqueue_style( 'bootstrap-responsive', $directory_uri . '/core/includes/upsell/bootstrap/css/bootstrap-responsive' . $suffix . '.css', 'bootstrap' );
-	wp_enqueue_style( 'cyberchimps-responsive', $directory_uri . '/core/includes/upsell/bootstrap/css/cyberchimps-responsive' . $suffix . '.css', array( 'bootstrap', 'bootstrap-responsive' ) );
+	wp_enqueue_style( 'bootstrap', $directory_uri . '/core/includes/upsell/bootstrap/css/bootstrap' . $suffix . '.css', array(), '1.0' );
+	wp_enqueue_style( 'bootstrap-responsive', $directory_uri . '/core/includes/upsell/bootstrap/css/bootstrap-responsive' . $suffix . '.css', 'bootstrap', '1.0' );
+	wp_enqueue_style( 'cyberchimps-responsive', $directory_uri . '/core/includes/upsell/bootstrap/css/cyberchimps-responsive' . $suffix . '.css', array( 'bootstrap', 'bootstrap-responsive' ), '1.0' );
 
-	wp_enqueue_style( 'upsell_style', get_template_directory_uri() . '/core/includes/upsell/css/upsell' . $suffix . '.css' );
+	wp_enqueue_style( 'upsell_style', get_template_directory_uri() . '/core/includes/upsell/css/upsell' . $suffix . '.css', array(), '1.0' );
 }
 
-// Add upsell page to the menu.
+/**
+ * Add upsell page to the menu.
+ */
 function cyberchimps_add_upsell() {
 	$page = add_theme_page(
 		'More Themes',
@@ -48,10 +50,18 @@ function cyberchimps_add_upsell() {
 
 add_action( 'admin_menu', 'cyberchimps_add_upsell' );
 
-// Define markup for the upsell page.
+/**
+ * Define markup for the upsell page.
+ *
+ * @return void [description]
+ */
 function cyberchimps_display_upsell() {
 
-	// Set template directory uri
+	/**
+	 * Set template directory uri
+	 *
+	 * @var [type]
+	 */
 	$directory_uri = get_template_directory_uri();
 	?>
 	<div class="wrap">
@@ -61,11 +71,11 @@ function cyberchimps_display_upsell() {
 					<div id="upsell_header" class="span12">
 						<h2>
 							<a href="http://cyberchimps.com" target="_blank">
-								<img src="<?php echo $directory_uri; ?>/core/includes/upsell/images/upsell-logo.png"/>
+								<img src="<?php echo esc_url( $directory_uri ); ?>/core/includes/upsell/images/upsell-logo.png"/>
 							</a>
 						</h2>
 
-						<h3><?php _e( 'Themes You Can Trust', 'responsive' ); ?></h3>
+						<h3><?php esc_html_e( 'Themes You Can Trust', 'responsive' ); ?></h3>
 					</div>
 				</div>
 
@@ -92,17 +102,17 @@ function cyberchimps_display_upsell() {
 						if ( $active_theme == $theme->name ) {
 							?>
 
-							<div id="<?php echo $theme->slug; ?>" class="theme-container span4">
+							<div id="<?php echo esc_attr( $theme->slug ); ?>" class="theme-container span4">
 								<div class="image-container">
-									<img class="theme-screenshot" src="<?php echo $theme->screenshot_url; ?>"/>
+									<img class="theme-screenshot" src="<?php echo esc_url( $theme->screenshot_url ); ?>"/>
 
 									<div class="theme-description">
-										<p><?php echo $theme->description; ?></p>
+										<p><?php echo wp_kses_post( $theme->description ); ?></p>
 									</div>
 								</div>
 								<div class="theme-details active">
-									<span class="theme-name"><?php echo $theme->name; ?>: Current theme</span>
-									<a class="button button-secondary customize right" target="_blank" href="<?php echo get_site_url() . '/wp-admin/customize.php'; ?>">Customize</a>
+									<span class="theme-name"><?php echo esc_html( $theme->name ); ?><?php echo esc_html_e( ' : Current theme', 'responsive' ); ?></span>
+									<a class="button button-secondary customize right" target="_blank" href="<?php echo esc_url( get_site_url() ) . '/wp-admin/customize.php'; ?>">Customize</a>
 								</div>
 							</div>
 
@@ -132,26 +142,26 @@ function cyberchimps_display_upsell() {
 							$theme_details = cyberchimps_get_themes( $request );
 							?>
 
-							<div id="<?php echo $theme->slug; ?>" class="theme-container span4 <?php echo $counter % 3 == 1 ? 'no-left-megin' : ''; ?>">
+							<div id="<?php echo esc_attr( $theme->slug ); ?>" class="theme-container span4 <?php echo esc_attr( 1 == $counter % 3 ) ? 'no-left-megin' : ''; ?>">
 								<div class="image-container">
-									<img class="theme-screenshot" src="<?php echo $theme->screenshot_url; ?>"/>
+									<img class="theme-screenshot" src="<?php echo esc_url( $theme->screenshot_url ); ?>"/>
 
 									<div class="theme-description">
-										<p><?php echo $theme->description; ?></p>
+										<p><?php echo wp_kses_post( $theme->description ); ?></p>
 									</div>
 								</div>
 								<div class="theme-details">
-									<span class="theme-name"><?php echo $theme->name; ?></span>
+									<span class="theme-name"><?php echo esc_html( $theme->name ); ?></span>
 
 									<!-- Check if the theme is installed -->
 									<?php if ( wp_get_theme( $theme->slug )->exists() ) { ?>
 
 										<!-- Show the tick image notifying the theme is already installed. -->
-										<img data-toggle="tooltip" title="Already installed" data-placement="bottom" class="theme-exists" src="<?php echo $directory_uri; ?>/core/includes/upsell/images/tick.png"/>
+										<img data-toggle="tooltip" title="Already installed" data-placement="bottom" class="theme-exists" src="<?php echo esc_url( $directory_uri ); ?>/core/includes/upsell/images/tick.png"/>
 
 										<!-- Activate Button -->
 										<a  class="button button-primary activate right"
-											href="<?php echo wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=' . urlencode( $theme->slug ) ), 'switch-theme_' . $theme->slug ); ?>" >Activate</a>
+											href="<?php echo esc_url( wp_nonce_url( admin_url( 'themes.php?action=activate&amp;stylesheet=' . urlencode( $theme->slug ) ), 'switch-theme_' . $theme->slug ) ); ?>" >Activate</a>
 										<?php
 } else {
 
@@ -169,7 +179,7 @@ function cyberchimps_display_upsell() {
 <?php } ?>
 
 									<!-- Preview button -->
-									<a class="button button-secondary preview right" target="_blank" href="<?php echo $theme->preview_url; ?>">Live Preview</a>
+									<a class="button button-secondary preview right" target="_blank" href="<?php echo esc_url( $theme->preview_url ); ?>">Live Preview</a>
 								</div>
 							</div>
 							<?php
@@ -191,14 +201,20 @@ function cyberchimps_display_upsell() {
 	<?php
 }
 
-// Get all CyberChimps themes by using API.
+/**
+ * Get all CyberChimps themes by using API.
+ *
+ * @param  [type] $request [description].
+ * @return [type]          [description]
+ */
 function cyberchimps_get_themes( $request ) {
 
-	// Generate a cache key that would hold the response for this request:
+	// Generate a cache key that would hold the response for this request:.
 	$key = 'cyberchimps_' . md5( serialize( $request ) );
 
-	// Check transient. If it's there - use that, if not re fetch the theme
-	if ( false == ( $themes = get_transient( $key ) ) ) {
+	// Check transient. If it's there - use that, if not re fetch the theme.
+	$themes = get_transient( $key );
+	if ( false == $themes ) {
 
 		// Transient expired/does not exist. Send request to the API.
 		$response = wp_remote_post( 'http://api.wordpress.org/themes/info/1.0/', $request );
@@ -210,14 +226,14 @@ function cyberchimps_get_themes( $request ) {
 
 			if ( ! is_object( $themes ) && ! is_array( $themes ) ) {
 
-				// Response body does not contain an object/array
+				// Response body does not contain an object/array.
 				return new WP_Error( 'theme_api_error', 'An unexpected error has occurred' );
 			}
 
-			// Set transient for next time... keep it for 24 hours should be good
+			// Set transient for next time... keep it for 24 hours should be good.
 			set_transient( $key, $themes, 60 * 60 * 24 );
 		} else {
-			// Error object returned
+			// Error object returned.
 			return $response;
 		}
 	}

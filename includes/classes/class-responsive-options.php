@@ -6,7 +6,7 @@
  *
  * Requires a sections array and an options array
  *
- * @file           Responsive_Options.php
+ * @file           class-responsive-options.php
  * @package        Responsive
  * @author         CyberChimps
  * @copyright      CyberChimps
@@ -15,19 +15,35 @@
  * @since          available since Release 1.9.5
  */
 
+/**
+ * [Responsive_Options description]
+ */
 class Responsive_Options {
 
+	/**
+	 * [public description]
+	 *
+	 * @var [type]
+	 */
 	public $sections;
-
+	/**
+	 * [public description]
+	 *
+	 * @var [type]
+	 */
 	public $options;
-
+	/**
+	 * [public description]
+	 *
+	 * @var [type]
+	 */
 	public $responsive_options;
 
 	/**
 	 * Pulls in the arrays for the options and sets up the responsive options
 	 *
-	 * @param $sections array
-	 * @param $options array
+	 * @param [type] $sections [description].
+	 * @param [type] $options  [description].
 	 */
 	public function __construct( $sections, $options ) {
 		$this->sections           = $sections;
@@ -42,7 +58,7 @@ class Responsive_Options {
 	 *
 	 * Loops through sections array
 	 *
-	 * @return string
+	 * @return void description
 	 */
 	public function render_display() {
 		$html = '';
@@ -59,15 +75,23 @@ class Responsive_Options {
 		echo '</ul>';
 	}
 
+	/**
+	 * [display_title description]
+	 *
+	 * @param  [type] $id    [description].
+	 * @param  [type] $title [description].
+	 * @param  [type] $i     [description].
+	 * @return void        [description]
+	 */
 	protected function display_title( $id, $title, $i ) {
 
 		$check = '';
-		if ( $i == '1' ) {
+		if ( '1' == $i ) {
 			$check = 'checked=checked';
 		}
 
-		echo '<input type="radio"' . $check . ' name="sky-tabs" id="sky-' . $id . '"  class="sky-tab-content-' . $i . '">';
-		echo '<label for="sky-' . $id . '"><span><span><i class="fa fa-bolt"></i>' . esc_html( $title ) . ' </span></span></label>';
+		echo wp_kses_post( '<input type="radio"' . $check . ' name="sky-tabs" id="sky-' . $id . '"  class="sky-tab-content-' . $i . '">' );
+		echo wp_kses_post( '<label for="sky-' . $id . '"><span><span><i class="fa fa-bolt"></i>' . esc_html( $title ) . ' </span></span></label>' );
 
 	}
 
@@ -76,22 +100,20 @@ class Responsive_Options {
 	 *
 	 * Loops through the options array
 	 *
-	 * @param $title string
-	 * @param $sub array
-	 *
-	 * @return string
+	 * @param  [type] $id  [description].
+	 * @param  [type] $sub [description].
+	 * @param  [type] $i   [description].
+	 * @return void      [description]
 	 */
 	protected function display_data( $id, $sub, $i ) {
 
-		echo '<li class="sky-tab-content-' . $i . '">			
-			<div class="typography">';
-		// echo '<p>';
+		echo wp_kses_post( '<li class="sky-tab-content-' . $i . '"><div class="typography">' ); // echo<p>;.
 		foreach ( $sub as $opt ) {
-			echo $this->sub_heading( $this->parse_args( $opt ) );
-			echo $this->section( $this->parse_args( $opt ) );
+			echo wp_kses_post( $this->sub_heading( $this->parse_args( $opt ) ) );
+			echo wp_kses_post( $this->section( $this->parse_args( $opt ) ) );
 		}
-		echo $this->save();
-		// echo '</p>';
+		echo wp_kses_post( $this->save() );
+		// echo</p>';.
 		echo '</div>	 </li>';
 
 	}
@@ -99,20 +121,18 @@ class Responsive_Options {
 	/**
 	 * Creates the title section for each option input
 	 *
-	 * @param $title string
-	 * @param $subtitle string
-	 *
-	 * @return string
+	 * @param  [type] $args [description].
+	 * @return void       [description].
 	 */
 	protected function sub_heading( $args ) {
 
-		// If width is not set or it's not set to full then go ahead and create default layout
-		if ( ! isset( $args['width'] ) || $args['width'] != 'full' ) {
+		// If width is not set or it's not set to full then go ahead and create default layout.
+		if ( ! isset( $args['width'] ) || 'full' != $args['width'] ) {
 			echo '<div class="grid col-300">';
 
-			echo $args['title'];
+			echo esc_html( $args['title'] );
 
-			echo $args['subtitle'];
+			echo esc_html( $args['subtitle'] );
 
 			echo '</div><!-- end of .grid col-300 -->';
 
@@ -124,29 +144,27 @@ class Responsive_Options {
 	 *
 	 * Calls option type
 	 *
-	 * @param $options array
-	 *
-	 * @return string
+	 * @param  [type] $options [description].
+	 * @return void          [description].
 	 */
 	protected function section( $options ) {
 
-		// If the width is not set to full then create normal grid size, otherwise create full width
-		$html = ( ! isset( $options['width'] ) || $options['width'] != 'full' ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
+		// If the width is not set to full then create normal grid size, otherwise create full width.
+		$html = ( ! isset( $options['width'] ) || 'full' != $options['width'] ) ? '<div class="grid col-620 fit">' : '<div class="grid col-940">';
 
 		$html .= $this->{$options['type']}( $options );
 
 		$html .= '</div>';
 
-		echo $html;
+		echo wp_kses_post( $html );
 
 	}
 
 	/**
 	 * Creates text input
 	 *
-	 * @param $args array
-	 *
-	 * @return string
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
 	 */
 	protected function text( $args ) {
 
@@ -166,9 +184,8 @@ class Responsive_Options {
 	/**
 	 * Creates textarea input
 	 *
-	 * @param $args array
-	 *
-	 * @return string
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
 	 */
 	protected function textarea( $args ) {
 
@@ -197,14 +214,13 @@ class Responsive_Options {
 	 *
 	 * Loops through options
 	 *
-	 * @param $args array
-	 *
-	 * @return string
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
 	 */
 	protected function select( $args ) {
 
 		extract( $args );
-		if ( $args['id'] == 'featured_area_layout' ) {
+		if ( 'featured_area_layout' == $args['id'] ) {
 			$layout_class = 'responsive_layouts';
 		} else {
 			$layout_class = '';
@@ -223,9 +239,8 @@ class Responsive_Options {
 	/**
 	 * Creates checkbox input
 	 *
-	 * @param $args array
-	 *
-	 * @return string
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
 	 */
 	protected function checkbox( $args ) {
 
@@ -239,6 +254,13 @@ class Responsive_Options {
 
 		return $html;
 	}
+
+	/**
+	 * [radio_grid description]
+	 *
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
+	 */
 	protected function radio_grid( $args ) {
 
 		extract( $args );
@@ -275,6 +297,9 @@ class Responsive_Options {
 	}
 	/**
 	 * Creates description only. No input
+	 *
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
 	 */
 	protected function description( $args ) {
 
@@ -288,20 +313,63 @@ class Responsive_Options {
 	/**
 	 * Creates save, reset and upgrade buttons
 	 *
-	 * @return string
+	 * @return void [description]
 	 */
 	protected function save() {
-		echo '<div class="grid col-940">
+		$allowed_html = array(
+			'div'    => array(
+				'class' => array(),
+				'id'    => array(),
+			),
+
+			'p'      => array(
+				'class' => array(),
+				'id'    => array(),
+			),
+
+			'input'  => array(
+				'class' => array(),
+				'id'    => array(),
+				'name'  => array(),
+				'value' => array(),
+			),
+
+			'button' => array(
+				'class' => array(),
+				'id'    => array(),
+				'value' => array(),
+			),
+
+			'a'      => array(
+				'href'  => array(),
+				'title' => array(),
+			),
+
+			'br'     => array(),
+			'em'     => array(),
+			'strong' => array(),
+		);
+
+		echo wp_kses(
+			'<div class="grid col-940">
                 <p class="submit">
 				' . get_submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ) .
-			get_submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false, $this->attributes ) . '
+					get_submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false, $this->attributes ) . '
                 <!--<a href="http://cyberchimps.com/store/responsivepro/" class="button upgrade">' . __( 'Upgrade', 'responsive' ) . '</a>-->
                 </p>
-                </div>';
+                </div>',
+			$allowed_html
+		);
 
 	}
+
+	/**
+	 * [responsive_pro_categorylist_validate description]
+	 *
+	 * @return [type] [description]
+	 */
 	public static function responsive_pro_categorylist_validate() {
-		// An array of valid results
+		// An array of valid results.
 		$args                  = array(
 			'type'         => 'post',
 			'orderby'      => 'name',
@@ -358,9 +426,8 @@ class Responsive_Options {
 	/**
 	 * Makes sure that every option has all the required args
 	 *
-	 * @param $args array
-	 *
-	 * @return array
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
 	 */
 	protected function parse_args( $args ) {
 		$default_args = array(
@@ -383,9 +450,8 @@ class Responsive_Options {
 	/**
 	 * Creates editor input
 	 *
-	 * @param $args array
-	 *
-	 * @return string
+	 * @param  [type] $args [description].
+	 * @return [type]       [description]
 	 */
 	protected function editor( $args ) {
 
@@ -402,9 +468,9 @@ class Responsive_Options {
 			'tinymce'       => array( 'plugins' => 'wordpress' ),
 			'editor_class'  => esc_attr( $classes ),
 		);
-		if ( $args['id'] == 'home_content_area' ) {
+		if ( 'home_content_area' == $args['id'] ) {
 			$editor_class = 'res_home_content_area';
-		} elseif ( $args['id'] == 'featured_content' ) {
+		} elseif ( 'featured_content' == $args['id'] ) {
 			$editor_class = 'res_featured_content_area';
 		}
 
