@@ -25,8 +25,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function responsive_activation_notice() {
 	if ( isset( $_GET['activated'] ) ) {
-		$return               = '<div class="updated activation"><p><strong>';
-					$my_theme = wp_get_theme();
+		$return   = '<div class="updated activation"><p><strong>';
+		$my_theme = wp_get_theme();
 		if ( isset( $_GET['previewed'] ) ) {
 			$return .= sprintf( wp_kses( 'Settings saved and %s activated successfully.', 'responsive' ), $my_theme->get( 'Name' ) );
 		} else {

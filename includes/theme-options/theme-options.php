@@ -851,7 +851,8 @@ function cyberchimps_account_page() {
 					<span class="updateres">
 					<?php
 					if ( '' != $str_response_message ) {
-						echo wp_kses_post( $str_response_message );}
+						echo wp_kses_post( $str_response_message );
+					}
 					?>
 						</span>
 					<div class="panel-body">

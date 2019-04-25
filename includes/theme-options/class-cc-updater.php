@@ -87,7 +87,7 @@ if ( ! class_exists( 'CC_Updater' ) ) :
 						);
 						update_option( 'cc_account_user_details', $account_data );
 						update_option( 'cc_account_status', 'not_found' );
-					} elseif ( 2 == trim( $response ) ) {
+					} elseif ( '2' == trim( $response ) ) {
 						// User found & product is purchased.
 						$str_response_message = 'Settings saved';
 						$account_data         = array(
@@ -100,6 +100,15 @@ if ( ! class_exists( 'CC_Updater' ) ) :
 						// User found - not purchased.
 						$str_response_message = 'Settings saved';
 						$account_data         = array(
+							'username' => $this->username,
+							'password' => $this->password,
+						);
+						update_option( 'cc_account_user_details', $account_data );
+						update_option( 'cc_account_status', 'not_valid' );
+					} elseif ( '3' == trim( $response ) ) {
+						// User found - purchase expired.
+						$str_response_message = "Your access to theme updates has expired. Please renew now. <a href='https://cyberchimps.com/product-category/themes/' target='_blank'>Click Here to renew</a>";
+						$account_data       = array(
 							'username' => $this->username,
 							'password' => $this->password,
 						);
