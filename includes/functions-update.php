@@ -1,17 +1,24 @@
 <?php
+/**
+ * Update social icon options
+ *
+ * @since    1.9.4.9
+ * @package responsive
+ */
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/*
- * Update social icon options
+/**
+ * [responsive_update_social_icon_options description]
  *
- * @since    1.9.4.9
+ * @return void [description]
  */
 function responsive_update_social_icon_options() {
 	$responsive_options = responsive_get_options();
-	// If new option does not exist then copy the option
+	// If new option does not exist then copy the option.
 	if ( ! isset( $responsive_options['googleplus_uid'] ) ) {
 		$responsive_options['googleplus_uid'] = $responsive_options['google_plus_uid'];
 	}
@@ -19,19 +26,20 @@ function responsive_update_social_icon_options() {
 		$responsive_options['stumbleupon_uid'] = $responsive_options['stumble_uid'];
 	}
 
-	// Update entire array
+	// Update entire array.
 	update_option( 'responsive_theme_options', $responsive_options );
 }
 
 add_action( 'after_setup_theme', 'responsive_update_social_icon_options' );
 
-/*
+/**
  * Update page templete meta data
  *
  * E.g: Change from `page-templates/full-width-page.php` to `full-width-page.php`
  *
  * This function only needes to be run once but it does not mater when. after_setup_theme should be fine.
  *
+ * @return void [description]
  */
 function responsive_update_page_template_meta() {
 	$args = array(
@@ -84,7 +92,7 @@ function responsive_theme_query() {
 		}
 	}
 
-	// Check if we had a response and compare the current version on wp.org to version 2. If it is version 2 or greater display a message
+	// Check if we had a response and compare the current version on wp.org to version 2. If it is version 2 or greater display a message.
 	if ( $new_version && version_compare( $new_version, '2', '>=' ) ) {
 		return true;
 	}
@@ -100,7 +108,7 @@ function responsive_theme_query() {
  */
 function responsive_admin_update_notice() {
 	global $pagenow;
-	// Add plugin notification only if the current user is admin and on theme.php
+	// Add plugin notification only if the current user is admin and on theme.php.
 	if ( responsive_theme_query() && current_user_can( 'update_themes' ) && ( 'themes.php' == $pagenow || 'update-core.php' == $pagenow ) ) {
 		$html  = '<div class="error"><p>';
 		$html .= sprintf(
@@ -109,7 +117,8 @@ function responsive_admin_update_notice() {
 			'<a href="' . esc_url( 'http://content.cyberchimps.com/responsive-2-migration' ) . '">' . __( 'update page', 'responsive' ) . '</a>'
 		);
 		$html .= '</p></div>';
+
 		echo $html;
 	}
 }
-// add_action( 'admin_notices', 'responsive_admin_update_notice' );  Commented as this is not required
+// add_action( 'admin_notices', 'responsive_admin_update_notice' );  Commented as this is not required.

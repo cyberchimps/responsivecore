@@ -69,7 +69,7 @@ if ( ! class_exists( 'CC_Updater' ) ) :
 				'body'    => $api_values,
 			);
 
-			$url                      = $this->url;
+			$url                         = $this->url;
 			$response_from_validate_user = wp_remote_post( $url, $options );
 
 			if ( ! is_wp_error( $response_from_validate_user ) && 200 == wp_remote_retrieve_response_code( $response_from_validate_user ) ) {

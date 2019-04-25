@@ -1,4 +1,10 @@
 <?php
+/**
+ * Breadcrumb Lists
+ * Load the plugin from the plugin that is installed.
+ *
+ * @package responsive
+ */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -6,8 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Breadcrumb Lists
- * Load the plugin from the plugin that is installed.
+ * [get_responsive_breadcrumb_lists description]
+ *
+ * @return [type] [description]
  */
 function get_responsive_breadcrumb_lists() {
 	$responsive_options = get_option( 'responsive_theme_options' );
@@ -36,21 +43,35 @@ function get_responsive_breadcrumb_lists() {
  */
 if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 
+	/**
+	 * [responsive_breadcrumb_lists description]
+	 *
+	 * @return [type] [description]
+	 */
+	/**
+	 * [responsive_breadcrumb_lists description]
+	 *
+	 * @return void [description]
+	 */
 	function responsive_breadcrumb_lists() {
 
 		/* == OPTIONS == */
-		$text['home']     = __( 'Home', 'responsive' ); // text for the 'Home' link
-		$text['category'] = __( 'Archive for %s', 'responsive' ); // text for a category page
-		$text['search']   = __( 'Search results for: %s', 'responsive' ); // text for a search results page
-		$text['tag']      = __( 'Posts tagged %s', 'responsive' ); // text for a tag page
-		$text['author']   = __( 'View all posts by %s', 'responsive' ); // text for an author page
-		$text['404']      = __( 'Error 404', 'responsive' ); // text for the 404 page
+		$text['home'] = __( 'Home', 'responsive' ); // text for the 'Home' link.
+		// translators: %1$s: plugin name(s).
+		$text['category'] = __( 'Archive for %s', 'responsive' ); // text for a category page.
+		// translators: %1$s: plugin name(s).
+		$text['search'] = __( 'Search results for: %s', 'responsive' ); // text for a search results page.
+		// translators: %1$s: plugin name(s).
+		$text['tag'] = __( 'Posts tagged %s', 'responsive' ); // text for a tag page.
+		// translators: %1$s: plugin name(s).
+		$text['author'] = __( 'View all posts by %s', 'responsive' ); // text for an author page.
+		$text['404']    = __( 'Error 404', 'responsive' ); // text for the 404 page.
 
 		$show['current'] = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
 		$show['home']    = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
 
-		$delimiter = ' <span class="chevron">&#8250;</span> '; // delimiter between crumbs
-		$before    = '<span class="breadcrumb-current">'; // tag before the current crumb
+		$delimiter = ' <span class="chevron">&#8250;</span> '; // delimiter between crumbs.
+		$before    = '<span class="breadcrumb-current">'; // tag before the current crumb.
 		$after     = '</span>'; // tag after the current crumb
 		/* == END OF OPTIONS == */
 
@@ -157,10 +178,11 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 						$breadcrumbs[] = sprintf( $link, get_permalink( $page_child->ID ), get_the_title( $page_child->ID ) );
 						$parent_id     = $page_child->post_parent;
 				}
-				$breadcrumbs = array_reverse( $breadcrumbs );
-				for ( $i = 0; $i < count( $breadcrumbs ); $i++ ) {
+				$breadcrumbs       = array_reverse( $breadcrumbs );
+				$count_breadcrumbs = count( $breadcrumbs );
+				for ( $i = 0; $i < $count_breadcrumbs; $i++ ) {
 					$html_output .= $breadcrumbs[ $i ];
-					if ( $i != count( $breadcrumbs ) - 1 ) {
+					if ( $count_breadcrumbs - 1 != $i ) {
 						$html_output .= $delimiter;
 					}
 				}
@@ -181,7 +203,9 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 			}
 
 			if ( get_query_var( 'paged' ) || get_query_var( 'page' ) ) {
-				$page_num     = get_query_var( 'page' ) ? get_query_var( 'page' ) : get_query_var( 'paged' );
+				$page_num = get_query_var( 'page' ) ? get_query_var( 'page' ) : get_query_var( 'paged' );
+
+				// translators: %1$s: Page name(s).
 				$html_output .= $delimiter . sprintf( __( 'Page %s', 'responsive' ), $page_num );
 
 			}
@@ -190,7 +214,7 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 		}
 
-		echo $html_output;
+		echo wp_kses_post( $html_output );
 
 	} // end responsive_breadcrumb_lists
 }
@@ -198,12 +222,17 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 /**
  * Use shortcode_atts_gallery filter to add new defaults to the WordPress gallery shortcode.
  * Allows user input in the post gallery shortcode.
+ *
+ * @param  [type] $out   [description].
+ * @param  [type] $pairs [description].
+ * @param  [type] $atts  [description].
+ * @return [type]        [description]
  */
 function responsive_gallery_atts( $out, $pairs, $atts ) {
 
 	$full_width = is_page_template( 'full-width-page.php' ) || is_page_template( 'landing-page.php' );
 
-	// Check if the size attribute has been set, if so use it and skip the responsive sizes
+	// Check if the size attribute has been set, if so use it and skip the responsive sizes.
 	if ( array_key_exists( 'size', $atts ) ) {
 		$size = $atts['size'];
 	} else {
@@ -286,7 +315,7 @@ function responsive_gallery_atts( $out, $pairs, $atts ) {
 
 add_filter( 'shortcode_atts_gallery', 'responsive_gallery_atts', 10, 3 );
 
-/*
+/**
  * Create image sizes for the galley
  */
 function responsive_add_image_size() {
@@ -328,10 +357,10 @@ function responsive_get_social_icons() {
 	$html = '<ul class="social-icons">';
 	foreach ( $sites as $key => $value ) {
 		if ( ! empty( $responsive_options[ $key . '_uid' ] ) ) {
-			if ( $key == 'email' ) {
-				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="mailto:' . $responsive_options[ $key . '_uid' ] . '">' . '<img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '">' . '</a></li>';
+			if ( 'email' == $key ) {
+				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="mailto:' . $responsive_options[ $key . '_uid' ] . '"><img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '"></a></li>';
 			} else {
-				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="' . $responsive_options[ $key . '_uid' ] . '" target="_blank">' . '<img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '">' . '</a></li>';
+				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="' . $responsive_options[ $key . '_uid' ] . '" target="_blank"><img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '"></a></li>';
 			}
 		}
 	}

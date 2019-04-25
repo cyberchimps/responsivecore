@@ -61,11 +61,11 @@
 	-ms-transition: background 0.4s, color 0.4s;
 	-moz-transition: background 0.4s, color 0.4s;
 	-webkit-transition: background 0.4s, color 0.4s;
-*/	
+*/
 }
 .sky-tabs > label:hover span span {
 	background: #2da5da;
-	color: #fff;	
+	color: #fff;
 }
 .sky-tabs > label.disabled span span {
 	background: transparent;
@@ -110,9 +110,9 @@
 	-ms-transform-origin: 0% 0%;
 	-moz-transform-origin: 0% 0%;
 	-webkit-transform-origin: 0% 0%;
-	-o-transition: opacity 0.8s, -o-transform 0.8s;	
-	-ms-transition: opacity 0.8s, -ms-transform 0.8s;	
-	-moz-transition: opacity 0.8s, -moz-transform 0.8s;	
+	-o-transition: opacity 0.8s, -o-transform 0.8s;
+	-ms-transition: opacity 0.8s, -ms-transform 0.8s;
+	-moz-transition: opacity 0.8s, -moz-transform 0.8s;
 	-webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
 */
 }
@@ -251,19 +251,19 @@
 	-o-transform: translate(15%,-15%);
 	-ms-transform: translate(15%,-15%);
 	-moz-transform: translate(15%,-15%);
-	-webkit-transform: translate(15%,-15%);	
+	-webkit-transform: translate(15%,-15%);
 }
 .sky-tabs-anim-slide-down-right > ul > li {
 	-o-transform: translate(15%,15%);
 	-ms-transform: translate(15%,15%);
 	-moz-transform: translate(15%,15%);
-	-webkit-transform: translate(15%,15%);	
+	-webkit-transform: translate(15%,15%);
 }
 .sky-tabs-anim-slide-down-left > ul > li {
 	-o-transform: translate(-15%,15%);
 	-ms-transform: translate(-15%,15%);
 	-moz-transform: translate(-15%,15%);
-	-webkit-transform: translate(-15%,15%);	
+	-webkit-transform: translate(-15%,15%);
 }
 .sky-tabs > .sky-tab-content-1:checked ~ ul > .sky-tab-content-1,
 .sky-tabs > .sky-tab-content-2:checked ~ ul > .sky-tab-content-2,
@@ -351,7 +351,7 @@
 	-o-transform: rotateY(90deg);
 	-ms-transform: rotateY(90deg);
 	-moz-transform: rotateY(90deg);
-	-webkit-transform: rotateY(90deg);	
+	-webkit-transform: rotateY(90deg);
 }
 .sky-tabs-anim-flip.sky-tabs-pos-right > ul > li {
 	-o-transform: rotateY(-90deg);
@@ -654,14 +654,14 @@
 /* phone */
 /**/
 @media screen and (max-width: 767px) {
-	
+
 	.sky-tabs .grid-col,
 	.sky-tabs .grid-col:first-child {
 		float: none;
 		width: 100%;
 		margin: 20px 0 0 0;
 	}
-	
+
 	.sky-tabs-response-to-stack > label,
 	.sky-tabs-response-to-stack.sky-tabs-pos-top-justify > label {
 		display: block;
@@ -684,7 +684,7 @@
 	.sky-tabs-response-to-stack.sky-tabs-anim-flip > ul > li {
 		-webkit-transform: rotateX(-90deg);
 	}
-	
+
 	.sky-tabs-response-to-icons > label {
 		font-size: 0;
 	}
@@ -706,7 +706,7 @@
 	.sky-tabs-response-to-icons.sky-tabs-pos-right > ul {
 		margin-right: 56px;
 	}
-	
+
 	.sky-tabs-response-to-switcher > label {
 		display: none;
 		width: 100%;

@@ -820,7 +820,7 @@ function responsive_theme_options_do_page() {
  */
 function cyberchimps_account_page() {
 	$str_response_message = '';
-	$cc_user_login_id   = get_option( 'cc_account_user_details' );
+	$cc_user_login_id     = get_option( 'cc_account_user_details' );
 
 	if ( isset( $_POST['ccSubmitBtn'] ) && check_admin_referer( 'authenticate_cc_form', 'authenticate_username_pass' ) ) {
 		// Unset value if already set.
@@ -836,7 +836,7 @@ function cyberchimps_account_page() {
 
 		require_once 'class-cc-updater.php';
 		if ( isset( $username ) && isset( $password ) ) {
-			$ccuser             = new CC_Updater( $username, $password );
+			$ccuser               = new CC_Updater( $username, $password );
 			$str_response_message = $ccuser->validate();
 			set_transient( 'cc_validate_user_details', 'validate_user', WEEK_IN_SECONDS );
 			$cc_user_login_id = get_option( 'cc_account_user_details' );
@@ -950,45 +950,12 @@ add_action( 'admin_notices', 'cyberchimps_invalid_account_details' );
  * @return void [description]
  */
 function cyberchimps_invalid_account_details() {
-	$allowed_html = array(
-		'div'    => array(
-			'class' => array(),
-			'id'    => array(),
-		),
-
-		'p'      => array(
-			'class' => array(),
-			'id'    => array(),
-		),
-
-		'input'  => array(
-			'class' => array(),
-			'id'    => array(),
-			'name'  => array(),
-			'value' => array(),
-		),
-
-		'button' => array(
-			'class' => array(),
-			'id'    => array(),
-			'value' => array(),
-		),
-
-		'a'      => array(
-			'href'  => array(),
-			'title' => array(),
-		),
-
-		'br'     => array(),
-		'em'     => array(),
-		'strong' => array(),
-	);
 
 	if ( 'not_found' == get_option( 'cc_account_status' ) ) {
 		printf(
 			wp_kses(
 				'<div class="notice notice-error is-dismissible"><p><strong>CyberChimps - Invalid Account Details</strong>. Please re-enter <a href="%1$s" class="button">Re-Enter</a></p></div>',
-				$allowed_html
+				responsive_allowed_html()
 			),
 			esc_url( admin_url( 'admin.php?page=cyberchimps-account' ) )
 		);
@@ -998,7 +965,7 @@ function cyberchimps_invalid_account_details() {
 		printf(
 			wp_kses(
 				'<div class="notice notice-info"><p><strong>Please enter CyberChimps Account Details in order to receive auto updates when available</strong>. <a href="%1$s" class="button">Click Here</a></p></div>',
-				$allowed_html
+				responsive_allowed_html()
 			),
 			esc_url( admin_url( 'admin.php?page=cyberchimps-account' ) )
 		);

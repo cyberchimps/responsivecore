@@ -1,10 +1,4 @@
 <?php
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
-
 /**
  * Theme Custom Post Meta
  *
@@ -17,6 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @filesource     wp-content/themes/responsive/includes/post-custom-meta.php
  * @since          available since Release 1.0
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Globalize Theme options
@@ -118,34 +117,24 @@ function responsive_get_layout() {
 			} else {
 				$layout = $responsive_options['static_page_layout_default'];
 			}
-		}
-		/* Else, if post custom meta is set, use it */
-		elseif ( 'default' != $layout_meta ) {
+		} elseif ( 'default' != $layout_meta ) { /* Else, if post custom meta is set, use it */
 			$layout = $layout_meta;
-		}
-		/* Else, use the default */
-		else {
+
+		} else { /* Else, use the default */
+
 			$layout = $responsive_options['static_page_layout_default'];
 		}
-	}
-	/* Single blog posts */
-	else {
+	} else { /* Single blog posts */
 		if ( is_single() ) {
 			/* If post custom meta is set, use it */
 			if ( 'default' != $layout_meta ) {
 				$layout = $layout_meta;
-			}
-			/* Else, use the default */
-			else {
+			} else { /* Else, use the default */
 				$layout = $responsive_options['single_post_layout_default'];
 			}
-		}
-		/* Posts index */
-		elseif ( is_home() || is_archive() || is_search() ) {
+		} elseif ( is_home() || is_archive() || is_search() ) { /* Posts index */
 			$layout = $responsive_options['blog_posts_index_layout_default'];
-		}
-		/* Fallback */
-		else {
+		} else { /* Fallback */
 			$layout = 'default';
 		}
 	}
@@ -175,12 +164,14 @@ function responsive_get_valid_layouts() {
  *
  * @link    http://codex.wordpress.org/Function_Reference/_2            __()
  * @link    http://codex.wordpress.org/Function_Reference/add_meta_box    add_meta_box()
+ *
+ * @param [type] $post [description].
  */
 function responsive_add_layout_meta_box( $post ) {
 	global $post, $wp_meta_boxes;
 
-	$context  = apply_filters( 'responsive_layout_meta_box_context', 'side' ); // 'normal', 'side', 'advanced'
-	$priority = apply_filters( 'responsive_layout_meta_box_priority', 'default' ); // 'high', 'core', 'low', 'default'
+	$context  = apply_filters( 'responsive_layout_meta_box_context', 'side' ); // 'normal side advanced'.
+	$priority = apply_filters( 'responsive_layout_meta_box_priority', 'default' ); // 'high 'core', 'low', 'default'.
 
 	add_meta_box(
 		'responsive_layout',
@@ -192,7 +183,7 @@ function responsive_add_layout_meta_box( $post ) {
 	);
 }
 
-// Hook meta boxes into 'add_meta_boxes'
+// Hook meta boxes into 'add_meta_boxes'.
 add_action( 'add_meta_boxes', 'responsive_add_layout_meta_box' );
 
 /**
@@ -221,9 +212,10 @@ function responsive_layout_meta_box() {
 		<select name="_responsive_layout">
 		<?php foreach ( $valid_layouts as $slug => $name ) { ?>
 			<?php $selected = selected( $layout, $slug, false ); ?>
-			<option value="<?php echo $slug; ?>" <?php echo $selected; ?>><?php echo $name; ?></option>
+			<option value="<?php echo esc_attr( $slug ); ?>" <?php echo esc_attr( $selected ); ?>><?php echo esc_html( $name ); ?></option>
 		<?php } ?>
 		</select>
+		<?php wp_nonce_field( 'responsive_responsive_layout_nonce', 'responsive_layout_nonce' ); ?>
 	</p>
 	<?php
 }
@@ -248,13 +240,13 @@ function responsive_save_layout_post_metadata() {
 		return;
 	}
 	$valid_layouts = responsive_get_valid_layouts();
-	$layout        = ( isset( $_POST['_responsive_layout'] ) && array_key_exists( $_POST['_responsive_layout'], $valid_layouts ) ? $_POST['_responsive_layout'] : 'default' );
+	$layout        = ( isset( $_POST['_responsive_layout'] ) && check_admin_referer( 'responsive_responsive_layout_nonce', 'responsive_layout_nonce' ) && array_key_exists( sanitize_text_field( wp_unslash( $_POST['_responsive_layout'] ) ), $valid_layouts ) ? sanitize_text_field( wp_unslash( $_POST['_responsive_layout'] ) ) : 'default' );
 
 	update_post_meta( $post->ID, '_responsive_layout', $layout );
 }
 
 // Hook the save layout post custom meta data into
-// publish_{post-type}, draft_{post-type}, and future_{post-type}
+// publish_{post-type}, draft_{post-type  and future post-type .
 add_action( 'publish_post', 'responsive_save_layout_post_metadata' );
 add_action( 'publish_page', 'responsive_save_layout_post_metadata' );
 add_action( 'draft_post', 'responsive_save_layout_post_metadata' );

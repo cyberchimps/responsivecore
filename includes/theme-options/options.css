@@ -7,7 +7,7 @@
 	width: 30%;
 }
 .form-group input {
-	width: 240px; padding: 5px; display: inline-block; height: 30px; border-radius: 0px; border: 1px solid rgb(200, 200, 200); box-shadow: none; color: rgb(147, 147, 147);margin-bottom:20px;	
+	width: 240px; padding: 5px; display: inline-block; height: 30px; border-radius: 0px; border: 1px solid rgb(200, 200, 200); box-shadow: none; color: rgb(147, 147, 147);margin-bottom:20px;
 	}
 .form-group input[type="password"] {margin-left: 9px;}
 .panel-heading{

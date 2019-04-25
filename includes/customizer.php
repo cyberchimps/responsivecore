@@ -17,7 +17,8 @@ function responsive_customize_register( $wp_customize ) {
 	/*
 	--------------------------------------------------------------
 	// Theme Elements
-	--------------------------------------------------------------*/
+	--------------------------------------------------------------
+	*/
 
 	$wp_customize->add_section(
 		'theme_elements',
@@ -111,7 +112,8 @@ function responsive_customize_register( $wp_customize ) {
 	/*
 	--------------------------------------------------------------
 	// Home Page
-	--------------------------------------------------------------*/
+	--------------------------------------------------------------
+	*/
 
 	$wp_customize->add_section(
 		'home_page',
@@ -250,7 +252,8 @@ function responsive_customize_register( $wp_customize ) {
 	/*
 	--------------------------------------------------------------
 	// Default Layouts
-	--------------------------------------------------------------*/
+	--------------------------------------------------------------
+	*/
 
 	$wp_customize->add_section(
 		'default_layouts',
@@ -314,7 +317,8 @@ function responsive_customize_register( $wp_customize ) {
 	/*
 	--------------------------------------------------------------
 	// SOCIAL MEDIA SECTION
-	--------------------------------------------------------------*/
+	--------------------------------------------------------------
+	*/
 
 	$wp_customize->add_section(
 		'responsive_social_media',
@@ -325,7 +329,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Twitter Setting
+	// Add Twitter Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[twitter_uid]',
 		array(
@@ -345,7 +349,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Facebook Setting
+	// Add Facebook Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[facebook_uid]',
 		array(
@@ -365,7 +369,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add LinkedIn Setting
+	// Add LinkedIn Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[linkedin_uid]',
 		array(
@@ -385,7 +389,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Youtube Setting
+	// Add Youtube Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[youtube_uid]',
 		array(
@@ -405,7 +409,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Google+ Setting
+	// Add Google+ Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[googleplus_uid]',
 		array(
@@ -425,7 +429,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add RSS Setting
+	// Add RSS Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[rss_uid]',
 		array(
@@ -445,7 +449,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Instagram Setting
+	// Add Instagram Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[instagram_uid]',
 		array(
@@ -465,7 +469,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Pinterest Setting
+	// Add Pinterest Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[pinterest_uid]',
 		array(
@@ -485,7 +489,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add StumbleUpon Setting
+	// Add StumbleUpon Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[stumbleupon_uid]',
 		array(
@@ -505,7 +509,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Vimeo Setting
+	// Add Vimeo Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[vimeo_uid]',
 		array(
@@ -525,7 +529,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add SoundCloud Setting
+	// Add SoundCloud Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[yelp_uid]',
 		array(
@@ -545,7 +549,7 @@ function responsive_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Add Foursquare Setting
+	// Add Foursquare Setting.
 	$wp_customize->add_setting(
 		'responsive_theme_options[foursquare_uid]',
 		array(
@@ -568,7 +572,8 @@ function responsive_customize_register( $wp_customize ) {
 	/*
 	--------------------------------------------------------------
 	// CSS Styles
-	--------------------------------------------------------------*/
+	--------------------------------------------------------------
+	*/
 
 	$wp_customize->add_section(
 		'css_styles',
@@ -597,7 +602,8 @@ function responsive_customize_register( $wp_customize ) {
 	/*
 	--------------------------------------------------------------
 	// Scripts
-	--------------------------------------------------------------*/
+	--------------------------------------------------------------
+	*/
 
 	$wp_customize->add_section(
 		'scripts',
@@ -643,7 +649,8 @@ function responsive_customize_register( $wp_customize ) {
 	/*
 	------------------------------------------------------------------
 	// Copyright Text
-	-------------------------------------------------------------------*/
+	-------------------------------------------------------------------
+	*/
 
 	$wp_customize->add_section(
 		'footer_section',
@@ -691,6 +698,12 @@ function responsive_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'responsive_customize_register' );
 
+/**
+ * [responsive_sanitize_checkbox description]
+ *
+ * @param  [type] $input [description].
+ * @return [type]        [description]
+ */
 function responsive_sanitize_checkbox( $input ) {
 	if ( $input ) {
 		$output = '1';
@@ -700,12 +713,24 @@ function responsive_sanitize_checkbox( $input ) {
 	return $output;
 }
 
+/**
+ * [responsive_sanitize_textarea description]
+ *
+ * @param  [type] $input [description].
+ * @return [type]        [description]
+ */
 function responsive_sanitize_textarea( $input ) {
 	global $allowedposttags;
 	$output = wp_kses( $input, $allowedposttags );
 	return $output;
 }
 
+/**
+ * [responsive_sanitize_default_layouts description]
+ *
+ * @param  [type] $input [description].
+ * @return [type]        [description]
+ */
 function responsive_sanitize_default_layouts( $input ) {
 	$output = '';
 	$option = Responsive_Options::valid_layouts();

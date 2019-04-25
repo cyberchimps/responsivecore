@@ -169,29 +169,34 @@ function responsive_widgets_init() {
 }
 add_action( 'widgets_init', 'responsive_widgets_init' );
 
-/* Add fit class to third footer widget */
+/**
+ * Add fit class to third footer widget
+ *
+ * @param  [type] $params [description].
+ * @return [type]         [description]
+ */
 function responsive_footer_widgets( $params ) {
 
-	global $footer_widget_num; // Our widget counter variable
+	global $footer_widget_num; // Our widget counter variable.
 	$responsive_options = responsive_get_options();
 
-	if ( isset( $responsive_options['site_footer_option'] ) && $responsive_options['site_footer_option'] != '' ) {
+	if ( isset( $responsive_options['site_footer_option'] ) && '' != $responsive_options['site_footer_option'] ) {
 		$layout = $responsive_options['site_footer_option'];
 	} else {
 		$layout = '';
 	}
 
-	// Check if we are displaying "Footer Sidebar"
-	if ( $params[0]['id'] == 'footer-widget' ) {
+	// Check if we are displaying "Footer Sidebar".
+	if ( 'footer-widget' == $params[0]['id'] ) {
 		$footer_widget_num++;
 
-		// Check which footer layout is selcted
-		if ( $layout == 'footer-2-col' ) {
-			// This is 2-col layout
+		// Check which footer layout is selcted.
+		if ( 'footer-2-col' == $layout ) {
+			// This is 2-col layout.
 			$class                      = 'class="col-460 ';
 			$divider                    = 2;
 			$params[0]['before_widget'] = preg_replace( '/class="/', $class, $params[0]['before_widget'], 1 );
-		} elseif ( $layout == 'footer-1-col' ) {
+		} elseif ( 'footer-1-col' == $layout ) {
 			$class                      = 'class="col-940 ';
 			$divider                    = 1;
 			$params[0]['before_widget'] = preg_replace( '/class="/', $class, $params[0]['before_widget'], 1 );
@@ -199,10 +204,10 @@ function responsive_footer_widgets( $params ) {
 			$divider = 3;
 		}
 
-		$divider = apply_filters( 'responsive_number_footer_widgets', $divider ); // This is number of widgets that should fit in one row
+		$divider = apply_filters( 'responsive_number_footer_widgets', $divider ); // This is number of widgets that should fit in one row.
 
-		// If it's third widget, add last class to it
-		if ( $footer_widget_num % $divider == 0 ) {
+		// If it's third widget, add last class to it.
+		if ( 0 == $footer_widget_num % $divider ) {
 			$class                      = 'class="fit ';
 			$params[0]['before_widget'] = str_replace( 'class="', $class, $params[0]['before_widget'] );
 		}

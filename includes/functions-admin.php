@@ -1,4 +1,9 @@
 <?php
+/**
+ * Theme options upgrade
+ *
+ * @package [type]
+ */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,10 +17,10 @@ function responsive_upgrade_bar() {
 	?>
 
 	<div class="upgrade-callout">
-		<p class="responsivepro-offer"><img src="<?php echo get_template_directory_uri(); ?>/core/includes/theme-options/images/chimp.png" alt="CyberChimps"/>
+		<p class="responsivepro-offer"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/core/includes/theme-options/images/chimp.png" alt="CyberChimps"/>
 			<?php
 			printf(
-				__( 'Get %1$s off on %2$s using Coupon Code <span class="coupon-code">RESPONSIVE30</span>', 'responsive' ),
+				wp_kses( 'Get %1$s off on %2$s using Coupon Code <span class="coupon-code">RESPONSIVE30</span>', responsive_allowed_html() ),
 				'30%',
 				' <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> '
 			);
@@ -49,9 +54,9 @@ function responsive_upgrade_bar() {
 	<div class="updated">
 		<p><strong>
 		<?php
-		_e(
+		__(
 			'<a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> allows you to create Sliders using 13 Dynamic Sources like YouTube, Vimeo, Pinterest and more.
-Upgrade to <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> Today.',
+			Upgrade to <a href="http://cyberchimps.com/store/responsivepro/" target="_blank" title="Responsive Pro">Responsive Pro</a> Today.',
 			'responsive'
 		);
 		?>
@@ -72,19 +77,19 @@ function responsive_theme_support() {
 		<div class="info-box notice">
 
 			<a class="button" href="<?php echo esc_url( 'http://cyberchimps.com/guides/r-free/' ); ?>" title="<?php esc_attr_e( 'Instructions', 'responsive' ); ?>" target="_blank">
-				<?php _e( 'Instructions', 'responsive' ); ?></a>
+				<?php esc_html_e( 'Instructions', 'responsive' ); ?></a>
 
 			<a class="button button-primary" href="<?php echo esc_url( 'http://cyberchimps.com/forum/free/responsive/' ); ?>" title="<?php esc_attr_e( 'Help', 'responsive' ); ?>" target="_blank">
-				<?php _e( 'Help', 'responsive' ); ?></a>
+				<?php esc_html_e( 'Help', 'responsive' ); ?></a>
 
 			<a class="button" href="<?php echo esc_url( 'https://webtranslateit.com/en/projects/3598-Responsive-Theme' ); ?>" title="<?php esc_attr_e( 'Translate', 'responsive' ); ?>" target="_blank">
-				<?php _e( 'Translate', 'responsive' ); ?></a>
+				<?php esc_html_e( 'Translate', 'responsive' ); ?></a>
 
 			<a class="button" href="<?php echo esc_url( 'http://cyberchimps.com/showcase/' ); ?>" title="<?php esc_attr_e( 'Showcase', 'responsive' ); ?>" target="_blank">
-				<?php _e( 'Showcase', 'responsive' ); ?></a>
+				<?php esc_html_e( 'Showcase', 'responsive' ); ?></a>
 
 			<a class="button" href="<?php echo esc_url( 'http://cyberchimps.com/store/' ); ?>" title="<?php esc_attr_e( 'More Themes', 'responsive' ); ?>" target="_blank">
-				<?php _e( 'More Themes', 'responsive' ); ?></a>
+				<?php esc_html_e( 'More Themes', 'responsive' ); ?></a>
 
 		</div>
 	</div>
@@ -94,33 +99,38 @@ function responsive_theme_support() {
 
 add_action( 'responsive_theme_options', 'responsive_theme_support', 2 );
 
+/**
+ * [responsive_install_plugins description]
+ *
+ * @return void [description]
+ */
 function responsive_install_plugins() {
 	$plugins = array(
 
-		// This is an example of how to include a plugin pre-packaged with a theme
+		// This is an example of how to include a plugin pre-packaged with a theme.
 		array(
-			'name'     => 'Responsive Add Ons', // The plugin name
-			'slug'     => 'responsive-add-ons', // The plugin slug (typically the folder name)
+			'name'     => 'Responsive Add Ons', // The plugin name.
+			'slug'     => 'responsive-add-ons', // The plugin slug (typically the folder name).
 			'required' => false,
 		),
 		array(
-			'name'     => 'iFeature Slider', // The plugin name
-			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name)
+			'name'     => 'iFeature Slider', // The plugin name.
+			'slug'     => 'ifeature-slider', // The plugin slug (typically the folder name).
 			'required' => false,
 		),
 		array(
-			'name'     => 'WPForms Lite', // The plugin name
-			'slug'     => 'wpforms-lite', // The plugin slug (typically the folder name)
+			'name'     => 'WPForms Lite', // The plugin name.
+			'slug'     => 'wpforms-lite', // The plugin slug (typically the folder name).
 			'required' => false,
 		),
 		array(
-			'name'     => 'SlideDeck', // The plugin name
-			'slug'     => 'slidedeck', // The plugin slug (typically the folder name)
+			'name'     => 'SlideDeck', // The plugin name.
+			'slug'     => 'slidedeck', // The plugin slug (typically the folder name).
 			'required' => false,
 		),
 	);
 
-	// Change this to your theme text domain, used for internationalising strings
+	// Change this to your theme text domain, used for internationalising strings.
 	$theme_text_domain = 'responsive';
 
 	/**
@@ -133,29 +143,39 @@ function responsive_install_plugins() {
 
 	$config = array(
 		'domain'       => $theme_text_domain, // Text domain - likely want to be the same as your theme.
-		'default_path' => '', // Default absolute path to pre-packaged plugins
-		'parent_slug'  => 'themes.php', // Default parent menu slug
-		'menu'         => 'install-responsive-addons', // Menu slug
-		'has_notices'  => true, // Show admin notices or not
-		'is_automatic' => true, // Automatically activate plugins after installation or not
-		'message'      => '', // Message to output right before the plugins table
+		'default_path' => '', // Default absolute path to pre-packaged plugins.
+		'parent_slug'  => 'themes.php', // Default parent menu slug.
+		'menu'         => 'install-responsive-addons', // Menu slug.
+		'has_notices'  => true, // Show admin notices or not.
+		'is_automatic' => true, // Automatically activate plugins after installation or not.
+		'message'      => '', // Message to output right before the plugins table.
 		'strings'      => array(
 			'page_title'                      => __( 'Responsive Add Features', 'responsive' ),
 			'menu_title'                      => __( 'Activate Add Ons', 'responsive' ),
+			// translators: %1$s: plugin name(s).
 			'installing'                      => __( 'Installing Plugin: %s', 'responsive' ), // %1$s = plugin name
 			'oops'                            => __( 'Something went wrong with the plugin API.', 'responsive' ),
-			'notice_can_install_required'     => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.', 'responsive' ), // %1$s = plugin name(s)
+			// translators: %1$s: plugin name(s).
+			'notice_can_install_required'     => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.', 'responsive' ),
+			// translators: %1$s: plugin name(s).
 			'notice_can_install_recommended'  => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.', 'responsive' ), // %1$s = plugin name(s)
+			// translators: %1$s: plugin name(s).
 			'notice_cannot_install'           => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.', 'responsive' ), // %1$s = plugin name(s)
+			// translators: %1$s: plugin name(s).
 			'notice_can_activate_required'    => _n_noop( 'The following required plugin is currently inactive: %1$s.', 'The following required plugins are currently inactive: %1$s.', 'responsive' ), // %1$s = plugin name(s)
+			// translators: %1$s: plugin name(s).
 			'notice_can_activate_recommended' => _n_noop( 'The following recommended plugin is currently inactive: %1$s.', 'The following recommended plugins are currently inactive: %1$s.', 'responsive' ), // %1$s = plugin name(s)
+			// translators: %1$s: plugin name(s).
 			'notice_cannot_activate'          => _n_noop( 'Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated.', 'Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated.', 'responsive' ), // %1$s = plugin name(s)
+			// translators: %1$s: plugin name(s).
 			'notice_ask_to_update'            => _n_noop( 'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.', 'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.', 'responsive' ), // %1$s = plugin name(s)
+			// translators: %1$s: plugin name(s).
 			'notice_cannot_update'            => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.', 'responsive' ), // %1$s = plugin name(s)
 			'install_link'                    => _n_noop( 'Begin installing plugin', 'Begin installing plugins', 'responsive' ),
 			'activate_link'                   => _n_noop( 'Activate installed plugin', 'Activate installed plugins', 'responsive' ),
 			'return'                          => __( 'Return to Required Plugins Installer', 'responsive' ),
 			'plugin_activated'                => __( 'Plugin activated successfully.', 'responsive' ),
+			// translators: %1$s: plugin name(s).
 			'complete'                        => __( 'All plugins installed and activated successfully. %s', 'responsive' ), // %1$s = dashboard link
 		),
 	);
@@ -165,10 +185,10 @@ function responsive_install_plugins() {
 }
 add_action( 'tgmpa_register', 'responsive_install_plugins' );
 
-/*
+/**
  * Add notification to Reading Settings page to notify if Custom Front Page is enabled.
  *
- * @since    1.9.4.0
+ * @return void [description]
  */
 function responsive_front_page_reading_notice() {
 	$screen             = get_current_screen();
@@ -176,12 +196,12 @@ function responsive_front_page_reading_notice() {
 	if ( 'options-reading' == $screen->id ) {
 		$html = '<div class="updated">';
 		if ( 1 == $responsive_options['front_page'] ) {
-			$html .= '<p>' . sprintf( __( 'The Custom Front Page is enabled. You can disable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
+			$html .= '<p>' . sprintf( wp_kses( 'The Custom Front Page is enabled. You can disable it in the <a href="%1$s">theme settings</a>.', responsive_allowed_html() ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
 		} else {
-			$html .= '<p>' . sprintf( __( 'The Custom Front Page is disabled. You can enable it in the <a href="%1$s">theme settings</a>.', 'responsive' ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
+			$html .= '<p>' . sprintf( wp_kses( 'The Custom Front Page is disabled. You can enable it in the <a href="%1$s">theme settings</a>.', responsive_allowed_html() ), admin_url( 'themes.php?page=theme_options' ) ) . '</p>';
 		}
 		$html .= '</div>';
-		echo $html;
+		echo wp_kses( $html, responsive_allowed_html() );
 	}
 }
 

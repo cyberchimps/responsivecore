@@ -90,8 +90,8 @@ class Responsive_Options {
 			$check = 'checked=checked';
 		}
 
-		echo wp_kses_post( '<input type="radio"' . $check . ' name="sky-tabs" id="sky-' . $id . '"  class="sky-tab-content-' . $i . '">' );
-		echo wp_kses_post( '<label for="sky-' . $id . '"><span><span><i class="fa fa-bolt"></i>' . esc_html( $title ) . ' </span></span></label>' );
+		echo '<input type="radio"' . esc_attr( $check ) . ' name="sky-tabs" id="sky-' . esc_attr( $id ) . '"  class="sky-tab-content-' . esc_attr( $i ) . '">';
+		echo '<label for="sky-' . esc_attr( $id ) . '"><span><span><i class="fa fa-bolt"></i>' . esc_html( $title ) . ' </span></span></label>';
 
 	}
 
@@ -109,8 +109,8 @@ class Responsive_Options {
 
 		echo wp_kses_post( '<li class="sky-tab-content-' . $i . '"><div class="typography">' ); // echo<p>;.
 		foreach ( $sub as $opt ) {
-			echo wp_kses_post( $this->sub_heading( $this->parse_args( $opt ) ) );
-			echo wp_kses_post( $this->section( $this->parse_args( $opt ) ) );
+			echo wp_kses( $this->sub_heading( $this->parse_args( $opt ) ), responsive_allowed_html() );
+			echo wp_kses( $this->section( $this->parse_args( $opt ) ), responsive_allowed_html() );
 		}
 		echo wp_kses_post( $this->save() );
 		// echo</p>';.
@@ -130,9 +130,9 @@ class Responsive_Options {
 		if ( ! isset( $args['width'] ) || 'full' != $args['width'] ) {
 			echo '<div class="grid col-300">';
 
-			echo esc_html( $args['title'] );
+			echo $args['title']; // phpcs:ignore
 
-			echo esc_html( $args['subtitle'] );
+			echo $args['subtitle']; // phpcs:ignore
 
 			echo '</div><!-- end of .grid col-300 -->';
 
@@ -156,7 +156,7 @@ class Responsive_Options {
 
 		$html .= '</div>';
 
-		echo wp_kses_post( $html );
+		echo $html; // phpcs:ignore
 
 	}
 
@@ -168,15 +168,15 @@ class Responsive_Options {
 	 */
 	protected function text( $args ) {
 
-		extract( $args );
+		$id = $args['id'];
 
 		$value = ( ! empty( $this->responsive_options[ $id ] ) ) ? ( $this->responsive_options[ $id ] ) : '';
 
 		$html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="regular-text" type="text" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" value="'
 			. esc_html( $value ) . '"
         placeholder="' .
-			esc_attr( $placeholder ) . '" />
-                 <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
+			esc_attr( $args['placeholder'] ) . '" />
+                 <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $args['id'] . ']' ) . '">' . esc_html( $args['description'] ) . '</label>';
 
 		return $html;
 	}
@@ -189,22 +189,22 @@ class Responsive_Options {
 	 */
 	protected function textarea( $args ) {
 
-		extract( $args );
+		$id = $args['id'];
 
 		$class[] = 'large-text';
 		$classes = implode( ' ', $class );
 
 		$value = ( ! empty( $this->responsive_options[ $id ] ) ) ? $this->responsive_options[ $id ] : '';
 
-		$html = '<p>' . esc_html( $heading ) . '</p>
+		$html = '<p>' . esc_html( $args['heading'] ) . '</p>
                 <textarea id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" class="' . esc_attr( $classes ) . '" cols="50" rows="10" name="' . esc_attr(
 			'responsive_theme_options[' . $id .
 				']'
 		) . '"
-                 placeholder="' . $placeholder . '">' .
+                 placeholder="' . $args['placeholder'] . '">' .
 			esc_html( $value ) .
 			'</textarea>
-			<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
+			<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $args['description'] ) . '</label>';
 
 		return $html;
 	}
@@ -219,7 +219,10 @@ class Responsive_Options {
 	 */
 	protected function select( $args ) {
 
-		extract( $args );
+		$id = $args['id'];
+
+		$options = $args['options'];
+
 		if ( 'featured_area_layout' == $args['id'] ) {
 			$layout_class = 'responsive_layouts';
 		} else {
@@ -244,13 +247,13 @@ class Responsive_Options {
 	 */
 	protected function checkbox( $args ) {
 
-		extract( $args );
+		$id = $args['id'];
 
 		$checked = ( isset( $this->responsive_options[ $id ] ) ) ? checked( '1', esc_attr( $this->responsive_options[ $id ] ), false ) : checked( 0, 1 );
 
 		$html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" type="checkbox" value="1" ' . $checked . '
          />
-                <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . wp_kses_post( $description ) . '</label>';
+                <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . wp_kses_post( $args['description'] ) . '</label>';
 
 		return $html;
 	}
@@ -263,15 +266,15 @@ class Responsive_Options {
 	 */
 	protected function radio_grid( $args ) {
 
-		extract( $args );
+		$id = $args['id'];
 
 		$saved_value = ( ! empty( $this->responsive_options[ $id ] ) ) ? $this->responsive_options[ $id ] : 'default-layout';
 
 		$html = '<div class="responsive-layouts-wrapper">';
 
-		if ( ! empty( $values ) ) {
+		if ( ! empty( $args['values'] ) ) {
 
-			foreach ( $values as $radio_input => $key ) {
+			foreach ( $args['values'] as $radio_input => $key ) {
 
 				if ( $saved_value == $radio_input ) {
 					$selected = 'selected-grid';
@@ -303,9 +306,7 @@ class Responsive_Options {
 	 */
 	protected function description( $args ) {
 
-		extract( $args );
-
-		$html = '<p>' . wp_kses_post( $description ) . '</p>';
+		$html = '<p>' . wp_kses_post( $args['description'] ) . '</p>';
 
 		return $html;
 	}
@@ -316,50 +317,13 @@ class Responsive_Options {
 	 * @return void [description]
 	 */
 	protected function save() {
-		$allowed_html = array(
-			'div'    => array(
-				'class' => array(),
-				'id'    => array(),
-			),
-
-			'p'      => array(
-				'class' => array(),
-				'id'    => array(),
-			),
-
-			'input'  => array(
-				'class' => array(),
-				'id'    => array(),
-				'name'  => array(),
-				'value' => array(),
-			),
-
-			'button' => array(
-				'class' => array(),
-				'id'    => array(),
-				'value' => array(),
-			),
-
-			'a'      => array(
-				'href'  => array(),
-				'title' => array(),
-			),
-
-			'br'     => array(),
-			'em'     => array(),
-			'strong' => array(),
-		);
-
-		echo wp_kses(
-			'<div class="grid col-940">
+		echo '<div class="grid col-940">
                 <p class="submit">
-				' . get_submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ) .
-					get_submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false, $this->attributes ) . '
-                <!--<a href="http://cyberchimps.com/store/responsivepro/" class="button upgrade">' . __( 'Upgrade', 'responsive' ) . '</a>-->
+				' . get_submit_button( __( 'Save Options', 'responsive' ), 'primary', 'responsive_theme_options[submit]', false ) . // phpcs:ignore
+					get_submit_button( __( 'Restore Defaults', 'responsive' ), 'secondary', 'responsive_theme_options[reset]', false, $this->attributes )  /* phpcs:ignore */ . '
+                <!--<a href="http://cyberchimps.com/store/responsivepro/" class="button upgrade">' . __( 'Upgrade', 'responsive' )   /* phpcs:ignore */ . '</a>-->
                 </p>
-                </div>',
-			$allowed_html
-		);
+                </div>';
 
 	}
 
@@ -455,7 +419,7 @@ class Responsive_Options {
 	 */
 	protected function editor( $args ) {
 
-		extract( $args );
+		$id = $args['id'];
 
 		$class[] = 'large-text';
 		$classes = implode( ' ', $class );
@@ -478,7 +442,7 @@ class Responsive_Options {
 		ob_start();
 		$html .= wp_editor( $value, 'responsive_theme_options_' . $id . '_', $editor_settings );
 		$html .= ob_get_contents();
-		$html .= '<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . esc_html( $description ) . '</label>';
+		$html .= '<label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . wp_kses_post( $args['description'] ) . '</label>';
 		$html .= '</div>';
 		ob_clean();
 		return $html;
