@@ -107,12 +107,12 @@ class Responsive_Options {
 	 */
 	protected function display_data( $id, $sub, $i ) {
 
-		echo wp_kses_post( '<li class="sky-tab-content-' . $i . '"><div class="typography">' ); // echo<p>;.
+		echo wp_kses( '<li class="sky-tab-content-' . $i . '"><div class="typography">', responsive_allowed_html() ); // echo<p>;.
 		foreach ( $sub as $opt ) {
 			echo wp_kses( $this->sub_heading( $this->parse_args( $opt ) ), responsive_allowed_html() );
 			echo wp_kses( $this->section( $this->parse_args( $opt ) ), responsive_allowed_html() );
 		}
-		echo wp_kses_post( $this->save() );
+		echo wp_kses( $this->save(), responsive_allowed_html() );
 		// echo</p>';.
 		echo '</div>	 </li>';
 
@@ -253,7 +253,7 @@ class Responsive_Options {
 
 		$html = '<input id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" type="checkbox" value="1" ' . $checked . '
          />
-                <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . wp_kses_post( $args['description'] ) . '</label>';
+                <label class="description" for="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">' . wp_kses( $args['description'], responsive_allowed_html() ) . '</label>';
 
 		return $html;
 	}
@@ -306,7 +306,7 @@ class Responsive_Options {
 	 */
 	protected function description( $args ) {
 
-		$html = '<p>' . wp_kses_post( $args['description'] ) . '</p>';
+		$html = '<p>' . wp_kses( $args['description'], responsive_allowed_html() ) . '</p>';
 
 		return $html;
 	}

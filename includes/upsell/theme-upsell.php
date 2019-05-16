@@ -107,7 +107,7 @@ function cyberchimps_display_upsell() {
 									<img class="theme-screenshot" src="<?php echo esc_url( $theme->screenshot_url ); ?>"/>
 
 									<div class="theme-description">
-										<p><?php echo wp_kses_post( $theme->description ); ?></p>
+										<p><?php echo wp_kses( $theme->description, responsive_allowed_html() ); ?></p>
 									</div>
 								</div>
 								<div class="theme-details active">
@@ -147,7 +147,7 @@ function cyberchimps_display_upsell() {
 									<img class="theme-screenshot" src="<?php echo esc_url( $theme->screenshot_url ); ?>"/>
 
 									<div class="theme-description">
-										<p><?php echo wp_kses_post( $theme->description ); ?></p>
+										<p><?php echo wp_kses( $theme->description, responsive_allowed_html() ); ?></p>
 									</div>
 								</div>
 								<div class="theme-details">

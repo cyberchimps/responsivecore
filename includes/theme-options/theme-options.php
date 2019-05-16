@@ -137,7 +137,7 @@ function responsive_theme_options_do_page() {
 
 	<div class="wrap">
 	<?php $theme_name = wp_get_theme(); ?>
-	<?php echo wp_kses_post( '<h2>' . $theme_name . ' ' . __( 'Theme Options', 'responsive' ) . '</h2>' ); ?>
+	<?php echo wp_kses( '<h2>' . $theme_name . ' ' . __( 'Theme Options', 'responsive' ) . '</h2>', responsive_allowed_html() ); ?>
 
 
 	<?php if ( false != $_REQUEST['settings-updated'] ) : ?>
@@ -292,7 +292,8 @@ function responsive_theme_options_do_page() {
 					'heading'     => '',
 					'type'        => 'checkbox',
 					'id'          => 'front_page',
-					'description' => sprintf( wp_kses( 'Overrides the WordPress %1$1sfront page option%2$2s', 'responsive' ), '<a href="options-reading.php">', '</a>' ),
+		/* translators: 1: get_comments_number, 2: plugin name. */
+					'description' => sprintf( __( 'Overrides the WordPress %1$1sfront page option%2$2s', 'responsive' ), '<a href="options-reading.php">', '</a>' ),
 					'placeholder' => '',
 				),
 				array(
@@ -952,7 +953,7 @@ add_action( 'admin_notices', 'cyberchimps_invalid_account_details' );
  */
 function cyberchimps_invalid_account_details() {
 
-	if ( 'not_found' == get_option( 'cc_account_status' ) ) {
+	if ( 'not_found' === get_option( 'cc_account_status' ) ) {
 		printf(
 			wp_kses(
 				'<div class="notice notice-error is-dismissible"><p><strong>CyberChimps - Invalid Account Details</strong>. Please re-enter <a href="%1$s" class="button">Re-Enter</a></p></div>',
@@ -962,7 +963,7 @@ function cyberchimps_invalid_account_details() {
 		);
 	}
 
-	if ( '' == get_option( 'cc_account_user_details' ) ) {
+	if ( '' === get_option( 'cc_account_user_details' ) ) {
 		printf(
 			wp_kses(
 				'<div class="notice notice-info"><p><strong>Please enter CyberChimps Account Details in order to receive auto updates when available</strong>. <a href="%1$s" class="button">Click Here</a></p></div>',

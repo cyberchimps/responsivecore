@@ -28,9 +28,11 @@ function responsive_activation_notice() {
 		$return   = '<div class="updated activation"><p><strong>';
 		$my_theme = wp_get_theme();
 		if ( isset( $_GET['previewed'] ) ) {
-			$return .= sprintf( wp_kses( 'Settings saved and %s activated successfully.', 'responsive' ), $my_theme->get( 'Name' ) );
+			/* translators: %s: name */
+			$return .= sprintf( __( 'Settings saved and %s activated successfully.', 'responsive' ), $my_theme->get( 'Name' ) );
 		} else {
-			$return .= sprintf( wp_kses( '%s activated successfully.', 'responsive' ), $my_theme->get( 'Name' ) );
+			/* translators: %s: name */
+			$return .= sprintf( __( '%s activated successfully.', 'responsive' ), $my_theme->get( 'Name' ) );
 		}
 		$return .= '</strong> <a href="' . home_url( '/' ) . '">' . __( 'Visit site', 'responsive' ) . '</a></p>';
 		$return .= '<p>';

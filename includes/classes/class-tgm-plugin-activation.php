@@ -552,15 +552,15 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 */
 		public function add_plugin_action_link_filters() {
 			foreach ( $this->plugins as $slug => $plugin ) {
-				if ( false == $this->can_plugin_activate( $slug ) ) {
+				if ( false === $this->can_plugin_activate( $slug ) ) {
 					add_filter( 'plugin_action_links_' . $plugin['file_path'], array( $this, 'filter_plugin_action_links_activate' ), 20 );
 				}
 
-				if ( true == $plugin['force_activation'] ) {
+				if ( true === $plugin['force_activation'] ) {
 					add_filter( 'plugin_action_links_' . $plugin['file_path'], array( $this, 'filter_plugin_action_links_deactivate' ), 20 );
 				}
 
-				if ( false != $this->does_plugin_require_update( $slug ) ) {
+				if ( false !== $this->does_plugin_require_update( $slug ) ) {
 					add_filter( 'plugin_action_links_' . $plugin['file_path'], array( $this, 'filter_plugin_action_links_update' ), 20 );
 				}
 			}

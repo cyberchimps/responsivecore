@@ -501,7 +501,8 @@ if ( ! function_exists( 'responsive_post_meta_data' ) ) {
 	function responsive_post_meta_data() {
 
 		printf(
-			wp_kses( '<span class="%1$s">Posted on </span>%2$s<span class="%3$s"> by </span>%4$s', responsive_allowed_html() ),
+			/* translators: 1: meta. 2: link. 3: byline. */
+			__( '<span class="%1$s">Posted on </span>%2$s<span class="%3$s"> by </span>%4$s', 'responsive' ),
 			'meta-prep meta-prep-author posted',
 			sprintf(
 				'<a href="%1$s" title="%2$s" rel="bookmark"><time class="timestamp updated" datetime="%3$s">%4$s</time></a>',
@@ -514,7 +515,8 @@ if ( ! function_exists( 'responsive_post_meta_data' ) ) {
 			sprintf(
 				'<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-				sprintf( wp_kses( 'View all posts by %s', 'responsive' ), get_the_author() ),
+				/* translators: %s: author name. */
+				sprintf( __( 'View all posts by %s', 'responsive' ), get_the_author() ),
 				esc_attr( get_the_author() )
 			)
 		);
@@ -573,7 +575,74 @@ add_action( 'wp_head', 'fetch_copyright' );
  */
 function responsive_allowed_html() {
 	$allowed_html = array(
+
+		// List.
+		'ul'       => array(
+			'style'   => array(),
+			'onclick' => array(),
+			'class'   => array(),
+			'id'      => array(),
+		),
+
+		// unordered List.
+		'li'       => array(
+			'style'   => array(),
+			'onclick' => array(),
+			'class'   => array(),
+			'id'      => array(),
+		),
+
+		// Icon.
+		'i'        => array(
+			'class'   => array(),
+			'style'   => array(),
+			'onclick' => array(),
+			'id'      => array(),
+		),
+
 		'div'      => array(
+			'class'   => array(),
+			'style'   => array(),
+			'onclick' => array(),
+			'id'      => array(),
+		),
+
+		'h1'       => array(
+			'class'   => array(),
+			'style'   => array(),
+			'onclick' => array(),
+			'id'      => array(),
+		),
+
+		'h2'       => array(
+			'class'   => array(),
+			'style'   => array(),
+			'onclick' => array(),
+			'id'      => array(),
+		),
+
+		'h3'       => array(
+			'class'   => array(),
+			'style'   => array(),
+			'onclick' => array(),
+			'id'      => array(),
+		),
+
+		'h4'       => array(
+			'class'   => array(),
+			'style'   => array(),
+			'onclick' => array(),
+			'id'      => array(),
+		),
+
+		'h5'       => array(
+			'class'   => array(),
+			'style'   => array(),
+			'onclick' => array(),
+			'id'      => array(),
+		),
+
+		'h6'       => array(
 			'class'   => array(),
 			'style'   => array(),
 			'onclick' => array(),
@@ -665,9 +734,11 @@ function responsive_allowed_html() {
 			'title'   => array(),
 		),
 
-		'br'       => array(),
-		'em'       => array(),
 		'strong'   => array(),
+		'em'       => array(),
+		'b'        => array(),
+		'i'        => array(),
+		'br'       => array(),
 	);
 
 	return $allowed_html;

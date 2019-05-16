@@ -199,7 +199,8 @@ if ( ! function_exists( 'responsive_wp_title' ) && ! defined( 'AIOSEOP_VERSION' 
 
 		// Add a page number if necessary.
 		if ( $paged >= 2 || $page >= 2 ) {
-			$title .= " $sep " . sprintf( wp_kses( 'Page %s', 'responsive' ), max( $paged, $page ) );
+			/* translators: 1: $paged */
+			$title .= " $sep " . sprintf( __( 'Page %s', 'responsive' ), max( $paged, $page ) );
 		}
 
 		return $title;
