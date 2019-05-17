@@ -328,6 +328,27 @@ class Responsive_Options {
 	}
 
 	/**
+	 * [responsive_pro_pagelist_validate description]
+	 *
+	 * @return [type] [description]
+	 */
+	public static function responsive_pro_pagelist_validate() {
+		// An array of valid results.
+		$args             = array(
+			'post_status' => 'publish',
+			'orderby'     => 'name',
+			'order'       => 'ASC',
+		);
+		$option_pages     = array();
+		$pages_lists      = get_pages( $args );
+		$option_pages[''] = esc_html( __( 'Choose Page', 'responsive' ) );
+		foreach ( $pages_lists as $pages_list ) {
+			$option_pages[ $pages_list->ID ] = $pages_list->post_title;
+		}
+		return $option_pages;
+	}
+
+	/**
 	 * [responsive_pro_categorylist_validate description]
 	 *
 	 * @return [type] [description]
