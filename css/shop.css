@@ -67,7 +67,7 @@
 	background: #77a464;
 	font-size:2em;
 	white-space: normal;
-	word-break: break-word;
+	word-break: break-all;
 }
 
 .add_to_cart_button:before {
@@ -161,7 +161,7 @@
 
 .woocommerce #content table.cart td.actions .input-text, .woocommerce table.cart td.actions .input-text, .woocommerce-page #content table.cart td.actions .input-text, .woocommerce-page table.cart td.actions .input-text {
     box-shadow: none;
-    padding: 8px 20px;
+    padding: 10px 20px;
     text-align: center;
     width: 150px;
 }

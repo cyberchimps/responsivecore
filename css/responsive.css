@@ -294,10 +294,10 @@
 	}
 
 	.two_about_section {
-	 display: block;
+		display: block;
 	}
 	.two_about_section > div {
-	 max-width: 100%;
+		max-width: 100%;
 	}
 
 }

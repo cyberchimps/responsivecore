@@ -82,8 +82,6 @@ function responsive_get_option_defaults() {
 		'email_uid'                       => '',
 		'testimonial_val'                 => null,
 		'feature_val'                     => null,
-		'about_page_first'                => null,
-		'about_page_second'               => null,
 		'team_val'                        => null,
 		'teammember1'                     => null,
 		'teammember2'                     => null,

@@ -3073,24 +3073,21 @@ line-height: 27px;
 	display:grid;
 }
 #about_div .about_cta{
-	display: inline-block;
+	display: block;
 	vertical-align: middle;
 	text-align: center;
-	display:block;
 }
 #about_div .about_cta a {
 	font-size: 20px;
 	padding: 15px 15px;
 	margin-left: 40px;
 }
-
 .two_about_section {
- display: inline-flex;
+	display: inline-flex;
 }
 .two_about_section > div {
- max-width: 50%;
+	max-width: 50%;
 }
-
 #testimonial_div .section_title:after, #team_div .section_title:after, #feature_div .section_title:after{
 	border-bottom: solid 2px #555555;
 	width: 60px;
