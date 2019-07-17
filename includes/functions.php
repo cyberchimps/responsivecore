@@ -101,8 +101,6 @@ function responsive_get_option_defaults() {
 		'blog_posts_index_layout_default' => 'default',
 		'site_footer_option'              => 'footer-3-col',
 		'home-widgets'                    => false,
-		'res_hide_site_title'             => false,
-		'res_hide_tagline'                => false,
 	);
 
 	return apply_filters( 'responsive_option_defaults', $defaults );
@@ -178,7 +176,20 @@ if ( !function_exists( 'responsive_setup' ) ):
 		) );
 
 		add_theme_support( 'custom-background' );
-
+		/**
+		 * Add support for core custom logo.
+		 *
+		 */
+		add_theme_support(
+			'custom-logo',
+			array(
+				'height'              => 100,
+				'width'               => 300,
+				'flex-width'          => true,
+				'flex-height'         => true,
+				'admin-head-callback' => 'responsive_admin_header_style',
+			)
+		);
 		add_theme_support( 'custom-header', array(
 			// Header text display default
 			'header-text'         => false,
