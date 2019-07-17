@@ -101,6 +101,8 @@ function responsive_get_option_defaults() {
 		'blog_posts_index_layout_default' => 'default',
 		'site_footer_option'              => 'footer-3-col',
 		'home-widgets'                    => false,
+		'res_hide_site_title'             => false,
+		'res_hide_tagline'                => false,
 	);
 
 	return apply_filters( 'responsive_option_defaults', $defaults );
