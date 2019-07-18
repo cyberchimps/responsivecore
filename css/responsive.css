@@ -74,6 +74,9 @@
 		margin-left: 0px;
 	}
 	.copyright {padding-left: 20px;}
+	.fullwidth-layout .container, div#container {
+		width: unset;
+	}
 }
 
 @media screen and (max-width: 650px) {

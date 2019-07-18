@@ -97,7 +97,7 @@ function responsive_customize_register( $wp_customize ) {
 		'section'               => 'home_page',
 		'settings'              => 'responsive_theme_options[home_content_area]',
 		'type'                  => 'textarea'
-	) );	
+	) );
 	$wp_customize->add_setting( 'responsive_theme_options[cta_url]', array( 'sanitize_callback' => 'esc_url_raw','default' => '#nogo','transport' => 'postMessage', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_cta_url', array(
 		'label'                 => __( 'Call to Action (URL)', 'responsive' ),
@@ -246,7 +246,7 @@ function responsive_customize_register( $wp_customize ) {
 		'label'             => __( 'StumbleUpon', 'responsive' ),
 		'section'           => 'responsive_social_media',
 		'settings'          => 'responsive_theme_options[stumbleupon_uid]'
-	) ) );	
+	) ) );
 
 	// Add Vimeo Setting
 
@@ -290,7 +290,7 @@ function responsive_customize_register( $wp_customize ) {
 		'settings'              => 'responsive_theme_options[responsive_inline_css]',
 		'type'                  => 'textarea'
 	) );
-	
+
 /*--------------------------------------------------------------
 	// Scripts
 --------------------------------------------------------------*/
@@ -346,25 +346,25 @@ add_action( 'customize_register', 'responsive_customize_register' );
 
 function responsive_sanitize_checkbox( $input ) {
 		if ( $input ) {				
-		$output = '1';	
-	} else {				
-		$output = false;	
-	}	
+		$output = '1';
+	} else {
+		$output = false;
+	}
 	return $output;
 }
 
 function responsive_sanitize_textarea( $input ) {
-	global $allowedposttags;	
-	$output = wp_kses( $input, $allowedposttags);	
+	global $allowedposttags;
+	$output = wp_kses( $input, $allowedposttags);
 	return $output;
 }
 
 function responsive_sanitize_default_layouts( $input ) {
-	$output = '';	
+	$output = '';
 	$option = Responsive_Options::valid_layouts();
-	if ( array_key_exists( $input, $option ) ) {	
-		$output = $input;	
-	}	
+	if ( array_key_exists( $input, $option ) ) {
+		$output = $input;
+	}
 	return $output;
 }
 
