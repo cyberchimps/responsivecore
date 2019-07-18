@@ -185,7 +185,7 @@ sub {
 	width: 100%;
 	background-color: #fff;
 	margin: 0 !important;
-	opacity:0.9;	
+	opacity:0.9;
 	-webkit-transition: all 0.8s ease-in-out 0s;
 	-moz-transition: all 0.8s ease-in-out 0s;
 	-o-transition: all 0.8s ease-in-out 0s;
@@ -743,7 +743,7 @@ form div {
 .breadcrumb {
     padding-right: 4px;
     padding-left: 4px;
-}	
+}
 .breadcrumb-current{padding-left: 4px;}
 #content h1 { position: relative;}
 #content h1::after {
@@ -1339,7 +1339,7 @@ ul.menu > li:hover {
 .menu .current-menu-item a {
 	background-color: #343434;
 }
-.menu .current_page_item a { 
+.menu .current_page_item a {
 	color: #fff;
 }
 .full-width-no-box .menu .current_page_item .sub-menu a ,.full-width-no-box .menu .current_page_item .sub-menu a:hover, .full-width-no-box .menu .sub-menu .current_page_item a{ color: #444;}
@@ -2715,10 +2715,10 @@ table.cart td.actions .coupon .input-text {
 	}
 }
 .default-layout .sticky-header .main-nav{background-color:inherit; background-image: none;}
-.boxed-layout .sticky-header { 
+.boxed-layout .sticky-header {
 	width: 85%;
 	left: 7.5%;
-	margin: 0 auto!important; 
+	margin: 0 auto!important;
 }
 /* =Polylang
 -------------------------------------------------------------- */
@@ -2806,13 +2806,13 @@ table.cart td.actions .coupon .input-text {
 .full-width-no-box #footer-wrapper .social_div {margin-bottom: 0!important;}
 .full-width-no-box #footer .social-icons { text-align: center;}
 .full-width-no-box #footer_widget a {color: #ffffff;}
-.full-width-no-box #footer_widget a:hover {color:edeaea;} 
+.full-width-no-box #footer_widget a:hover {color:edeaea;}
 .full-width-no-box #footer_widget .widget-wrapper {
 	border: none;
 	color: #ffffff;
 	background-color:inherit;
 }
- 
+
 
 /* =Social Icons
 -------------------------------------------------------------- */
@@ -2931,7 +2931,7 @@ BDO[DIR="rtl"] {
     padding-right:40px;
     margin-top: 17px;
     margin-bottom: 0;
-    font-size: 2.250em;    
+    font-size: 2.250em;
     font-weight: 700;
 }
 .testimonial_main_div .testimonial_img,.team_main_div .team_img,.feature_main_div .feature_img{
@@ -2943,7 +2943,7 @@ BDO[DIR="rtl"] {
   width: 178px;
   height: 178px;
   border: 4px solid #fff;
-  padding: 4px; 
+  padding: 4px;
 }
 
 .section-team-2col .team_img img {
@@ -2951,11 +2951,11 @@ BDO[DIR="rtl"] {
 	border: 3px solid #585858;
 	border-radius: 100%;
 }
-.section-team-2col .team-info .team_member, .section-team-2col .team-info .team_designation { 
+.section-team-2col .team-info .team_member, .section-team-2col .team-info .team_designation {
 	text-align: left;
-	margin-left: 4px; 
+	margin-left: 4px;
 }
-.section-team-2col .team-info .team_desc { 
+.section-team-2col .team-info .team_desc {
 	text-align: left;     padding-left: 0px;
     margin-left: 4px;
 
@@ -2965,7 +2965,7 @@ BDO[DIR="rtl"] {
 .section-team-2col .team-info .team_designation { margin-top: 6px;}
 .team_main_div .section-team-2col .social a:hover { color: #585858;}
 .team_main_div .section-team-2col { margin-top: 40px; }
-.section-team-2col .team_img { 
+.section-team-2col .team_img {
 	margin-top: 0px;
 	margin-left: 10px;
 	position: relative;
@@ -2978,7 +2978,7 @@ BDO[DIR="rtl"] {
 	font-size: 20px;
 	background-color: unset;
 }
-.team_img:hover .img_overlay {    
+.team_img:hover .img_overlay {
     display: block;
     opacity: .50;
     visibility: visible;
@@ -2990,7 +2990,7 @@ BDO[DIR="rtl"] {
 	height: 149px;
 	opacity: 0;
 	border-radius: 50%;
-    position: absolute;    
+    position: absolute;
     visibility: hidden;
     width: 149px;
     -webkit-transition: all .8s;
@@ -2998,8 +2998,8 @@ BDO[DIR="rtl"] {
     -moz-transition: all .8s;
     transition: all .8s;
 }
-.section-team-2col .team_img:hover .img_overlay { 
-	background-color: #585858; 
+.section-team-2col .team_img:hover .img_overlay {
+	background-color: #585858;
 }
 //.default-layout .section-team-2col .team_img { margin-left: 20px; }
 .default-layout .section-team-2col .team-info { margin-left: 20px;}
@@ -3015,23 +3015,23 @@ margin-bottom: 20px;
     -webkit-border-radius: 100%;
        -moz-border-radius: 100%;
             border-radius: 100%;
-    max-height: 12em; 
+    max-height: 12em;
 }
 .testimonial_main_text {
-    font-size: 18px;	
+    font-size: 18px;
     margin-top: 46px;
 	line-height: 27px;
-	background: url(../../images/testimonial_icon.png) no-repeat 4px 0px;   
-    padding-right: 40px;    
+	background: url(../../images/testimonial_icon.png) no-repeat 4px 0px;
+    padding-right: 40px;
 }
 .full-width-no-box .testimonial_main_text {
-    font-size: 18px;	
+    font-size: 18px;
     margin-top: 46px;
 	line-height: 27px;
-	background: url(../../images/testimonial_icon-other.png) no-repeat 4px 0px;   
-    padding-right: 40px;    
-} 
-#testimonial_div, #team_div, #about_div, #feature_div  
+	background: url(../../images/testimonial_icon-other.png) no-repeat 4px 0px;
+    padding-right: 40px;
+}
+#testimonial_div, #team_div, #about_div, #feature_div
 {
 	-moz-border-radius: 4px;
 -webkit-border-radius: 4px;
@@ -3041,7 +3041,7 @@ border-radius: 4px;
 padding-bottom: 40px;
 width: 99.893617021277%;
 }
-#about_div .about_text {	
+#about_div .about_text {
 	font-size: 18px;
 	//text-align: center;
 	padding: 0 10px 0 59px;
@@ -3067,20 +3067,20 @@ line-height: 27px;
 #about_div .about-content h2 {
 	position: relative;
 }
-#about_div .about-content { 
-	display: inline-block; 
+#about_div .about-content {
+	display: inline-block;
 	vertical-align: middle;
 	display:grid;
 }
 #about_div .about_cta{
-	display: inline-block; 
+	display: inline-block;
 	vertical-align: middle;
 	margin-top: 69px;
 	text-align: center;
 }
 #about_div .about_cta a {
 	font-size: 20px;
-	padding: 15px 15px;	
+	padding: 15px 15px;
 }
 #testimonial_div .section_title:after, #team_div .section_title:after, #feature_div .section_title:after{
 	border-bottom: solid 2px #555555;
@@ -3092,16 +3092,16 @@ line-height: 27px;
 	right: 0;
 	margin: 50px auto auto auto;
 }
-.testimonial_author {    
+.testimonial_author {
     font-weight: bold;
-    font-size: 18px;      
-    margin-bottom: 4px;   
+    font-size: 18px;
+    margin-bottom: 4px;
     margin: 10px  0 0 29px;
 }
 .testimonial_text {
     margin: 0 0 0 29px;
     font-style: normal;
-    font-size: inherit;    
+    font-size: inherit;
     margin-bottom: 1em;
     padding-top: 22px;
 }
@@ -3119,7 +3119,7 @@ line-height: 27px;
 	text-align: center;
 	font-size: 1.1em;
 	margin-top: 10px;
-	font-style: italic; 
+	font-style: italic;
 	display:block;
 }
 .team_main_div .social {
@@ -3147,7 +3147,7 @@ line-height: 27px;
 }
 .team_main_div .section-team .social a:hover { background-color: #ccc;}
 .page-template-blog-3-col .post-data {
-	margin-top:0px; 
+	margin-top:0px;
 }
 .section-blog {
 	width: 33%;
@@ -3185,8 +3185,8 @@ box-sizing: border-box;
 display: inline-block;
 vertical-align: top;
 }
-.team_desc,.feature_desc {   
-    text-align: center;  
+.team_desc,.feature_desc {
+    text-align: center;
     padding: 0 10px 10px;
     margin-top: 14px;
 	font-size: 18px;
@@ -3210,11 +3210,11 @@ padding-bottom: 24px;
 padding-bottom: 39px;
 display: inline-block;
 }
-.contact_div {	
+.contact_div {
 	font-size: 14px;
 	margin-bottom: 20px;
 	box-sizing: border-box;
-	padding: 20px;	
+	padding: 20px;
 	-moz-border-radius: 4px;
 -webkit-border-radius: 4px;
 background-color: #ffffff;
@@ -3225,7 +3225,7 @@ background-size:cover;
 color: #ffffff;
 }
 .contact_subtitle {text-align: center;margin: 17px 0 17px 0;font-size: 18px}
-.contact_title { 
+.contact_title {
 	text-align: center;
 	line-height: 1em;
 	text-transform: uppercase;
@@ -3261,7 +3261,7 @@ border-bottom-width: 3px;
 	background-image: -o-linear-gradient(top, #4f9eea, #1874cd);
 	background-image: linear-gradient(to top, #4f9eea, #1874cd);
 	border: 1px solid #115290;
-	color: #ffffff;	
+	color: #ffffff;
 	line-height: 20px;
 	padding: 10px 22px;
 	box-shadow:none;
@@ -3305,7 +3305,7 @@ box-shadow: none;
 border-width: 0;
 border-bottom-width: 3px;
 border-bottom-color: #cec9c4;
-}		
+}
 .sub-menu .menu-item-has-children::after {
 	position: absolute;
     font-family: FontAwesome;
@@ -3344,7 +3344,7 @@ border-bottom-color: #cec9c4;
 }
 
 /*
-	Gutenberg css 
+	Gutenberg css
  */
 
  figure.wp-block-audio.aligncenter{
@@ -3470,3 +3470,6 @@ border-bottom-color: #cec9c4;
 /*
 	Gutenberg css -- END
  */
+.site-name a {
+	word-wrap: break-word;
+}
