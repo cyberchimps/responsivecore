@@ -48,7 +48,7 @@ Class Responsive_Options {
 	public function render_display() {
 		$html = '';
 		$i=1;
-		foreach( $this->sections as $section ) {			
+		foreach( $this->sections as $section ) {
 			$this->display_title( $section['id'], $section['title'],$i++);
 		}
 		$i=1;
@@ -57,20 +57,20 @@ Class Responsive_Options {
 			$sub = $this->options[$section['id']];
 			$this->display_data($section['id'],$sub,$i++);
 		}
-		echo '</ul>';		
+		echo '</ul>';
 	}
-	
+
 	protected function display_title( $id, $title ,$i ) {
-	
+
 		$check ='';
 		if ($i == '1')
 			$check = 'checked=checked';
-		
+
 		echo '<input type="radio"' . $check . ' name="sky-tabs" id="sky-'. $id .'"  class="sky-tab-content-' . $i . '">';
 		echo '<label for="sky-' . $id . '"><span><span><i class="fa fa-bolt"></i>' . esc_html ($title) . ' </span></span></label>';
-		
+
 	}
-	
+
 	/**
 	 * Creates main sections title and container
 	 *
@@ -82,8 +82,8 @@ Class Responsive_Options {
 	 * @return string
 	 */
 	protected function display_data( $id, $sub, $i ) {
-	
-		echo '<li class="sky-tab-content-'. $i . '">			
+
+		echo '<li class="sky-tab-content-'. $i . '">
 			  <div class="typography">';
 		//echo '<p>';
 		foreach( $sub as $opt ) {
@@ -93,9 +93,9 @@ Class Responsive_Options {
 		echo $this->save();
 		//echo '</p>';
 		echo '</div>	 </li>';
-	
+
 	}
-	
+
 	/**
 	 * Creates the title section for each option input
 	 *
@@ -202,7 +202,7 @@ Class Responsive_Options {
 	 * @return string
 	 */
 	protected function select( $args ) {
-                
+
 		extract( $args );
                 if($args['id'] === 'featured_area_layout')
                 {
@@ -210,9 +210,9 @@ Class Responsive_Options {
                 }
                 else
                 {
-                 $layout_class ='';   
+                 $layout_class ='';
                 }
-              
+
 		$html = '<select class='.$layout_class.' id="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '" name="' . esc_attr( 'responsive_theme_options[' . $id . ']' ) . '">';
 		foreach( $options as $key => $value ) {
 			$html .= '<option' . selected( $this->responsive_options[$id], $key, false ) . ' value="' . esc_attr( $key ) . '">' . esc_html( $value ) . '</option>';
@@ -243,17 +243,17 @@ Class Responsive_Options {
 		return $html;
 	}
 	protected function radio_grid( $args ){
-	
+
 		extract($args);
-	
+
 		$saved_value = ( !empty( $this->responsive_options[$id] ) ) ? $this->responsive_options[$id] : 'default-layout';
-	
+
 		$html = '<div class="responsive-layouts-wrapper">';
-	
+
 		if( !empty($values) ){
-	
+
 			foreach ($values as $radio_input => $key ) {
-	
+
 				if( $saved_value == $radio_input ){
 					$selected = 'selected-grid';
 					$checked = 'checked = checked';
@@ -262,9 +262,9 @@ Class Responsive_Options {
 					$selected = '';
 					$checked = '';
 				}
-	
+
 				$grid_layout_image = get_template_directory_uri().'/pro/lib/images/'. $radio_input .'.png';
-	
+
 				$html .= '<div class="radio-grids-option-wrapper">';
 				$html .= '<div class="radio-grid-description">' . $key . '</div>';
 				$html .= '<img class="'.$selected.'" src = "' . $grid_layout_image . '" onclick="document.getElementById(\'' . $radio_input . '\').checked=true;"/>';
@@ -272,9 +272,9 @@ Class Responsive_Options {
 				$html .= '</div>';
 			}
 		}
-	
+
 		$html .= '</div>';
-	
+
 		return $html;
 	}
 	/**
@@ -320,7 +320,7 @@ Class Responsive_Options {
 		foreach( $category_lists as $category ){
 			$option_categories[$category->term_id] = $category->name;
 		}
-		return $option_categories;		
+		return $option_categories;
 	}
 
 	/**
@@ -331,10 +331,10 @@ Class Responsive_Options {
 	public static function valid_layouts() {
 		$layouts = array(
 			'default'                   => __( 'Default', 'responsive' ),
-			'content-sidebar-page'      => __( 'Content/Sidebar', 'responsive' ),
-			'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
-			'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
-			'sidebar-content-half-page' => __( 'Sidebar/Content Half Page', 'responsive' ),
+			'content-sidebar-page'      => __( 'Right Sidebar', 'responsive' ),
+			'sidebar-content-page'      => __( 'Left Sidebar', 'responsive' ),
+			'content-sidebar-half-page' => __( 'Right Sidebar Half Page', 'responsive' ),
+			'sidebar-content-half-page' => __( 'Left Sidebar Half Page', 'responsive' ),
 			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' )
 		);
 
@@ -348,14 +348,14 @@ Class Responsive_Options {
 	public static function blog_valid_layouts() {
 		$bloglayouts = array(
 				'default'                   => __( 'Default', 'responsive' ),
-				'content-sidebar-page'      => __( 'Content/Sidebar', 'responsive' ),
-				'sidebar-content-page'      => __( 'Sidebar/Content', 'responsive' ),
-				'content-sidebar-half-page' => __( 'Content/Sidebar Half Page', 'responsive' ),
-				'sidebar-content-half-page' => __( 'Sidebar/Content Half Page', 'responsive' ),
+				'content-sidebar-page'      => __( 'Right Sidebar', 'responsive' ),
+				'sidebar-content-page'      => __( 'Left Sidebar', 'responsive' ),
+				'content-sidebar-half-page' => __( 'Right Sidebar Half Page', 'responsive' ),
+				'sidebar-content-half-page' => __( 'Left Sidebar Half Page', 'responsive' ),
 				'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' ),
 				'blog-3-col'      			=> __( 'Blog 3 Column', 'responsive' )
 		);
-	
+
 		return apply_filters( 'responsive_blog_valid_layouts', $bloglayouts );
 	}
 
@@ -394,7 +394,7 @@ Class Responsive_Options {
 	protected function editor( $args ) {
 
 		extract( $args );
-               
+
 		$class[] = 'large-text';
 		$classes = implode( ' ', $class );
 
