@@ -3151,7 +3151,7 @@ line-height: 27px;
 }
 .section-blog {
 	width: 33%;
-	float: none;
+	float: left;
 	box-sizing: border-box;
 	display: inline-block;
 	vertical-align: top;
