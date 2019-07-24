@@ -3473,3 +3473,6 @@ border-bottom-color: #cec9c4;
 .site-name a {
 	word-wrap: break-word;
 }
+img.custom-logo{
+   margin:10px 0;
+}
