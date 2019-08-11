@@ -335,7 +335,7 @@ Class Responsive_Options {
 			'sidebar-content-page'      => __( 'Left Sidebar', 'responsive' ),
 			'content-sidebar-half-page' => __( 'Right Sidebar Half Page', 'responsive' ),
 			'sidebar-content-half-page' => __( 'Left Sidebar Half Page', 'responsive' ),
-			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' )
+			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' ),
 		);
 
 		return apply_filters( 'responsive_valid_layouts', $layouts );
@@ -347,13 +347,15 @@ Class Responsive_Options {
 	 */
 	public static function blog_valid_layouts() {
 		$bloglayouts = array(
-				'default'                   => __( 'Default', 'responsive' ),
-				'content-sidebar-page'      => __( 'Right Sidebar', 'responsive' ),
-				'sidebar-content-page'      => __( 'Left Sidebar', 'responsive' ),
-				'content-sidebar-half-page' => __( 'Right Sidebar Half Page', 'responsive' ),
-				'sidebar-content-half-page' => __( 'Left Sidebar Half Page', 'responsive' ),
-				'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' ),
-				'blog-3-col'      			=> __( 'Blog 3 Column', 'responsive' )
+			'default'                   => __( 'Default', 'responsive' ),
+			'content-sidebar-page'      => __( 'Right Sidebar', 'responsive' ),
+			'sidebar-content-page'      => __( 'Left Sidebar', 'responsive' ),
+			'content-sidebar-half-page' => __( 'Right Sidebar Half Page', 'responsive' ),
+			'sidebar-content-half-page' => __( 'Left Sidebar Half Page', 'responsive' ),
+			'full-width-page'           => __( 'Full Width Page (no sidebar)', 'responsive' ),
+			'blog-2-col'                => __( 'Blog 2 Column', 'responsive' ),
+			'blog-3-col'                => __( 'Blog 3 Column', 'responsive' ),
+			'blog-4-col'                => __( 'Blog 4 Column', 'responsive' ),
 		);
 
 		return apply_filters( 'responsive_blog_valid_layouts', $bloglayouts );
@@ -362,9 +364,8 @@ Class Responsive_Options {
 	/**
 	 * Makes sure that every option has all the required args
 	 *
-	 * @param $args array
-	 *
-	 * @return array
+	 * @param  array $args Array.
+	 * @return array       [description]
 	 */
 	protected function parse_args( $args ) {
 		$default_args = array(
@@ -376,7 +377,7 @@ Class Responsive_Options {
 			'class'       => array(),
 			'description' => '',
 			'placeholder' => '',
-			'options'     => array()
+			'options'     => array(),
 		);
 
 		$result = array_merge( $default_args, $args );
@@ -387,7 +388,7 @@ Class Responsive_Options {
 	/**
 	 * Creates editor input
 	 *
-	 * @param $args array
+	 * @param array $args Array.
 	 *
 	 * @return string
 	 */
@@ -406,14 +407,11 @@ Class Responsive_Options {
 			'tinymce'       => array( 'plugins' => 'wordpress' ),
 			'editor_class'  => esc_attr( $classes )
 		);
-                if($args['id'] === 'home_content_area')
-                {
-                    $editor_class = 'res_home_content_area';
-                }
-                else if($args['id'] === 'featured_content')
-                {
-                    $editor_class = 'res_featured_content_area';
-                }
+		if ( 'home_content_area' === $args['id'] ) {
+			$editor_class = 'res_home_content_area';
+		} elseif ( 'featured_content' === $args['id'] ) {
+			$editor_class = 'res_featured_content_area';
+		}
 
 		$html = '<div class="tinymce-editor '.$editor_class.'">';
 		ob_start();
