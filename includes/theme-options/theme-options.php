@@ -53,9 +53,6 @@ function responsive_theme_options_init() {
  */
 function responsive_theme_options_add_page() {
 	add_theme_page( __( 'Theme Options', 'responsive' ), __( 'Theme Options', 'responsive' ), 'edit_theme_options', 'theme_options', 'responsive_theme_options_do_page' );
-	$cyberchimps_login_page = add_theme_page( __( 'CyberChimps Account', 'responsive' ), __( 'CyberChimps Account', 'responsive' ), 'edit_theme_options', 'cyberchimps-account', 'cyberchimps_account_page' );
-
-	add_action( "admin_print_styles-$cyberchimps_login_page", 'cyberchimps_load_styles_account' );
 }
 
 function cyberchimps_load_styles_account() {
