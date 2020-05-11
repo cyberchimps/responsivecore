@@ -18,35 +18,32 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
+/*
  * Customize theme activation message.
  *
- * @return void [description]
+ * @since    1.9.5.0
  */
 function responsive_activation_notice() {
 	if ( isset( $_GET['activated'] ) ) {
-		$return   = '<div class="updated activation"><p><strong>';
-		$my_theme = wp_get_theme();
+		$return = '<div class="updated activation"><p><strong>';
+					$my_theme = wp_get_theme();
 		if ( isset( $_GET['previewed'] ) ) {
-			/* translators: %s: name */
 			$return .= sprintf( __( 'Settings saved and %s activated successfully.', 'responsive' ), $my_theme->get( 'Name' ) );
 		} else {
-			/* translators: %s: name */
 			$return .= sprintf( __( '%s activated successfully.', 'responsive' ), $my_theme->get( 'Name' ) );
 		}
 		$return .= '</strong> <a href="' . home_url( '/' ) . '">' . __( 'Visit site', 'responsive' ) . '</a></p>';
 		$return .= '<p>';
-		// $return .= '<a class="button button-primary customize load-customize" href="' . admin_url( 'customize.php?theme=' . get_stylesheet() ) . '">' . __( 'Customize', 'responsive' ) . '</a>';
+		//$return .= '<a class="button button-primary customize load-customize" href="' . admin_url( 'customize.php?theme=' . get_stylesheet() ) . '">' . __( 'Customize', 'responsive' ) . '</a>';
 		$return .= ' <a class="button button-primary theme-options" href="' . admin_url( 'themes.php?page=theme_options' ) . '">' . __( 'Theme Options', 'responsive' ) . '</a>';
 		$return .= ' <a class="button button-primary help" href="https://cyberchimps.com/forum/free/responsive/">' . __( 'Help', 'responsive' ) . '</a>';
 		$return .= '</p></div>';
-
-		echo wp_kses( $return, responsive_allowed_html() );
+		echo $return;
 	}
 }
 add_action( 'admin_notices', 'responsive_activation_notice' );
 
-/**
+/*
  * Hide core theme activation message.
  *
  * @since    1.9.5.0
@@ -60,6 +57,5 @@ function responsive_admin_css() { ?>
 		text-decoration: none;
 	}
 	</style>
-	<?php
-}
+<?php }
 add_action( 'admin_head', 'responsive_admin_css' );

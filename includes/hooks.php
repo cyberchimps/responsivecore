@@ -1,6 +1,13 @@
 <?php
+
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Theme's Action Hooks
+ *
  *
  * @file           hooks.php
  * @package        Responsive
@@ -12,11 +19,6 @@
  * @link           http://codex.wordpress.org/Plugin_API/Hooks
  * @since          available since Release 1.1
  */
-
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  * Just after opening <body> tag
@@ -279,20 +281,10 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 add_action( 'woocommerce_before_main_content', 'responsive_woocommerce_wrapper', 10 );
 add_action( 'woocommerce_after_main_content', 'responsive_woocommerce_wrapper_end', 10 );
 
-/**
- * [responsive_woocommerce_wrapper description]
- *
- * @return void [description]
- */
 function responsive_woocommerce_wrapper() {
 	echo '<div id="content-woocommerce" class="grid col-620">';
 }
 
-/**
- * [responsive_woocommerce_wrapper_end description]
- *
- * @return void [description]
- */
 function responsive_woocommerce_wrapper_end() {
 	echo '</div><!-- end of #content-woocommerce -->';
 }

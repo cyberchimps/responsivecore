@@ -60,7 +60,6 @@
 	#about_div .section_title {text-align: center;}
 	#about_div .about-content {text-align: center;}
 	#about_div .about_cta {margin-top: 0;}
-	#about_div .about_cta a{margin-left: 0;}
 	.footer-menu { padding-left: 20px;padding-right: 20px;  }
 	.powered {text-align: left;padding-left: 20px;}
 	.section-team-2col .team-info .team_member, .section-team-2col .team-info .team_designation ,.team_main_div .section-team-2col .social {
@@ -75,6 +74,9 @@
 		margin-left: 0px;
 	}
 	.copyright {padding-left: 20px;}
+	.fullwidth-layout .container, div#container {
+		width: unset;
+	}
 }
 
 @media screen and (max-width: 650px) {
@@ -292,14 +294,6 @@
 	#about_div .section_title {
 		padding-left:20px;
 	}
-
-	.two_about_section {
-		display: block;
-	}
-	.two_about_section > div {
-		max-width: 100%;
-	}
-
 }
 
 @media screen and (max-width: 480px) {

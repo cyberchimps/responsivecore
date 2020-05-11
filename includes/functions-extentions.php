@@ -1,24 +1,18 @@
 <?php
-/**
- * Breadcrumb Lists
- * Load the plugin from the plugin that is installed.
- *
- * @package responsive
- */
 
-// Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * [get_responsive_breadcrumb_lists description]
+ * Breadcrumb Lists
+ * Load the plugin from the plugin that is installed.
  *
- * @return [type] [description]
  */
 function get_responsive_breadcrumb_lists() {
 	$responsive_options = get_option( 'responsive_theme_options' );
-	$yoast_options      = get_option( 'wpseo_internallinks' );
+	$yoast_options = get_option( 'wpseo_internallinks' );
 	if ( 1 == $responsive_options['breadcrumb'] ) {
 		return;
 	} elseif ( function_exists( 'bcn_display' ) ) {
@@ -27,7 +21,7 @@ function get_responsive_breadcrumb_lists() {
 		echo '</span>';
 	} elseif ( function_exists( 'breadcrumb_trail' ) ) {
 		breadcrumb_trail();
-	} elseif ( function_exists( 'yoast_breadcrumb' ) && true == $yoast_options['breadcrumbs-enable'] ) {
+	} elseif ( function_exists( 'yoast_breadcrumb' ) && true === $yoast_options['breadcrumbs-enable'] ) {
 		yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' );
 	} elseif ( ! is_search() ) {
 		responsive_breadcrumb_lists();
@@ -44,42 +38,35 @@ function get_responsive_breadcrumb_lists() {
 if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 	/**
-	 * [responsive_breadcrumb_lists description]
-	 *
-	 * @return [type] [description]
-	 */
-	/**
-	 * [responsive_breadcrumb_lists description]
-	 *
-	 * @return void [description]
+	 * Breadcrumb Lists
+	 * Allows visitors to quickly navigate back to a previous section or the root page.
 	 */
 	function responsive_breadcrumb_lists() {
+		/* === OPTIONS === */
+		$text['home'] = _x( 'Home', 'Text for Home link Breadcrumb', 'responsive' ); // text for the 'Home' link.
+		/* translators: %s: Categories */
+		$text['category'] = _x( 'Archive for %s', 'Text for a Category page Breadcrumb', 'responsive' ); // text for a category page.
+		/* translators: %s: Search result page */
+		$text['search'] = _x( 'Search results for: %s', 'Text for a Serch Results Breadcrumb', 'responsive' ); // text for a search results page.
+		/* translators: %s: Post Pages */
+		$text['tag'] = _x( 'Posts tagged %s', 'Text for a Tag page Breadcrumb', 'responsive' ); // text for a tag page.
+		/* translators: %s: Author pages */
+		$text['author'] = _x( 'View all posts by %s', 'Text for an Author page Breadcrumb', 'responsive' ); // text for an author page.
+		$text['404']    = _x( 'Error 404', 'Text for a 404 page Breadcrumb', 'responsive' ); // text for the 404 page.
 
-		/* == OPTIONS == */
-		$text['home'] = __( 'Home', 'responsive' ); // text for the 'Home' link.
-		// translators: %1$s: plugin name(s).
-		$text['category'] = __( 'Archive for %s', 'responsive' ); // text for a category page.
-		// translators: %1$s: plugin name(s).
-		$text['search'] = __( 'Search results for: %s', 'responsive' ); // text for a search results page.
-		// translators: %1$s: plugin name(s).
-		$text['tag'] = __( 'Posts tagged %s', 'responsive' ); // text for a tag page.
-		// translators: %1$s: plugin name(s).
-		$text['author'] = __( 'View all posts by %s', 'responsive' ); // text for an author page.
-		$text['404']    = __( 'Error 404', 'responsive' ); // text for the 404 page.
-
-		$show['current'] = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show
-		$show['home']    = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
+		$show['current'] = 1; // 1 - show current post/page title in breadcrumbs, 0 - don't show.
+		$show['home']    = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show.
 
 		$delimiter = ' <span class="chevron">&#8250;</span> '; // delimiter between crumbs.
 		$before    = '<span class="breadcrumb-current">'; // tag before the current crumb.
-		$after     = '</span>'; // tag after the current crumb
-		/* == END OF OPTIONS == */
+		$after     = '</span>'; // t    ag after the current crumb.
+		/* === END OF OPTIONS === */
 
 		$home_link   = home_url( '/' );
-		$before_link = '<span class="breadcrumb" typeof="v:Breadcrumb">';
+		$before_link = '<span class="breadcrumb" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">';
 		$after_link  = '</span>';
-		$link_att    = ' rel="v:url" property="v:title"';
-		$link        = $before_link . '<a' . $link_att . ' href="%1$s">%2$s</a>' . $after_link;
+		$link_att    = '';
+		$link        = $before_link . '<a itemprop="item"' . $link_att . ' href="%1$s"><span itemprop="name">%2$s</span></a>' . $after_link;
 
 		$post      = get_queried_object();
 		$parent_id = isset( $post->post_parent ) ? $post->post_parent : '';
@@ -88,10 +75,10 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 		if ( is_front_page() ) {
 			if ( 1 == $show['home'] ) {
-				$html_output .= '<div class="breadcrumb-list"><a href="' . $home_link . '">' . $text['home'] . '</a></div>';
+				$html_output .= '<div class="breadcrumb-list"><a itemprop="item" href="' . $home_link . '"><span itemprop="name">' . $text['home'] . '</span></a></div>';
 			}
 		} else {
-			$html_output .= '<div class="breadcrumb-list" xmlns:v="http://rdf.data-vocabulary.org/#">' . sprintf( $link, $home_link, $text['home'] ) . $delimiter;
+			$html_output .= '<div class="breadcrumb-list">' . sprintf( $link, $home_link, $text['home'] ) . $delimiter;
 
 			if ( is_home() ) {
 				if ( 1 == $show['current'] ) {
@@ -100,10 +87,13 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 			} elseif ( is_category() ) {
 				$this_cat = get_category( get_query_var( 'cat' ), false );
 				if ( 0 != $this_cat->parent ) {
+					$parent       = get_category( $this_cat->parent );
 					$cats         = get_category_parents( $this_cat->parent, true, $delimiter );
-					$cats         = str_replace( '<a', $before_link . '<a' . $link_att, $cats );
+					$cats         = str_replace( '<a', $before_link . '<a itemprop="item"' . $link_att, $cats );
 					$cats         = str_replace( '</a>', '</a>' . $after_link, $cats );
+					$cats         = str_replace( $parent->name, '<span itemprop="name">' . $parent->name . '</span>' . $after_link, $cats );
 					$html_output .= $cats;
+
 				}
 				$html_output .= $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
 
@@ -128,25 +118,26 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 					$archive_link = get_post_type_archive_link( $post_type->name );
 					$html_output .= sprintf( $link, $archive_link, $post_type->labels->singular_name );
 					if ( 1 == $show['current'] ) {
-							$html_output .= $delimiter . $before . get_the_title() . $after;
+						$html_output .= $delimiter . $before . get_the_title() . $after;
 					}
 				} else {
 					$cat  = get_the_category();
 					$cat  = $cat[0];
 					$cats = get_category_parents( $cat, true, $delimiter );
 					if ( 0 == $show['current'] ) {
-							$cats = preg_replace( "#^(.+)$delimiter$#", '$1', $cats );
+						$cats = preg_replace( "#^(.+)$delimiter$#", '$1', $cats );
 					}
-					$cats         = str_replace( '<a', $before_link . '<a' . $link_att, $cats );
+					$cats         = str_replace( '<a', $before_link . '<a itemprop="item"' . $link_att, $cats );
 					$cats         = str_replace( '</a>', '</a>' . $after_link, $cats );
+					$cats         = str_replace( $cat->name, '<span itemprop="name">' . $cat->name . '</span>' . $after_link, $cats );
 					$html_output .= $cats;
 					if ( 1 == $show['current'] ) {
 						$html_output .= $before . get_the_title() . $after;
 					}
 				}
 			} elseif ( ! is_single() && ! is_page() && ! is_404() && 'post' != get_post_type() ) {
-						$post_type    = get_post_type_object( get_post_type() );
-						$html_output .= $before . $post_type->labels->singular_name . $after;
+				$post_type    = get_post_type_object( get_post_type() );
+				$html_output .= $before . $post_type->labels->singular_name . $after;
 
 			} elseif ( is_attachment() ) {
 				$parent = get_post( $parent_id );
@@ -158,8 +149,9 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 				if ( $cat ) {
 					$cats         = get_category_parents( $cat, true, $delimiter );
-					$cats         = str_replace( '<a', $before_link . '<a' . $link_att, $cats );
+					$cats         = str_replace( '<a', $before_link . '<a itemprop="item"' . $link_att, $cats );
 					$cats         = str_replace( '</a>', '</a>' . $after_link, $cats );
+					$cats         = str_replace( $cat->name, '<span itemprop="name">' . $cat->name . '</span>' . $after_link, $cats );
 					$html_output .= $cats;
 				}
 
@@ -174,15 +166,14 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 			} elseif ( is_page() && $parent_id ) {
 				$breadcrumbs = array();
 				while ( $parent_id ) {
-						$page_child    = get_post( $parent_id );
-						$breadcrumbs[] = sprintf( $link, get_permalink( $page_child->ID ), get_the_title( $page_child->ID ) );
-						$parent_id     = $page_child->post_parent;
+					$page_child    = get_post( $parent_id );
+					$breadcrumbs[] = sprintf( $link, get_permalink( $page_child->ID ), get_the_title( $page_child->ID ) );
+					$parent_id     = $page_child->post_parent;
 				}
-				$breadcrumbs       = array_reverse( $breadcrumbs );
-				$count_breadcrumbs = count( $breadcrumbs );
-				for ( $i = 0; $i < $count_breadcrumbs; $i++ ) {
+				$breadcrumbs = array_reverse( $breadcrumbs );
+				for ( $i = 0; $i < count( $breadcrumbs ); $i++ ) {
 					$html_output .= $breadcrumbs[ $i ];
-					if ( $count_breadcrumbs - 1 != $i ) {
+					if ( $i != count( $breadcrumbs ) - 1 ) {
 						$html_output .= $delimiter;
 					}
 				}
@@ -204,35 +195,43 @@ if ( ! function_exists( 'responsive_breadcrumb_lists' ) ) {
 
 			if ( get_query_var( 'paged' ) || get_query_var( 'page' ) ) {
 				$page_num = get_query_var( 'page' ) ? get_query_var( 'page' ) : get_query_var( 'paged' );
-
-				// translators: %1$s: Page name(s).
-				$html_output .= $delimiter . sprintf( __( 'Page %s', 'responsive' ), $page_num );
+				/* translators: %s: Page Number */
+				$html_output .= $delimiter . sprintf( _x( 'Page %s', 'Text for a page Breadcrumb', 'responsive' ), $page_num );
 
 			}
 
 			$html_output .= '</div>';
 
 		}
-
-		echo wp_kses_post( $html_output );
-
-	} // end responsive_breadcrumb_lists
+		libxml_use_internal_errors( true );
+		$doc = new DOMDocument();
+		$doc->loadHTML( '<?xml encoding="UTF-8">' . $html_output );
+		$finder    = new DomXPath( $doc );
+		$classname = 'breadcrumb';
+		$nodes     = $finder->query( "//span[contains(@class, '$classname')]" );
+		$position  = 1;
+		foreach ( $nodes as $node ) {
+			if ( $position != $nodes->length ) {
+				$fragment = $doc->createDocumentFragment();
+				$fragment->appendXML( '<meta itemprop="position" content="' . $position . '" />' );
+				$node->appendChild( $fragment );
+				$position++;
+			}
+		}
+        echo $doc->saveHTML(); // phpcs:ignore
+	} // end responsive_breadcrumb_lists.
 }
 
 /**
  * Use shortcode_atts_gallery filter to add new defaults to the WordPress gallery shortcode.
  * Allows user input in the post gallery shortcode.
  *
- * @param  [type] $out   [description].
- * @param  [type] $pairs [description].
- * @param  [type] $atts  [description].
- * @return [type]        [description]
  */
 function responsive_gallery_atts( $out, $pairs, $atts ) {
 
 	$full_width = is_page_template( 'full-width-page.php' ) || is_page_template( 'landing-page.php' );
 
-	// Check if the size attribute has been set, if so use it and skip the responsive sizes.
+	// Check if the size attribute has been set, if so use it and skip the responsive sizes
 	if ( array_key_exists( 'size', $atts ) ) {
 		$size = $atts['size'];
 	} else {
@@ -240,64 +239,65 @@ function responsive_gallery_atts( $out, $pairs, $atts ) {
 		if ( $full_width ) {
 			switch ( $out['columns'] ) {
 				case 1:
-					$size = 'responsive-900'; // 900
+					$size = 'responsive-900'; //900
 					break;
 				case 2:
-					$size = 'responsive-450'; // 450
+					$size = 'responsive-450'; //450
 					break;
 				case 3:
-					$size = 'responsive-300'; // 300
+					$size = 'responsive-300'; //300
 					break;
 				case 4:
-					$size = 'responsive-200'; // 225
+					$size = 'responsive-200'; //225
 					break;
 				case 5:
-					$size = 'responsive-200'; // 180
+					$size = 'responsive-200'; //180
 					break;
 				case 6:
-					$size = 'responsive-150'; // 150
+					$size = 'responsive-150'; //150
 					break;
 				case 7:
-					$size = 'responsive-150'; // 125
+					$size = 'responsive-150'; //125
 					break;
 				case 8:
-					$size = 'responsive-150'; // 112
+					$size = 'responsive-150'; //112
 					break;
 				case 9:
-					$size = 'responsive-100'; // 100
+					$size = 'responsive-100'; //100
 					break;
 			}
 		} else {
 			switch ( $out['columns'] ) {
 				case 1:
-					$size = 'responsive-600'; // 600
+					$size = 'responsive-600'; //600
 					break;
 				case 2:
-					$size = 'responsive-300'; // 300
+					$size = 'responsive-300'; //300
 					break;
 				case 3:
-					$size = 'responsive-200'; // 200
+					$size = 'responsive-200'; //200
 					break;
 				case 4:
-					$size = 'responsive-150'; // 150
+					$size = 'responsive-150'; //150
 					break;
 				case 5:
-					$size = 'responsive-150'; // 120
+					$size = 'responsive-150'; //120
 					break;
 				case 6:
-					$size = 'responsive-100'; // 100
+					$size = 'responsive-100'; //100
 					break;
 				case 7:
-					$size = 'responsive-100'; // 85
+					$size = 'responsive-100'; //85
 					break;
 				case 8:
-					$size = 'responsive-100'; // 75
+					$size = 'responsive-100'; //75
 					break;
 				case 9:
-					$size = 'responsive-100'; // 66
+					$size = 'responsive-100'; //66
 					break;
 			}
 		}
+
 	}
 
 	$atts = shortcode_atts(
@@ -315,7 +315,7 @@ function responsive_gallery_atts( $out, $pairs, $atts ) {
 
 add_filter( 'shortcode_atts_gallery', 'responsive_gallery_atts', 10, 3 );
 
-/**
+/*
  * Create image sizes for the galley
  */
 function responsive_add_image_size() {
@@ -328,8 +328,7 @@ function responsive_add_image_size() {
 	add_image_size( 'responsive-900', 900, 9999 );
 }
 add_action( 'after_setup_theme', 'responsive_add_image_size' );
-
-/**
+/*
  * Get social icons.
  *
  * @since    1.9.4.9
@@ -338,7 +337,7 @@ function responsive_get_social_icons() {
 
 	$responsive_options = responsive_get_options();
 
-	$sites = array(
+	$sites = array (
 		'twitter'     => __( 'Twitter', 'responsive' ),
 		'facebook'    => __( 'Facebook', 'responsive' ),
 		'linkedin'    => __( 'LinkedIn', 'responsive' ),
@@ -351,16 +350,17 @@ function responsive_get_social_icons() {
 		'yelp'        => __( 'Yelp!', 'responsive' ),
 		'vimeo'       => __( 'Vimeo', 'responsive' ),
 		'foursquare'  => __( 'foursquare', 'responsive' ),
-		'email'       => __( 'Email', 'responsive' ),
+			'email' => __( 'Email', 'responsive' )
 	);
 
 	$html = '<ul class="social-icons">';
-	foreach ( $sites as $key => $value ) {
-		if ( ! empty( $responsive_options[ $key . '_uid' ] ) ) {
-			if ( 'email' == $key ) {
-				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="mailto:' . $responsive_options[ $key . '_uid' ] . '"><img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '"></a></li>';
-			} else {
-				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="' . $responsive_options[ $key . '_uid' ] . '" target="_blank"><img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '"></a></li>';
+	foreach( $sites as $key => $value ) {
+		if ( !empty( $responsive_options[$key . '_uid'] ) ) {
+		if ($key == 'email') {
+				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="mailto:' . $responsive_options[$key . '_uid'] . '">' . '<img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '">' . '</a></li>';
+			}
+			else{
+				$html .= '<li class="' . esc_attr( $key ) . '-icon"><a href="' . $responsive_options[$key . '_uid'] . '" target="_blank">' . '<img src="' . responsive_child_uri( '/core/icons/' . esc_attr( $key ) . '-icon.png' ) . '" width="24" height="24" alt="' . esc_html( $value ) . '">' . '</a></li>';
 			}
 		}
 	}
